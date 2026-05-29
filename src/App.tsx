@@ -2102,7 +2102,7 @@ function LayerSidebar({
                                 className={`mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-white shadow-sm ${
                                   work.type === 'water_plant'
                                     ? 'bg-orange-500 text-white'
-                                    : 'bg-sky-400 text-sky-950'
+                                    : 'bg-violet-500 text-white'
                                 }`}
                               >
                                 {work.type === 'water_plant' ? (
@@ -2485,7 +2485,7 @@ function DashboardCards({ data, mapMode, cadVectorData, curatedMainWorks, cadVec
             label: 'Kênh/thủy lợi',
             value: irrigationCount,
             icon: Waves,
-            accent: 'text-cyan-700',
+            accent: 'text-green-700',
           },
           {
             label: 'Nhà máy nước',
@@ -2497,7 +2497,7 @@ function DashboardCards({ data, mapMode, cadVectorData, curatedMainWorks, cadVec
             label: 'Hồ nước thô',
             value: curatedMainWorks.filter((work) => work.type === 'raw_water_lake').length,
             icon: Waves,
-            accent: 'text-sky-700',
+            accent: 'text-violet-700',
           },
         ]
       : [
@@ -2517,7 +2517,7 @@ function DashboardCards({ data, mapMode, cadVectorData, curatedMainWorks, cadVec
             label: 'Kênh thủy lợi',
             value: irrigationCount,
             icon: Waves,
-            accent: 'text-cyan-700',
+            accent: 'text-green-700',
           },
           {
             label: cadVectorViewPreset === 'water_plants' ? 'Nhà máy nước' : 'Hồ nước thô',

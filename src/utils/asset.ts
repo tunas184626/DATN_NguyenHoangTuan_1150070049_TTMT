@@ -24,9 +24,9 @@ export const LAYER_LABELS: Record<LayerKey, string> = {
 
 export const LAYER_COLORS: Record<LayerKey, string> = {
   waterPlant: '#166534',
-  rawWaterLakes: '#0284c7',
+  rawWaterLakes: '#8b5cf6',
   pipelines: '#2563eb',
-  canals: '#06b6d4',
+  canals: '#16a34a',
   supplyZones: '#22c55e',
   boundaries: '#334155',
   labels: '#7c3aed',

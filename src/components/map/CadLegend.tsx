@@ -34,7 +34,7 @@ const LEGEND_ITEMS: Array<{
   {
     key: 'rawWaterLake',
     label: 'Hồ nước thô',
-    color: '#38bdf8',
+    color: '#8b5cf6',
     shape: 'point-water',
     visible: (layers) => layers[CAD_CURATED_MAIN_WORKS_LAYER_KEY] !== false,
   },
@@ -48,7 +48,7 @@ const LEGEND_ITEMS: Array<{
   {
     key: 'irrigation',
     label: 'Kênh/thủy lợi',
-    color: '#0891b2',
+    color: '#16a34a',
     shape: 'line-canal',
     visible: (layers) =>
       Object.entries(layers).some(([key, value]) => value !== false && key.toLowerCase().includes('irrigation')),
@@ -86,29 +86,29 @@ const LEGEND_ITEMS: Array<{
 const LEGEND_VISUAL_COLORS: Partial<Record<CadVisualMode, Partial<Record<string, string>>>> = {
   classic: {
     pipeline: '#2563eb',
-    irrigation: '#0f9f8d',
+    irrigation: '#15803d',
     baseCad: '#8b9aa7',
   },
   report: {
     pipeline: '#1d4ed8',
-    irrigation: '#0891b2',
+    irrigation: '#15803d',
     baseCad: '#94a3b8',
   },
   water: {
     pipeline: '#2563eb',
-    irrigation: '#14b8a6',
+    irrigation: '#16a34a',
     baseCad: '#cbd5e1',
   },
   irrigation: {
     pipeline: '#2563eb',
-    irrigation: '#0d9488',
+    irrigation: '#15803d',
     baseCad: '#cbd5e1',
   },
   dark: {
     waterPlant: '#fb923c',
-    rawWaterLake: '#38bdf8',
+    rawWaterLake: '#a78bfa',
     pipeline: '#facc15',
-    irrigation: '#22d3ee',
+    irrigation: '#86efac',
     baseCad: '#67e8f9',
   },
 }

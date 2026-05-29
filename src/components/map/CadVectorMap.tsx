@@ -316,13 +316,13 @@ function getFeatureRenderGroup(feature: CadVectorFeature): CadRenderGroup {
 function getTypeStyle(type: CadVectorType, selected = false): PathOptions {
   const styleMap: Record<CadVectorType, PathOptions> = {
     water_plant: { color: '#14532d', fillColor: '#166534', weight: 3, fillOpacity: 0.95, opacity: 1 },
-    raw_water_lake: { color: '#0284c7', fillColor: '#0ea5e9', weight: 2, fillOpacity: 0.18, opacity: 0.9 },
+    raw_water_lake: { color: '#4c1d95', fillColor: '#8b5cf6', weight: 2, fillOpacity: 0.2, opacity: 0.92 },
     pipeline: { color: '#2563eb', fillColor: '#2563eb', weight: 2, fillOpacity: 0.1, opacity: 0.9 },
-    canal: { color: '#06b6d4', fillColor: '#67e8f9', weight: 2, fillOpacity: 0.12, opacity: 0.85 },
-    irrigation_canal: { color: '#06b6d4', fillColor: '#06b6d4', weight: 4, fillOpacity: 0.12, opacity: 0.9 },
-    irrigation_area: { color: '#0891b2', fillColor: '#67e8f9', weight: 1.6, fillOpacity: 0.18, opacity: 0.86 },
-    irrigation_point: { color: '#0e7490', fillColor: '#22d3ee', weight: 1.5, fillOpacity: 0.82, opacity: 0.9 },
-    irrigation_label: { color: '#0e7490', fillColor: '#22d3ee', weight: 0.7, fillOpacity: 0.75, opacity: 0.72 },
+    canal: { color: '#16a34a', fillColor: '#86efac', weight: 2, fillOpacity: 0.12, opacity: 0.85 },
+    irrigation_canal: { color: '#15803d', fillColor: '#22c55e', weight: 4, fillOpacity: 0.12, opacity: 0.9 },
+    irrigation_area: { color: '#166534', fillColor: '#bbf7d0', weight: 1.6, fillOpacity: 0.18, opacity: 0.86 },
+    irrigation_point: { color: '#14532d', fillColor: '#4ade80', weight: 1.5, fillOpacity: 0.82, opacity: 0.9 },
+    irrigation_label: { color: '#166534', fillColor: '#86efac', weight: 0.7, fillOpacity: 0.75, opacity: 0.72 },
     main_work_candidate: { color: '#c2410c', fillColor: '#f97316', weight: 2.2, fillOpacity: 0.88, opacity: 0.95 },
     boundary: {
       color: '#e2e8f0',
@@ -416,8 +416,8 @@ function adjustStyleForVisualMode(
     if (group === 'irrigationCanal' || group === 'irrigationArea') {
       return {
         ...style,
-        color: '#0f9f8d',
-        fillColor: '#5eead4',
+        color: '#15803d',
+        fillColor: '#86efac',
         opacity: 0.82,
       }
     }
@@ -450,8 +450,8 @@ function adjustStyleForVisualMode(
     if (group === 'irrigationCanal' || group === 'irrigationArea') {
       return {
         ...style,
-        color: '#0891b2',
-        fillColor: '#67e8f9',
+        color: '#15803d',
+        fillColor: '#86efac',
         weight: Math.max(Number(style.weight ?? 2.6), 2.7),
         opacity: 0.72,
       }
@@ -485,8 +485,8 @@ function adjustStyleForVisualMode(
     if (group === 'irrigationCanal' || group === 'irrigationArea' || group === 'curatedIrrigation') {
       return {
         ...style,
-        color: '#14b8a6',
-        fillColor: '#99f6e4',
+        color: '#16a34a',
+        fillColor: '#bbf7d0',
         weight: Math.max(Number(style.weight ?? 2.5), 2.3),
         opacity: 0.38,
         fillOpacity: Math.min(Number(style.fillOpacity ?? 0.12), 0.08),
@@ -521,8 +521,8 @@ function adjustStyleForVisualMode(
     if (group === 'irrigationCanal' || group === 'irrigationArea' || group === 'curatedIrrigation') {
       return {
         ...style,
-        color: '#0d9488',
-        fillColor: '#2dd4bf',
+        color: '#15803d',
+        fillColor: '#22c55e',
         weight: Math.max(Number(style.weight ?? 2.8), 4),
         opacity: 0.92,
         fillOpacity: Math.max(Number(style.fillOpacity ?? 0.12), 0.16),
@@ -555,8 +555,8 @@ function adjustStyleForVisualMode(
   if (group === 'irrigationCanal' || group === 'irrigationArea' || group === 'curatedIrrigation') {
     return {
       ...style,
-      color: '#22d3ee',
-      fillColor: '#67e8f9',
+      color: '#86efac',
+      fillColor: '#bbf7d0',
       opacity: 0.9,
     }
   }
@@ -567,7 +567,7 @@ function adjustStyleForVisualMode(
 function getIrrigationHaloStyle(visualMode: CadVisualMode): PathOptions {
   if (visualMode === 'dark') {
     return {
-      color: '#cffafe',
+      color: '#bbf7d0',
       weight: 6,
       opacity: 0.2,
       lineCap: 'round',
@@ -576,7 +576,7 @@ function getIrrigationHaloStyle(visualMode: CadVisualMode): PathOptions {
   }
 
   return {
-    color: '#a5f3fc',
+    color: '#bbf7d0',
     weight: visualMode === 'irrigation' ? 7 : 5,
     opacity: visualMode === 'irrigation' ? 0.28 : visualMode === 'water' ? 0.08 : 0.18,
     lineCap: 'round',
@@ -697,8 +697,8 @@ function getFeatureStyle(
       fillOpacity: 0.95,
     },
     irrigationCanal: {
-      color: '#0891b2',
-      fillColor: '#06b6d4',
+      color: '#15803d',
+      fillColor: '#22c55e',
       weight: 2.8,
       opacity: 0.75,
       fillOpacity: 0.12,
@@ -706,8 +706,8 @@ function getFeatureStyle(
       lineJoin: 'round',
     },
     irrigationArea: {
-      color: '#0891b2',
-      fillColor: '#a5f3fc',
+      color: '#166534',
+      fillColor: '#bbf7d0',
       weight: 1.5,
       opacity: 0.88,
       fillOpacity: 0.18,
@@ -715,15 +715,15 @@ function getFeatureStyle(
       lineJoin: 'round',
     },
     irrigationLabel: {
-      color: '#0e7490',
-      fillColor: '#22d3ee',
+      color: '#166534',
+      fillColor: '#86efac',
       weight: 0.6,
       opacity: 0.72,
       fillOpacity: 0.72,
     },
     curatedIrrigation: {
       color: '#ffffff',
-      fillColor: '#0891b2',
+      fillColor: '#16a34a',
       weight: 2.8,
       opacity: 1,
       fillOpacity: 0.94,
@@ -736,8 +736,8 @@ function getFeatureStyle(
       fillOpacity: 0.96,
     },
     rawWaterLake: {
-      color: '#075985',
-      fillColor: '#38bdf8',
+      color: '#4c1d95',
+      fillColor: '#8b5cf6',
       weight: 2.4,
       opacity: 0.98,
       fillOpacity: 0.78,
@@ -839,8 +839,8 @@ function getFeatureStyle(
         : viewKey === 'irrigation_system' && group === 'irrigationCanal'
           ? {
               ...base,
-              color: '#0d9488',
-              fillColor: '#14b8a6',
+              color: '#15803d',
+              fillColor: '#22c55e',
               weight: 3,
               opacity: 0.82,
           }
@@ -2077,9 +2077,9 @@ export function CadVectorMap({
         <footer className="cad-print-footer">
           <div className="cad-print-legend">
             <span><i style={{ backgroundColor: '#f97316' }} /> Nhà máy nước</span>
-            <span><i style={{ backgroundColor: '#38bdf8' }} /> Hồ nước thô</span>
+            <span><i style={{ backgroundColor: '#8b5cf6' }} /> Hồ nước thô</span>
             <span><b style={{ backgroundColor: '#2563eb' }} /> Tuyến ống cấp nước</span>
-            <span><b style={{ backgroundColor: '#0891b2' }} /> Kênh/thủy lợi</span>
+            <span><b style={{ backgroundColor: '#16a34a' }} /> Kênh/thủy lợi</span>
             <span><b style={{ backgroundColor: '#64748b' }} /> Nền CAD gốc</span>
           </div>
           <div className="cad-print-sources">
@@ -2182,9 +2182,9 @@ export function CadVectorMap({
         </svg>
         <div className="cad-print-legend">
           <span><i style={{ backgroundColor: '#f97316' }} /> Nhà máy nước</span>
-          <span><i style={{ backgroundColor: '#38bdf8' }} /> Hồ nước thô</span>
+          <span><i style={{ backgroundColor: '#8b5cf6' }} /> Hồ nước thô</span>
           <span><b style={{ backgroundColor: '#2563eb' }} /> Tuyến ống cấp nước</span>
-          <span><b style={{ backgroundColor: '#0891b2' }} /> Kênh/thủy lợi</span>
+          <span><b style={{ backgroundColor: '#16a34a' }} /> Kênh/thủy lợi</span>
           <span><b style={{ backgroundColor: '#64748b' }} /> Nền CAD gốc</span>
         </div>
       </div>
