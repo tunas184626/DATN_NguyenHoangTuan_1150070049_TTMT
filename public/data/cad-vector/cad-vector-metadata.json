@@ -1,0 +1,8769 @@
+{
+  "originalBounds": {
+    "minX": -287.0421480195482,
+    "minY": -159.9999661853071,
+    "maxX": 610277.3424633015,
+    "maxY": 1222631.739032456
+  },
+  "normalizedBounds": {
+    "minX": 0,
+    "minY": 0,
+    "maxX": 610564.384611321,
+    "maxY": 1222791.7389986413
+  },
+  "transform": "normalizedX = x - minX; normalizedY = y - minY",
+  "sourceFiles": [
+    "cad_lines.geojson",
+    "cad_points.geojson",
+    "cad_polygons.geojson",
+    "cong_trinh_chinh_01.geojson",
+    "cong_trinh_chinh_02.geojson",
+    "cong_trinh_chinh_03.geojson",
+    "cong_trinh_chinh_04.geojson",
+    "kenh_thuy_loi_01.geojson",
+    "kenh_thuy_loi_02.geojson",
+    "kenh_thuy_loi_03.geojson",
+    "kenh_thuy_loi_04.geojson"
+  ],
+  "totalFeatures": 21272,
+  "skippedMissingGeometry": 0,
+  "cadFieldStats": {
+    "totalTextFeatures": 5243,
+    "diameterTextFeatures": 121,
+    "locationLabelFeatures": 128,
+    "corruptedTextFeatures": 3057,
+    "cadSpaceCounts": {
+      "model": 20800,
+      "paper": 472
+    },
+    "layerCounts": [
+      {
+        "value": "Xr_Nen GT$0$DUONG_DA",
+        "count": 5552
+      },
+      {
+        "value": "Xr_Nen GT$0$DUONG NHUA",
+        "count": 4133
+      },
+      {
+        "value": "Xr_Nen GT$1$SONG_HO",
+        "count": 2160
+      },
+      {
+        "value": "Xr_Nen GT$0$DUONG BT-NEN BT",
+        "count": 1800
+      },
+      {
+        "value": "Xr_Nen GT$0$CAU-CONG",
+        "count": 832
+      },
+      {
+        "value": "1",
+        "count": 782
+      },
+      {
+        "value": "ranhlang",
+        "count": 551
+      },
+      {
+        "value": "0",
+        "count": 525
+      },
+      {
+        "value": "Table",
+        "count": 409
+      },
+      {
+        "value": "thietke",
+        "count": 396
+      },
+      {
+        "value": "DT",
+        "count": 334
+      },
+      {
+        "value": "Pipe Existing",
+        "count": 328
+      },
+      {
+        "value": "LDT",
+        "count": 322
+      },
+      {
+        "value": "STCT",
+        "count": 295
+      },
+      {
+        "value": "Pipe _Existing_PHL",
+        "count": 249
+      },
+      {
+        "value": "DUONG",
+        "count": 245
+      },
+      {
+        "value": "CNTV-TEXT",
+        "count": 218
+      },
+      {
+        "value": "Diameter_Text",
+        "count": 200
+      },
+      {
+        "value": "Xr_Nen GT$0$BON HOA",
+        "count": 138
+      },
+      {
+        "value": "SoThua",
+        "count": 131
+      },
+      {
+        "value": "Level 1",
+        "count": 130
+      },
+      {
+        "value": "Pipe_DHBL",
+        "count": 96
+      },
+      {
+        "value": "Xr_Nen GT$0$DUONG DAT",
+        "count": 96
+      },
+      {
+        "value": "Xr_Nen GT$0$Madiem",
+        "count": 96
+      },
+      {
+        "value": "PMV_TEXT",
+        "count": 90
+      },
+      {
+        "value": "Text ten duong",
+        "count": 76
+      },
+      {
+        "value": "CHINHLY",
+        "count": 73
+      },
+      {
+        "value": "Level 63",
+        "count": 70
+      },
+      {
+        "value": "Kich thuoc",
+        "count": 60
+      },
+      {
+        "value": "dtk_c3",
+        "count": 55
+      },
+      {
+        "value": "Xr_Nen GT$0$huong nuoc chay",
+        "count": 50
+      },
+      {
+        "value": "KT2",
+        "count": 49
+      },
+      {
+        "value": "Text",
+        "count": 48
+      },
+      {
+        "value": "tencsd",
+        "count": 35
+      },
+      {
+        "value": "Xr_Nen GT$0$TEN DUONG",
+        "count": 34
+      },
+      {
+        "value": "nha",
+        "count": 33
+      },
+      {
+        "value": "DTthucte",
+        "count": 32
+      },
+      {
+        "value": "CNTV- GHI CHU",
+        "count": 28
+      },
+      {
+        "value": "Xr_Nen GT$0$KYHIEU 2000",
+        "count": 26
+      },
+      {
+        "value": "PHL_GHI CHU",
+        "count": 25
+      },
+      {
+        "value": "Leader",
+        "count": 24
+      },
+      {
+        "value": "KHUNG",
+        "count": 23
+      },
+      {
+        "value": "Kenh",
+        "count": 22
+      },
+      {
+        "value": "textsl",
+        "count": 22
+      },
+      {
+        "value": "PHL_TEXT HT",
+        "count": 20
+      },
+      {
+        "value": "Xr_Nen GT$0$CONG XO",
+        "count": 20
+      },
+      {
+        "value": "VUNG DAN CU",
+        "count": 19
+      },
+      {
+        "value": "KY-HIEU",
+        "count": 18
+      },
+      {
+        "value": "VUNG CONG NGHIEP",
+        "count": 17
+      },
+      {
+        "value": "Xr_Nen GT$0$KYHIEU",
+        "count": 17
+      },
+      {
+        "value": "$0$1",
+        "count": 16
+      },
+      {
+        "value": "Unknown_Line_Type",
+        "count": 16
+      },
+      {
+        "value": "Defpoints",
+        "count": 14
+      },
+      {
+        "value": "ghichu",
+        "count": 14
+      },
+      {
+        "value": "Pipe_Phase 1",
+        "count": 14
+      },
+      {
+        "value": "D. Dia vat",
+        "count": 12
+      },
+      {
+        "value": "Ghi chu",
+        "count": 12
+      },
+      {
+        "value": "dttong",
+        "count": 11
+      },
+      {
+        "value": "van nhua 63",
+        "count": 11
+      },
+      {
+        "value": "Xr_GT Ben Luc$0$0-RANHXA",
+        "count": 10
+      },
+      {
+        "value": "Kich thuot",
+        "count": 9
+      },
+      {
+        "value": "Level 30",
+        "count": 9
+      },
+      {
+        "value": "DUONGCHINH",
+        "count": 8
+      },
+      {
+        "value": "Pipe_Phase 2",
+        "count": 8
+      },
+      {
+        "value": "HOVATEN",
+        "count": 6
+      },
+      {
+        "value": "Pipe Existing_DTDH",
+        "count": 6
+      },
+      {
+        "value": "Ranh BD",
+        "count": 6
+      },
+      {
+        "value": "Xr_GT Ben Luc$0$0-text-giaothong",
+        "count": 6
+      },
+      {
+        "value": "Ranh to BD",
+        "count": 5
+      },
+      {
+        "value": "1. PMV_GD2",
+        "count": 4
+      },
+      {
+        "value": "CN Thuan An",
+        "count": 4
+      },
+      {
+        "value": "DUONG GIAO THONG",
+        "count": 4
+      },
+      {
+        "value": "Xr_Nen GT$0$MUONG NUOC BE TONG",
+        "count": 4
+      },
+      {
+        "value": "Level 51",
+        "count": 3
+      },
+      {
+        "value": "PHL_VUNG CAP NUOC",
+        "count": 3
+      },
+      {
+        "value": "RANH XA",
+        "count": 3
+      },
+      {
+        "value": "Xr_Nen GT$0$KH",
+        "count": 3
+      },
+      {
+        "value": "_div_Tuy__n__ng_c__p_n___c_CCN_",
+        "count": 2
+      },
+      {
+        "value": "_div_Tuy__n__ng_c__p_n___c_DT82",
+        "count": 2
+      },
+      {
+        "value": "_div_Tuy__n__ng_M__H__nh_BR__di",
+        "count": 2
+      },
+      {
+        "value": "22",
+        "count": 2
+      },
+      {
+        "value": "CAU",
+        "count": 2
+      },
+      {
+        "value": "CNTV- VIEWPORT",
+        "count": 2
+      },
+      {
+        "value": "CNTV-HATCH",
+        "count": 2
+      },
+      {
+        "value": "Noi diem",
+        "count": 2
+      },
+      {
+        "value": "PHL_ONG D160_2027",
+        "count": 2
+      },
+      {
+        "value": "PIPE100",
+        "count": 2
+      },
+      {
+        "value": "PIPE141",
+        "count": 2
+      },
+      {
+        "value": "PIPE200",
+        "count": 2
+      },
+      {
+        "value": "PIPE362",
+        "count": 2
+      },
+      {
+        "value": "PIPE440",
+        "count": 2
+      },
+      {
+        "value": "PIPE97",
+        "count": 2
+      },
+      {
+        "value": "PROPOSED PIPE_BWS",
+        "count": 2
+      },
+      {
+        "value": "Xr_GT Ben Luc$0$3- VUNG CANH QUAN",
+        "count": 2
+      },
+      {
+        "value": "Xr_Nen GT$0$KS-RAOKEM",
+        "count": 2
+      },
+      {
+        "value": "Xr_Nen GT$0$mo ma lang tham",
+        "count": 2
+      },
+      {
+        "value": "10",
+        "count": 1
+      },
+      {
+        "value": "D1",
+        "count": 1
+      },
+      {
+        "value": "Khung 2",
+        "count": 1
+      },
+      {
+        "value": "PHL_ONG D110",
+        "count": 1
+      },
+      {
+        "value": "PHL_ONG DAU TU",
+        "count": 1
+      },
+      {
+        "value": "PMV_ONG D630",
+        "count": 1
+      },
+      {
+        "value": "Ranh 50",
+        "count": 1
+      },
+      {
+        "value": "RANHXA",
+        "count": 1
+      },
+      {
+        "value": "Xr_Nen GT$0$SONG_HO",
+        "count": 1
+      }
+    ],
+    "sourceGroupCounts": [
+      {
+        "value": "cad_base",
+        "count": 8824
+      },
+      {
+        "value": "main_works",
+        "count": 8159
+      },
+      {
+        "value": "irrigation",
+        "count": 4289
+      }
+    ],
+    "textValueCounts": [
+      {
+        "value": "ÄÆ°á»ng ÄÃ¡",
+        "count": 466
+      },
+      {
+        "value": "L",
+        "count": 191
+      },
+      {
+        "value": "kÃªnh",
+        "count": 68
+      },
+      {
+        "value": "ÄÆ°á»ng nhá»±a",
+        "count": 62
+      },
+      {
+        "value": "Ao",
+        "count": 60
+      },
+      {
+        "value": "kÃªnh thá»§y lá»£i",
+        "count": 54
+      },
+      {
+        "value": "Äg ÄT 823(nhá»±a)",
+        "count": 48
+      },
+      {
+        "value": "kÃªnh ÄÃ o N3",
+        "count": 48
+      },
+      {
+        "value": "ÄÆ°á»ng Äang thi cÃ´ng",
+        "count": 40
+      },
+      {
+        "value": "OD630",
+        "count": 38
+      },
+      {
+        "value": "bÃª tÃ´ng",
+        "count": 34
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 7",
+        "count": 32
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 9",
+        "count": 32
+      },
+      {
+        "value": "LUA",
+        "count": 32
+      },
+      {
+        "value": "OD315",
+        "count": 32
+      },
+      {
+        "value": "2L",
+        "count": 30
+      },
+      {
+        "value": "ÄÆ°á»ng An Háº¡",
+        "count": 30
+      },
+      {
+        "value": "ÄÆ°á»ng Lá»¥c ViÃªn (nhá»±a)",
+        "count": 30
+      },
+      {
+        "value": "KÃªnh Tháº§y Cai",
+        "count": 30
+      },
+      {
+        "value": "LM",
+        "count": 29
+      },
+      {
+        "value": "Äg TÃ¢n Há»i( nhá»±a)",
+        "count": 28
+      },
+      {
+        "value": "ÄÆ°á»ng ÄT 823B(nhá»±a)",
+        "count": 26
+      },
+      {
+        "value": "ÃT 822",
+        "count": 26
+      },
+      {
+        "value": "kÂªnh XÂ¸ng",
+        "count": 26
+      },
+      {
+        "value": "bk",
+        "count": 24
+      },
+      {
+        "value": "OD225",
+        "count": 24
+      },
+      {
+        "value": "ÄÆ°á»ng bÃª tÃ´ng",
+        "count": 22
+      },
+      {
+        "value": "ÄÆ°á»ng N7",
+        "count": 22
+      },
+      {
+        "value": "DMA",
+        "count": 22
+      },
+      {
+        "value": "ÄÆ°á»ng Má»¹ Háº¡nh (ÄT9)",
+        "count": 20
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 5",
+        "count": 20
+      },
+      {
+        "value": "Äg ÄT 822( nhá»±a)",
+        "count": 20
+      },
+      {
+        "value": "ÄT 824",
+        "count": 20
+      },
+      {
+        "value": "gkin",
+        "count": 20
+      },
+      {
+        "value": "OD450",
+        "count": 20
+      },
+      {
+        "value": "ÃÃ¶Ã¹c HoÃ¸a",
+        "count": 18
+      },
+      {
+        "value": "ÄÆ°á»ng BÃ u Sen( nhá»±a)",
+        "count": 18
+      },
+      {
+        "value": "ÄT 825",
+        "count": 18
+      },
+      {
+        "value": "HNK",
+        "count": 18
+      },
+      {
+        "value": "mÆ°Æ¡ng nÆ°á»c bÃª tÃ´ng",
+        "count": 18
+      },
+      {
+        "value": "D110",
+        "count": 17
+      },
+      {
+        "value": "ÄÆ°á»ng ÄT 824",
+        "count": 16
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 3",
+        "count": 16
+      },
+      {
+        "value": "c. Â®Ãu kÂªnh",
+        "count": 16
+      },
+      {
+        "value": "OD710",
+        "count": 16
+      },
+      {
+        "value": "U.B",
+        "count": 16
+      },
+      {
+        "value": "1L",
+        "count": 15
+      },
+      {
+        "value": "ThaÃ¯nh LÃ´Ã¯i",
+        "count": 15
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 4",
+        "count": 14
+      },
+      {
+        "value": "Äg ÄT 825(nhá»±a)",
+        "count": 14
+      },
+      {
+        "value": "D150",
+        "count": 14
+      },
+      {
+        "value": "MyÃµ HaÃ¯nh",
+        "count": 13
+      },
+      {
+        "value": "ÄÆ°á»ng ÄT 823D (Äang thi cÃ´ng)",
+        "count": 12
+      },
+      {
+        "value": "ÄÆ°á»ng BÃ u CÃ´ng(nhá»±a)",
+        "count": 12
+      },
+      {
+        "value": "ÄÆ°á»ng BÃ u Sen (nhá»±a)",
+        "count": 12
+      },
+      {
+        "value": "ÄÆ°á»ng BT",
+        "count": 12
+      },
+      {
+        "value": "kÂªnh KT 11",
+        "count": 12
+      },
+      {
+        "value": "OD160",
+        "count": 12
+      },
+      {
+        "value": "Â§Â¦ÃªNG Â§ÃT",
+        "count": 11
+      },
+      {
+        "value": "ÃÃ¶Ã¹c LaÃ¤p",
+        "count": 10
+      },
+      {
+        "value": "ÄÆ°á»ng Äá»©c HoÃ  ThÆ°á»£ng",
+        "count": 10
+      },
+      {
+        "value": "ÄÆ°á»ng Äang Thi CÃ´ng",
+        "count": 10
+      },
+      {
+        "value": "ÄÆ°á»ng ÄT 823B",
+        "count": 10
+      },
+      {
+        "value": "ÄÆ°á»ng Ba Sa- GÃ² Má»i (nhá»±a)",
+        "count": 10
+      },
+      {
+        "value": "ÄÆ°á»ng BÃ u CÃ´ng",
+        "count": 10
+      },
+      {
+        "value": "ÄÆ°á»ng DT 825",
+        "count": 10
+      },
+      {
+        "value": "ÃT 824",
+        "count": 10
+      },
+      {
+        "value": "ÄT.823B",
+        "count": 10
+      },
+      {
+        "value": "ÃT.830",
+        "count": 10
+      },
+      {
+        "value": "OD400",
+        "count": 10
+      },
+      {
+        "value": "ÃRM",
+        "count": 9
+      },
+      {
+        "value": "B",
+        "count": 9
+      },
+      {
+        "value": "HaÃ¸ ThÃ² ThaÃ©ng",
+        "count": 9
+      },
+      {
+        "value": "LÃ¶Ã´ng HoÃ¸a",
+        "count": 9
+      },
+      {
+        "value": "Tráº¡m Äo nÆ°á»c",
+        "count": 9
+      },
+      {
+        "value": "ÃÃ¶Ã´Ã¸ng 839",
+        "count": 8
+      },
+      {
+        "value": "ÄÆ°á»ng Äá»©c HÃ²a ÄÃ´ng (Nhá»±a)",
+        "count": 8
+      },
+      {
+        "value": "ÄÆ°á»ng Chá»£ GÃ  (BT)",
+        "count": 8
+      },
+      {
+        "value": "ÄÆ°á»ng DT 821",
+        "count": 8
+      },
+      {
+        "value": "ÄÆ°á»ng háº»m nhá» 25",
+        "count": 8
+      },
+      {
+        "value": "ÄÆ°á»ng LÃ¡ng Cáº©m (nhá»±a)",
+        "count": 8
+      },
+      {
+        "value": "ÄÆ°á»ng N1",
+        "count": 8
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 10",
+        "count": 8
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 4",
+        "count": 8
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 9 (nhá»±a)",
+        "count": 8
+      },
+      {
+        "value": "ÄT.824",
+        "count": 8
+      },
+      {
+        "value": "ÃT.824",
+        "count": 8
+      },
+      {
+        "value": "ÄT.825",
+        "count": 8
+      },
+      {
+        "value": "DT 823 (nhá»±a)",
+        "count": 8
+      },
+      {
+        "value": "gcong Langs ven",
+        "count": 8
+      },
+      {
+        "value": "HaÃ¤u NghÃ³a",
+        "count": 8
+      },
+      {
+        "value": "KÃNH LÃNG VEN",
+        "count": 8
+      },
+      {
+        "value": "OD200",
+        "count": 8
+      },
+      {
+        "value": "OD560",
+        "count": 8
+      },
+      {
+        "value": "OD800",
+        "count": 8
+      },
+      {
+        "value": "OD90",
+        "count": 8
+      },
+      {
+        "value": "T",
+        "count": 8
+      },
+      {
+        "value": "TRÂµM",
+        "count": 8
+      },
+      {
+        "value": "D160",
+        "count": 7
+      },
+      {
+        "value": "NguyeÃ£n DÃ¶Ã´ng NgoÃ¯c NÃ¶Ãµ",
+        "count": 7
+      },
+      {
+        "value": "ÄÆ°á»ng Äá»©c HoÃ  ThÆ°á»£ng(nhá»±a)",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng An Thuáº­n (nhá»±a)",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng ÄT 824 (Nhá»±a)",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng ÄT825 (nhá»±a)",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng Má»¹ Háº¡nh",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng N13 (nhá»±a)",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 2",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 2",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 5",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 6 (nhá»±a)",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 7 (nhá»±a)",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 8 (nhá»±a)",
+        "count": 6
+      },
+      {
+        "value": "ÄÆ°á»ng TC5 (nhá»±a)",
+        "count": 6
+      },
+      {
+        "value": "ÃT 830",
+        "count": 6
+      },
+      {
+        "value": "BeÃ¡n LÃ¶Ã¹c",
+        "count": 6
+      },
+      {
+        "value": "D100",
+        "count": 6
+      },
+      {
+        "value": "kÂªnh NÂ¨m NhuÃ©m",
+        "count": 6
+      },
+      {
+        "value": "KÃNH RANH",
+        "count": 6
+      },
+      {
+        "value": "KCN Háº¢I SÆ N",
+        "count": 6
+      },
+      {
+        "value": "mÆ°Æ¡ng nÆ°á»c BT",
+        "count": 6
+      },
+      {
+        "value": "OD110",
+        "count": 6
+      },
+      {
+        "value": "SÃ´ng VÃ m Cá» ÄÃ´ng",
+        "count": 6
+      },
+      {
+        "value": "soÃ¢ng VaÃ¸m CoÃ» ÃoÃ¢ng",
+        "count": 6
+      },
+      {
+        "value": "SOÃNG VAÃM COÃ ÃOÃNG",
+        "count": 6
+      },
+      {
+        "value": "tda3.5",
+        "count": 6
+      },
+      {
+        "value": "Â§Â¦ÃªNG HÃ¥ CHÃ MINH",
+        "count": 5
+      },
+      {
+        "value": "KÂ£NH TIÂ£U",
+        "count": 5
+      },
+      {
+        "value": "kÂªnh xÂ¸ng thÃy cai",
+        "count": 5
+      },
+      {
+        "value": "N3",
+        "count": 5
+      },
+      {
+        "value": "XAÃ ÃÃÃC HOÃA",
+        "count": 5
+      },
+      {
+        "value": "225",
+        "count": 4
+      },
+      {
+        "value": "226",
+        "count": 4
+      },
+      {
+        "value": "227",
+        "count": 4
+      },
+      {
+        "value": "228",
+        "count": 4
+      },
+      {
+        "value": "243",
+        "count": 4
+      },
+      {
+        "value": "289",
+        "count": 4
+      },
+      {
+        "value": "290",
+        "count": 4
+      },
+      {
+        "value": "438",
+        "count": 4
+      },
+      {
+        "value": "50m",
+        "count": 4
+      },
+      {
+        "value": "Ã. COÃNG BAÃ BOÃNG",
+        "count": 4
+      },
+      {
+        "value": "Ã. GIOÃNG LÃÃN",
+        "count": 4
+      },
+      {
+        "value": "Ã. GOÃ HÃU",
+        "count": 4
+      },
+      {
+        "value": "Ã. KEÃNH TAÃY",
+        "count": 4
+      },
+      {
+        "value": "Ä. Lá»c BÃ¬nh 1",
+        "count": 4
+      },
+      {
+        "value": "Ã. MYÃ HAÃNH",
+        "count": 4
+      },
+      {
+        "value": "Ã. TAÃN ÃÃÃC",
+        "count": 4
+      },
+      {
+        "value": "Ä.Má»¸ Háº NH",
+        "count": 4
+      },
+      {
+        "value": "Â§",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng An Ninh 6(BT)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng ÄT833D (Äang thi cÃ´ng)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng BÃ u Trai - Hiá»p HÃ²a ( nhá»±a )",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng D3",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng Má»¹ Háº¡nh (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng N20 (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng Nguyá»n An Ninh (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng Nguyá»n VÄn DÆ°Æ¡ng (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng Sa BÃ  (Nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 1",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 1 (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 10 (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 13 (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 3 (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 6",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 8",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 8",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng TC3 (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "ÄÆ°á»ng TC4 (nhá»±a)",
+        "count": 4
+      },
+      {
+        "value": "Äg BÃ u TrÃ m",
+        "count": 4
+      },
+      {
+        "value": "Äg CÃ¢y SÄn ÄÃ¡",
+        "count": 4
+      },
+      {
+        "value": "Äg LÃ¢m ViÃªn",
+        "count": 4
+      },
+      {
+        "value": "ÃT.823",
+        "count": 4
+      },
+      {
+        "value": "ÃT.823B",
+        "count": 4
+      },
+      {
+        "value": "ÄT.823D",
+        "count": 4
+      },
+      {
+        "value": "ÃT.825",
+        "count": 4
+      },
+      {
+        "value": "BV ÃK",
+        "count": 4
+      },
+      {
+        "value": "CaÃ u KeÃ¢nh Cha",
+        "count": 4
+      },
+      {
+        "value": "CaÃ u KeÃ¢nh Ranh",
+        "count": 4
+      },
+      {
+        "value": "cáº§u HÃ³c ThÆ¡m",
+        "count": 4
+      },
+      {
+        "value": "Cáº¦U XÃNG",
+        "count": 4
+      },
+      {
+        "value": "clua",
+        "count": 4
+      },
+      {
+        "value": "cuoida3",
+        "count": 4
+      },
+      {
+        "value": "da3",
+        "count": 4
+      },
+      {
+        "value": "HAÃU NGHÃA",
+        "count": 4
+      },
+      {
+        "value": "KÂ£NH NÃ¦I",
+        "count": 4
+      },
+      {
+        "value": "kÂªnh BÂµ HÂ¹nh",
+        "count": 4
+      },
+      {
+        "value": "kÂªnh CÃ RÂ¸n",
+        "count": 4
+      },
+      {
+        "value": "kÂªnh NÂ¨m RÂ«n",
+        "count": 4
+      },
+      {
+        "value": "KÃNH AN Háº",
+        "count": 4
+      },
+      {
+        "value": "KDC TÃN Äá»¨C",
+        "count": 4
+      },
+      {
+        "value": "Khu DC TaÃ¢n ÃÃ¶Ã¹c",
+        "count": 4
+      },
+      {
+        "value": "lecat",
+        "count": 4
+      },
+      {
+        "value": "lr",
+        "count": 4
+      },
+      {
+        "value": "MÃ¶Ã´ng coÃ¢ng coÃ¤ng",
+        "count": 4
+      },
+      {
+        "value": "mÆ°Æ¡ng nÆ°á»c N2",
+        "count": 4
+      },
+      {
+        "value": "Mai ThÃ² BeÃ¹",
+        "count": 4
+      },
+      {
+        "value": "N",
+        "count": 4
+      },
+      {
+        "value": "N2",
+        "count": 4
+      },
+      {
+        "value": "nga3da",
+        "count": 4
+      },
+      {
+        "value": "NguyeÃ£n ThÃ² BÃ¶Ã´Ã¹m",
+        "count": 4
+      },
+      {
+        "value": "OD500",
+        "count": 4
+      },
+      {
+        "value": "OD900",
+        "count": 4
+      },
+      {
+        "value": "rÂ¹ch HÃ¨c ThÂ¬m - Ranh XÂ·",
+        "count": 4
+      },
+      {
+        "value": "TÃ´Ã¸ 9",
+        "count": 4
+      },
+      {
+        "value": "TP. Há» CHÃ MINH",
+        "count": 4
+      },
+      {
+        "value": "VOÃNG XOAY HCM",
+        "count": 4
+      },
+      {
+        "value": "XÃ Äá»¨C Láº¬P",
+        "count": 4
+      },
+      {
+        "value": "XÃ Má»¸ Háº NH",
+        "count": 4
+      },
+      {
+        "value": "XI PHOÃNG",
+        "count": 4
+      },
+      {
+        "value": "106",
+        "count": 3
+      },
+      {
+        "value": "177",
+        "count": 3
+      },
+      {
+        "value": "224",
+        "count": 3
+      },
+      {
+        "value": "23.3m",
+        "count": 3
+      },
+      {
+        "value": "245",
+        "count": 3
+      },
+      {
+        "value": "281",
+        "count": 3
+      },
+      {
+        "value": "287",
+        "count": 3
+      },
+      {
+        "value": "288",
+        "count": 3
+      },
+      {
+        "value": "291",
+        "count": 3
+      },
+      {
+        "value": "323",
+        "count": 3
+      },
+      {
+        "value": "326",
+        "count": 3
+      },
+      {
+        "value": "345",
+        "count": 3
+      },
+      {
+        "value": "377",
+        "count": 3
+      },
+      {
+        "value": "382",
+        "count": 3
+      },
+      {
+        "value": "383",
+        "count": 3
+      },
+      {
+        "value": "384",
+        "count": 3
+      },
+      {
+        "value": "386",
+        "count": 3
+      },
+      {
+        "value": "387",
+        "count": 3
+      },
+      {
+        "value": "388",
+        "count": 3
+      },
+      {
+        "value": "389",
+        "count": 3
+      },
+      {
+        "value": "390",
+        "count": 3
+      },
+      {
+        "value": "455",
+        "count": 3
+      },
+      {
+        "value": "465",
+        "count": 3
+      },
+      {
+        "value": "515",
+        "count": 3
+      },
+      {
+        "value": "516",
+        "count": 3
+      },
+      {
+        "value": "517",
+        "count": 3
+      },
+      {
+        "value": "745",
+        "count": 3
+      },
+      {
+        "value": "776",
+        "count": 3
+      },
+      {
+        "value": "792",
+        "count": 3
+      },
+      {
+        "value": "Ã",
+        "count": 3
+      },
+      {
+        "value": "ÃAÃI DIEÃN",
+        "count": 3
+      },
+      {
+        "value": "An ThaÃ¯nh",
+        "count": 3
+      },
+      {
+        "value": "BCS",
+        "count": 3
+      },
+      {
+        "value": "C",
+        "count": 3
+      },
+      {
+        "value": "DÃ¶Ã´ng ThÃ² NgoÃ¯c SÃ¶Ã´ng",
+        "count": 3
+      },
+      {
+        "value": "DGT",
+        "count": 3
+      },
+      {
+        "value": "Hg b",
+        "count": 3
+      },
+      {
+        "value": "HieÃ¤p HoÃ¸a",
+        "count": 3
+      },
+      {
+        "value": "kÂªnh n 3",
+        "count": 3
+      },
+      {
+        "value": "kÂªnh ranh",
+        "count": 3
+      },
+      {
+        "value": "N3-10",
+        "count": 3
+      },
+      {
+        "value": "NgaÃ¸y:.......thaÃ¹ng.........naÃªm  2012\nTrung taÃ¢m KyÃµ thuaÃ¤t TaÃ¸i nguyeÃ¢n vaÃ¸ MoÃ¢i trÃ¶Ã´Ã¸ng\nGiaÃ¹m Ã±oÃ¡c",
+        "count": 3
+      },
+      {
+        "value": "NgaÃ¸y:.......thaÃ¹ng........naÃªm 2012\nNgÃ¶Ã´Ã¸i Ã±o,veÃµ",
+        "count": 3
+      },
+      {
+        "value": "NguyeÃ£n VaÃªn LÃ´Ã¯i",
+        "count": 3
+      },
+      {
+        "value": "V",
+        "count": 3
+      },
+      {
+        "value": "(978)",
+        "count": 2
+      },
+      {
+        "value": "10.0m",
+        "count": 2
+      },
+      {
+        "value": "107",
+        "count": 2
+      },
+      {
+        "value": "1113",
+        "count": 2
+      },
+      {
+        "value": "1126",
+        "count": 2
+      },
+      {
+        "value": "113",
+        "count": 2
+      },
+      {
+        "value": "1135",
+        "count": 2
+      },
+      {
+        "value": "1196",
+        "count": 2
+      },
+      {
+        "value": "1283",
+        "count": 2
+      },
+      {
+        "value": "1287",
+        "count": 2
+      },
+      {
+        "value": "13",
+        "count": 2
+      },
+      {
+        "value": "142",
+        "count": 2
+      },
+      {
+        "value": "143",
+        "count": 2
+      },
+      {
+        "value": "144",
+        "count": 2
+      },
+      {
+        "value": "145",
+        "count": 2
+      },
+      {
+        "value": "15.3m",
+        "count": 2
+      },
+      {
+        "value": "15.4874",
+        "count": 2
+      },
+      {
+        "value": "1537",
+        "count": 2
+      },
+      {
+        "value": "160",
+        "count": 2
+      },
+      {
+        "value": "164",
+        "count": 2
+      },
+      {
+        "value": "178",
+        "count": 2
+      },
+      {
+        "value": "180",
+        "count": 2
+      },
+      {
+        "value": "1818",
+        "count": 2
+      },
+      {
+        "value": "1919",
+        "count": 2
+      },
+      {
+        "value": "199",
+        "count": 2
+      },
+      {
+        "value": "2.2m",
+        "count": 2
+      },
+      {
+        "value": "20.6m",
+        "count": 2
+      },
+      {
+        "value": "200",
+        "count": 2
+      },
+      {
+        "value": "2041",
+        "count": 2
+      },
+      {
+        "value": "21",
+        "count": 2
+      },
+      {
+        "value": "217",
+        "count": 2
+      },
+      {
+        "value": "220",
+        "count": 2
+      },
+      {
+        "value": "229",
+        "count": 2
+      },
+      {
+        "value": "231",
+        "count": 2
+      },
+      {
+        "value": "24.6m",
+        "count": 2
+      },
+      {
+        "value": "244",
+        "count": 2
+      },
+      {
+        "value": "246",
+        "count": 2
+      },
+      {
+        "value": "247",
+        "count": 2
+      },
+      {
+        "value": "248",
+        "count": 2
+      },
+      {
+        "value": "249",
+        "count": 2
+      },
+      {
+        "value": "250",
+        "count": 2
+      },
+      {
+        "value": "251",
+        "count": 2
+      },
+      {
+        "value": "253",
+        "count": 2
+      },
+      {
+        "value": "254",
+        "count": 2
+      },
+      {
+        "value": "255",
+        "count": 2
+      },
+      {
+        "value": "264",
+        "count": 2
+      },
+      {
+        "value": "267",
+        "count": 2
+      },
+      {
+        "value": "27.0m",
+        "count": 2
+      },
+      {
+        "value": "270",
+        "count": 2
+      },
+      {
+        "value": "277",
+        "count": 2
+      },
+      {
+        "value": "280",
+        "count": 2
+      },
+      {
+        "value": "283",
+        "count": 2
+      },
+      {
+        "value": "28m",
+        "count": 2
+      },
+      {
+        "value": "292",
+        "count": 2
+      },
+      {
+        "value": "294",
+        "count": 2
+      },
+      {
+        "value": "307",
+        "count": 2
+      },
+      {
+        "value": "30m",
+        "count": 2
+      },
+      {
+        "value": "313",
+        "count": 2
+      },
+      {
+        "value": "314",
+        "count": 2
+      },
+      {
+        "value": "315",
+        "count": 2
+      },
+      {
+        "value": "316",
+        "count": 2
+      },
+      {
+        "value": "317",
+        "count": 2
+      },
+      {
+        "value": "318",
+        "count": 2
+      },
+      {
+        "value": "319",
+        "count": 2
+      },
+      {
+        "value": "320",
+        "count": 2
+      },
+      {
+        "value": "321",
+        "count": 2
+      },
+      {
+        "value": "322",
+        "count": 2
+      },
+      {
+        "value": "324",
+        "count": 2
+      },
+      {
+        "value": "325",
+        "count": 2
+      },
+      {
+        "value": "329",
+        "count": 2
+      },
+      {
+        "value": "330",
+        "count": 2
+      },
+      {
+        "value": "331",
+        "count": 2
+      },
+      {
+        "value": "332",
+        "count": 2
+      },
+      {
+        "value": "333",
+        "count": 2
+      },
+      {
+        "value": "344",
+        "count": 2
+      },
+      {
+        "value": "371",
+        "count": 2
+      },
+      {
+        "value": "373",
+        "count": 2
+      },
+      {
+        "value": "374",
+        "count": 2
+      },
+      {
+        "value": "375",
+        "count": 2
+      },
+      {
+        "value": "376",
+        "count": 2
+      },
+      {
+        "value": "378",
+        "count": 2
+      },
+      {
+        "value": "379",
+        "count": 2
+      },
+      {
+        "value": "380",
+        "count": 2
+      },
+      {
+        "value": "381",
+        "count": 2
+      },
+      {
+        "value": "385",
+        "count": 2
+      },
+      {
+        "value": "39.4m",
+        "count": 2
+      },
+      {
+        "value": "391",
+        "count": 2
+      },
+      {
+        "value": "392",
+        "count": 2
+      },
+      {
+        "value": "393",
+        "count": 2
+      },
+      {
+        "value": "394",
+        "count": 2
+      },
+      {
+        "value": "395",
+        "count": 2
+      },
+      {
+        "value": "3nhua7",
+        "count": 2
+      },
+      {
+        "value": "4",
+        "count": 2
+      },
+      {
+        "value": "403",
+        "count": 2
+      },
+      {
+        "value": "412",
+        "count": 2
+      },
+      {
+        "value": "416",
+        "count": 2
+      },
+      {
+        "value": "433",
+        "count": 2
+      },
+      {
+        "value": "436",
+        "count": 2
+      },
+      {
+        "value": "437",
+        "count": 2
+      },
+      {
+        "value": "439",
+        "count": 2
+      },
+      {
+        "value": "440",
+        "count": 2
+      },
+      {
+        "value": "441",
+        "count": 2
+      },
+      {
+        "value": "442",
+        "count": 2
+      },
+      {
+        "value": "443",
+        "count": 2
+      },
+      {
+        "value": "444",
+        "count": 2
+      },
+      {
+        "value": "445",
+        "count": 2
+      },
+      {
+        "value": "448",
+        "count": 2
+      },
+      {
+        "value": "449",
+        "count": 2
+      },
+      {
+        "value": "453",
+        "count": 2
+      },
+      {
+        "value": "454",
+        "count": 2
+      },
+      {
+        "value": "463",
+        "count": 2
+      },
+      {
+        "value": "467",
+        "count": 2
+      },
+      {
+        "value": "471",
+        "count": 2
+      },
+      {
+        "value": "481",
+        "count": 2
+      },
+      {
+        "value": "484",
+        "count": 2
+      },
+      {
+        "value": "487",
+        "count": 2
+      },
+      {
+        "value": "5.6m",
+        "count": 2
+      },
+      {
+        "value": "511",
+        "count": 2
+      },
+      {
+        "value": "514",
+        "count": 2
+      },
+      {
+        "value": "52",
+        "count": 2
+      },
+      {
+        "value": "521",
+        "count": 2
+      },
+      {
+        "value": "533",
+        "count": 2
+      },
+      {
+        "value": "535",
+        "count": 2
+      },
+      {
+        "value": "547",
+        "count": 2
+      },
+      {
+        "value": "55.6m",
+        "count": 2
+      },
+      {
+        "value": "550",
+        "count": 2
+      },
+      {
+        "value": "571",
+        "count": 2
+      },
+      {
+        "value": "572",
+        "count": 2
+      },
+      {
+        "value": "594",
+        "count": 2
+      },
+      {
+        "value": "6.0m",
+        "count": 2
+      },
+      {
+        "value": "682",
+        "count": 2
+      },
+      {
+        "value": "693",
+        "count": 2
+      },
+      {
+        "value": "7.5377",
+        "count": 2
+      },
+      {
+        "value": "767",
+        "count": 2
+      },
+      {
+        "value": "783",
+        "count": 2
+      },
+      {
+        "value": "796",
+        "count": 2
+      },
+      {
+        "value": "805",
+        "count": 2
+      },
+      {
+        "value": "836",
+        "count": 2
+      },
+      {
+        "value": "852",
+        "count": 2
+      },
+      {
+        "value": "879",
+        "count": 2
+      },
+      {
+        "value": "923",
+        "count": 2
+      },
+      {
+        "value": "932",
+        "count": 2
+      },
+      {
+        "value": "966",
+        "count": 2
+      },
+      {
+        "value": "969",
+        "count": 2
+      },
+      {
+        "value": "Ã. CAÃY DÃÃNG",
+        "count": 2
+      },
+      {
+        "value": "Ä. GIá»NG Lá»N",
+        "count": 2
+      },
+      {
+        "value": "Ä. Há» CHÃ MINH",
+        "count": 2
+      },
+      {
+        "value": "Ä. Lá»¤C VIÃN",
+        "count": 2
+      },
+      {
+        "value": "Ä. Lá»c BÃ¬nh 2",
+        "count": 2
+      },
+      {
+        "value": "Ä. Lá»c BÃ¬nh 6",
+        "count": 2
+      },
+      {
+        "value": "Ä. Lá»c Thuáº­n 6",
+        "count": 2
+      },
+      {
+        "value": "Ä. N2",
+        "count": 2
+      },
+      {
+        "value": "Ã. OÃC EO",
+        "count": 2
+      },
+      {
+        "value": "Ä.á»C EO",
+        "count": 2
+      },
+      {
+        "value": "Ä.Äá»¨C HÃA THÆ¯á»¢NG",
+        "count": 2
+      },
+      {
+        "value": "Â¤",
+        "count": 2
+      },
+      {
+        "value": "ÃÃ¶Ã´Ã¸ng ÃaÃ¯i LoÃ¤ Long An",
+        "count": 2
+      },
+      {
+        "value": "ÃÃ¶Ã´Ã¸ng nÃ¶Ã´Ã¹c coÃ¢ng coÃ¤ng",
+        "count": 2
+      },
+      {
+        "value": "ÄÃ¬nh Tháº§n Lá»c Giang",
+        "count": 2
+      },
+      {
+        "value": "ÃÃÃÃNG N2",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng Ã´ng Sá»± - Ã´ng TÃ i (ÄÃ¡)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng Äá»©c HoÃ  ThÆ°á»£ng (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng An Thá»§y 1(BT)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng AND 9 ( BT )",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng Ãt KhÃ­ch - Ãt MÃ¹i (ÄÃ¡)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng Ba Sa- GÃ² Má»i",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng BÃ u Thá»© (BT)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng BÃ u trai háº¡ (ÄÃ¡)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng BÃª TÃ´ng",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng Chá»£ GÃ  (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng D19 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng D22 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng D23 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng D24 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng D25 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng D26 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng GÃ² Sao Hiá»p HÃ²a ( ÄÃ¡ )",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng MÃ£ LÃ ng (BT)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng N14 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng N15 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng N24 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng N9 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng nhá»±a",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 10A (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 11 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 11A (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 11B (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 11c (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 11D (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 11E (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 12 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 13(nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 14 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 17 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 18 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 2 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 2(nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 21 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 22 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 3(nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 4 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng sá» 5 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng TL 10 (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng VÃµ VÄn NgÃ¢n (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "ÄÆ°á»ng VÃµ VÄn Táº§n (nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "Äáº I Há»C TÃN Táº O",
+        "count": 2
+      },
+      {
+        "value": "Äg Äá»©c NgÃ£i ( nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "Äg Äá»©c NgÃ£i( nhá»±a)",
+        "count": 2
+      },
+      {
+        "value": "Äg BÃ u Cáº­y",
+        "count": 2
+      },
+      {
+        "value": "Äg BÃ u Cay",
+        "count": 2
+      },
+      {
+        "value": "Äg BÃ u Cay",
+        "count": 2
+      },
+      {
+        "value": "Äg háº»m 104",
+        "count": 2
+      },
+      {
+        "value": "Äg NhÃ  VuÃ´ng TÃ¢n Há»i",
+        "count": 2
+      },
+      {
+        "value": "Äg Rá»«ng Cáº¥m",
+        "count": 2
+      },
+      {
+        "value": "Äg XÃ³m Tráº£ng",
+        "count": 2
+      },
+      {
+        "value": "ANSI31",
+        "count": 2
+      },
+      {
+        "value": "ÃP 2",
+        "count": 2
+      },
+      {
+        "value": "ÃT.825 (TL10)",
+        "count": 2
+      },
+      {
+        "value": "BeÃ¡n Ã±oÃ¸ HaÃµng ÃÃ¶Ã´Ã¸ng",
+        "count": 2
+      },
+      {
+        "value": "BSC",
+        "count": 2
+      },
+      {
+        "value": "c. Â®iÃu tiÃt",
+        "count": 2
+      },
+      {
+        "value": "C]i",
+        "count": 2
+      },
+      {
+        "value": "Cá»ng \nHÃ³c \nrá»",
+        "count": 2
+      },
+      {
+        "value": "Cá»ng CÃ¡ NgoÃ i",
+        "count": 2
+      },
+      {
+        "value": "Cá»ng LÃ¡ng Ven",
+        "count": 2
+      },
+      {
+        "value": "Cá»ng Ráº¡ch BÃ  Thay",
+        "count": 2
+      },
+      {
+        "value": "CÃ¶Ã»a haÃ¸ng xaÃªng daÃ u \nPetrolimex soÃ¡ 15",
+        "count": 2
+      },
+      {
+        "value": "cÃ´ng viÃªn 7 Ká»³ Quan",
+        "count": 2
+      },
+      {
+        "value": "cÃ´ng viÃªn Nháº­t Long",
+        "count": 2
+      },
+      {
+        "value": "cÃ´ng viÃªn TG Tuá»i ThÆ¡",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u 5 LeÃ¤nh",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u 8 No",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u ÃÃ¶Ã¹c HoÃ¸a",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u ÃÃ¶Ã¹c HueÃ¤",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u ÃoÃ ng TaÃ¢m 149",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u BaÃ¸ SaÃ¹u",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u KeÃ¢nh Cha- RaÃ¯ch GaÃ u",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u KeÃ¢nh KhaÃ¹ng ChieÃ¡n",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u KeÃ¢nh SaÃ¹ng nhoÃ»",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u Kinh ÃaÃ¸o",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u NgaÃµ 3 KeÃ¢nh Cha-OÃng Tuc dÃ¶Ã´Ã¹i",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u NgaÃµ 3 KeÃ¢nh Cha-OÃng Tuc treÃ¢n",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u NgaÃµ 3 LaÃ¹ng GÃ¶Ã¸a",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u NgaÃµ 4 Cha Ba MÃ­t",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u OÃng 4 ÃÃ¶Ã¹c",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u OÃng SaÃ¹u Cu",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u RaÃ¯ch ThieÃ¢ng",
+        "count": 2
+      },
+      {
+        "value": "CaÃ u SoÃ¢ng Tra",
+        "count": 2
+      },
+      {
+        "value": "cáº§u \nDáº§n \nxÃ¢y",
+        "count": 2
+      },
+      {
+        "value": "cáº§u \nKÃªnh 2",
+        "count": 2
+      },
+      {
+        "value": "cáº§u \nKÃªnh 3",
+        "count": 2
+      },
+      {
+        "value": "cáº§u Ãng Báº£y",
+        "count": 2
+      },
+      {
+        "value": "Cáº§u Ãng Huyá»n",
+        "count": 2
+      },
+      {
+        "value": "cáº§u BÃ  Háº¡nh",
+        "count": 2
+      },
+      {
+        "value": "Cáº§u CÃ¡ NgoÃ i",
+        "count": 2
+      },
+      {
+        "value": "cáº§u CÃ² RÃ¡n",
+        "count": 2
+      },
+      {
+        "value": "cáº§u Khang Thuá»·",
+        "count": 2
+      },
+      {
+        "value": "cáº§u N1",
+        "count": 2
+      },
+      {
+        "value": "cáº§u N2",
+        "count": 2
+      },
+      {
+        "value": "Cáº§u Ngáº£ 3\n LÃ ng Dá»«a",
+        "count": 2
+      },
+      {
+        "value": "cáº§u Ráº¡ch Nhum 1",
+        "count": 2
+      },
+      {
+        "value": "cáº§u Ráº¡ch Nhum 2",
+        "count": 2
+      },
+      {
+        "value": "cáº§u Ráº¡ch SÃ¢u",
+        "count": 2
+      },
+      {
+        "value": "cáº§u SÃ´ng TrÄng",
+        "count": 2
+      },
+      {
+        "value": "cáº§u Thá» Äá»nh",
+        "count": 2
+      },
+      {
+        "value": "Cáº¦U AN Háº",
+        "count": 2
+      },
+      {
+        "value": "Cáº¦U Lá»N",
+        "count": 2
+      },
+      {
+        "value": "Cáº¦U LÃNG VEN",
+        "count": 2
+      },
+      {
+        "value": "Cáº¦U THáº¦Y CAI",
+        "count": 2
+      },
+      {
+        "value": "Cáº¦U TL9",
+        "count": 2
+      },
+      {
+        "value": "CCN HOÃNG GIA",
+        "count": 2
+      },
+      {
+        "value": "ChuÃ¸a HieÃ¤p PhÃ¶Ã´c",
+        "count": 2
+      },
+      {
+        "value": "cuda3",
+        "count": 2
+      },
+      {
+        "value": "cuoida2",
+        "count": 2
+      },
+      {
+        "value": "daumg1m",
+        "count": 2
+      },
+      {
+        "value": "DH55",
+        "count": 2
+      },
+      {
+        "value": "DM",
+        "count": 2
+      },
+      {
+        "value": "DTL",
+        "count": 2
+      },
+      {
+        "value": "fa2",
+        "count": 2
+      },
+      {
+        "value": "FROM KENH DONG WTP",
+        "count": 2
+      },
+      {
+        "value": "G",
+        "count": 2
+      },
+      {
+        "value": "g1",
+        "count": 2
+      },
+      {
+        "value": "gcau Langs ven",
+        "count": 2
+      },
+      {
+        "value": "hÃ¥ BÂµu TrÂµm",
+        "count": 2
+      },
+      {
+        "value": "huyÃn Â®Ã¸c huÃ",
+        "count": 2
+      },
+      {
+        "value": "i",
+        "count": 2
+      },
+      {
+        "value": "k  Âª  n  h    X  Â¸  n  g",
+        "count": 2
+      },
+      {
+        "value": "k cÃu duyÂªn hÃ£c thÂ¬m",
+        "count": 2
+      },
+      {
+        "value": "k mÃ­i",
+        "count": 2
+      },
+      {
+        "value": "k sÃ¨ 1",
+        "count": 2
+      },
+      {
+        "value": "k sÃ¨ 3",
+        "count": 2
+      },
+      {
+        "value": "KÂ£NH",
+        "count": 2
+      },
+      {
+        "value": "KÂ£NH CHÃM",
+        "count": 2
+      },
+      {
+        "value": "KÂ£NH LÂ¸NG CÃM",
+        "count": 2
+      },
+      {
+        "value": "KÂ£NH NGANG",
+        "count": 2
+      },
+      {
+        "value": "KÂ£NH NHÃ¡",
+        "count": 2
+      },
+      {
+        "value": "KÃªnh 10",
+        "count": 2
+      },
+      {
+        "value": "KÂªnh 12",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh BÂ¶y GÃp",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh BÃn Â§Ã",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh BÂµ Thi",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh CÃu DuyÂªn",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh ChÂµ LÂµ",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh ngang",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh NhÂµ VuÂ«ng",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh RÂ¹ch SÂ©u",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh t1",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh t10",
+        "count": 2
+      },
+      {
+        "value": "kÃªnh TÆ° Trang",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh TiÂªu CÃu HÃ¨c RÃ¤",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh TN 2",
+        "count": 2
+      },
+      {
+        "value": "kÂªnh TN 3",
+        "count": 2
+      },
+      {
+        "value": "KCN Äá»¨C HÃA III",
+        "count": 2
+      },
+      {
+        "value": "KCN Há»®U THáº NH",
+        "count": 2
+      },
+      {
+        "value": "KCN NAM THUáº¬N",
+        "count": 2
+      },
+      {
+        "value": "KCN XUYÃN Ã",
+        "count": 2
+      },
+      {
+        "value": "KDC Äá»¨C HÃA ÄÃNG",
+        "count": 2
+      },
+      {
+        "value": "KDC CÃT TÆ¯á»NG",
+        "count": 2
+      },
+      {
+        "value": "KDC LÃNG SEN",
+        "count": 2
+      },
+      {
+        "value": "KDC PHÃC AN",
+        "count": 2
+      },
+      {
+        "value": "KDC TÃN ÄÃ",
+        "count": 2
+      },
+      {
+        "value": "KDT PHÃC AN",
+        "count": 2
+      },
+      {
+        "value": "Khu\ncÂ«ng nghiÃp\nÂ§Ã¸c HÃa 1",
+        "count": 2
+      },
+      {
+        "value": "Khu ÃaÃ¯i HoÃ¯c TaÃ¢n TaÃ¯o",
+        "count": 2
+      },
+      {
+        "value": "KHU COÃNG NGHIEÃP",
+        "count": 2
+      },
+      {
+        "value": "KHU DÂ¢N CÂ¦",
+        "count": 2
+      },
+      {
+        "value": "Khu DaÃ¢n CÃ¶ An ÃoÃ¢ng 7",
+        "count": 2
+      },
+      {
+        "value": "lenhua dauda3.5",
+        "count": 2
+      },
+      {
+        "value": "Mai ThÃ² BaÃ¹ch",
+        "count": 2
+      },
+      {
+        "value": "N2-1",
+        "count": 2
+      },
+      {
+        "value": "N2-12",
+        "count": 2
+      },
+      {
+        "value": "N2-2",
+        "count": 2
+      },
+      {
+        "value": "N2-20",
+        "count": 2
+      },
+      {
+        "value": "N2-8-2",
+        "count": 2
+      },
+      {
+        "value": "N3-10-2",
+        "count": 2
+      },
+      {
+        "value": "N3-11-2",
+        "count": 2
+      },
+      {
+        "value": "N3-15",
+        "count": 2
+      },
+      {
+        "value": "N3-2",
+        "count": 2
+      },
+      {
+        "value": "N3-7",
+        "count": 2
+      },
+      {
+        "value": "N3-8",
+        "count": 2
+      },
+      {
+        "value": "N3-8-2",
+        "count": 2
+      },
+      {
+        "value": "N3-8-3",
+        "count": 2
+      },
+      {
+        "value": "N3-8-7",
+        "count": 2
+      },
+      {
+        "value": "NgÃ£ tÆ° chá»£ BÃ u CÃ´ng",
+        "count": 2
+      },
+      {
+        "value": "nga3 da",
+        "count": 2
+      },
+      {
+        "value": "NguyeÃ£n ThÃ² HoÃ  ÃieÃ¤p",
+        "count": 2
+      },
+      {
+        "value": "NhÃ  VÄn HÃ³a áº¤p XuÃ¢n KhÃ¡nh",
+        "count": 2
+      },
+      {
+        "value": "NMN HÃA KHÃNH TÃY",
+        "count": 2
+      },
+      {
+        "value": "NTS",
+        "count": 2
+      },
+      {
+        "value": "OD250",
+        "count": 2
+      },
+      {
+        "value": "rÂ¹ch BÂµ Nhum",
+        "count": 2
+      },
+      {
+        "value": "RÂ¹ch BÂµ Nhum",
+        "count": 2
+      },
+      {
+        "value": "rÂ¹ch LÃ¥",
+        "count": 2
+      },
+      {
+        "value": "rÂ¹ch MÂ­Â¬ng Â§Âµo",
+        "count": 2
+      },
+      {
+        "value": "RÂ¹CH NHÃ¡",
+        "count": 2
+      },
+      {
+        "value": "rÂ¹ch ThÃ± Â§Ãnh",
+        "count": 2
+      },
+      {
+        "value": "rÂ¹ch ThiÃn",
+        "count": 2
+      },
+      {
+        "value": "Ranh tÃ´Ã¸ BÃ",
+        "count": 2
+      },
+      {
+        "value": "Ranh theo trÃ­ch luÃ¯c thÃ¶Ã¯c teÃ¡ khoÃ¢ng coÃ¹",
+        "count": 2
+      },
+      {
+        "value": "sÂ«ng LÂ¸ng Ven",
+        "count": 2
+      },
+      {
+        "value": "SOLID",
+        "count": 2
+      },
+      {
+        "value": "tÃnh lÃ© 10",
+        "count": 2
+      },
+      {
+        "value": "thÂµnh phÃ¨ hÃ¥ chÃ minh",
+        "count": 2
+      },
+      {
+        "value": "TL-825",
+        "count": 2
+      },
+      {
+        "value": "TP. HOÃ CHÃ MINH",
+        "count": 2
+      },
+      {
+        "value": "u.b",
+        "count": 2
+      },
+      {
+        "value": "XÃ Háº¬U NGHÄ¨A",
+        "count": 2
+      },
+      {
+        "value": "XAÃ AN THAÃNH",
+        "count": 2
+      },
+      {
+        "value": "XAÃ HOÃA KHAÃNH",
+        "count": 2
+      },
+      {
+        "value": "XAÃ LÃÃNG BÃNH",
+        "count": 2
+      },
+      {
+        "value": "XAÃ LÃÃNG HOÃA",
+        "count": 2
+      },
+      {
+        "value": "XAÃ MYÃ HAÃNH",
+        "count": 2
+      },
+      {
+        "value": "XAÃ TAÃN BÃÃU",
+        "count": 2
+      },
+      {
+        "value": "XAÃ TAÃN HOÃA",
+        "count": 2
+      },
+      {
+        "value": "- GHI CHUÃ:\n\n\n- Ranh Khu Ã±o:                             \n(coÃ¹ danh saÃ¹ch keÃ¸m theo)\n\n- BaÃ»n trÃ­ch Ã±o khoÃ¢ng thay theÃ¡ giaÃ¡y CNQSDÃ.  ChÃ¦ coÃ¹ giaÃ¹ trÃ² phaÃ¹p lyÃ¹ laÃ¤p thuÃ» tuÃ¯c thueÃ¢ Ã±aÃ¡t, giao Ã±aÃ¡t.",
+        "count": 1
+      },
+      {
+        "value": "- GHI CHUÃ:\n\n- Ranh khu Ã±o:                             \n\n (coÃ¹ danh saÃ¹ch keÃ¸m theo)\n\n- MoÃ¡c GPMB:\n\n- BaÃ»n trÃ­ch Ã±o khoÃ¢ng thay theÃ¡ giaÃ¡y CNQSDÃ. ChÃ¦ coÃ¹ giaÃ¹ trÃ² phaÃ¹p lyÃ¹ laÃ¤p thuÃ» tuÃ¯c thueÃ¢ Ã±aÃ¡t, giao Ã±aÃ¡t.",
+        "count": 1
+      },
+      {
+        "value": "- GHI CHUÃ:\n\n- Ranh khu Ã±o:                             \n(coÃ¹ danh saÃ¹ch keÃ¸m theo)\n\n- BaÃ»n trÃ­ch Ã±o khoÃ¢ng thay theÃ¡ giaÃ¡y CNQSDÃ.  ChÃ¦ coÃ¹ giaÃ¹ trÃ² phaÃ¹p lyÃ¹ laÃ¤p thuÃ» tuÃ¯c thueÃ¢ Ã±aÃ¡t, giao Ã±aÃ¡t.",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 1",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 10",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 2",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 3",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 4",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 5",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 6",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 7",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 8",
+        "count": 1
+      },
+      {
+        "value": ": GOÃI THAÃU SOÃ 9",
+        "count": 1
+      },
+      {
+        "value": "(1196)",
+        "count": 1
+      },
+      {
+        "value": "(1558)",
+        "count": 1
+      },
+      {
+        "value": "(1611)",
+        "count": 1
+      },
+      {
+        "value": "(174)",
+        "count": 1
+      },
+      {
+        "value": "(1936)",
+        "count": 1
+      },
+      {
+        "value": "(2074)",
+        "count": 1
+      },
+      {
+        "value": "(2501)",
+        "count": 1
+      },
+      {
+        "value": "(267)",
+        "count": 1
+      },
+      {
+        "value": "(3117)",
+        "count": 1
+      },
+      {
+        "value": "(331)",
+        "count": 1
+      },
+      {
+        "value": "(3803)",
+        "count": 1
+      },
+      {
+        "value": "(4864)",
+        "count": 1
+      },
+      {
+        "value": "(thÂ«i mÂ«i)",
+        "count": 1
+      },
+      {
+        "value": "(TOÃA ÃOÃ VN2000, GPS)\n\nTL: 1/25.000",
+        "count": 1
+      },
+      {
+        "value": "* GHI CHUÃ:\n\n- Ranh Khu Ã±o:                             \n(coÃ¹ danh saÃ¹ch keÃ¸m theo)\n\n- Ranh tÃ´Ã¸ BaÃ»n Ã±oÃ :\n\n- BaÃ»n trÃ­ch Ã±o khoÃ¢ng thay theÃ¡ giaÃ¡y CNQSDÃ.  ChÃ¦ coÃ¹ giaÃ¹ trÃ² phaÃ¹p lyÃ¹ laÃ¤p thuÃ» tuÃ¯c thueÃ¢ Ã±aÃ¡t, giao Ã±aÃ¡t.",
+        "count": 1
+      },
+      {
+        "value": "* GHI CHUÃ:\n\n- Ranh Khu Ã±o:                             \n(coÃ¹ danh saÃ¹ch keÃ¸m theo)\n\n- Ranh tÃ´Ã¸ BaÃ»n Ã±oÃ :\n\n- MoÃ¡c GPMB:\n\n- BaÃ»n veÃµ naÃ¸y chÃ¦nh sÃ¶Ã»a vaÃ¸ thay theÃ¡ baÃ»n veÃµ Ã±aÃµ Ã±Ã¶Ã´Ã¯c Trung taÃ¢m KyÃµ thuaÃ¤t TaÃ¸i nguyeÃ¢n vaÃ¸ MoÃ¢i trÃ¶Ã´Ã¸ng laÃ¤p ngaÃ¸y 23 thaÃ¹ng 10 naÃªm 2012\n\n- BaÃ»n trÃ­ch Ã±o khoÃ¢ng thay theÃ¡ giaÃ¡y CNQSDÃ.  ChÃ¦ coÃ¹ giaÃ¹ trÃ² phaÃ¹p lyÃ¹ laÃ¤p thuÃ» tuÃ¯c thueÃ¢ Ã±aÃ¡t, giao Ã±aÃ¡t.",
+        "count": 1
+      },
+      {
+        "value": "&",
+        "count": 1
+      },
+      {
+        "value": "1.1",
+        "count": 1
+      },
+      {
+        "value": "1.10",
+        "count": 1
+      },
+      {
+        "value": "1.11",
+        "count": 1
+      },
+      {
+        "value": "1.12",
+        "count": 1
+      },
+      {
+        "value": "1.13",
+        "count": 1
+      },
+      {
+        "value": "1.14",
+        "count": 1
+      },
+      {
+        "value": "1.15",
+        "count": 1
+      },
+      {
+        "value": "1.16",
+        "count": 1
+      },
+      {
+        "value": "1.17",
+        "count": 1
+      },
+      {
+        "value": "1.18",
+        "count": 1
+      },
+      {
+        "value": "1.19",
+        "count": 1
+      },
+      {
+        "value": "1.1m",
+        "count": 1
+      },
+      {
+        "value": "1.2",
+        "count": 1
+      },
+      {
+        "value": "1.20",
+        "count": 1
+      },
+      {
+        "value": "1.21",
+        "count": 1
+      },
+      {
+        "value": "1.22",
+        "count": 1
+      },
+      {
+        "value": "1.23",
+        "count": 1
+      },
+      {
+        "value": "1.24",
+        "count": 1
+      },
+      {
+        "value": "1.25",
+        "count": 1
+      },
+      {
+        "value": "1.26",
+        "count": 1
+      },
+      {
+        "value": "1.27",
+        "count": 1
+      },
+      {
+        "value": "1.28",
+        "count": 1
+      },
+      {
+        "value": "1.29",
+        "count": 1
+      },
+      {
+        "value": "1.3",
+        "count": 1
+      },
+      {
+        "value": "1.30",
+        "count": 1
+      },
+      {
+        "value": "1.31",
+        "count": 1
+      },
+      {
+        "value": "1.32",
+        "count": 1
+      },
+      {
+        "value": "1.33",
+        "count": 1
+      },
+      {
+        "value": "1.34",
+        "count": 1
+      },
+      {
+        "value": "1.4",
+        "count": 1
+      },
+      {
+        "value": "1.5",
+        "count": 1
+      },
+      {
+        "value": "1.6",
+        "count": 1
+      },
+      {
+        "value": "1.7",
+        "count": 1
+      },
+      {
+        "value": "1.8",
+        "count": 1
+      },
+      {
+        "value": "1.9",
+        "count": 1
+      },
+      {
+        "value": "1.9m",
+        "count": 1
+      },
+      {
+        "value": "10.1m",
+        "count": 1
+      },
+      {
+        "value": "10.5m",
+        "count": 1
+      },
+      {
+        "value": "10.8m",
+        "count": 1
+      },
+      {
+        "value": "100.4m",
+        "count": 1
+      },
+      {
+        "value": "1000",
+        "count": 1
+      },
+      {
+        "value": "1003",
+        "count": 1
+      },
+      {
+        "value": "1010",
+        "count": 1
+      },
+      {
+        "value": "1012",
+        "count": 1
+      },
+      {
+        "value": "1018",
+        "count": 1
+      },
+      {
+        "value": "102",
+        "count": 1
+      },
+      {
+        "value": "1021",
+        "count": 1
+      },
+      {
+        "value": "1028",
+        "count": 1
+      },
+      {
+        "value": "103",
+        "count": 1
+      },
+      {
+        "value": "1032",
+        "count": 1
+      },
+      {
+        "value": "1038",
+        "count": 1
+      },
+      {
+        "value": "104",
+        "count": 1
+      },
+      {
+        "value": "1043",
+        "count": 1
+      },
+      {
+        "value": "1044",
+        "count": 1
+      },
+      {
+        "value": "105",
+        "count": 1
+      },
+      {
+        "value": "1052",
+        "count": 1
+      },
+      {
+        "value": "1054",
+        "count": 1
+      },
+      {
+        "value": "1062",
+        "count": 1
+      },
+      {
+        "value": "1074",
+        "count": 1
+      },
+      {
+        "value": "108.8m",
+        "count": 1
+      },
+      {
+        "value": "1081",
+        "count": 1
+      },
+      {
+        "value": "109",
+        "count": 1
+      },
+      {
+        "value": "109.4m",
+        "count": 1
+      },
+      {
+        "value": "1090",
+        "count": 1
+      },
+      {
+        "value": "1098",
+        "count": 1
+      },
+      {
+        "value": "11.7m",
+        "count": 1
+      },
+      {
+        "value": "11.9m",
+        "count": 1
+      },
+      {
+        "value": "110",
+        "count": 1
+      },
+      {
+        "value": "110.7m",
+        "count": 1
+      },
+      {
+        "value": "1101",
+        "count": 1
+      },
+      {
+        "value": "111",
+        "count": 1
+      },
+      {
+        "value": "1118",
+        "count": 1
+      },
+      {
+        "value": "112",
+        "count": 1
+      },
+      {
+        "value": "112.7m",
+        "count": 1
+      },
+      {
+        "value": "1138",
+        "count": 1
+      },
+      {
+        "value": "1146",
+        "count": 1
+      },
+      {
+        "value": "1150",
+        "count": 1
+      },
+      {
+        "value": "1152",
+        "count": 1
+      },
+      {
+        "value": "1154",
+        "count": 1
+      },
+      {
+        "value": "1162",
+        "count": 1
+      },
+      {
+        "value": "1168",
+        "count": 1
+      },
+      {
+        "value": "1190",
+        "count": 1
+      },
+      {
+        "value": "1199",
+        "count": 1
+      },
+      {
+        "value": "12.1m",
+        "count": 1
+      },
+      {
+        "value": "12.6m",
+        "count": 1
+      },
+      {
+        "value": "120",
+        "count": 1
+      },
+      {
+        "value": "1200",
+        "count": 1
+      },
+      {
+        "value": "1201",
+        "count": 1
+      },
+      {
+        "value": "1219",
+        "count": 1
+      },
+      {
+        "value": "1228",
+        "count": 1
+      },
+      {
+        "value": "1230",
+        "count": 1
+      },
+      {
+        "value": "1248",
+        "count": 1
+      },
+      {
+        "value": "1253",
+        "count": 1
+      },
+      {
+        "value": "1257",
+        "count": 1
+      },
+      {
+        "value": "1260",
+        "count": 1
+      },
+      {
+        "value": "1267",
+        "count": 1
+      },
+      {
+        "value": "1285",
+        "count": 1
+      },
+      {
+        "value": "13.6m",
+        "count": 1
+      },
+      {
+        "value": "13.7m",
+        "count": 1
+      },
+      {
+        "value": "1304",
+        "count": 1
+      },
+      {
+        "value": "1313",
+        "count": 1
+      },
+      {
+        "value": "132",
+        "count": 1
+      },
+      {
+        "value": "1326",
+        "count": 1
+      },
+      {
+        "value": "1332",
+        "count": 1
+      },
+      {
+        "value": "1346",
+        "count": 1
+      },
+      {
+        "value": "1353",
+        "count": 1
+      },
+      {
+        "value": "136",
+        "count": 1
+      },
+      {
+        "value": "1365",
+        "count": 1
+      },
+      {
+        "value": "1381",
+        "count": 1
+      },
+      {
+        "value": "1386",
+        "count": 1
+      },
+      {
+        "value": "139",
+        "count": 1
+      },
+      {
+        "value": "1395",
+        "count": 1
+      },
+      {
+        "value": "14",
+        "count": 1
+      },
+      {
+        "value": "14.3m",
+        "count": 1
+      },
+      {
+        "value": "140",
+        "count": 1
+      },
+      {
+        "value": "1401",
+        "count": 1
+      },
+      {
+        "value": "141",
+        "count": 1
+      },
+      {
+        "value": "1433",
+        "count": 1
+      },
+      {
+        "value": "1448",
+        "count": 1
+      },
+      {
+        "value": "1451",
+        "count": 1
+      },
+      {
+        "value": "146.2m",
+        "count": 1
+      },
+      {
+        "value": "1469",
+        "count": 1
+      },
+      {
+        "value": "1495",
+        "count": 1
+      },
+      {
+        "value": "15.7m",
+        "count": 1
+      },
+      {
+        "value": "1508",
+        "count": 1
+      },
+      {
+        "value": "154",
+        "count": 1
+      },
+      {
+        "value": "1549",
+        "count": 1
+      },
+      {
+        "value": "1562",
+        "count": 1
+      },
+      {
+        "value": "1576",
+        "count": 1
+      },
+      {
+        "value": "158",
+        "count": 1
+      },
+      {
+        "value": "159",
+        "count": 1
+      },
+      {
+        "value": "159.5m",
+        "count": 1
+      },
+      {
+        "value": "1591",
+        "count": 1
+      },
+      {
+        "value": "1594",
+        "count": 1
+      },
+      {
+        "value": "16.2m",
+        "count": 1
+      },
+      {
+        "value": "16.3m",
+        "count": 1
+      },
+      {
+        "value": "16.5m",
+        "count": 1
+      },
+      {
+        "value": "16.863",
+        "count": 1
+      },
+      {
+        "value": "1607",
+        "count": 1
+      },
+      {
+        "value": "161",
+        "count": 1
+      },
+      {
+        "value": "1612",
+        "count": 1
+      },
+      {
+        "value": "1617",
+        "count": 1
+      },
+      {
+        "value": "1619",
+        "count": 1
+      },
+      {
+        "value": "162",
+        "count": 1
+      },
+      {
+        "value": "1621",
+        "count": 1
+      },
+      {
+        "value": "163",
+        "count": 1
+      },
+      {
+        "value": "1635",
+        "count": 1
+      },
+      {
+        "value": "165",
+        "count": 1
+      },
+      {
+        "value": "165.1m",
+        "count": 1
+      },
+      {
+        "value": "1668",
+        "count": 1
+      },
+      {
+        "value": "1681",
+        "count": 1
+      },
+      {
+        "value": "1688",
+        "count": 1
+      },
+      {
+        "value": "169",
+        "count": 1
+      },
+      {
+        "value": "17.1m",
+        "count": 1
+      },
+      {
+        "value": "17.3m",
+        "count": 1
+      },
+      {
+        "value": "17.4m",
+        "count": 1
+      },
+      {
+        "value": "1700",
+        "count": 1
+      },
+      {
+        "value": "1702",
+        "count": 1
+      },
+      {
+        "value": "1726",
+        "count": 1
+      },
+      {
+        "value": "1729",
+        "count": 1
+      },
+      {
+        "value": "1733",
+        "count": 1
+      },
+      {
+        "value": "174",
+        "count": 1
+      },
+      {
+        "value": "1744",
+        "count": 1
+      },
+      {
+        "value": "175",
+        "count": 1
+      },
+      {
+        "value": "176",
+        "count": 1
+      },
+      {
+        "value": "1768",
+        "count": 1
+      },
+      {
+        "value": "176m",
+        "count": 1
+      },
+      {
+        "value": "179",
+        "count": 1
+      },
+      {
+        "value": "18.7m",
+        "count": 1
+      },
+      {
+        "value": "18.8m",
+        "count": 1
+      },
+      {
+        "value": "1803",
+        "count": 1
+      },
+      {
+        "value": "182",
+        "count": 1
+      },
+      {
+        "value": "1849",
+        "count": 1
+      },
+      {
+        "value": "185",
+        "count": 1
+      },
+      {
+        "value": "186",
+        "count": 1
+      },
+      {
+        "value": "187",
+        "count": 1
+      },
+      {
+        "value": "188",
+        "count": 1
+      },
+      {
+        "value": "1887",
+        "count": 1
+      },
+      {
+        "value": "189",
+        "count": 1
+      },
+      {
+        "value": "189.4m",
+        "count": 1
+      },
+      {
+        "value": "1894",
+        "count": 1
+      },
+      {
+        "value": "18m",
+        "count": 1
+      },
+      {
+        "value": "19.4m",
+        "count": 1
+      },
+      {
+        "value": "19.7m",
+        "count": 1
+      },
+      {
+        "value": "19.8m",
+        "count": 1
+      },
+      {
+        "value": "191",
+        "count": 1
+      },
+      {
+        "value": "1911",
+        "count": 1
+      },
+      {
+        "value": "192",
+        "count": 1
+      },
+      {
+        "value": "1926",
+        "count": 1
+      },
+      {
+        "value": "193",
+        "count": 1
+      },
+      {
+        "value": "194",
+        "count": 1
+      },
+      {
+        "value": "1943",
+        "count": 1
+      },
+      {
+        "value": "1944",
+        "count": 1
+      },
+      {
+        "value": "1947",
+        "count": 1
+      },
+      {
+        "value": "1950",
+        "count": 1
+      },
+      {
+        "value": "1962",
+        "count": 1
+      },
+      {
+        "value": "1978",
+        "count": 1
+      },
+      {
+        "value": "198",
+        "count": 1
+      },
+      {
+        "value": "199.0m",
+        "count": 1
+      },
+      {
+        "value": "199.3m",
+        "count": 1
+      },
+      {
+        "value": "199.6m",
+        "count": 1
+      },
+      {
+        "value": "199.7m",
+        "count": 1
+      },
+      {
+        "value": "2",
+        "count": 1
+      },
+      {
+        "value": "2.1",
+        "count": 1
+      },
+      {
+        "value": "2.10",
+        "count": 1
+      },
+      {
+        "value": "2.11",
+        "count": 1
+      },
+      {
+        "value": "2.12",
+        "count": 1
+      },
+      {
+        "value": "2.13",
+        "count": 1
+      },
+      {
+        "value": "2.14",
+        "count": 1
+      },
+      {
+        "value": "2.15",
+        "count": 1
+      },
+      {
+        "value": "2.16",
+        "count": 1
+      },
+      {
+        "value": "2.17",
+        "count": 1
+      },
+      {
+        "value": "2.2",
+        "count": 1
+      },
+      {
+        "value": "2.3",
+        "count": 1
+      },
+      {
+        "value": "2.4",
+        "count": 1
+      },
+      {
+        "value": "2.4m",
+        "count": 1
+      },
+      {
+        "value": "2.5",
+        "count": 1
+      },
+      {
+        "value": "2.6",
+        "count": 1
+      },
+      {
+        "value": "2.6m",
+        "count": 1
+      },
+      {
+        "value": "2.7",
+        "count": 1
+      },
+      {
+        "value": "2.8",
+        "count": 1
+      },
+      {
+        "value": "2.9",
+        "count": 1
+      },
+      {
+        "value": "20.2m",
+        "count": 1
+      },
+      {
+        "value": "20.3m",
+        "count": 1
+      },
+      {
+        "value": "20.7m",
+        "count": 1
+      },
+      {
+        "value": "20.9m",
+        "count": 1
+      },
+      {
+        "value": "2006",
+        "count": 1
+      },
+      {
+        "value": "200m",
+        "count": 1
+      },
+      {
+        "value": "2029",
+        "count": 1
+      },
+      {
+        "value": "2044",
+        "count": 1
+      },
+      {
+        "value": "2054",
+        "count": 1
+      },
+      {
+        "value": "2059",
+        "count": 1
+      },
+      {
+        "value": "2087",
+        "count": 1
+      },
+      {
+        "value": "2089",
+        "count": 1
+      },
+      {
+        "value": "21.3m",
+        "count": 1
+      },
+      {
+        "value": "210",
+        "count": 1
+      },
+      {
+        "value": "2102",
+        "count": 1
+      },
+      {
+        "value": "214",
+        "count": 1
+      },
+      {
+        "value": "2145",
+        "count": 1
+      },
+      {
+        "value": "2146",
+        "count": 1
+      },
+      {
+        "value": "216",
+        "count": 1
+      },
+      {
+        "value": "218",
+        "count": 1
+      },
+      {
+        "value": "219",
+        "count": 1
+      },
+      {
+        "value": "2196",
+        "count": 1
+      },
+      {
+        "value": "22.3m",
+        "count": 1
+      },
+      {
+        "value": "221",
+        "count": 1
+      },
+      {
+        "value": "222",
+        "count": 1
+      },
+      {
+        "value": "223",
+        "count": 1
+      },
+      {
+        "value": "223.0m",
+        "count": 1
+      },
+      {
+        "value": "2232",
+        "count": 1
+      },
+      {
+        "value": "2242",
+        "count": 1
+      },
+      {
+        "value": "225.2m",
+        "count": 1
+      },
+      {
+        "value": "2293",
+        "count": 1
+      },
+      {
+        "value": "22m",
+        "count": 1
+      },
+      {
+        "value": "230",
+        "count": 1
+      },
+      {
+        "value": "2300",
+        "count": 1
+      },
+      {
+        "value": "232",
+        "count": 1
+      },
+      {
+        "value": "233",
+        "count": 1
+      },
+      {
+        "value": "234",
+        "count": 1
+      },
+      {
+        "value": "2358",
+        "count": 1
+      },
+      {
+        "value": "2360",
+        "count": 1
+      },
+      {
+        "value": "238",
+        "count": 1
+      },
+      {
+        "value": "24.3m",
+        "count": 1
+      },
+      {
+        "value": "24.4m",
+        "count": 1
+      },
+      {
+        "value": "24.5m",
+        "count": 1
+      },
+      {
+        "value": "242",
+        "count": 1
+      },
+      {
+        "value": "2449",
+        "count": 1
+      },
+      {
+        "value": "2452",
+        "count": 1
+      },
+      {
+        "value": "25.4m",
+        "count": 1
+      },
+      {
+        "value": "2518",
+        "count": 1
+      },
+      {
+        "value": "252",
+        "count": 1
+      },
+      {
+        "value": "256",
+        "count": 1
+      },
+      {
+        "value": "257",
+        "count": 1
+      },
+      {
+        "value": "258",
+        "count": 1
+      },
+      {
+        "value": "259",
+        "count": 1
+      },
+      {
+        "value": "26.1m",
+        "count": 1
+      },
+      {
+        "value": "26.6m",
+        "count": 1
+      },
+      {
+        "value": "26.9m",
+        "count": 1
+      },
+      {
+        "value": "260",
+        "count": 1
+      },
+      {
+        "value": "2606",
+        "count": 1
+      },
+      {
+        "value": "261",
+        "count": 1
+      },
+      {
+        "value": "262",
+        "count": 1
+      },
+      {
+        "value": "263",
+        "count": 1
+      },
+      {
+        "value": "265",
+        "count": 1
+      },
+      {
+        "value": "266",
+        "count": 1
+      },
+      {
+        "value": "268",
+        "count": 1
+      },
+      {
+        "value": "2681",
+        "count": 1
+      },
+      {
+        "value": "269",
+        "count": 1
+      },
+      {
+        "value": "27",
+        "count": 1
+      },
+      {
+        "value": "27.3m",
+        "count": 1
+      },
+      {
+        "value": "27.5m",
+        "count": 1
+      },
+      {
+        "value": "271",
+        "count": 1
+      },
+      {
+        "value": "2736",
+        "count": 1
+      },
+      {
+        "value": "275",
+        "count": 1
+      },
+      {
+        "value": "278",
+        "count": 1
+      },
+      {
+        "value": "279",
+        "count": 1
+      },
+      {
+        "value": "27m",
+        "count": 1
+      },
+      {
+        "value": "282",
+        "count": 1
+      },
+      {
+        "value": "2834",
+        "count": 1
+      },
+      {
+        "value": "284",
+        "count": 1
+      },
+      {
+        "value": "2846",
+        "count": 1
+      },
+      {
+        "value": "285",
+        "count": 1
+      },
+      {
+        "value": "286",
+        "count": 1
+      },
+      {
+        "value": "29.1m",
+        "count": 1
+      },
+      {
+        "value": "29.2m",
+        "count": 1
+      },
+      {
+        "value": "29.7m",
+        "count": 1
+      },
+      {
+        "value": "29.9m",
+        "count": 1
+      },
+      {
+        "value": "293",
+        "count": 1
+      },
+      {
+        "value": "2933",
+        "count": 1
+      },
+      {
+        "value": "295",
+        "count": 1
+      },
+      {
+        "value": "296",
+        "count": 1
+      },
+      {
+        "value": "297",
+        "count": 1
+      },
+      {
+        "value": "298",
+        "count": 1
+      },
+      {
+        "value": "299",
+        "count": 1
+      },
+      {
+        "value": "29m",
+        "count": 1
+      },
+      {
+        "value": "2m",
+        "count": 1
+      },
+      {
+        "value": "3",
+        "count": 1
+      },
+      {
+        "value": "3.1",
+        "count": 1
+      },
+      {
+        "value": "3.10",
+        "count": 1
+      },
+      {
+        "value": "3.11",
+        "count": 1
+      },
+      {
+        "value": "3.12",
+        "count": 1
+      },
+      {
+        "value": "3.13",
+        "count": 1
+      },
+      {
+        "value": "3.14",
+        "count": 1
+      },
+      {
+        "value": "3.15",
+        "count": 1
+      },
+      {
+        "value": "3.16",
+        "count": 1
+      },
+      {
+        "value": "3.17",
+        "count": 1
+      },
+      {
+        "value": "3.18",
+        "count": 1
+      },
+      {
+        "value": "3.19",
+        "count": 1
+      },
+      {
+        "value": "3.2",
+        "count": 1
+      },
+      {
+        "value": "3.20",
+        "count": 1
+      },
+      {
+        "value": "3.21",
+        "count": 1
+      },
+      {
+        "value": "3.22",
+        "count": 1
+      },
+      {
+        "value": "3.23",
+        "count": 1
+      },
+      {
+        "value": "3.24",
+        "count": 1
+      },
+      {
+        "value": "3.25",
+        "count": 1
+      },
+      {
+        "value": "3.26",
+        "count": 1
+      },
+      {
+        "value": "3.27",
+        "count": 1
+      },
+      {
+        "value": "3.28",
+        "count": 1
+      },
+      {
+        "value": "3.29",
+        "count": 1
+      },
+      {
+        "value": "3.3",
+        "count": 1
+      },
+      {
+        "value": "3.30",
+        "count": 1
+      },
+      {
+        "value": "3.31",
+        "count": 1
+      },
+      {
+        "value": "3.32",
+        "count": 1
+      },
+      {
+        "value": "3.33",
+        "count": 1
+      },
+      {
+        "value": "3.34",
+        "count": 1
+      },
+      {
+        "value": "3.35",
+        "count": 1
+      },
+      {
+        "value": "3.36",
+        "count": 1
+      },
+      {
+        "value": "3.37",
+        "count": 1
+      },
+      {
+        "value": "3.38",
+        "count": 1
+      },
+      {
+        "value": "3.39",
+        "count": 1
+      },
+      {
+        "value": "3.4",
+        "count": 1
+      },
+      {
+        "value": "3.408",
+        "count": 1
+      },
+      {
+        "value": "3.4m",
+        "count": 1
+      },
+      {
+        "value": "3.5",
+        "count": 1
+      },
+      {
+        "value": "3.5m",
+        "count": 1
+      },
+      {
+        "value": "3.6",
+        "count": 1
+      },
+      {
+        "value": "3.7",
+        "count": 1
+      },
+      {
+        "value": "3.8",
+        "count": 1
+      },
+      {
+        "value": "3.9",
+        "count": 1
+      },
+      {
+        "value": "30.6m",
+        "count": 1
+      },
+      {
+        "value": "30.7m",
+        "count": 1
+      },
+      {
+        "value": "30.8m",
+        "count": 1
+      },
+      {
+        "value": "300",
+        "count": 1
+      },
+      {
+        "value": "301",
+        "count": 1
+      },
+      {
+        "value": "3030",
+        "count": 1
+      },
+      {
+        "value": "3040",
+        "count": 1
+      },
+      {
+        "value": "306",
+        "count": 1
+      },
+      {
+        "value": "309",
+        "count": 1
+      },
+      {
+        "value": "31.7m",
+        "count": 1
+      },
+      {
+        "value": "310",
+        "count": 1
+      },
+      {
+        "value": "311",
+        "count": 1
+      },
+      {
+        "value": "312",
+        "count": 1
+      },
+      {
+        "value": "3134",
+        "count": 1
+      },
+      {
+        "value": "3196",
+        "count": 1
+      },
+      {
+        "value": "31m",
+        "count": 1
+      },
+      {
+        "value": "3206",
+        "count": 1
+      },
+      {
+        "value": "3213",
+        "count": 1
+      },
+      {
+        "value": "3257",
+        "count": 1
+      },
+      {
+        "value": "327",
+        "count": 1
+      },
+      {
+        "value": "328",
+        "count": 1
+      },
+      {
+        "value": "32m",
+        "count": 1
+      },
+      {
+        "value": "33.2m",
+        "count": 1
+      },
+      {
+        "value": "33.3m",
+        "count": 1
+      },
+      {
+        "value": "334",
+        "count": 1
+      },
+      {
+        "value": "335",
+        "count": 1
+      },
+      {
+        "value": "3379",
+        "count": 1
+      },
+      {
+        "value": "34.3m",
+        "count": 1
+      },
+      {
+        "value": "34.9m",
+        "count": 1
+      },
+      {
+        "value": "346",
+        "count": 1
+      },
+      {
+        "value": "347",
+        "count": 1
+      },
+      {
+        "value": "348",
+        "count": 1
+      },
+      {
+        "value": "349",
+        "count": 1
+      },
+      {
+        "value": "35.4m",
+        "count": 1
+      },
+      {
+        "value": "350",
+        "count": 1
+      },
+      {
+        "value": "352",
+        "count": 1
+      },
+      {
+        "value": "3529",
+        "count": 1
+      },
+      {
+        "value": "354",
+        "count": 1
+      },
+      {
+        "value": "355",
+        "count": 1
+      },
+      {
+        "value": "35m",
+        "count": 1
+      },
+      {
+        "value": "36",
+        "count": 1
+      },
+      {
+        "value": "36.0m",
+        "count": 1
+      },
+      {
+        "value": "36.6m",
+        "count": 1
+      },
+      {
+        "value": "36.9m",
+        "count": 1
+      },
+      {
+        "value": "3653",
+        "count": 1
+      },
+      {
+        "value": "367",
+        "count": 1
+      },
+      {
+        "value": "368",
+        "count": 1
+      },
+      {
+        "value": "37.5m",
+        "count": 1
+      },
+      {
+        "value": "370",
+        "count": 1
+      },
+      {
+        "value": "372",
+        "count": 1
+      },
+      {
+        "value": "3780",
+        "count": 1
+      },
+      {
+        "value": "38.4m",
+        "count": 1
+      },
+      {
+        "value": "38.7m",
+        "count": 1
+      },
+      {
+        "value": "39",
+        "count": 1
+      },
+      {
+        "value": "39.1m",
+        "count": 1
+      },
+      {
+        "value": "3915",
+        "count": 1
+      },
+      {
+        "value": "396",
+        "count": 1
+      },
+      {
+        "value": "397",
+        "count": 1
+      },
+      {
+        "value": "398",
+        "count": 1
+      },
+      {
+        "value": "399",
+        "count": 1
+      },
+      {
+        "value": "4.232",
+        "count": 1
+      },
+      {
+        "value": "4.4m",
+        "count": 1
+      },
+      {
+        "value": "40.1m",
+        "count": 1
+      },
+      {
+        "value": "400",
+        "count": 1
+      },
+      {
+        "value": "402",
+        "count": 1
+      },
+      {
+        "value": "4022",
+        "count": 1
+      },
+      {
+        "value": "404",
+        "count": 1
+      },
+      {
+        "value": "405",
+        "count": 1
+      },
+      {
+        "value": "406",
+        "count": 1
+      },
+      {
+        "value": "407",
+        "count": 1
+      },
+      {
+        "value": "408",
+        "count": 1
+      },
+      {
+        "value": "409",
+        "count": 1
+      },
+      {
+        "value": "41.6m",
+        "count": 1
+      },
+      {
+        "value": "41.9m",
+        "count": 1
+      },
+      {
+        "value": "410",
+        "count": 1
+      },
+      {
+        "value": "411",
+        "count": 1
+      },
+      {
+        "value": "4114",
+        "count": 1
+      },
+      {
+        "value": "413",
+        "count": 1
+      },
+      {
+        "value": "414",
+        "count": 1
+      },
+      {
+        "value": "415",
+        "count": 1
+      },
+      {
+        "value": "417",
+        "count": 1
+      },
+      {
+        "value": "42.1m",
+        "count": 1
+      },
+      {
+        "value": "426",
+        "count": 1
+      },
+      {
+        "value": "428",
+        "count": 1
+      },
+      {
+        "value": "429",
+        "count": 1
+      },
+      {
+        "value": "430",
+        "count": 1
+      },
+      {
+        "value": "431",
+        "count": 1
+      },
+      {
+        "value": "432",
+        "count": 1
+      },
+      {
+        "value": "434",
+        "count": 1
+      },
+      {
+        "value": "435",
+        "count": 1
+      },
+      {
+        "value": "4399",
+        "count": 1
+      },
+      {
+        "value": "43m",
+        "count": 1
+      },
+      {
+        "value": "446",
+        "count": 1
+      },
+      {
+        "value": "447",
+        "count": 1
+      },
+      {
+        "value": "450",
+        "count": 1
+      },
+      {
+        "value": "451",
+        "count": 1
+      },
+      {
+        "value": "452",
+        "count": 1
+      },
+      {
+        "value": "456",
+        "count": 1
+      },
+      {
+        "value": "4565",
+        "count": 1
+      },
+      {
+        "value": "4567",
+        "count": 1
+      },
+      {
+        "value": "457",
+        "count": 1
+      },
+      {
+        "value": "458",
+        "count": 1
+      },
+      {
+        "value": "4586",
+        "count": 1
+      },
+      {
+        "value": "459",
+        "count": 1
+      },
+      {
+        "value": "46.7m",
+        "count": 1
+      },
+      {
+        "value": "460",
+        "count": 1
+      },
+      {
+        "value": "461",
+        "count": 1
+      },
+      {
+        "value": "462",
+        "count": 1
+      },
+      {
+        "value": "464",
+        "count": 1
+      },
+      {
+        "value": "4648",
+        "count": 1
+      },
+      {
+        "value": "466",
+        "count": 1
+      },
+      {
+        "value": "468",
+        "count": 1
+      },
+      {
+        "value": "469",
+        "count": 1
+      },
+      {
+        "value": "46m",
+        "count": 1
+      },
+      {
+        "value": "47.7m",
+        "count": 1
+      },
+      {
+        "value": "47.8m",
+        "count": 1
+      },
+      {
+        "value": "470",
+        "count": 1
+      },
+      {
+        "value": "472",
+        "count": 1
+      },
+      {
+        "value": "4728",
+        "count": 1
+      },
+      {
+        "value": "473",
+        "count": 1
+      },
+      {
+        "value": "4783",
+        "count": 1
+      },
+      {
+        "value": "48",
+        "count": 1
+      },
+      {
+        "value": "483",
+        "count": 1
+      },
+      {
+        "value": "485",
+        "count": 1
+      },
+      {
+        "value": "486",
+        "count": 1
+      },
+      {
+        "value": "4866",
+        "count": 1
+      },
+      {
+        "value": "488",
+        "count": 1
+      },
+      {
+        "value": "489",
+        "count": 1
+      },
+      {
+        "value": "49",
+        "count": 1
+      },
+      {
+        "value": "49.2m",
+        "count": 1
+      },
+      {
+        "value": "49.4m",
+        "count": 1
+      },
+      {
+        "value": "490",
+        "count": 1
+      },
+      {
+        "value": "491",
+        "count": 1
+      },
+      {
+        "value": "492",
+        "count": 1
+      },
+      {
+        "value": "494",
+        "count": 1
+      },
+      {
+        "value": "5",
+        "count": 1
+      },
+      {
+        "value": "5.191",
+        "count": 1
+      },
+      {
+        "value": "5.9m",
+        "count": 1
+      },
+      {
+        "value": "50",
+        "count": 1
+      },
+      {
+        "value": "50.0m",
+        "count": 1
+      },
+      {
+        "value": "50.3m",
+        "count": 1
+      },
+      {
+        "value": "50.6m",
+        "count": 1
+      },
+      {
+        "value": "501",
+        "count": 1
+      },
+      {
+        "value": "503",
+        "count": 1
+      },
+      {
+        "value": "505",
+        "count": 1
+      },
+      {
+        "value": "5054",
+        "count": 1
+      },
+      {
+        "value": "509",
+        "count": 1
+      },
+      {
+        "value": "51",
+        "count": 1
+      },
+      {
+        "value": "510",
+        "count": 1
+      },
+      {
+        "value": "512",
+        "count": 1
+      },
+      {
+        "value": "513",
+        "count": 1
+      },
+      {
+        "value": "518",
+        "count": 1
+      },
+      {
+        "value": "519",
+        "count": 1
+      },
+      {
+        "value": "52.1m",
+        "count": 1
+      },
+      {
+        "value": "52.8m",
+        "count": 1
+      },
+      {
+        "value": "520",
+        "count": 1
+      },
+      {
+        "value": "522",
+        "count": 1
+      },
+      {
+        "value": "523",
+        "count": 1
+      },
+      {
+        "value": "5251",
+        "count": 1
+      },
+      {
+        "value": "526",
+        "count": 1
+      },
+      {
+        "value": "529",
+        "count": 1
+      },
+      {
+        "value": "53",
+        "count": 1
+      },
+      {
+        "value": "53.3m",
+        "count": 1
+      },
+      {
+        "value": "530",
+        "count": 1
+      },
+      {
+        "value": "534",
+        "count": 1
+      },
+      {
+        "value": "536",
+        "count": 1
+      },
+      {
+        "value": "537",
+        "count": 1
+      },
+      {
+        "value": "538",
+        "count": 1
+      },
+      {
+        "value": "539",
+        "count": 1
+      },
+      {
+        "value": "54",
+        "count": 1
+      },
+      {
+        "value": "54.4m",
+        "count": 1
+      },
+      {
+        "value": "540",
+        "count": 1
+      },
+      {
+        "value": "541",
+        "count": 1
+      },
+      {
+        "value": "542",
+        "count": 1
+      },
+      {
+        "value": "543",
+        "count": 1
+      },
+      {
+        "value": "544",
+        "count": 1
+      },
+      {
+        "value": "545",
+        "count": 1
+      },
+      {
+        "value": "546",
+        "count": 1
+      },
+      {
+        "value": "554",
+        "count": 1
+      },
+      {
+        "value": "56.8m",
+        "count": 1
+      },
+      {
+        "value": "5624",
+        "count": 1
+      },
+      {
+        "value": "568",
+        "count": 1
+      },
+      {
+        "value": "569",
+        "count": 1
+      },
+      {
+        "value": "57",
+        "count": 1
+      },
+      {
+        "value": "570",
+        "count": 1
+      },
+      {
+        "value": "573",
+        "count": 1
+      },
+      {
+        "value": "576",
+        "count": 1
+      },
+      {
+        "value": "58",
+        "count": 1
+      },
+      {
+        "value": "58.1m",
+        "count": 1
+      },
+      {
+        "value": "581",
+        "count": 1
+      },
+      {
+        "value": "582",
+        "count": 1
+      },
+      {
+        "value": "584",
+        "count": 1
+      },
+      {
+        "value": "59",
+        "count": 1
+      },
+      {
+        "value": "590",
+        "count": 1
+      },
+      {
+        "value": "592",
+        "count": 1
+      },
+      {
+        "value": "5944",
+        "count": 1
+      },
+      {
+        "value": "596",
+        "count": 1
+      },
+      {
+        "value": "6",
+        "count": 1
+      },
+      {
+        "value": "6.5m",
+        "count": 1
+      },
+      {
+        "value": "6.8m",
+        "count": 1
+      },
+      {
+        "value": "6.9m",
+        "count": 1
+      },
+      {
+        "value": "60",
+        "count": 1
+      },
+      {
+        "value": "60.3m",
+        "count": 1
+      },
+      {
+        "value": "60.9m",
+        "count": 1
+      },
+      {
+        "value": "600",
+        "count": 1
+      },
+      {
+        "value": "602",
+        "count": 1
+      },
+      {
+        "value": "603",
+        "count": 1
+      },
+      {
+        "value": "607",
+        "count": 1
+      },
+      {
+        "value": "61",
+        "count": 1
+      },
+      {
+        "value": "617",
+        "count": 1
+      },
+      {
+        "value": "618",
+        "count": 1
+      },
+      {
+        "value": "619",
+        "count": 1
+      },
+      {
+        "value": "62",
+        "count": 1
+      },
+      {
+        "value": "62.2m",
+        "count": 1
+      },
+      {
+        "value": "62.5m",
+        "count": 1
+      },
+      {
+        "value": "62.9m",
+        "count": 1
+      },
+      {
+        "value": "623",
+        "count": 1
+      },
+      {
+        "value": "626",
+        "count": 1
+      },
+      {
+        "value": "63",
+        "count": 1
+      },
+      {
+        "value": "63.9m",
+        "count": 1
+      },
+      {
+        "value": "630",
+        "count": 1
+      },
+      {
+        "value": "6325",
+        "count": 1
+      },
+      {
+        "value": "634",
+        "count": 1
+      },
+      {
+        "value": "639",
+        "count": 1
+      },
+      {
+        "value": "64",
+        "count": 1
+      },
+      {
+        "value": "64.0m",
+        "count": 1
+      },
+      {
+        "value": "64.5m",
+        "count": 1
+      },
+      {
+        "value": "649",
+        "count": 1
+      },
+      {
+        "value": "65",
+        "count": 1
+      },
+      {
+        "value": "651",
+        "count": 1
+      },
+      {
+        "value": "653",
+        "count": 1
+      },
+      {
+        "value": "654",
+        "count": 1
+      },
+      {
+        "value": "66",
+        "count": 1
+      },
+      {
+        "value": "66.1m",
+        "count": 1
+      },
+      {
+        "value": "660",
+        "count": 1
+      },
+      {
+        "value": "664",
+        "count": 1
+      },
+      {
+        "value": "665",
+        "count": 1
+      },
+      {
+        "value": "67",
+        "count": 1
+      },
+      {
+        "value": "671",
+        "count": 1
+      },
+      {
+        "value": "676",
+        "count": 1
+      },
+      {
+        "value": "6776",
+        "count": 1
+      },
+      {
+        "value": "68",
+        "count": 1
+      },
+      {
+        "value": "680",
+        "count": 1
+      },
+      {
+        "value": "681",
+        "count": 1
+      },
+      {
+        "value": "684",
+        "count": 1
+      },
+      {
+        "value": "69.6m",
+        "count": 1
+      },
+      {
+        "value": "692",
+        "count": 1
+      },
+      {
+        "value": "6989",
+        "count": 1
+      },
+      {
+        "value": "7",
+        "count": 1
+      },
+      {
+        "value": "7.1m",
+        "count": 1
+      },
+      {
+        "value": "7.3m",
+        "count": 1
+      },
+      {
+        "value": "7.9m",
+        "count": 1
+      },
+      {
+        "value": "701",
+        "count": 1
+      },
+      {
+        "value": "708",
+        "count": 1
+      },
+      {
+        "value": "717",
+        "count": 1
+      },
+      {
+        "value": "718",
+        "count": 1
+      },
+      {
+        "value": "7198",
+        "count": 1
+      },
+      {
+        "value": "72.5m",
+        "count": 1
+      },
+      {
+        "value": "722",
+        "count": 1
+      },
+      {
+        "value": "724",
+        "count": 1
+      },
+      {
+        "value": "733",
+        "count": 1
+      },
+      {
+        "value": "735",
+        "count": 1
+      },
+      {
+        "value": "736",
+        "count": 1
+      },
+      {
+        "value": "739",
+        "count": 1
+      },
+      {
+        "value": "74",
+        "count": 1
+      },
+      {
+        "value": "74.7m",
+        "count": 1
+      },
+      {
+        "value": "744",
+        "count": 1
+      },
+      {
+        "value": "746",
+        "count": 1
+      },
+      {
+        "value": "747",
+        "count": 1
+      },
+      {
+        "value": "7476",
+        "count": 1
+      },
+      {
+        "value": "759",
+        "count": 1
+      },
+      {
+        "value": "760",
+        "count": 1
+      },
+      {
+        "value": "762",
+        "count": 1
+      },
+      {
+        "value": "768",
+        "count": 1
+      },
+      {
+        "value": "771",
+        "count": 1
+      },
+      {
+        "value": "778",
+        "count": 1
+      },
+      {
+        "value": "78.4m",
+        "count": 1
+      },
+      {
+        "value": "781",
+        "count": 1
+      },
+      {
+        "value": "787",
+        "count": 1
+      },
+      {
+        "value": "78m",
+        "count": 1
+      },
+      {
+        "value": "795",
+        "count": 1
+      },
+      {
+        "value": "798",
+        "count": 1
+      },
+      {
+        "value": "8",
+        "count": 1
+      },
+      {
+        "value": "8.4m",
+        "count": 1
+      },
+      {
+        "value": "8.5m",
+        "count": 1
+      },
+      {
+        "value": "8.8m",
+        "count": 1
+      },
+      {
+        "value": "81.2m",
+        "count": 1
+      },
+      {
+        "value": "814",
+        "count": 1
+      },
+      {
+        "value": "819",
+        "count": 1
+      },
+      {
+        "value": "82.1m",
+        "count": 1
+      },
+      {
+        "value": "827",
+        "count": 1
+      },
+      {
+        "value": "83.3m",
+        "count": 1
+      },
+      {
+        "value": "832",
+        "count": 1
+      },
+      {
+        "value": "839",
+        "count": 1
+      },
+      {
+        "value": "847",
+        "count": 1
+      },
+      {
+        "value": "855",
+        "count": 1
+      },
+      {
+        "value": "856",
+        "count": 1
+      },
+      {
+        "value": "859",
+        "count": 1
+      },
+      {
+        "value": "86.4m",
+        "count": 1
+      },
+      {
+        "value": "861",
+        "count": 1
+      },
+      {
+        "value": "863",
+        "count": 1
+      },
+      {
+        "value": "866",
+        "count": 1
+      },
+      {
+        "value": "867",
+        "count": 1
+      },
+      {
+        "value": "868",
+        "count": 1
+      },
+      {
+        "value": "869",
+        "count": 1
+      },
+      {
+        "value": "876",
+        "count": 1
+      },
+      {
+        "value": "880",
+        "count": 1
+      },
+      {
+        "value": "883",
+        "count": 1
+      },
+      {
+        "value": "889",
+        "count": 1
+      },
+      {
+        "value": "891",
+        "count": 1
+      },
+      {
+        "value": "899",
+        "count": 1
+      },
+      {
+        "value": "9",
+        "count": 1
+      },
+      {
+        "value": "9.1m",
+        "count": 1
+      },
+      {
+        "value": "9.8m",
+        "count": 1
+      },
+      {
+        "value": "904",
+        "count": 1
+      },
+      {
+        "value": "91.2m",
+        "count": 1
+      },
+      {
+        "value": "93",
+        "count": 1
+      },
+      {
+        "value": "93.7m",
+        "count": 1
+      },
+      {
+        "value": "9386",
+        "count": 1
+      },
+      {
+        "value": "94",
+        "count": 1
+      },
+      {
+        "value": "947",
+        "count": 1
+      },
+      {
+        "value": "951",
+        "count": 1
+      },
+      {
+        "value": "957",
+        "count": 1
+      },
+      {
+        "value": "959",
+        "count": 1
+      },
+      {
+        "value": "960",
+        "count": 1
+      },
+      {
+        "value": "965",
+        "count": 1
+      },
+      {
+        "value": "977",
+        "count": 1
+      },
+      {
+        "value": "9781",
+        "count": 1
+      },
+      {
+        "value": "98",
+        "count": 1
+      },
+      {
+        "value": "980",
+        "count": 1
+      },
+      {
+        "value": "987",
+        "count": 1
+      },
+      {
+        "value": "989",
+        "count": 1
+      },
+      {
+        "value": "a",
+        "count": 1
+      },
+      {
+        "value": "Ã",
+        "count": 1
+      },
+      {
+        "value": "Ã",
+        "count": 1
+      },
+      {
+        "value": "Â§. Â§Â­Ãªng N2",
+        "count": 1
+      },
+      {
+        "value": "Â§. vÂµo khu CN Long V",
+        "count": 1
+      },
+      {
+        "value": "Â§Â¦ÃªNG MÃN",
+        "count": 1
+      },
+      {
+        "value": "Â§Â¦ÃªNG NHÃ¹A",
+        "count": 1
+      },
+      {
+        "value": "ÃÃ¶Ã´Ã¸ng Ã±aÃ¡t",
+        "count": 1
+      },
+      {
+        "value": "ÃÃ¶Ã´Ã¸ng Ã±aÃ¡t (1.7m)",
+        "count": 1
+      },
+      {
+        "value": "ÃÃ¶Ã´Ã¸ng Ã±aÃ¡t (2.9m)",
+        "count": 1
+      },
+      {
+        "value": "ÃÃ¶Ã´Ã¸ng BaÃ¸o CaÃ y",
+        "count": 1
+      },
+      {
+        "value": "ÃÃ¶Ã´Ã¸ng giao thoÃ¢ng noÃ¢ng thoÃ¢n (Ã±aÃ¹ Ã±oÃ»)",
+        "count": 1
+      },
+      {
+        "value": "ÃÃ¶Ã´Ã¸ng HoÃ  ChÃ­ Minh",
+        "count": 1
+      },
+      {
+        "value": "ÃÃA PHÃÃNG",
+        "count": 1
+      },
+      {
+        "value": "ÃÃÃÃNG GIAO THOÃNG",
+        "count": 1
+      },
+      {
+        "value": "ÃÃÃÃNG KÃNH OÃNG",
+        "count": 1
+      },
+      {
+        "value": "ÃÃÃC LAÃP HAÃ",
+        "count": 1
+      },
+      {
+        "value": "An Ninh & HaÃ¤u NghÃ³a",
+        "count": 1
+      },
+      {
+        "value": "Ao(ho)",
+        "count": 1
+      },
+      {
+        "value": "ÃOÃNG HOÃ NÃÃÃC",
+        "count": 1
+      },
+      {
+        "value": "ÃP 1",
+        "count": 1
+      },
+      {
+        "value": "ÃP 4",
+        "count": 1
+      },
+      {
+        "value": "ÃP AN HIÃP",
+        "count": 1
+      },
+      {
+        "value": "ÃP BÃCH HÃ·U 1",
+        "count": 1
+      },
+      {
+        "value": "ÃP CHÂ¸NH",
+        "count": 1
+      },
+      {
+        "value": "ÃP GÃ CAO",
+        "count": 1
+      },
+      {
+        "value": "ÃP HÃA HIÃP",
+        "count": 1
+      },
+      {
+        "value": "ÃP HÃA THÂ¹NH 1",
+        "count": 1
+      },
+      {
+        "value": "ÃP VÃ¯NG LÃ­N",
+        "count": 1
+      },
+      {
+        "value": "ÃP XUÂ¢N KHÂ¸NH 1",
+        "count": 1
+      },
+      {
+        "value": "BÃ´Ã¸ keÃ¢nh",
+        "count": 1
+      },
+      {
+        "value": "BÃ´Ã¸ keÃ¢nh TraÃ¸m VaÃªn (Ã±aÃ¡t)",
+        "count": 1
+      },
+      {
+        "value": "BAÃI VAÃT LIEÃU SOÃ 2",
+        "count": 1
+      },
+      {
+        "value": "BAÃNG TOÃNG HÃÃP KHOÃI LÃÃÃNG TUYEÃN OÃNG \nCOÃNG TY BIWASE TAÃY NINH ÃAÃ ÃAÃU TÃ - XAÃ ÃÃÃC HOÃA",
+        "count": 1
+      },
+      {
+        "value": "BeÃ¡n LÃ¶Ã¹c & LÃ¶Ã´ng HoÃ¸a",
+        "count": 1
+      },
+      {
+        "value": "BIWASE TAÃY NINH",
+        "count": 1
+      },
+      {
+        "value": "BVL1",
+        "count": 1
+      },
+      {
+        "value": "BVL2",
+        "count": 1
+      },
+      {
+        "value": "BVL3",
+        "count": 1
+      },
+      {
+        "value": "BVL4",
+        "count": 1
+      },
+      {
+        "value": "BVL6",
+        "count": 1
+      },
+      {
+        "value": "c.  Â®iÃu tiÃt bÂ­ng xÃp",
+        "count": 1
+      },
+      {
+        "value": "c. 7 quang",
+        "count": 1
+      },
+      {
+        "value": "c. Â«ng chÂ©u",
+        "count": 1
+      },
+      {
+        "value": "c. Â®Ãp Â«ng mÂ©y",
+        "count": 1
+      },
+      {
+        "value": "c. Â®iÃu tiÃt Â®Ã¸c lÃp hÂ¹",
+        "count": 1
+      },
+      {
+        "value": "c. Â®iÃu tiÃt Â®n10",
+        "count": 1
+      },
+      {
+        "value": "c. Â®iÃu tiÃt Â®n8",
+        "count": 1
+      },
+      {
+        "value": "c. Â®iÃu tiÃt k2+560",
+        "count": 1
+      },
+      {
+        "value": "c. Â®iÃu tiÃt k3+720",
+        "count": 1
+      },
+      {
+        "value": "c. Â®iÃu tiÃt k4+537",
+        "count": 1
+      },
+      {
+        "value": "c. Â®iÃu tiÃt k5+800",
+        "count": 1
+      },
+      {
+        "value": "c. Â®iÃu tiÃt k7+184",
+        "count": 1
+      },
+      {
+        "value": "c. ba sa",
+        "count": 1
+      },
+      {
+        "value": "c. bÂµ bÂ«ng",
+        "count": 1
+      },
+      {
+        "value": "c. bÂµo Â®Ã",
+        "count": 1
+      },
+      {
+        "value": "c. bÂµo sen",
+        "count": 1
+      },
+      {
+        "value": "c. cÃu duyÂªn",
+        "count": 1
+      },
+      {
+        "value": "c. mh bÂ¾c",
+        "count": 1
+      },
+      {
+        "value": "CÃ´M\nCÂ¤NG NGHIÃP\nMAY THÂ£U\nHOÂµNG GIA",
+        "count": 1
+      },
+      {
+        "value": "cÃ´m\nCÂ¤NG NGHIÃP \nmay thÂªu\nHOÂµNG GIA",
+        "count": 1
+      },
+      {
+        "value": "CÃ´m CN NhÃ¹a\nDA: cÃ´m CN\nDT: 46 ha",
+        "count": 1
+      },
+      {
+        "value": "CÂ¬ sÃ« NgÃ¤c Lan",
+        "count": 1
+      },
+      {
+        "value": "CAÃU",
+        "count": 1
+      },
+      {
+        "value": "CCN ÃÃ¶Ã¹c HoÃ¸a ÃoÃ¢ng (chÃ¦nh trang)",
+        "count": 1
+      },
+      {
+        "value": "CCN ÃÃ¶Ã¹c HoÃ¸a HaÃ¯ (chÃ¦nh trang)",
+        "count": 1
+      },
+      {
+        "value": "CCN ÃÃ¶Ã¹c MyÃµ",
+        "count": 1
+      },
+      {
+        "value": "CCN ÃÃ¶Ã¹c ThuaÃ¤n",
+        "count": 1
+      },
+      {
+        "value": "CCN ÃÃ¶Ã¹c ThuaÃ¤n 2",
+        "count": 1
+      },
+      {
+        "value": "CCN HaÃ»i SÃ´n - LÃ¶Ã´ng BÃ¬nh",
+        "count": 1
+      },
+      {
+        "value": "CCN HieÃ¤p ThaÃ¸nh",
+        "count": 1
+      },
+      {
+        "value": "CCN HoaÃ¸ng Gia",
+        "count": 1
+      },
+      {
+        "value": "CCN LieÃ¢n HÃ¶ng",
+        "count": 1
+      },
+      {
+        "value": "CCN LieÃ¢n Minh",
+        "count": 1
+      },
+      {
+        "value": "CCN Minh HÃ¶ng",
+        "count": 1
+      },
+      {
+        "value": "CCN nhÃ¶Ã¯a ÃÃ¶Ã¹c HoÃ¸a",
+        "count": 1
+      },
+      {
+        "value": "CCN QuoÃ¡c Quang",
+        "count": 1
+      },
+      {
+        "value": "CCN TaÃ¢n MyÃµ",
+        "count": 1
+      },
+      {
+        "value": "CCN TaÃ¢n MyÃµ 2",
+        "count": 1
+      },
+      {
+        "value": "CCN TaÃ¢n PhuÃ¹",
+        "count": 1
+      },
+      {
+        "value": "CCN TaÃ¢y BaÃ©c ÃÃ¶Ã¹c HoÃ¸a ÃoÃ¢ng",
+        "count": 1
+      },
+      {
+        "value": "CHIEÃU DAÃI",
+        "count": 1
+      },
+      {
+        "value": "CHUÃ THÃCH:",
+        "count": 1
+      },
+      {
+        "value": "COÃNG TY COÃ PHAÃN ÃAÃU TÃ",
+        "count": 1
+      },
+      {
+        "value": "COÃNG TY COÃ PHAÃN NÃÃÃC",
+        "count": 1
+      },
+      {
+        "value": "Cty Â§Ã¸c Quang",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§Ã¸C THUÃN\nDA: HTCÃ´M CN\nDT:15.8 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§Ã¸C THUÃN\nDA: HTCN(MR)\nDT:24.5 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§Ã¸C THUÃN\nDA: MR HTCN\nDT:6.3 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§ÃA Ã¨C HÃ¥NG PHÂ¸T\nDA: KHU DAN CÂ¦-TM\nDT:7,9ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§ÃA Ã¨C HÃ¥NG PHÂ¸T\nDA: TÂ¸i Â®Ãnh cÂ­\nDT:10ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§T PT HÃ¥ng HÂµ\nDA: HT cÃ´m CN\nDT:150 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§T QuÃ¨c tÃ(CSQ)\nDA: sÂ©n gofl\nDT:200ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§T XD KCN SÂµi GÃn\nDA:HTKCN\nDT:96,4ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§T XD TÂ©n Â§Â«\nDA: HTcÃ´m CN\nDT:300ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§T XD ViÃt PhÂ¸p\nDA:khu khai thÂ¸c Â®Ãt \nDT:13,7ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Â§T XD VL Â§Ã¥ng Nai\nDA:khu khai thÂ¸c Â®Ãt \nDT:12,9ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Bao bÃ Â¸ ChÂ©u",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Cali Long Â§Ã¸c\nDA: HTKCN\nDT:113 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP CALI LONG Â§Ã¸C\nDA: TrÂ¹n Â®iÃu hÂµnh",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Cali Long Â§Ã¸c(MÃ« RÃ©NG)\nDA: HTKCN\nDT:19.2 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Cali Long Â§Ã¸c(MÃ« RÃ©NG)\nDA: HTKCN\nDT:98.3 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP CP KCN Â§H III(resco)\nDA:khu dÂ©n cÂ­ \nDT:68,2ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP HÃ¥ng HÂµ\nKhu TÂ¸i Â®Ãnh cÂ­\nDT:5.6ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP HuÃºnh Mai\nDA: NhÂµ mÂ¸y phÂ©n bÃ£n\nDT:25,9 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP KCN Â§T Â§Ã¸c HÃa 3(RESCO)\nDA: HTKCN\nDT:295 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Long \"V\"(GÂ§1=100HA +GÂ§2=65HA)\nDA: HTKCN\nDT:165 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Sao VÂµng\nDA: HT CÂ«ng nghiÃp\nDT:31.5ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Sao VÂµng (31 ha)\nDa:HT CÃ´m CN",
+        "count": 1
+      },
+      {
+        "value": "Cty CP Song TÂ©n\nDA: HTKCN\nDT:306 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP TÂ©n Â§Ã¸c\nDA: CÂ¶ng\nDT:33 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP TÂ©n Â§Ã¸c\nDA: KCN GÂ§ 1\nDT:275ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP TÂ©n Â§Ã¸c\nDA: KCN GÂ§ 2\nDT:271ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP TÂ©n Â§Ã¸c\nDA: khu dÂ©n cÂ­\nDT:357ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP TÂ©n Â§Ã¸c\nDA: khu nghÃa trang",
+        "count": 1
+      },
+      {
+        "value": "Cty CP TÂ©n Â§Ã¸c\nDA: khu vui chÂ¬i giÂ¶i trÃ\nDT: 179 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP TÂ©n Â§Ã¸c\nDA:khu tÂ¸i Â®Ãnh cÂ­\nDT:74ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP ThÃnh PhÃ³",
+        "count": 1
+      },
+      {
+        "value": "Cty cp ThuÃn Â§Â«ng\nDA: khu dÂ©n cÂ­ nÂ«ng thÂ«n\nDT:6ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP TOÂµN GIA THINH\nDA: KHU DÂ¢N CÂ¦ (DT40HA)",
+        "count": 1
+      },
+      {
+        "value": "Cty CP TOÂµN GIA THINH\nDA: KHU TÂ¸I Â§ÃNH CÂ¦(37HA)",
+        "count": 1
+      },
+      {
+        "value": "Cty CP VT Â§T PhÂ¸t TriÃn\nDÃ¹ Â¸n: NhÂµ MÂ¸y xÃ· lÃ½ rÂ¸c\n18,1 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP XD VT PANA\nDA: khai thÂ¸c Â®Ãt\nDT:23.5ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP XD VT TM PANA\nDA: khai thÂ¸c Â®Ãt\nDT:23,5 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP-Â§T XD KCN SÂµi GÃn\nDA: HTCN\nDT:32,7ha",
+        "count": 1
+      },
+      {
+        "value": "Cty CP-Â§T XD KCN SÂµi GÃn\nDA: HTCN\nDT:50ha",
+        "count": 1
+      },
+      {
+        "value": "Cty DÃT KIM Â§Â¤NG PHÂ¦Â¥NG\nDA: HTCN\nDT:265ha",
+        "count": 1
+      },
+      {
+        "value": "CTy LiÂªn Doanh HÂ¹nh PhÃ³c\nDA:Khu CN HÂ¹nh PhÃ³c mÃ« rÃ©ng\nDT: 204.2 ha",
+        "count": 1
+      },
+      {
+        "value": "CTy LiÂªn Doanh HÂ¹nh PhÃ³c\nDA:Khu CN HÂ¹nh PhÃ³c(GÂ§1:70ha)",
+        "count": 1
+      },
+      {
+        "value": "Cty NhÂµ NhÃ¹a ViÃt Nam\nDA: nhÂµ Ã« chuyÂªn gia cÂ«ng nhÂ©n\nDT: 7.7 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty sinh sung VN",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH \nNhÂ©n HÃu",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH Â§inh HuÃºnh\nDA: BÂ¸nh kÃo\nDT:1ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH Â§T XD CN ATAD\ndÃ¹ Â¸n: hÂ¹ tÃng cÃ´m cÂ«ng nghiÃp(41ha)",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH Â§T XD CN ATAD\ndÃ¹ Â¸n: nhÂµ mÂ¸y",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH Â¸nh HÃ¥ng\nDA: HTCN\nDT:50ha+2.3ha(mr)",
+        "count": 1
+      },
+      {
+        "value": "Cty tnhh BÂ»ng Â§Â¹i LÃ©c\nDA: Khu TÂ¸I Â§ÃNH CÂ­\nDT:50 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH BÂ»ng Â§Â¹i LÃ©c \nDÃ¹ Â¸n: HT khu CN\nDT: 340 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH bethel-Korea Merchandise\nDA: thu nhÃ¥i bÂ«ng\nDT:5.1ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH CÂ¬ khÃ Â§Â¹i DÃ²ng II",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH CGS",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH CN-TM \nTiÃn Phong\nDT: 4 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH DÂ­ Â§Ãng\nDA: bÂ·i bÃ¨c xÃp\nDT:3.1ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH DÃt NhuÃ©m \nKhÂ¸nh Phong",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH GiÂµy ThÃnh vÂ­Ã®ng\nDA: Sx GiÂµy\nDT:15 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÂ¶i SÂ¬n\nDA: khu dÂ©n cÂ­-thÂ­Â¬ng mÂ¹i -25ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÂ¶i SÂ¬n\nkhu tÂ¸i Â®Ãnh cÂ­\nDT: 53 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÂ¶i SÂ¬n \nDA: cÃ´m CN GÂ§2\nDT: 80ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÂ¶i SÂ¬n \nDÃ¹ Â¸n: Khai thÂ¸c Â®Ãt\nDT: 30 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÂ¶i SÂ¬n GÂ§1\nDA: cÃ´m CN\nDT: 41 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÂ¶i SÂ¬n mÃ« rÃ©ng\nDA: HTcÃ´m CN(GÂ§3)\nDT:197 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÂ¶i SÂ¬n mÃ« rÃ©ng\nDA: HTcÃ´m CN(GÂ§4)\nDT:140 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÂ¶I SÂ¥N\nDA: HT CÃ´M CN\nDT:297 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÃ¯ng MÂ¹nh\nDA: Khai thÂ¸c Â®Ãt\nDT:11,5 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÃ¥ng Â§Â¹t \nDA:HTKCN\nDT:100 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÃ¥ng TÂ­Ã­c\nDÃ¹ Â¸n: SX dÂ©y Thun\n3,4 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HÃa HiÃp\nDA: bÂªtÂ«ng",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HoÂµng Gia\nDA: HTcÃ´m CN\nDT: 142ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH HoÂµng Khang\nDA: HT cÃ´m CN\nDT:200ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH I Hoa ViNa\nDA:SX mousse\nDT:5.5 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH KOPHO\nDT:2 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH LIÂ£N THÂµNH 3\nDA: HTKCN\nDT:91 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH LiÂªn HÂ­ng\nDA: cÃ´m CN\nDT: 32 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH Long SÂ¬n\nDA: NhÂµ mÂ¸y Bia(Â§ang xin)",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH Magtek\nViÃt Nam",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH Minh NgÂ©n\nDA:HTKCN\nDT:147 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH NgÃ¤c Phong\nDA: HTKCN Â§Ã¸c HÃa 2 \nDT:483ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH NgÃ¤c Phong\nDA: khu tÂ¸i Â®Ãnh cÂ­ \nDT:30 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH PhÂ¹m HÃ¯ng\nDA: Khu vui chÂ¬i\nDT:7.6ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH PhÃ³ HÂ­ng Â§iÃn",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH PhÃ³ MÃ¼ \nDT: 48 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH PhÃ³ MÃ¼ Vinh\nDA: HTKCN\nDT:83ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH PhÃ³ MÃ¼ Vinh\nDA: nhÂµ mÂ¸y nÂ­Ã­c\nDT:5ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SH VINA",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH Song DÃn",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SX \nTM HÃ¥ng KhÂ¶i",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SX hai LÂ¸\nDA: cÃu kiÃn bÂª tÂ«ng",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SX TM DV LÂª Â§oÂµnc\nDA: SP nhÃ¹a\nDT:2,8 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SX-TM\nXNK TÂ©n Â§ânh Phong",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SX-TM \nKim PhÂ­Â¬ng\nDA: kho",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SX-TM \nLiÂªn Minh\nDA: cÃ´m CN\nDT: 35 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SX-TM LÂª Nam\nDA:CBTP",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SX-TM SAMI\nDA: SÂ¬n\nDT:5.8ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH SX-TM THIÂ£N KIM\nDA: TAI Â§INH CÂ¦\nDT:2ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH TÂ©n MÂ¹nh PhÂ¸t\nDA: Â§Â­Ãªng GLUCOZA",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH TÃn KhÂ¶i\nDA: xÂ­Ã«ng tÂ¹o hÂ¹t nhÃ¹a\nDT:3.2ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH ThÃp MÂ­Ãªi Â§Â©y\nDA: HTKCN\nDT:137 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH ThuÃn ThÂµnh \n-ChÃn ThuÃn ThÂµnh\nDA: may\nDT:20ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH TM KD nhÂµ XuÂ©n Lan\nDA: NhÂµ mÂ¸y(5HA)-Khu tÂ¸i Â®Ãnh cÂ­(5HA)\n-VÃ¯ng nguyÂªn liÃu khai thÂ¸c (55HA)-khu khai thÂ¸c(2HA).",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH TuÃn Â§Â¹t",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH Vi LÃ·\nDA: bao bÃ nhÃ¹a",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH ViÃt SÂ¬n-Pana\nDA: HTKCN\nDT: 100 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH ViNa ViNa\nDA:tÃ³i ba lÂ«\nDT:4 ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH XD-TM HÃ¥ng PhÂ¸t\nDA:khu dÂ©n cÂ­ \nDT:324ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH XD-TM HÃ¥ng PhÂ¸t\nDA:TrÂ­Ãªng Â®ua ngÃ¹a\nDT:185ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHH XuÂ©n VÂ­Ã®ng\nDA: Â®Ã¥ chÂ¬i trÃ em",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHHTM-DV Â§Ã³c LÃ®i\nDA: HTCN\nDT:40ha",
+        "count": 1
+      },
+      {
+        "value": "Cty TNHHTM-DV Â§Ã³c LÃ®i(GÂ§ MR)\nDA: HTCN\nDT:41,6ha",
+        "count": 1
+      },
+      {
+        "value": "CUÃM COÃNG NGHIEÃP",
+        "count": 1
+      },
+      {
+        "value": "D",
+        "count": 1
+      },
+      {
+        "value": "D114",
+        "count": 1
+      },
+      {
+        "value": "D225",
+        "count": 1
+      },
+      {
+        "value": "D50",
+        "count": 1
+      },
+      {
+        "value": "D63",
+        "count": 1
+      },
+      {
+        "value": "D90",
+        "count": 1
+      },
+      {
+        "value": "DÃÃ AÃN THUÃY LÃÃI PHÃÃÃC HOÃA\nBAÃN ÃOÃ BOÃ TRÃ KEÃNH KHU TÃÃÃI ÃÃÃC HOÃA",
+        "count": 1
+      },
+      {
+        "value": "DANH MUÃC CAÃC KHAÃCH HAÃNG CHÃNH CUÃA PHUÃ MYÃ VINH",
+        "count": 1
+      },
+      {
+        "value": "DNTN Â§Â¹i LÃ©c",
+        "count": 1
+      },
+      {
+        "value": "DNTN Â§iÃn Trang(Thu hÃ¥i dÃ¹ Â¸n)\nDA: khu dÂ©n cÂ­ -an dÂ­Ã¬ng\nDT:39ha",
+        "count": 1
+      },
+      {
+        "value": "DNTN HoÂµng PhÂ¸t",
+        "count": 1
+      },
+      {
+        "value": "DNTN Kim ThÂµnh",
+        "count": 1
+      },
+      {
+        "value": "DNTN TÂ©n PhÂ¸t LÃ®i",
+        "count": 1
+      },
+      {
+        "value": "DNTN TiÂªn TiÃn\nDA: Khai thÂ¸c Â®Ãt\nDT:24,8 ha",
+        "count": 1
+      },
+      {
+        "value": "DNTN ViÃt CÂ­Ãªng",
+        "count": 1
+      },
+      {
+        "value": "H",
+        "count": 1
+      },
+      {
+        "value": "HÃ¶Ã¯u ThaÃ¯nh",
+        "count": 1
+      },
+      {
+        "value": "HÃ¶ng Long Residence",
+        "count": 1
+      },
+      {
+        "value": "HaÃ¤u NghÃ³a & An Ninh",
+        "count": 1
+      },
+      {
+        "value": "HIEÃN TRAÃNG TUYEÃN OÃNG CAÃP NÃÃÃC BIWASE TAÃY NINH - XAÃ ÃÃÃC HOÃA",
+        "count": 1
+      },
+      {
+        "value": "HOÃ NÃÃÃC THOÃ 13HA XAÃ MYÃ HAÃNH",
+        "count": 1
+      },
+      {
+        "value": "HOÃ NÃÃÃC THOÃ 7HA XAÃ HAÃU NGHÃA",
+        "count": 1
+      },
+      {
+        "value": "HoÃ¸a KhaÃ¹nh",
+        "count": 1
+      },
+      {
+        "value": "I",
+        "count": 1
+      },
+      {
+        "value": "II",
+        "count": 1
+      },
+      {
+        "value": "III",
+        "count": 1
+      },
+      {
+        "value": "k 10 nguyÂªn",
+        "count": 1
+      },
+      {
+        "value": "k Â«ng Â®Â­Ãªng",
+        "count": 1
+      },
+      {
+        "value": "k Â«ng bui",
+        "count": 1
+      },
+      {
+        "value": "k Â«ng dÃu",
+        "count": 1
+      },
+      {
+        "value": "k Â«ng hai Â®Ã¹c",
+        "count": 1
+      },
+      {
+        "value": "k Â«ng vimh",
+        "count": 1
+      },
+      {
+        "value": "k Ã³t huÃ",
+        "count": 1
+      },
+      {
+        "value": "k Ã³t sanh",
+        "count": 1
+      },
+      {
+        "value": "k Ã³t tÃn",
+        "count": 1
+      },
+      {
+        "value": "k Ã³t thÂ«i",
+        "count": 1
+      },
+      {
+        "value": "k ba mÃ",
+        "count": 1
+      },
+      {
+        "value": "k ba mÃ kÃo dÂµi",
+        "count": 1
+      },
+      {
+        "value": "k ba mÂ¨ng",
+        "count": 1
+      },
+      {
+        "value": "k bÂ¶y dÃ¹",
+        "count": 1
+      },
+      {
+        "value": "k bÂ¶y gÃp (bÃn ma dÂ­Ã­i)",
+        "count": 1
+      },
+      {
+        "value": "k bÂ¶y tÂ«n",
+        "count": 1
+      },
+      {
+        "value": "k bÂ¶y to",
+        "count": 1
+      },
+      {
+        "value": "k bÃn ma trÂªn",
+        "count": 1
+      },
+      {
+        "value": "k bÃnh thÃ±y",
+        "count": 1
+      },
+      {
+        "value": "k bÂµo cÂ¸ dÂµy",
+        "count": 1
+      },
+      {
+        "value": "k blughe",
+        "count": 1
+      },
+      {
+        "value": "k cÃ rÂ¸n",
+        "count": 1
+      },
+      {
+        "value": "k cÃu duyÂªn",
+        "count": 1
+      },
+      {
+        "value": "k cÃu duyÂªn kÃo dÂµi",
+        "count": 1
+      },
+      {
+        "value": "k cÃu duyÂªn tÂ©n phÃ³",
+        "count": 1
+      },
+      {
+        "value": "k chÃ· t",
+        "count": 1
+      },
+      {
+        "value": "k chÃ®",
+        "count": 1
+      },
+      {
+        "value": "k chÃn no",
+        "count": 1
+      },
+      {
+        "value": "k chÃnh  lÂ¸ng ven",
+        "count": 1
+      },
+      {
+        "value": "k chÃnh ba sa",
+        "count": 1
+      },
+      {
+        "value": "k chiÃn lÂ­Ã®c",
+        "count": 1
+      },
+      {
+        "value": "k dÃn lÂ¸ng ven (bÃnh hÃ·u)",
+        "count": 1
+      },
+      {
+        "value": "k dÃn lÂ¸ng ven 3",
+        "count": 1
+      },
+      {
+        "value": "k dÃn lÂ¸ng ven 4",
+        "count": 1
+      },
+      {
+        "value": "k dÃn mÃ¼ hÂ¹nh nam",
+        "count": 1
+      },
+      {
+        "value": "k giÂ¸p giÃ¥ng n1",
+        "count": 1
+      },
+      {
+        "value": "k hai vÂµm",
+        "count": 1
+      },
+      {
+        "value": "k hÂµo giÂ¸c",
+        "count": 1
+      },
+      {
+        "value": "k hoÂ¹ Â®Ã¥ liÂªn",
+        "count": 1
+      },
+      {
+        "value": "k khÂ¸ng chiÃn",
+        "count": 1
+      },
+      {
+        "value": "k khÂ¸ng chiÃn Ãp 1",
+        "count": 1
+      },
+      {
+        "value": "k khÂ¸ng chiÃn Ãp 2",
+        "count": 1
+      },
+      {
+        "value": "k lÃ bÃ³ng",
+        "count": 1
+      },
+      {
+        "value": "k lÂ¸ng thÂ©m",
+        "count": 1
+      },
+      {
+        "value": "k lÃ© 31 kÃo dÂµi",
+        "count": 1
+      },
+      {
+        "value": "k lÃ© 31 sÃ¨ 1 kÃo dÂµi",
+        "count": 1
+      },
+      {
+        "value": "k lÃ© sa bÂµ",
+        "count": 1
+      },
+      {
+        "value": "k mÃ¯ u",
+        "count": 1
+      },
+      {
+        "value": "k nÂ¨m bÂµi",
+        "count": 1
+      },
+      {
+        "value": "k nÂ¨m dÃm",
+        "count": 1
+      },
+      {
+        "value": "k nÂ¨m nhuÃ©m",
+        "count": 1
+      },
+      {
+        "value": "k nÂ¨m rÂ«n",
+        "count": 1
+      },
+      {
+        "value": "k nÂ¨m thÃt",
+        "count": 1
+      },
+      {
+        "value": "k nÃ¦i bÃnh lÃ®i",
+        "count": 1
+      },
+      {
+        "value": "k nÃ¦i bÃnh thÃ±y",
+        "count": 1
+      },
+      {
+        "value": "k ngang",
+        "count": 1
+      },
+      {
+        "value": "k nhÂµ lÃu",
+        "count": 1
+      },
+      {
+        "value": "k nhÂµ vuÂ«ng",
+        "count": 1
+      },
+      {
+        "value": "k rÃ¡ng ghe",
+        "count": 1
+      },
+      {
+        "value": "k rÃ¦ng Â®Ãt sÃt",
+        "count": 1
+      },
+      {
+        "value": "k rÂ¹ch Â®Â­ng",
+        "count": 1
+      },
+      {
+        "value": "k rÂ¹ch bÂµ hÂ¹nh",
+        "count": 1
+      },
+      {
+        "value": "k rÂ¹ch thiÂªn",
+        "count": 1
+      },
+      {
+        "value": "k ranh (ht - hkÂ®)",
+        "count": 1
+      },
+      {
+        "value": "k sÃ¨ 1 tÂ©y",
+        "count": 1
+      },
+      {
+        "value": "k sÃ¨ 2 tÂ©y",
+        "count": 1
+      },
+      {
+        "value": "k sÃ¨ 3 tÂ©y",
+        "count": 1
+      },
+      {
+        "value": "k sÃ¨ 4 tÂ©y",
+        "count": 1
+      },
+      {
+        "value": "k sÃ¨ 5",
+        "count": 1
+      },
+      {
+        "value": "k sÃ¨ 7",
+        "count": 1
+      },
+      {
+        "value": "k sÃ¨ 9",
+        "count": 1
+      },
+      {
+        "value": "k sÃ¨ 9 tÂ©y",
+        "count": 1
+      },
+      {
+        "value": "k sÂ¸u gu",
+        "count": 1
+      },
+      {
+        "value": "k sÂ¸u thÂ­Ã­c",
+        "count": 1
+      },
+      {
+        "value": "k sÂ¸u thÂ­Ã­c bÂµo dÂµi",
+        "count": 1
+      },
+      {
+        "value": "k sÂ¸u tho",
+        "count": 1
+      },
+      {
+        "value": "k sÂ©n bay",
+        "count": 1
+      },
+      {
+        "value": "k tÂ­ Â®iÃn",
+        "count": 1
+      },
+      {
+        "value": "k tÂ­ huyÃn",
+        "count": 1
+      },
+      {
+        "value": "k tÂ­ thÂ©n",
+        "count": 1
+      },
+      {
+        "value": "k tÂ¸m cÃu",
+        "count": 1
+      },
+      {
+        "value": "k tÂ¸m dÃu",
+        "count": 1
+      },
+      {
+        "value": "k tÂ¸m lÃ¤p",
+        "count": 1
+      },
+      {
+        "value": "k tÂ¸m rÃ",
+        "count": 1
+      },
+      {
+        "value": "k tÂ¸m thÂ­Ã­c",
+        "count": 1
+      },
+      {
+        "value": "k tÂ­Ã­i chÃnh Â®Â«ng trÂ¹m b",
+        "count": 1
+      },
+      {
+        "value": "k thÃ¨ mÃ¨",
+        "count": 1
+      },
+      {
+        "value": "k thÃ± Ãp 1a",
+        "count": 1
+      },
+      {
+        "value": "k tiÂªu nÂ­Ã­c cÃu hÃ¨c rÃ¤",
+        "count": 1
+      },
+      {
+        "value": "k trÂµm Â¸n",
+        "count": 1
+      },
+      {
+        "value": "k xÂ· 1",
+        "count": 1
+      },
+      {
+        "value": "k xÂ· 2",
+        "count": 1
+      },
+      {
+        "value": "k xÂ· 3",
+        "count": 1
+      },
+      {
+        "value": "k xÂ· 4",
+        "count": 1
+      },
+      {
+        "value": "k xÂ· 5",
+        "count": 1
+      },
+      {
+        "value": "k xÂ· 6",
+        "count": 1
+      },
+      {
+        "value": "k xÂ· 7",
+        "count": 1
+      },
+      {
+        "value": "k. Â¤ng thÃ³c",
+        "count": 1
+      },
+      {
+        "value": "k. bÂ¶y kÂªu",
+        "count": 1
+      },
+      {
+        "value": "k.nÂ¨m phÂ­Ã­c",
+        "count": 1
+      },
+      {
+        "value": "kÂ®Ãa rÃ³ng",
+        "count": 1
+      },
+      {
+        "value": "KÂ£NH BÂµ HAI",
+        "count": 1
+      },
+      {
+        "value": "KÂ£NH BÂµO SEN",
+        "count": 1
+      },
+      {
+        "value": "KÂ£NH DÃN NHÃ¡",
+        "count": 1
+      },
+      {
+        "value": "KÂ£NH MÂ¦Â¥NG Â§ÂµO",
+        "count": 1
+      },
+      {
+        "value": "KÂ£NH RÂ¹CH Â§Â¸",
+        "count": 1
+      },
+      {
+        "value": "KÂ£NH SÂ¦ÃªN",
+        "count": 1
+      },
+      {
+        "value": "KÂ£NH TÂ¦Ã­I",
+        "count": 1
+      },
+      {
+        "value": "KÂ£NH VÃ¯NG LÃ­N",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh 4",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh 5 chum",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â«ng bo",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â«ng trang",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®Â­Ãªng lÃ®i",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 10",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 10 - 1",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 10 - 2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 12",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 14",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 16",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 3",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 5",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 5 - 1",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 5 - 2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 6",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n 8",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Â®n1",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh Ãp chÂ¸nh",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh ba ngoÂµi",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh ba trong",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh bÃn Â®Ã",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh bÃn long",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh bÂ­ng bÂµng",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh bÂµo cÂ«ng",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh cuÃ¨i kÂªnh tÂ©y 2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh dÃn ba sa 2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh dÃn lÃp thÂµnh",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh giÃ¥ng Ã¨c",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh n 1+ n 2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh n1",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh n2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh n4",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh n5",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh sÂ¸u trÂªn 2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh t2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh t7",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tk37",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tk45",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tk49",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn1",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn3",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn4",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn4 - 1",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn4 - 2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn5",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn5 - 2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn5 - 4",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn5 - 5",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn6",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn6 - 1",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn6 - 2",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn6 - 3",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh tn7",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh xÂ¸ng nhÂµ thÃª",
+        "count": 1
+      },
+      {
+        "value": "kÂªnh xÃ£m cÃ²",
+        "count": 1
+      },
+      {
+        "value": "KÃT BÃ¬nh An ÃÃ¶Ã¹c HoÃ¸a (The Win City)",
+        "count": 1
+      },
+      {
+        "value": "KÃT E.City TaÃ¢n ÃÃ¶Ã¹c",
+        "count": 1
+      },
+      {
+        "value": "KÃT mÃ´Ã¹i HaÃ¤u NghÃ³a / Vinhomes Green City",
+        "count": 1
+      },
+      {
+        "value": "KÃT mÃ´Ã¹i TaÃ¢n MyÃµ (Vinhomes TaÃ¢n MyÃµ)",
+        "count": 1
+      },
+      {
+        "value": "KÃT Waterpoint",
+        "count": 1
+      },
+      {
+        "value": "KÃT, thÃ¶Ã´ng maÃ¯i dÃ²ch vuÃ¯ An ThaÃ¯nh",
+        "count": 1
+      },
+      {
+        "value": "KÃT/KDC An Huy MyÃµ VieÃ¤t (GÃ1)",
+        "count": 1
+      },
+      {
+        "value": "KÃT/KDC An Huy MyÃµ VieÃ¤t (toÃ¥ng quy moÃ¢)",
+        "count": 1
+      },
+      {
+        "value": "KCN ÃÃ¶Ã¹c HoÃ¸a 1 (HaÃ¯nh PhuÃ¹c)",
+        "count": 1
+      },
+      {
+        "value": "KCN ÃÃ¶Ã¹c HoÃ¸a III",
+        "count": 1
+      },
+      {
+        "value": "KCN An ThaÃ¯nh GÃ1",
+        "count": 1
+      },
+      {
+        "value": "KCN An ThaÃ¯nh GÃ2",
+        "count": 1
+      },
+      {
+        "value": "KCN HÃ¶Ã¯u ThaÃ¯nh - IDICO",
+        "count": 1
+      },
+      {
+        "value": "KCN HaÃ»i SÃ´n",
+        "count": 1
+      },
+      {
+        "value": "KCN HaÃ»i SÃ´n - ÃÃ¶Ã¹c HoÃ¸a ÃoÃ¢ng",
+        "count": 1
+      },
+      {
+        "value": "KCN HaÃ¤u NghÃ³a",
+        "count": 1
+      },
+      {
+        "value": "KCN HoaÃ¸ng LoÃ¤c",
+        "count": 1
+      },
+      {
+        "value": "KCN LÃ¶Ã´ng BÃ¬nh",
+        "count": 1
+      },
+      {
+        "value": "KCN LoÃ¤c Giang",
+        "count": 1
+      },
+      {
+        "value": "KCN Nam ThuaÃ¤n (ÃaÃ¯i LoÃ¤c)",
+        "count": 1
+      },
+      {
+        "value": "KCN PhuÃ¹ An ThaÃ¯nh (GÃ2)",
+        "count": 1
+      },
+      {
+        "value": "KCN PhuÃ¹ An ThaÃ¯nh GÃ1",
+        "count": 1
+      },
+      {
+        "value": "KCN Prodezi",
+        "count": 1
+      },
+      {
+        "value": "KCN SaÃ¸i GoÃ¸n - HÃ¶Ã¯u ThaÃ¯nh",
+        "count": 1
+      },
+      {
+        "value": "KCN TaÃ¢n ÃÃ¶Ã¹c",
+        "count": 1
+      },
+      {
+        "value": "KCN TaÃ¢n ÃoÃ¢",
+        "count": 1
+      },
+      {
+        "value": "KCN TaÃ¢n HoÃ¸a",
+        "count": 1
+      },
+      {
+        "value": "KCN TaÃ¢n HoÃ¸a 2",
+        "count": 1
+      },
+      {
+        "value": "KCN Tandoland",
+        "count": 1
+      },
+      {
+        "value": "KCN ThÃ²nh PhaÃ¹t",
+        "count": 1
+      },
+      {
+        "value": "KCN ThaÃ¯nh LÃ´Ã¯i 1",
+        "count": 1
+      },
+      {
+        "value": "KCN ThaÃ¯nh LÃ´Ã¯i 2",
+        "count": 1
+      },
+      {
+        "value": "KCN ThaÃ¯nh LÃ´Ã¯i 3 (GÃ1)",
+        "count": 1
+      },
+      {
+        "value": "KCN ThaÃ¯nh LÃ´Ã¯i 3 (GÃ2)",
+        "count": 1
+      },
+      {
+        "value": "KCN ThaÃ¯nh LÃ´Ã¯i 4 (GÃ1)",
+        "count": 1
+      },
+      {
+        "value": "KCN ThaÃ¯nh LÃ´Ã¯i 4 (GÃ2)",
+        "count": 1
+      },
+      {
+        "value": "KCN ThaÃ¯nh LÃ´Ã¯i 5",
+        "count": 1
+      },
+      {
+        "value": "KCN ThaÃ¯nh LÃ´Ã¯i 6",
+        "count": 1
+      },
+      {
+        "value": "KCN TheÃ¡ KyÃ»",
+        "count": 1
+      },
+      {
+        "value": "KCN TraÃ n Anh - TaÃ¢n PhuÃ¹ (GÃ1)",
+        "count": 1
+      },
+      {
+        "value": "KCN TraÃ n Anh - TaÃ¢n PhuÃ¹ (GÃ2)",
+        "count": 1
+      },
+      {
+        "value": "KCN XuyeÃ¢n AÃ",
+        "count": 1
+      },
+      {
+        "value": "KDC BÃS ÃÃ¶Ã¹c HoÃ¸a ÃoÃ¢ng",
+        "count": 1
+      },
+      {
+        "value": "KDC BeÃ¡n LÃ¶Ã¹c",
+        "count": 1
+      },
+      {
+        "value": "KDC BELLA",
+        "count": 1
+      },
+      {
+        "value": "KDC CaÃ¹t TÃ¶Ã´Ã¸ng PhuÃ¹ ThaÃ¯nh",
+        "count": 1
+      },
+      {
+        "value": "KDC Dairesco",
+        "count": 1
+      },
+      {
+        "value": "KDC HaÃ»i SÃ´n",
+        "count": 1
+      },
+      {
+        "value": "KDC HieÃ¥n Vinh",
+        "count": 1
+      },
+      {
+        "value": "KDC HoÃ ng ÃaÃ¯t",
+        "count": 1
+      },
+      {
+        "value": "KDC IDICO HÃ¶Ã¯u ThaÃ¯nh",
+        "count": 1
+      },
+      {
+        "value": "KDC LaÃ¸ng Sen",
+        "count": 1
+      },
+      {
+        "value": "KDC Lago",
+        "count": 1
+      },
+      {
+        "value": "KDC Mai BaÃ¹ HÃ¶Ã´ng",
+        "count": 1
+      },
+      {
+        "value": "KDC Nam Long",
+        "count": 1
+      },
+      {
+        "value": "KDC PhuÃ¹c An City",
+        "count": 1
+      },
+      {
+        "value": "KDC Prodezi",
+        "count": 1
+      },
+      {
+        "value": "KDC QuoÃ¡c Linh",
+        "count": 1
+      },
+      {
+        "value": "KDC TaÃ¢n ÃÃ¶Ã¹c GÃ1",
+        "count": 1
+      },
+      {
+        "value": "KDC TaÃ¢n ÃÃ¶Ã¹c GÃ2",
+        "count": 1
+      },
+      {
+        "value": "KDC TaÃ¢n ÃoÃ¢",
+        "count": 1
+      },
+      {
+        "value": "KDC VieÃ¤n DÃ¶Ã´Ãµng LaÃµo TraÃ n Anh",
+        "count": 1
+      },
+      {
+        "value": "KDC VieÃ¤t UÃc",
+        "count": 1
+      },
+      {
+        "value": "KDC xaÃµ ÃÃ¶Ã¹c LaÃ¤p (TrÃ¶Ã´Ã¸ng SÃ´n - Him Lam)",
+        "count": 1
+      },
+      {
+        "value": "KDC xaÃµ ÃÃ¶Ã¹c LaÃ¤p (VÃ³nh Tuy)",
+        "count": 1
+      },
+      {
+        "value": "KDC XuyeÃ¢n AÃ",
+        "count": 1
+      },
+      {
+        "value": "KDCÃT phÃ­a BaÃ©c soÃ¢ng BeÃ¡n LÃ¶Ã¹c - ChÃ´Ã¯ ÃeÃ¤m",
+        "count": 1
+      },
+      {
+        "value": "KeÃ¢nh N3-8-7-1",
+        "count": 1
+      },
+      {
+        "value": "KeÃ¢nh TraÃ¸m VaÃªn",
+        "count": 1
+      },
+      {
+        "value": "KEÃNH 11",
+        "count": 1
+      },
+      {
+        "value": "KEÃNH, RAÃCH",
+        "count": 1
+      },
+      {
+        "value": "KHAÃCH HAÃNG",
+        "count": 1
+      },
+      {
+        "value": "KHU\nQUY\nHOÂ¹CH\nDÂ¢N CÂ¦",
+        "count": 1
+      },
+      {
+        "value": "KHU ÃOÃ THÃ / KHU DAÃN CÃ",
+        "count": 1
+      },
+      {
+        "value": "Khu CÂ«ng NghiÃp xuyÂªn Â¸",
+        "count": 1
+      },
+      {
+        "value": "KHU DAÃN CÃ, TRÃÃÃNG HOÃC",
+        "count": 1
+      },
+      {
+        "value": "KHU PHÃ¨ 4",
+        "count": 1
+      },
+      {
+        "value": "Khu taÃ¹i Ã±Ã²nh cÃ¶ BeÃ¡n LÃ¶Ã¹c (VaÃ¸nh Ã±ai 4)",
+        "count": 1
+      },
+      {
+        "value": "Khu taÃ¹i Ã±Ã²nh cÃ¶ HoÃ¸a KhaÃ¹nh (VaÃ¸nh Ã±ai 4)",
+        "count": 1
+      },
+      {
+        "value": "Khu Trung taÃ¢m DV-TM TaÃ¢n ÃÃ¶Ã¹c",
+        "count": 1
+      },
+      {
+        "value": "LoÃ¡i Ã±i coÃ¢ng coÃ¤ng(Ã±aÃ¡t)",
+        "count": 1
+      },
+      {
+        "value": "MaÃ£u 2a- TÃ-TC\nMaÃµ soÃ¡ lÃ¶u: May Tuyetdong/D/Dulieua10 /Ln/DHoa/Hoakhanhnambaivatlieu",
+        "count": 1
+      },
+      {
+        "value": "MaÃ£u 2a- TÃ-TC\nMaÃµ soÃ¡ lÃ¶u: May Van/Du Lieu a10/Liemnho/ÃH/HKÃ/Bai vat lieu so 4",
+        "count": 1
+      },
+      {
+        "value": "MaÃ£u 2a- TÃ-TC\nMaÃµ soÃ¡ lÃ¶u: MTH-C2012-DUCHOA-MYHANHBAC",
+        "count": 1
+      },
+      {
+        "value": "MaÃ£u 8b- TÃ.TC\nMaÃµ soÃ¡ lÃ¶u: KD9-XTM-Bai vat lieu so 1",
+        "count": 1
+      },
+      {
+        "value": "MaÃ£u 8b- TÃ.TC\nMaÃµ soÃ¡ lÃ¶u: KD9-XTP-Bai vat lieu so 2",
+        "count": 1
+      },
+      {
+        "value": "MAÃT BAÃNG TOÃNG THEÃ HEÃ THOÃNG CAÃP NÃÃÃC PHUÃ MYÃ VINH",
+        "count": 1
+      },
+      {
+        "value": "Mai NgoÃ¯c YeÃ¡n",
+        "count": 1
+      },
+      {
+        "value": "n",
+        "count": 1
+      },
+      {
+        "value": "N2-1-1",
+        "count": 1
+      },
+      {
+        "value": "N2-1-2",
+        "count": 1
+      },
+      {
+        "value": "N2-1-4",
+        "count": 1
+      },
+      {
+        "value": "N2-10",
+        "count": 1
+      },
+      {
+        "value": "N2-12-1",
+        "count": 1
+      },
+      {
+        "value": "N2-12-2",
+        "count": 1
+      },
+      {
+        "value": "N2-14",
+        "count": 1
+      },
+      {
+        "value": "N2-14-1",
+        "count": 1
+      },
+      {
+        "value": "N2-14-2",
+        "count": 1
+      },
+      {
+        "value": "N2-14-2-1",
+        "count": 1
+      },
+      {
+        "value": "N2-14-2-2",
+        "count": 1
+      },
+      {
+        "value": "N2-14-4",
+        "count": 1
+      },
+      {
+        "value": "N2-16",
+        "count": 1
+      },
+      {
+        "value": "N2-18",
+        "count": 1
+      },
+      {
+        "value": "N2-18-2",
+        "count": 1
+      },
+      {
+        "value": "N2-2-1",
+        "count": 1
+      },
+      {
+        "value": "N2-2-2",
+        "count": 1
+      },
+      {
+        "value": "N2-2-3",
+        "count": 1
+      },
+      {
+        "value": "N2-22",
+        "count": 1
+      },
+      {
+        "value": "N2-22-1",
+        "count": 1
+      },
+      {
+        "value": "N2-22-2",
+        "count": 1
+      },
+      {
+        "value": "N2-24",
+        "count": 1
+      },
+      {
+        "value": "N2-24-1",
+        "count": 1
+      },
+      {
+        "value": "N2-24-2",
+        "count": 1
+      },
+      {
+        "value": "N2-26",
+        "count": 1
+      },
+      {
+        "value": "N2-26-1",
+        "count": 1
+      },
+      {
+        "value": "N2-3",
+        "count": 1
+      },
+      {
+        "value": "N2-6",
+        "count": 1
+      },
+      {
+        "value": "N2-6-1",
+        "count": 1
+      },
+      {
+        "value": "N2-6-2",
+        "count": 1
+      },
+      {
+        "value": "N2-6-3",
+        "count": 1
+      },
+      {
+        "value": "N2-6-4",
+        "count": 1
+      },
+      {
+        "value": "N2-6-5",
+        "count": 1
+      },
+      {
+        "value": "N2-6-5-1",
+        "count": 1
+      },
+      {
+        "value": "N2-6-7",
+        "count": 1
+      },
+      {
+        "value": "N2-6-7C",
+        "count": 1
+      },
+      {
+        "value": "N2-8",
+        "count": 1
+      },
+      {
+        "value": "N2-8-1",
+        "count": 1
+      },
+      {
+        "value": "N2-8-3",
+        "count": 1
+      },
+      {
+        "value": "N3-1",
+        "count": 1
+      },
+      {
+        "value": "N3-10-1",
+        "count": 1
+      },
+      {
+        "value": "N3-10-3",
+        "count": 1
+      },
+      {
+        "value": "N3-10-4",
+        "count": 1
+      },
+      {
+        "value": "N3-10-5",
+        "count": 1
+      },
+      {
+        "value": "N3-10-6",
+        "count": 1
+      },
+      {
+        "value": "N3-10-8",
+        "count": 1
+      },
+      {
+        "value": "N3-10-8B",
+        "count": 1
+      },
+      {
+        "value": "N3-11",
+        "count": 1
+      },
+      {
+        "value": "N3-11-1",
+        "count": 1
+      },
+      {
+        "value": "N3-11-4",
+        "count": 1
+      },
+      {
+        "value": "N3-11-4A",
+        "count": 1
+      },
+      {
+        "value": "N3-11-4B",
+        "count": 1
+      },
+      {
+        "value": "N3-11-4C",
+        "count": 1
+      },
+      {
+        "value": "N3-12",
+        "count": 1
+      },
+      {
+        "value": "N3-13",
+        "count": 1
+      },
+      {
+        "value": "N3-15-1",
+        "count": 1
+      },
+      {
+        "value": "N3-15-2",
+        "count": 1
+      },
+      {
+        "value": "N3-15-2C",
+        "count": 1
+      },
+      {
+        "value": "N3-15-3",
+        "count": 1
+      },
+      {
+        "value": "N3-15-5",
+        "count": 1
+      },
+      {
+        "value": "N3-17",
+        "count": 1
+      },
+      {
+        "value": "N3-17-2",
+        "count": 1
+      },
+      {
+        "value": "N3-17-4",
+        "count": 1
+      },
+      {
+        "value": "N3-19",
+        "count": 1
+      },
+      {
+        "value": "N3-3",
+        "count": 1
+      },
+      {
+        "value": "N3-4",
+        "count": 1
+      },
+      {
+        "value": "N3-5",
+        "count": 1
+      },
+      {
+        "value": "N3-5-1",
+        "count": 1
+      },
+      {
+        "value": "N3-5-2",
+        "count": 1
+      },
+      {
+        "value": "N3-5-2C",
+        "count": 1
+      },
+      {
+        "value": "N3-6",
+        "count": 1
+      },
+      {
+        "value": "N3-6-1",
+        "count": 1
+      },
+      {
+        "value": "N3-6-3",
+        "count": 1
+      },
+      {
+        "value": "N3-6-5",
+        "count": 1
+      },
+      {
+        "value": "N3-7-1",
+        "count": 1
+      },
+      {
+        "value": "N3-7-2",
+        "count": 1
+      },
+      {
+        "value": "N3-7-3",
+        "count": 1
+      },
+      {
+        "value": "N3-7-4",
+        "count": 1
+      },
+      {
+        "value": "N3-8-2-1",
+        "count": 1
+      },
+      {
+        "value": "N3-8-3-1",
+        "count": 1
+      },
+      {
+        "value": "N3-8-3-1A",
+        "count": 1
+      },
+      {
+        "value": "N3-8-3-2",
+        "count": 1
+      },
+      {
+        "value": "N3-8-3-3",
+        "count": 1
+      },
+      {
+        "value": "N3-8-3-4",
+        "count": 1
+      },
+      {
+        "value": "N3-8-5",
+        "count": 1
+      },
+      {
+        "value": "N3-8-6",
+        "count": 1
+      },
+      {
+        "value": "N3-8-7-1",
+        "count": 1
+      },
+      {
+        "value": "N3-8-7-1C",
+        "count": 1
+      },
+      {
+        "value": "N3-8-7C",
+        "count": 1
+      },
+      {
+        "value": "N3-8-7D",
+        "count": 1
+      },
+      {
+        "value": "N3-8-8",
+        "count": 1
+      },
+      {
+        "value": "N3-8-8A",
+        "count": 1
+      },
+      {
+        "value": "N3-9",
+        "count": 1
+      },
+      {
+        "value": "N3-9-10",
+        "count": 1
+      },
+      {
+        "value": "N3-9-12",
+        "count": 1
+      },
+      {
+        "value": "N3-9-2",
+        "count": 1
+      },
+      {
+        "value": "N3-9-3",
+        "count": 1
+      },
+      {
+        "value": "N3-9-4",
+        "count": 1
+      },
+      {
+        "value": "N3-9-5",
+        "count": 1
+      },
+      {
+        "value": "N3-9-6",
+        "count": 1
+      },
+      {
+        "value": "N3-9-7",
+        "count": 1
+      },
+      {
+        "value": "ND",
+        "count": 1
+      },
+      {
+        "value": "NET3",
+        "count": 1
+      },
+      {
+        "value": "NguyÃn VÂ¨n Dinh\nDA: CÂ©y xÂ¨ng",
+        "count": 1
+      },
+      {
+        "value": "NHAÃ MAÃY NÃÃÃC",
+        "count": 1
+      },
+      {
+        "value": "NHAÃ MAÃY NÃÃÃC ÃÃÃC HOÃA 3",
+        "count": 1
+      },
+      {
+        "value": "NHAÃ MAÃY NÃÃÃC HOÃA KHAÃNH TAÃY",
+        "count": 1
+      },
+      {
+        "value": "NHAÃNH BOÃ SUNG",
+        "count": 1
+      },
+      {
+        "value": "OÃNG HIEÃN TRAÃNG ÃOÃ THÃ ÃÃÃC HOÃA",
+        "count": 1
+      },
+      {
+        "value": "OÃNG HIEÃN TRAÃNG BIWASE TAÃY NINH",
+        "count": 1
+      },
+      {
+        "value": "OÃNG HIEÃN TRAÃNG PHUÃ MYÃ VINH",
+        "count": 1
+      },
+      {
+        "value": "ONT",
+        "count": 1
+      },
+      {
+        "value": "Q",
+        "count": 1
+      },
+      {
+        "value": "QUY ÃÃNH MAÃU",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch Â®Â«i",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch Â®Â¸",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch Â®Ãnh nÃ³t",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch bÃ¯ng binh lÃ­n",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch bÃ¯ng binh nhÃ¡",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch bÂµ lÃ­n",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch bÂµ trÂ¹ch",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch chanh",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch chu",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch gÃn",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch gÃµa",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch giÂµn xÂ©y (hkn - hkt)",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch hÃ¨c thÂ¬m ranh xÂ·",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch hÂµng Â®Ãu",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch kÃ",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch lÃ",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch lÃ¥ Ã¥",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch lÃ­n",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch mÂ­Â¬ng",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch mÂ­Â¬ng Â®Âµo",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch miÃu",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch nho",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch nhum",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch quÂ¸n Â®Â«i",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch sÂ©u",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch sÂ¬n",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch sÂ¬n mÂ¸u",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch thÃ¦ Â®Ãnh ranh xÂ·",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch than an",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch thÃy hÃ",
+        "count": 1
+      },
+      {
+        "value": "rÂ¹ch trÂµm huÃ",
+        "count": 1
+      },
+      {
+        "value": "Ranh 0-50m caÃ«p ÃÃ¶Ã´Ã¸ng BaÃ¸o CaÃ y",
+        "count": 1
+      },
+      {
+        "value": "Ranh 0-50m caÃ«p ÃÃ¶Ã´Ã¸ng giao thoÃ¢ng noÃ¢ng thoÃ¢n",
+        "count": 1
+      },
+      {
+        "value": "Ranh 0-50m caÃ«p BÃ´Ã¸ keÃ¢nh",
+        "count": 1
+      },
+      {
+        "value": "Ranh 0-50m caÃ«p BÃ´Ã¸ keÃ¢nh TraÃ¸m VaÃªn",
+        "count": 1
+      },
+      {
+        "value": "Ranh tÃ´Ã¸ baÃ»n Ã±oÃ",
+        "count": 1
+      },
+      {
+        "value": "RANH VUÃNG CAÃP NÃÃÃC",
+        "count": 1
+      },
+      {
+        "value": "RANH XAÃ",
+        "count": 1
+      },
+      {
+        "value": "sÂ«ng vÂµm cÃ¡ Â®Â«ng",
+        "count": 1
+      },
+      {
+        "value": "SÃ´Ã» TaÃ¸i nguyeÃ¢n vaÃ¸ MoÃ¢i trÃ¶Ã´Ã¸ng\nDuyeÃ¤t, ngaÃ¸y:.......thaÃ¹ng.........naÃªm 2012\nKT . GiaÃ¹m Ã±oÃ¡c\nPhoÃ¹ GiaÃ¹m Ã±oÃ¡c",
+        "count": 1
+      },
+      {
+        "value": "SOÃNG, HOÃ",
+        "count": 1
+      },
+      {
+        "value": "t",
+        "count": 1
+      },
+      {
+        "value": "T.T. Â§Ã¸c HoÂµ",
+        "count": 1
+      },
+      {
+        "value": "t.t.hiÃp hÃa",
+        "count": 1
+      },
+      {
+        "value": "TÃ LEÃ: 1/20.000",
+        "count": 1
+      },
+      {
+        "value": "TÃ´Ã¸ 15",
+        "count": 1
+      },
+      {
+        "value": "TÃ´Ã¸ BÃ soÃ¡ 12",
+        "count": 1
+      },
+      {
+        "value": "TÃ´Ã¸ BÃ soÃ¡ 13",
+        "count": 1
+      },
+      {
+        "value": "TÃ´Ã¸ BÃ soÃ¡ 15",
+        "count": 1
+      },
+      {
+        "value": "TÃ´Ã¸ BÃ soÃ¡ 23",
+        "count": 1
+      },
+      {
+        "value": "tÃnh tÂ©y ninh",
+        "count": 1
+      },
+      {
+        "value": "tb Â®Ã¸c lÃp hÂ¹",
+        "count": 1
+      },
+      {
+        "value": "tb. 7 quang",
+        "count": 1
+      },
+      {
+        "value": "tb. ba sa",
+        "count": 1
+      },
+      {
+        "value": "tb. ba sa 2",
+        "count": 1
+      },
+      {
+        "value": "tb. ba sa tÂ©y lÃp thÂµnh",
+        "count": 1
+      },
+      {
+        "value": "tb. lÂ¸ng cÃm",
+        "count": 1
+      },
+      {
+        "value": "tb. lÂ¸ng ven 3",
+        "count": 1
+      },
+      {
+        "value": "tb. lÂ¸ng ven 4",
+        "count": 1
+      },
+      {
+        "value": "tb. lÃ©c giang a",
+        "count": 1
+      },
+      {
+        "value": "tb. mÃ¼ hÂ¹nh bÂ¾c",
+        "count": 1
+      },
+      {
+        "value": "tb. mÃ¼ hÂ¹nh nam",
+        "count": 1
+      },
+      {
+        "value": "tl 9",
+        "count": 1
+      },
+      {
+        "value": "TL-830",
+        "count": 1
+      },
+      {
+        "value": "TOÃNG CHIEÃU DAÃI:                       31.460 (meÃ¹t)",
+        "count": 1
+      },
+      {
+        "value": "tp. hÃ¥ chÃ minh",
+        "count": 1
+      },
+      {
+        "value": "tp. HÃ¥ chÃ minh",
+        "count": 1
+      },
+      {
+        "value": "TrÂ­Ãªng cao Â§Â¼ng KT Cao ThÂ¾ng(THU HÃ¥I)\nDA: CÂ¬ sÃ« 2\nDT:50ha",
+        "count": 1
+      },
+      {
+        "value": "TRÃCH ÃO ÃÃA CHÃNH\n                                                                               TÃ´Ã¸ BÃÃC soÃ¡: 14\n                                            TeÃ¢n toÃ¥ chÃ¶Ã¹c: DÃÃ AÃN THUÃY LÃÃI PHÃÃÃC HOÃA - KHU TÃÃÃI ÃÃÃC HOÃA\n                                                                           HaÃ¯ng muÃ¯c: BAÃI VAÃT LIEÃU SOÃ 6\n                                                                                   ToÃ¥ng dieÃ¤n tÃ­ch: 113688mÂ²",
+        "count": 1
+      },
+      {
+        "value": "TRÃCH ÃO ÃÃA CHÃNH\n                                                  TÃ´Ã¸ BÃÃC soÃ¡: 1\n                   TeÃ¢n coÃ¢ng trÃ¬nh : DÃÃ AÃN THUYÃ LÃÃI PHÃÃÃC HOAÃ -KHU TÃÃÃI ÃÃÃC HOAÃ\n\t\t\tHaÃ¯ng muÃ¯c : BAÃI VAÃT LIEÃU SOÃ 3                                                     \t\t\tToÃ¥ng dieÃ¤n tÃ­ch: mÂ²",
+        "count": 1
+      },
+      {
+        "value": "TRÃCH ÃO ÃÃA CHÃNH\n                             TÃ´Ã¸ BÃÃC soÃ¡: 9\n                      TeÃ¢n toÃ¥ chÃ¶Ã¹c: BAN QUAÃN LYÃ DÃÃ AÃN NOÃNG NGHIEÃP LONG AN\n                 5x;        TeÃ¢n coÃ¢ng trÃ¬nh: DÃÃ AÃN THUÃY LÃÃI PHÃÃÃC HOÃA - KHU TÃÃÃI ÃÃÃC HOÃA\n\t                HaÃ¯ng muÃ¯c: BAÃI VAÃT LIEÃU SOÃ 4                                 \n                                  ToÃ¥ng dieÃ¤n tÃ­ch Ã±o Ã±aÃ¯c thÃ¶Ã¯c teÃ¡ : 46371mÂ²\n                                                                                     ToÃ¥ng dieÃ¤n tÃ­ch caÃ¡p GCNQSDÃ : 46410mÂ²",
+        "count": 1
+      },
+      {
+        "value": "TRÃCH ÃO ÃÃA CHÃNH\n TÃ´Ã¸ BÃÃC soÃ¡: 12, 13  \nTeÃ¢n toÃ¥ chÃ¶Ã¹c: BAN QUAÃN LYÃ DÃÃ AÃN NOÃNG NGHIEÃP LONG AN               \nTeÃ¢n coÃ¢ng trÃ¬nh: DÃÃ AÃN THUYÃ LÃÃI PHÃÃÃC HOÃA - KHU TÃÃÃI ÃÃÃC HOÃA \nHaÃ¯ng muÃ¯c: BAÃI VAÃT LIEÃU\nToÃ¥ng dieÃ¤n tÃ­ch:  48962 mÂ²",
+        "count": 1
+      },
+      {
+        "value": "TRÃCH ÃO ÃÃA CHÃNH\nTÃ´Ã¸ BÃÃC soÃ¡: 15, 23\nTeÃ¢n toÃ¥ chÃ¶Ã¹c: BAN QUAÃN LYÃ DÃÃ AÃN NOÃNG NGHIEÃP LONG AN                 \nTeÃ¢n coÃ¢ng trÃ¬nh: DÃÃ AÃN THUYÃ LÃÃI PHÃÃÃC HOÃA - KHU TÃÃÃI ÃÃÃC HOÃA \nHaÃ¯ng muÃ¯c: BAÃI VAÃT LIEÃU               \nToÃ¥ng dieÃ¤n tÃ­ch:  49683 mÂ²",
+        "count": 1
+      },
+      {
+        "value": "Tráº¡m Äo nÆ°á»c\nbá» sung 2mÃ¡y ÄÃ³ng má»",
+        "count": 1
+      },
+      {
+        "value": "TT",
+        "count": 1
+      },
+      {
+        "value": "TT.hÃu nghÃa",
+        "count": 1
+      },
+      {
+        "value": "tuyÃn 7- 1",
+        "count": 1
+      },
+      {
+        "value": "tuyÃn 7- 2",
+        "count": 1
+      },
+      {
+        "value": "tuyÃn cuÃ¨i kÂªnh Â®Â«ng",
+        "count": 1
+      },
+      {
+        "value": "TUYEÃN OÃNG PHAÃN PHOÃI ÃAÃ ÃAÃU TÃ",
+        "count": 1
+      },
+      {
+        "value": "TyÃ» leÃ¤ veÃµ 1: 500",
+        "count": 1
+      },
+      {
+        "value": "TyÃ» leÃ¤ veÃµ 1:1000",
+        "count": 1
+      },
+      {
+        "value": "TyÃ» leÃ¤ veÃµ 1:500",
+        "count": 1
+      },
+      {
+        "value": "u b",
+        "count": 1
+      },
+      {
+        "value": "UB",
+        "count": 1
+      },
+      {
+        "value": "UBND",
+        "count": 1
+      },
+      {
+        "value": "UBND xaÃµ TaÃ¢n PhuÃ¹",
+        "count": 1
+      },
+      {
+        "value": "VAÃ XAÃY DÃÃNG PHUÃ MYÃ VINH",
+        "count": 1
+      },
+      {
+        "value": "VaÃªn phoÃ¸ng ÃaÃªng kyÃ¹ QSDÃ TÃ¦nh (HuyeÃ¤n)\nThaÃ¥m Ã±Ã²nh, ngaÃ¸y:......thaÃ¹ng.........naÃªm  2012\nGiaÃ¹m Ã±oÃ¡c",
+        "count": 1
+      },
+      {
+        "value": "VC1",
+        "count": 1
+      },
+      {
+        "value": "VC1-2",
+        "count": 1
+      },
+      {
+        "value": "VC1-4",
+        "count": 1
+      },
+      {
+        "value": "VC2",
+        "count": 1
+      },
+      {
+        "value": "VC2-2",
+        "count": 1
+      },
+      {
+        "value": "VC4",
+        "count": 1
+      },
+      {
+        "value": "VC4-1",
+        "count": 1
+      },
+      {
+        "value": "VC4-2",
+        "count": 1
+      },
+      {
+        "value": "VinGroup 900 ha",
+        "count": 1
+      },
+      {
+        "value": "VinGroup HaÃ¤u NghÃ³a 195 ha",
+        "count": 1
+      },
+      {
+        "value": "VUÃNG PHUÃC VUÃ CAÃP NÃÃÃC ÃOÃ THÃ ÃÃÃC HOÃA",
+        "count": 1
+      },
+      {
+        "value": "VUÃNG PHUÃC VUÃ CAÃP NÃÃÃC BIWASE TAÃY NINH",
+        "count": 1
+      },
+      {
+        "value": "XÂ·\nÂ§Â­c LÃp ThÂ­Ã®ng",
+        "count": 1
+      },
+      {
+        "value": "XÂ·  HÃ¹u  ThÂ¹nh",
+        "count": 1
+      },
+      {
+        "value": "XÂ· Â§Ã¸c HÃa Â§Â«ng",
+        "count": 1
+      },
+      {
+        "value": "XÂ· Â§Ã¸c HÃa ThÂ­Ã®ng",
+        "count": 1
+      },
+      {
+        "value": "XÂ· Â§Ã¸c HoÂµ HÂ¹",
+        "count": 1
+      },
+      {
+        "value": "XÂ· Â§Ã¸c LÃp HÂ¹",
+        "count": 1
+      },
+      {
+        "value": "XÂ· An Ninh Â§Â«ng",
+        "count": 1
+      },
+      {
+        "value": "XÂ· An Ninh TÂ©y",
+        "count": 1
+      },
+      {
+        "value": "XÂ· HÃa KhÂ¸nh Â§Â«ng",
+        "count": 1
+      },
+      {
+        "value": "XÂ· HÃa KhÂ¸nh Nam",
+        "count": 1
+      },
+      {
+        "value": "XÂ· HiÃp HoÂµ",
+        "count": 1
+      },
+      {
+        "value": "XÂ· HoÂµ KhÂ¸nh TÂ©y",
+        "count": 1
+      },
+      {
+        "value": "XÂ· MÃ¼ HÂ¹nh BÂ¾c",
+        "count": 1
+      },
+      {
+        "value": "XÂ· MÃ¼ HÂ¹nh Nam",
+        "count": 1
+      },
+      {
+        "value": "XÂ· TÂ©n MÃ¼",
+        "count": 1
+      },
+      {
+        "value": "XÂ· TÂ©n PhÃ³",
+        "count": 1
+      },
+      {
+        "value": "XaÃµ HoÃ¸a KhaÃ¹nh ÃoÃ¢ng\nHuyeÃ¤n ÃÃ¶Ã¹c HoÃ¸a\nTÃ¦nh Long An",
+        "count": 1
+      },
+      {
+        "value": "XaÃµ HoaÃ¸ KhaÃ¹nh Nam\nHuyeÃ¤n CaÃ n ÃÃ¶Ã´Ã¹c\nTÃ¦nh Long An",
+        "count": 1
+      },
+      {
+        "value": "XaÃµ MyÃµ HaÃ¯nh BaÃ©c\nHuyeÃ¤n ÃÃ¶Ã¹c HoÃ¸a\nTÃ¦nh Long An",
+        "count": 1
+      },
+      {
+        "value": "XaÃµ TaÃ¢n MyÃµ\nHuyeÃ¤n ÃÃ¶Ã¹c HoÃ¸a\nTÃ¦nh Long An",
+        "count": 1
+      },
+      {
+        "value": "XaÃµ TaÃ¢n PhuÃ¹\nHuyeÃ¤n ÃÃ¶Ã¹c HoÃ¸a\nTÃ¦nh Long An",
+        "count": 1
+      }
+    ],
+    "paperSpaceRawCounts": [
+      {
+        "value": "NULL",
+        "count": 20800
+      },
+      {
+        "value": "true",
+        "count": 472
+      }
+    ]
+  },
+  "sourceGroupStats": [
+    {
+      "sourceGroup": "cad_base",
+      "sourceName": "BIWASE_HIEN TRANG.dwg",
+      "businessGroup": "Nền CAD hiện trạng",
+      "featureCount": 8824
+    },
+    {
+      "sourceGroup": "main_works",
+      "sourceName": "HTCN PMV.dwg",
+      "businessGroup": "Công trình chính",
+      "featureCount": 8159
+    },
+    {
+      "sourceGroup": "irrigation",
+      "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+      "businessGroup": "Hệ thống kênh thủy lợi",
+      "featureCount": 4289
+    }
+  ],
+  "generatedAt": "2026-05-23T15:47:57.076Z"
+}

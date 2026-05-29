@@ -1,0 +1,1227 @@
+[
+  {
+    "key": "Công trình chính::main_works::main_work_candidate",
+    "businessGroup": "Công trình chính",
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "type": "main_work_candidate",
+    "featureCount": 8147,
+    "layers": [
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$DUONG_DA",
+        "layerName": "Xr_Nen GT$0$DUONG_DA",
+        "featureCount": 2776
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$DUONG NHUA",
+        "layerName": "Xr_Nen GT$0$DUONG NHUA",
+        "featureCount": 2067
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$1$SONG_HO",
+        "layerName": "Xr_Nen GT$1$SONG_HO",
+        "featureCount": 1080
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$DUONG BT-NEN BT",
+        "layerName": "Xr_Nen GT$0$DUONG BT-NEN BT",
+        "featureCount": 900
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$CAU-CONG",
+        "layerName": "Xr_Nen GT$0$CAU-CONG",
+        "featureCount": 416
+      },
+      {
+        "layerKey": "main_works::Pipe Existing",
+        "layerName": "Pipe Existing",
+        "featureCount": 164
+      },
+      {
+        "layerKey": "main_works::CNTV-TEXT",
+        "layerName": "CNTV-TEXT",
+        "featureCount": 104
+      },
+      {
+        "layerKey": "main_works::Diameter_Text",
+        "layerName": "Diameter_Text",
+        "featureCount": 100
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$BON HOA",
+        "layerName": "Xr_Nen GT$0$BON HOA",
+        "featureCount": 69
+      },
+      {
+        "layerKey": "main_works::Pipe_DHBL",
+        "layerName": "Pipe_DHBL",
+        "featureCount": 48
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$DUONG DAT",
+        "layerName": "Xr_Nen GT$0$DUONG DAT",
+        "featureCount": 48
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$Madiem",
+        "layerName": "Xr_Nen GT$0$Madiem",
+        "featureCount": 48
+      },
+      {
+        "layerKey": "main_works::PMV_TEXT",
+        "layerName": "PMV_TEXT",
+        "featureCount": 45
+      },
+      {
+        "layerKey": "main_works::Text ten duong",
+        "layerName": "Text ten duong",
+        "featureCount": 34
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$huong nuoc chay",
+        "layerName": "Xr_Nen GT$0$huong nuoc chay",
+        "featureCount": 25
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$KYHIEU 2000",
+        "layerName": "Xr_Nen GT$0$KYHIEU 2000",
+        "featureCount": 25
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$TEN DUONG",
+        "layerName": "Xr_Nen GT$0$TEN DUONG",
+        "featureCount": 17
+      },
+      {
+        "layerKey": "main_works::CNTV- GHI CHU",
+        "layerName": "CNTV- GHI CHU",
+        "featureCount": 14
+      },
+      {
+        "layerKey": "main_works::Leader",
+        "layerName": "Leader",
+        "featureCount": 12
+      },
+      {
+        "layerKey": "main_works::PHL_GHI CHU",
+        "layerName": "PHL_GHI CHU",
+        "featureCount": 12
+      },
+      {
+        "layerKey": "main_works::textsl",
+        "layerName": "textsl",
+        "featureCount": 11
+      },
+      {
+        "layerKey": "main_works::van nhua 63",
+        "layerName": "van nhua 63",
+        "featureCount": 11
+      },
+      {
+        "layerKey": "main_works::PHL_TEXT HT",
+        "layerName": "PHL_TEXT HT",
+        "featureCount": 10
+      },
+      {
+        "layerKey": "main_works::Table",
+        "layerName": "Table",
+        "featureCount": 10
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$CONG XO",
+        "layerName": "Xr_Nen GT$0$CONG XO",
+        "featureCount": 10
+      },
+      {
+        "layerKey": "main_works::VUNG DAN CU",
+        "layerName": "VUNG DAN CU",
+        "featureCount": 9
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$KYHIEU",
+        "layerName": "Xr_Nen GT$0$KYHIEU",
+        "featureCount": 9
+      },
+      {
+        "layerKey": "main_works::Unknown_Line_Type",
+        "layerName": "Unknown_Line_Type",
+        "featureCount": 8
+      },
+      {
+        "layerKey": "main_works::VUNG CONG NGHIEP",
+        "layerName": "VUNG CONG NGHIEP",
+        "featureCount": 8
+      },
+      {
+        "layerKey": "main_works::Pipe_Phase 1",
+        "layerName": "Pipe_Phase 1",
+        "featureCount": 7
+      },
+      {
+        "layerKey": "main_works::Defpoints",
+        "layerName": "Defpoints",
+        "featureCount": 6
+      },
+      {
+        "layerKey": "main_works::Xr_GT Ben Luc$0$0-RANHXA",
+        "layerName": "Xr_GT Ben Luc$0$0-RANHXA",
+        "featureCount": 5
+      },
+      {
+        "layerKey": "main_works::D. Dia vat",
+        "layerName": "D. Dia vat",
+        "featureCount": 4
+      },
+      {
+        "layerKey": "main_works::Pipe_Phase 2",
+        "layerName": "Pipe_Phase 2",
+        "featureCount": 4
+      },
+      {
+        "layerKey": "main_works::Pipe Existing_DTDH",
+        "layerName": "Pipe Existing_DTDH",
+        "featureCount": 3
+      },
+      {
+        "layerKey": "main_works::Xr_GT Ben Luc$0$0-text-giaothong",
+        "layerName": "Xr_GT Ben Luc$0$0-text-giaothong",
+        "featureCount": 3
+      },
+      {
+        "layerKey": "main_works::1. PMV_GD2",
+        "layerName": "1. PMV_GD2",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "main_works::DUONG GIAO THONG",
+        "layerName": "DUONG GIAO THONG",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$KH",
+        "layerName": "Xr_Nen GT$0$KH",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$mo ma lang tham",
+        "layerName": "Xr_Nen GT$0$mo ma lang tham",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$MUONG NUOC BE TONG",
+        "layerName": "Xr_Nen GT$0$MUONG NUOC BE TONG",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "main_works::_div_Tuy__n__ng_c__p_n___c_CCN_",
+        "layerName": "_div_Tuy__n__ng_c__p_n___c_CCN_",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::_div_Tuy__n__ng_c__p_n___c_DT82",
+        "layerName": "_div_Tuy__n__ng_c__p_n___c_DT82",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::_div_Tuy__n__ng_M__H__nh_BR__di",
+        "layerName": "_div_Tuy__n__ng_M__H__nh_BR__di",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::D1",
+        "layerName": "D1",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::PHL_ONG D160_2027",
+        "layerName": "PHL_ONG D160_2027",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::PHL_VUNG CAP NUOC",
+        "layerName": "PHL_VUNG CAP NUOC",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::PIPE100",
+        "layerName": "PIPE100",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::PIPE141",
+        "layerName": "PIPE141",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::PIPE200",
+        "layerName": "PIPE200",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::PIPE362",
+        "layerName": "PIPE362",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::PIPE440",
+        "layerName": "PIPE440",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::PIPE97",
+        "layerName": "PIPE97",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::PROPOSED PIPE_BWS",
+        "layerName": "PROPOSED PIPE_BWS",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::RANH XA",
+        "layerName": "RANH XA",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "main_works::Xr_Nen GT$0$KS-RAOKEM",
+        "layerName": "Xr_Nen GT$0$KS-RAOKEM",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 56
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::road_background",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "road_background",
+    "featureCount": 6268,
+    "layers": [
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$DUONG_DA",
+        "layerName": "Xr_Nen GT$0$DUONG_DA",
+        "featureCount": 2776
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$DUONG NHUA",
+        "layerName": "Xr_Nen GT$0$DUONG NHUA",
+        "featureCount": 2064
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$DUONG BT-NEN BT",
+        "layerName": "Xr_Nen GT$0$DUONG BT-NEN BT",
+        "featureCount": 899
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$CAU-CONG",
+        "layerName": "Xr_Nen GT$0$CAU-CONG",
+        "featureCount": 411
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$DUONG DAT",
+        "layerName": "Xr_Nen GT$0$DUONG DAT",
+        "featureCount": 48
+      },
+      {
+        "layerKey": "cad_base::Text ten duong",
+        "layerName": "Text ten duong",
+        "featureCount": 37
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$TEN DUONG",
+        "layerName": "Xr_Nen GT$0$TEN DUONG",
+        "featureCount": 17
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$CONG XO",
+        "layerName": "Xr_Nen GT$0$CONG XO",
+        "featureCount": 10
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$Madiem",
+        "layerName": "Xr_Nen GT$0$Madiem",
+        "featureCount": 5
+      },
+      {
+        "layerKey": "cad_base::DUONG GIAO THONG",
+        "layerName": "DUONG GIAO THONG",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 10
+  },
+  {
+    "key": "Hệ thống kênh thủy lợi::irrigation::irrigation_label",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "type": "irrigation_label",
+    "featureCount": 2177,
+    "layers": [
+      {
+        "layerKey": "irrigation::1",
+        "layerName": "1",
+        "featureCount": 339
+      },
+      {
+        "layerKey": "irrigation::DT",
+        "layerName": "DT",
+        "featureCount": 334
+      },
+      {
+        "layerKey": "irrigation::LDT",
+        "layerName": "LDT",
+        "featureCount": 322
+      },
+      {
+        "layerKey": "irrigation::STCT",
+        "layerName": "STCT",
+        "featureCount": 295
+      },
+      {
+        "layerKey": "irrigation::0",
+        "layerName": "0",
+        "featureCount": 169
+      },
+      {
+        "layerKey": "irrigation::SoThua",
+        "layerName": "SoThua",
+        "featureCount": 131
+      },
+      {
+        "layerKey": "irrigation::Level 1",
+        "layerName": "Level 1",
+        "featureCount": 130
+      },
+      {
+        "layerKey": "irrigation::CHINHLY",
+        "layerName": "CHINHLY",
+        "featureCount": 73
+      },
+      {
+        "layerKey": "irrigation::Level 63",
+        "layerName": "Level 63",
+        "featureCount": 70
+      },
+      {
+        "layerKey": "irrigation::Kich thuoc",
+        "layerName": "Kich thuoc",
+        "featureCount": 60
+      },
+      {
+        "layerKey": "irrigation::dtk_c3",
+        "layerName": "dtk_c3",
+        "featureCount": 53
+      },
+      {
+        "layerKey": "irrigation::KT2",
+        "layerName": "KT2",
+        "featureCount": 49
+      },
+      {
+        "layerKey": "irrigation::tencsd",
+        "layerName": "tencsd",
+        "featureCount": 35
+      },
+      {
+        "layerKey": "irrigation::DTthucte",
+        "layerName": "DTthucte",
+        "featureCount": 32
+      },
+      {
+        "layerKey": "irrigation::$0$1",
+        "layerName": "$0$1",
+        "featureCount": 16
+      },
+      {
+        "layerKey": "irrigation::Ghi chu",
+        "layerName": "Ghi chu",
+        "featureCount": 12
+      },
+      {
+        "layerKey": "irrigation::dttong",
+        "layerName": "dttong",
+        "featureCount": 10
+      },
+      {
+        "layerKey": "irrigation::Kich thuot",
+        "layerName": "Kich thuot",
+        "featureCount": 9
+      },
+      {
+        "layerKey": "irrigation::thietke",
+        "layerName": "thietke",
+        "featureCount": 9
+      },
+      {
+        "layerKey": "irrigation::ghichu",
+        "layerName": "ghichu",
+        "featureCount": 7
+      },
+      {
+        "layerKey": "irrigation::HOVATEN",
+        "layerName": "HOVATEN",
+        "featureCount": 6
+      },
+      {
+        "layerKey": "irrigation::Ranh BD",
+        "layerName": "Ranh BD",
+        "featureCount": 6
+      },
+      {
+        "layerKey": "irrigation::Ranh to BD",
+        "layerName": "Ranh to BD",
+        "featureCount": 5
+      },
+      {
+        "layerKey": "irrigation::Noi diem",
+        "layerName": "Noi diem",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "irrigation::10",
+        "layerName": "10",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "irrigation::nha",
+        "layerName": "nha",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "irrigation::Ranh 50",
+        "layerName": "Ranh 50",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 27
+  },
+  {
+    "key": "Hệ thống kênh thủy lợi::irrigation::irrigation_canal",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "type": "irrigation_canal",
+    "featureCount": 1347,
+    "layers": [
+      {
+        "layerKey": "irrigation::1",
+        "layerName": "1",
+        "featureCount": 398
+      },
+      {
+        "layerKey": "irrigation::thietke",
+        "layerName": "thietke",
+        "featureCount": 386
+      },
+      {
+        "layerKey": "irrigation::0",
+        "layerName": "0",
+        "featureCount": 335
+      },
+      {
+        "layerKey": "irrigation::DUONG",
+        "layerName": "DUONG",
+        "featureCount": 166
+      },
+      {
+        "layerKey": "irrigation::Kenh",
+        "layerName": "Kenh",
+        "featureCount": 22
+      },
+      {
+        "layerKey": "irrigation::KY-HIEU",
+        "layerName": "KY-HIEU",
+        "featureCount": 15
+      },
+      {
+        "layerKey": "irrigation::Level 30",
+        "layerName": "Level 30",
+        "featureCount": 9
+      },
+      {
+        "layerKey": "irrigation::DUONGCHINH",
+        "layerName": "DUONGCHINH",
+        "featureCount": 6
+      },
+      {
+        "layerKey": "irrigation::nha",
+        "layerName": "nha",
+        "featureCount": 3
+      },
+      {
+        "layerKey": "irrigation::22",
+        "layerName": "22",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "irrigation::Defpoints",
+        "layerName": "Defpoints",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "irrigation::ghichu",
+        "layerName": "ghichu",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "irrigation::dtk_c3",
+        "layerName": "dtk_c3",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 13
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::cad_line",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "cad_line",
+    "featureCount": 1126,
+    "layers": [
+      {
+        "layerKey": "cad_base::Xr_Nen GT$1$SONG_HO",
+        "layerName": "Xr_Nen GT$1$SONG_HO",
+        "featureCount": 903
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$BON HOA",
+        "layerName": "Xr_Nen GT$0$BON HOA",
+        "featureCount": 69
+      },
+      {
+        "layerKey": "cad_base::Pipe_DHBL",
+        "layerName": "Pipe_DHBL",
+        "featureCount": 48
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$huong nuoc chay",
+        "layerName": "Xr_Nen GT$0$huong nuoc chay",
+        "featureCount": 25
+      },
+      {
+        "layerKey": "cad_base::PHL_GHI CHU",
+        "layerName": "PHL_GHI CHU",
+        "featureCount": 12
+      },
+      {
+        "layerKey": "cad_base::Leader",
+        "layerName": "Leader",
+        "featureCount": 11
+      },
+      {
+        "layerKey": "cad_base::Unknown_Line_Type",
+        "layerName": "Unknown_Line_Type",
+        "featureCount": 8
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$KYHIEU",
+        "layerName": "Xr_Nen GT$0$KYHIEU",
+        "featureCount": 8
+      },
+      {
+        "layerKey": "cad_base::Pipe_Phase 1",
+        "layerName": "Pipe_Phase 1",
+        "featureCount": 7
+      },
+      {
+        "layerKey": "cad_base::PMV_TEXT",
+        "layerName": "PMV_TEXT",
+        "featureCount": 6
+      },
+      {
+        "layerKey": "cad_base::PHL_TEXT HT",
+        "layerName": "PHL_TEXT HT",
+        "featureCount": 5
+      },
+      {
+        "layerKey": "cad_base::CNTV- GHI CHU",
+        "layerName": "CNTV- GHI CHU",
+        "featureCount": 4
+      },
+      {
+        "layerKey": "cad_base::Pipe_Phase 2",
+        "layerName": "Pipe_Phase 2",
+        "featureCount": 4
+      },
+      {
+        "layerKey": "cad_base::1. PMV_GD2",
+        "layerName": "1. PMV_GD2",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "cad_base::_div_Tuy__n__ng_c__p_n___c_CCN_",
+        "layerName": "_div_Tuy__n__ng_c__p_n___c_CCN_",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::_div_Tuy__n__ng_c__p_n___c_DT82",
+        "layerName": "_div_Tuy__n__ng_c__p_n___c_DT82",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::_div_Tuy__n__ng_M__H__nh_BR__di",
+        "layerName": "_div_Tuy__n__ng_M__H__nh_BR__di",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PHL_ONG D160_2027",
+        "layerName": "PHL_ONG D160_2027",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PIPE100",
+        "layerName": "PIPE100",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PIPE141",
+        "layerName": "PIPE141",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PIPE200",
+        "layerName": "PIPE200",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PIPE362",
+        "layerName": "PIPE362",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PIPE440",
+        "layerName": "PIPE440",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PIPE97",
+        "layerName": "PIPE97",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PROPOSED PIPE_BWS",
+        "layerName": "PROPOSED PIPE_BWS",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$KH",
+        "layerName": "Xr_Nen GT$0$KH",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$KS-RAOKEM",
+        "layerName": "Xr_Nen GT$0$KS-RAOKEM",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$KYHIEU 2000",
+        "layerName": "Xr_Nen GT$0$KYHIEU 2000",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 28
+  },
+  {
+    "key": "Hệ thống kênh thủy lợi::irrigation::irrigation_point",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "type": "irrigation_point",
+    "featureCount": 690,
+    "layers": [
+      {
+        "layerKey": "irrigation::ranhlang",
+        "layerName": "ranhlang",
+        "featureCount": 551
+      },
+      {
+        "layerKey": "irrigation::DUONG",
+        "layerName": "DUONG",
+        "featureCount": 79
+      },
+      {
+        "layerKey": "irrigation::nha",
+        "layerName": "nha",
+        "featureCount": 29
+      },
+      {
+        "layerKey": "irrigation::0",
+        "layerName": "0",
+        "featureCount": 20
+      },
+      {
+        "layerKey": "irrigation::KY-HIEU",
+        "layerName": "KY-HIEU",
+        "featureCount": 3
+      },
+      {
+        "layerKey": "irrigation::Level 51",
+        "layerName": "Level 51",
+        "featureCount": 3
+      },
+      {
+        "layerKey": "irrigation::dtk_c3",
+        "layerName": "dtk_c3",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "irrigation::dttong",
+        "layerName": "dttong",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "irrigation::RANHXA",
+        "layerName": "RANHXA",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "irrigation::Text",
+        "layerName": "Text",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "irrigation::thietke",
+        "layerName": "thietke",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 11
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::layout_artifact",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "layout_artifact",
+    "featureCount": 473,
+    "layers": [
+      {
+        "layerKey": "cad_base::Table",
+        "layerName": "Table",
+        "featureCount": 399
+      },
+      {
+        "layerKey": "cad_base::Text",
+        "layerName": "Text",
+        "featureCount": 47
+      },
+      {
+        "layerKey": "cad_base::CN Thuan An",
+        "layerName": "CN Thuan An",
+        "featureCount": 4
+      },
+      {
+        "layerKey": "cad_base::D. Dia vat",
+        "layerName": "D. Dia vat",
+        "featureCount": 4
+      },
+      {
+        "layerKey": "cad_base::CAU",
+        "layerName": "CAU",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "cad_base::CNTV-HATCH",
+        "layerName": "CNTV-HATCH",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "cad_base::Xr_GT Ben Luc$0$3- VUNG CANH QUAN",
+        "layerName": "Xr_GT Ben Luc$0$3- VUNG CANH QUAN",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "cad_base::0",
+        "layerName": "0",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::CNTV- VIEWPORT",
+        "layerName": "CNTV- VIEWPORT",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::DUONG GIAO THONG",
+        "layerName": "DUONG GIAO THONG",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::Khung 2",
+        "layerName": "Khung 2",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PHL_GHI CHU",
+        "layerName": "PHL_GHI CHU",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PHL_ONG D110",
+        "layerName": "PHL_ONG D110",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PHL_ONG DAU TU",
+        "layerName": "PHL_ONG DAU TU",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PHL_VUNG CAP NUOC",
+        "layerName": "PHL_VUNG CAP NUOC",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::PMV_ONG D630",
+        "layerName": "PMV_ONG D630",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::RANH XA",
+        "layerName": "RANH XA",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::VUNG CONG NGHIEP",
+        "layerName": "VUNG CONG NGHIEP",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::VUNG DAN CU",
+        "layerName": "VUNG DAN CU",
+        "featureCount": 1
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$SONG_HO",
+        "layerName": "Xr_Nen GT$0$SONG_HO",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 20
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::pipeline",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "pipeline",
+    "featureCount": 416,
+    "layers": [
+      {
+        "layerKey": "cad_base::Pipe _Existing_PHL",
+        "layerName": "Pipe _Existing_PHL",
+        "featureCount": 249
+      },
+      {
+        "layerKey": "cad_base::Pipe Existing",
+        "layerName": "Pipe Existing",
+        "featureCount": 164
+      },
+      {
+        "layerKey": "cad_base::Pipe Existing_DTDH",
+        "layerName": "Pipe Existing_DTDH",
+        "featureCount": 3
+      }
+    ],
+    "layerCount": 3
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::cad_point",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "cad_point",
+    "featureCount": 231,
+    "layers": [
+      {
+        "layerKey": "cad_base::Xr_Nen GT$1$SONG_HO",
+        "layerName": "Xr_Nen GT$1$SONG_HO",
+        "featureCount": 162
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$Madiem",
+        "layerName": "Xr_Nen GT$0$Madiem",
+        "featureCount": 43
+      },
+      {
+        "layerKey": "cad_base::textsl",
+        "layerName": "textsl",
+        "featureCount": 11
+      },
+      {
+        "layerKey": "cad_base::Defpoints",
+        "layerName": "Defpoints",
+        "featureCount": 6
+      },
+      {
+        "layerKey": "cad_base::D. Dia vat",
+        "layerName": "D. Dia vat",
+        "featureCount": 4
+      },
+      {
+        "layerKey": "cad_base::Xr_GT Ben Luc$0$0-text-giaothong",
+        "layerName": "Xr_GT Ben Luc$0$0-text-giaothong",
+        "featureCount": 3
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$MUONG NUOC BE TONG",
+        "layerName": "Xr_Nen GT$0$MUONG NUOC BE TONG",
+        "featureCount": 2
+      }
+    ],
+    "layerCount": 7
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::location_label",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "location_label",
+    "featureCount": 128,
+    "layers": [
+      {
+        "layerKey": "cad_base::CNTV-TEXT",
+        "layerName": "CNTV-TEXT",
+        "featureCount": 107
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$1$SONG_HO",
+        "layerName": "Xr_Nen GT$1$SONG_HO",
+        "featureCount": 15
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$CAU-CONG",
+        "layerName": "Xr_Nen GT$0$CAU-CONG",
+        "featureCount": 3
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$DUONG NHUA",
+        "layerName": "Xr_Nen GT$0$DUONG NHUA",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$DUONG BT-NEN BT",
+        "layerName": "Xr_Nen GT$0$DUONG BT-NEN BT",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 5
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::pipe_diameter_label",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "pipe_diameter_label",
+    "featureCount": 121,
+    "layers": [
+      {
+        "layerKey": "cad_base::Diameter_Text",
+        "layerName": "Diameter_Text",
+        "featureCount": 100
+      },
+      {
+        "layerKey": "cad_base::CNTV- GHI CHU",
+        "layerName": "CNTV- GHI CHU",
+        "featureCount": 10
+      },
+      {
+        "layerKey": "cad_base::PMV_TEXT",
+        "layerName": "PMV_TEXT",
+        "featureCount": 6
+      },
+      {
+        "layerKey": "cad_base::PHL_TEXT HT",
+        "layerName": "PHL_TEXT HT",
+        "featureCount": 5
+      }
+    ],
+    "layerCount": 4
+  },
+  {
+    "key": "Hệ thống kênh thủy lợi::irrigation::irrigation_area",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "type": "irrigation_area",
+    "featureCount": 45,
+    "layers": [
+      {
+        "layerKey": "irrigation::1",
+        "layerName": "1",
+        "featureCount": 45
+      }
+    ],
+    "layerCount": 1
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::cad_polygon",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "cad_polygon",
+    "featureCount": 34,
+    "layers": [
+      {
+        "layerKey": "cad_base::PMV_TEXT",
+        "layerName": "PMV_TEXT",
+        "featureCount": 33
+      },
+      {
+        "layerKey": "cad_base::Leader",
+        "layerName": "Leader",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 2
+  },
+  {
+    "key": "Hệ thống kênh thủy lợi::irrigation::layout_artifact",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "type": "layout_artifact",
+    "featureCount": 30,
+    "layers": [
+      {
+        "layerKey": "irrigation::KHUNG",
+        "layerName": "KHUNG",
+        "featureCount": 23
+      },
+      {
+        "layerKey": "irrigation::ghichu",
+        "layerName": "ghichu",
+        "featureCount": 5
+      },
+      {
+        "layerKey": "irrigation::DUONGCHINH",
+        "layerName": "DUONGCHINH",
+        "featureCount": 2
+      }
+    ],
+    "layerCount": 3
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::supply_zone",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "supply_zone",
+    "featureCount": 18,
+    "layers": [
+      {
+        "layerKey": "cad_base::VUNG DAN CU",
+        "layerName": "VUNG DAN CU",
+        "featureCount": 9
+      },
+      {
+        "layerKey": "cad_base::VUNG CONG NGHIEP",
+        "layerName": "VUNG CONG NGHIEP",
+        "featureCount": 8
+      },
+      {
+        "layerKey": "cad_base::PHL_VUNG CAP NUOC",
+        "layerName": "PHL_VUNG CAP NUOC",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 3
+  },
+  {
+    "key": "Công trình chính::main_works::raw_water_lake",
+    "businessGroup": "Công trình chính",
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "type": "raw_water_lake",
+    "featureCount": 8,
+    "layers": [
+      {
+        "layerKey": "main_works::CNTV-TEXT",
+        "layerName": "CNTV-TEXT",
+        "featureCount": 4
+      },
+      {
+        "layerKey": "main_works::Text ten duong",
+        "layerName": "Text ten duong",
+        "featureCount": 4
+      }
+    ],
+    "layerCount": 2
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::boundary",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "boundary",
+    "featureCount": 8,
+    "layers": [
+      {
+        "layerKey": "cad_base::Xr_GT Ben Luc$0$0-RANHXA",
+        "layerName": "Xr_GT Ben Luc$0$0-RANHXA",
+        "featureCount": 5
+      },
+      {
+        "layerKey": "cad_base::Xr_Nen GT$0$CAU-CONG",
+        "layerName": "Xr_Nen GT$0$CAU-CONG",
+        "featureCount": 2
+      },
+      {
+        "layerKey": "cad_base::RANH XA",
+        "layerName": "RANH XA",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 3
+  },
+  {
+    "key": "Công trình chính::main_works::water_plant",
+    "businessGroup": "Công trình chính",
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "type": "water_plant",
+    "featureCount": 3,
+    "layers": [
+      {
+        "layerKey": "main_works::CNTV-TEXT",
+        "layerName": "CNTV-TEXT",
+        "featureCount": 3
+      }
+    ],
+    "layerCount": 1
+  },
+  {
+    "key": "Công trình chính::main_works::layout_artifact",
+    "businessGroup": "Công trình chính",
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "type": "layout_artifact",
+    "featureCount": 1,
+    "layers": [
+      {
+        "layerKey": "main_works::CNTV- VIEWPORT",
+        "layerName": "CNTV- VIEWPORT",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 1
+  },
+  {
+    "key": "Nền CAD hiện trạng::cad_base::canal",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "type": "canal",
+    "featureCount": 1,
+    "layers": [
+      {
+        "layerKey": "cad_base::Text ten duong",
+        "layerName": "Text ten duong",
+        "featureCount": 1
+      }
+    ],
+    "layerCount": 1
+  }
+]

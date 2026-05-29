@@ -1,0 +1,6120 @@
+[
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$DUONG_DA",
+    "layerName": "Xr_Nen GT$0$DUONG_DA",
+    "featureCount": 2776,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "road_background",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2776
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2776
+    },
+    "typeCounts": {
+      "road_background": 2776
+    },
+    "textFeatureCount": 290,
+    "sampleTexts": [
+      "ÄÆ°á»ng ÄT833D (Äang thi cÃ´ng)",
+      "ÄÆ°á»ng ÄT 823D (Äang thi cÃ´ng)",
+      "ÄÆ°á»ng Äang thi cÃ´ng",
+      "ÄÆ°á»ng N7",
+      "ÄÆ°á»ng ÄÃ¡",
+      "ÄÆ°á»ng GÃ² Sao Hiá»p HÃ²a ( ÄÃ¡ )",
+      "mÆ°Æ¡ng nÆ°á»c bÃª tÃ´ng",
+      "ÄÆ°á»ng BÃ u trai háº¡ (ÄÃ¡)",
+      "ÄÆ°á»ng Ãt KhÃ­ch - Ãt MÃ¹i (ÄÃ¡)",
+      "ÄÆ°á»ng Ã´ng Sá»± - Ã´ng TÃ i (ÄÃ¡)",
+      "Äg BÃ u TrÃ m",
+      "Äg Rá»«ng Cáº¥m"
+    ],
+    "cadSpaceCounts": {
+      "model": 2776,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$DUONG_DA",
+    "layerName": "Xr_Nen GT$0$DUONG_DA",
+    "featureCount": 2776,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 2776
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 2776
+    },
+    "typeCounts": {
+      "main_work_candidate": 2776
+    },
+    "textFeatureCount": 290,
+    "sampleTexts": [
+      "ÄÆ°á»ng ÄT833D (Äang thi cÃ´ng)",
+      "ÄÆ°á»ng ÄT 823D (Äang thi cÃ´ng)",
+      "ÄÆ°á»ng Äang thi cÃ´ng",
+      "ÄÆ°á»ng N7",
+      "ÄÆ°á»ng ÄÃ¡",
+      "ÄÆ°á»ng GÃ² Sao Hiá»p HÃ²a ( ÄÃ¡ )",
+      "mÆ°Æ¡ng nÆ°á»c bÃª tÃ´ng",
+      "ÄÆ°á»ng BÃ u trai háº¡ (ÄÃ¡)",
+      "ÄÆ°á»ng Ãt KhÃ­ch - Ãt MÃ¹i (ÄÃ¡)",
+      "ÄÆ°á»ng Ã´ng Sá»± - Ã´ng TÃ i (ÄÃ¡)",
+      "Äg BÃ u TrÃ m",
+      "Äg Rá»«ng Cáº¥m"
+    ],
+    "cadSpaceCounts": {
+      "model": 2776,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$DUONG NHUA",
+    "layerName": "Xr_Nen GT$0$DUONG NHUA",
+    "featureCount": 2067,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString",
+      "Point",
+      "Polygon"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson",
+      "cong_trinh_chinh_03.geojson",
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 2067
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 2067
+    },
+    "typeCounts": {
+      "main_work_candidate": 2067
+    },
+    "textFeatureCount": 456,
+    "sampleTexts": [
+      "ÄÆ°á»ng Nguyá»n VÄn DÆ°Æ¡ng (nhá»±a)",
+      "ÄT 825",
+      "ÄT 824",
+      "ÄÆ°á»ng Äá»©c HoÃ  ThÆ°á»£ng (nhá»±a)",
+      "ÄÆ°á»ng TL 10 (nhá»±a)",
+      "ÄÆ°á»ng VÃµ VÄn NgÃ¢n (nhá»±a)",
+      "ÄÆ°á»ng VÃµ VÄn Táº§n (nhá»±a)",
+      "ÄÆ°á»ng nhá»±a",
+      "ÄÆ°á»ng Má»¹ Háº¡nh",
+      "ÄÆ°á»ng Ba Sa- GÃ² Má»i",
+      "ÄÆ°á»ng Äá»©c HoÃ  ThÆ°á»£ng",
+      "ÄÆ°á»ng BÃ u Sen (nhá»±a)"
+    ],
+    "cadSpaceCounts": {
+      "model": 2067,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$DUONG NHUA",
+    "layerName": "Xr_Nen GT$0$DUONG NHUA",
+    "featureCount": 2066,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point",
+      "Polygon"
+    ],
+    "inferredType": "road_background",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson",
+      "cad_polygons.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2066
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2066
+    },
+    "typeCounts": {
+      "road_background": 2064,
+      "location_label": 2
+    },
+    "textFeatureCount": 456,
+    "sampleTexts": [
+      "ÄÆ°á»ng Nguyá»n VÄn DÆ°Æ¡ng (nhá»±a)",
+      "ÄT 825",
+      "ÄT 824",
+      "ÄÆ°á»ng Äá»©c HoÃ  ThÆ°á»£ng (nhá»±a)",
+      "ÄÆ°á»ng TL 10 (nhá»±a)",
+      "ÄÆ°á»ng VÃµ VÄn NgÃ¢n (nhá»±a)",
+      "ÄÆ°á»ng VÃµ VÄn Táº§n (nhá»±a)",
+      "ÄÆ°á»ng nhá»±a",
+      "ÄÆ°á»ng Má»¹ Háº¡nh",
+      "ÄÆ°á»ng Ba Sa- GÃ² Má»i",
+      "ÄÆ°á»ng Äá»©c HoÃ  ThÆ°á»£ng",
+      "ÄÆ°á»ng BÃ u Sen (nhá»±a)"
+    ],
+    "cadSpaceCounts": {
+      "model": 2066,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$1$SONG_HO",
+    "layerName": "Xr_Nen GT$1$SONG_HO",
+    "featureCount": 1080,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1080
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1080
+    },
+    "typeCounts": {
+      "cad_line": 903,
+      "cad_point": 162,
+      "location_label": 15
+    },
+    "textFeatureCount": 177,
+    "sampleTexts": [
+      "kÃªnh TÆ° Trang",
+      "rÂ¹ch ThÃ± Â§Ãnh",
+      "kÂªnh ChÂµ LÂµ",
+      "RÂ¹ch BÂµ Nhum",
+      "kÂªnh CÃ RÂ¸n",
+      "kÂªnh CÃu DuyÂªn",
+      "kÂªnh NÂ¨m RÂ«n",
+      "kÂªnh RÂ¹ch SÂ©u",
+      "kÂªnh BÃn Â§Ã",
+      "kÂªnh BÂµ HÂ¹nh",
+      "kÂªnh BÂ¶y GÃp",
+      "rÂ¹ch BÂµ Nhum"
+    ],
+    "cadSpaceCounts": {
+      "model": 1080,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$1$SONG_HO",
+    "layerName": "Xr_Nen GT$1$SONG_HO",
+    "featureCount": 1080,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1080
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1080
+    },
+    "typeCounts": {
+      "main_work_candidate": 1080
+    },
+    "textFeatureCount": 177,
+    "sampleTexts": [
+      "kÃªnh TÆ° Trang",
+      "rÂ¹ch ThÃ± Â§Ãnh",
+      "kÂªnh ChÂµ LÂµ",
+      "RÂ¹ch BÂµ Nhum",
+      "kÂªnh CÃ RÂ¸n",
+      "kÂªnh CÃu DuyÂªn",
+      "kÂªnh NÂ¨m RÂ«n",
+      "kÂªnh RÂ¹ch SÂ©u",
+      "kÂªnh BÃn Â§Ã",
+      "kÂªnh BÂµ HÂ¹nh",
+      "kÂªnh BÂ¶y GÃp",
+      "rÂ¹ch BÂµ Nhum"
+    ],
+    "cadSpaceCounts": {
+      "model": 1080,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$DUONG BT-NEN BT",
+    "layerName": "Xr_Nen GT$0$DUONG BT-NEN BT",
+    "featureCount": 900,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "road_background",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 900
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 900
+    },
+    "typeCounts": {
+      "road_background": 899,
+      "location_label": 1
+    },
+    "textFeatureCount": 64,
+    "sampleTexts": [
+      "ÄÆ°á»ng bÃª tÃ´ng",
+      "ÄÆ°á»ng MÃ£ LÃ ng (BT)",
+      "ÄÆ°á»ng BT",
+      "bÃª tÃ´ng",
+      "ÄÆ°á»ng BÃ u Thá»© (BT)",
+      "Äg XÃ³m Tráº£ng",
+      "Äg BÃ u Cay",
+      "Äg háº»m 104",
+      "Ä. Lá»c BÃ¬nh 6",
+      "ÄÃ¬nh Tháº§n Lá»c Giang",
+      "Ä. Lá»c BÃ¬nh 1",
+      "Ä. Lá»c Thuáº­n 6"
+    ],
+    "cadSpaceCounts": {
+      "model": 900,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$DUONG BT-NEN BT",
+    "layerName": "Xr_Nen GT$0$DUONG BT-NEN BT",
+    "featureCount": 900,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 900
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 900
+    },
+    "typeCounts": {
+      "main_work_candidate": 900
+    },
+    "textFeatureCount": 64,
+    "sampleTexts": [
+      "ÄÆ°á»ng bÃª tÃ´ng",
+      "ÄÆ°á»ng MÃ£ LÃ ng (BT)",
+      "ÄÆ°á»ng BT",
+      "bÃª tÃ´ng",
+      "ÄÆ°á»ng BÃ u Thá»© (BT)",
+      "Äg XÃ³m Tráº£ng",
+      "Äg BÃ u Cay",
+      "Äg háº»m 104",
+      "Ä. Lá»c BÃ¬nh 6",
+      "ÄÃ¬nh Tháº§n Lá»c Giang",
+      "Ä. Lá»c BÃ¬nh 1",
+      "Ä. Lá»c Thuáº­n 6"
+    ],
+    "cadSpaceCounts": {
+      "model": 900,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::1",
+    "layerName": "1",
+    "featureCount": 782,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point",
+      "Polygon"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson",
+      "kenh_thuy_loi_02.geojson",
+      "kenh_thuy_loi_03.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 782
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 782
+    },
+    "typeCounts": {
+      "irrigation_canal": 398,
+      "irrigation_label": 339,
+      "irrigation_area": 45
+    },
+    "textFeatureCount": 339,
+    "sampleTexts": [
+      "UBND",
+      "k.nÂ¨m phÂ­Ã­c",
+      "k. bÂ¶y kÂªu",
+      "k. Â¤ng thÃ³c",
+      "rÂ¹ch mÂ­Â¬ng",
+      "rÂ¹ch lÃ¥ Ã¥",
+      "rÂ¹ch Â®Â¸",
+      "rÂ¹ch gÃn",
+      "kÂªnh 5 chum",
+      "rÂ¹ch gÃµa",
+      "k ba mÂ¨ng",
+      "k hai vÂµm"
+    ],
+    "cadSpaceCounts": {
+      "model": 782,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::ranhlang",
+    "layerName": "ranhlang",
+    "featureCount": 551,
+    "geometryTypes": [
+      "GeometryCollection"
+    ],
+    "inferredType": "irrigation_point",
+    "originalFiles": [
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 551
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 551
+    },
+    "typeCounts": {
+      "irrigation_point": 551
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 551,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::0",
+    "layerName": "0",
+    "featureCount": 524,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson",
+      "kenh_thuy_loi_02.geojson",
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 524
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 524
+    },
+    "typeCounts": {
+      "irrigation_canal": 335,
+      "irrigation_label": 169,
+      "irrigation_point": 20
+    },
+    "textFeatureCount": 169,
+    "sampleTexts": [
+      "tÃnh tÂ©y ninh",
+      "thÂµnh phÃ¨ hÃ¥ chÃ minh",
+      "huyÃn Â®Ã¸c huÃ",
+      "sÂ«ng vÂµm cÃ¡ Â®Â«ng",
+      "N2-6",
+      "N2-6-7",
+      "N2-6-5",
+      "N2-6-2",
+      "N2-6-3",
+      "N2-6-1",
+      "N2-8",
+      "N2-8-1"
+    ],
+    "cadSpaceCounts": {
+      "model": 524,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$CAU-CONG",
+    "layerName": "Xr_Nen GT$0$CAU-CONG",
+    "featureCount": 416,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "road_background",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 416
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 416
+    },
+    "typeCounts": {
+      "road_background": 411,
+      "location_label": 3,
+      "boundary": 2
+    },
+    "textFeatureCount": 47,
+    "sampleTexts": [
+      "Cáº§u Ngáº£ 3\n LÃ ng Dá»«a",
+      "Cá»ng LÃ¡ng Ven",
+      "cáº§u N1",
+      "cáº§u N2",
+      "cáº§u Thá» Äá»nh",
+      "cáº§u Ráº¡ch SÃ¢u",
+      "cáº§u Ráº¡ch Nhum 2",
+      "cáº§u Ráº¡ch Nhum 1",
+      "cáº§u BÃ  Háº¡nh",
+      "cáº§u HÃ³c ThÆ¡m",
+      "cáº§u CÃ² RÃ¡n",
+      "cáº§u Ãng Báº£y"
+    ],
+    "cadSpaceCounts": {
+      "model": 416,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$CAU-CONG",
+    "layerName": "Xr_Nen GT$0$CAU-CONG",
+    "featureCount": 416,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 416
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 416
+    },
+    "typeCounts": {
+      "main_work_candidate": 416
+    },
+    "textFeatureCount": 47,
+    "sampleTexts": [
+      "Cáº§u Ngáº£ 3\n LÃ ng Dá»«a",
+      "Cá»ng LÃ¡ng Ven",
+      "cáº§u N1",
+      "cáº§u N2",
+      "cáº§u Thá» Äá»nh",
+      "cáº§u Ráº¡ch SÃ¢u",
+      "cáº§u Ráº¡ch Nhum 2",
+      "cáº§u Ráº¡ch Nhum 1",
+      "cáº§u BÃ  Háº¡nh",
+      "cáº§u HÃ³c ThÆ¡m",
+      "cáº§u CÃ² RÃ¡n",
+      "cáº§u Ãng Báº£y"
+    ],
+    "cadSpaceCounts": {
+      "model": 416,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Table",
+    "layerName": "Table",
+    "featureCount": 399,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point",
+      "Polygon"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson",
+      "cad_polygons.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 399
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 399
+    },
+    "typeCounts": {
+      "layout_artifact": 399
+    },
+    "textFeatureCount": 279,
+    "sampleTexts": [
+      "KDC VieÃ¤n DÃ¶Ã´Ãµng LaÃµo TraÃ n Anh",
+      "CCN ÃÃ¶Ã¹c HoÃ¸a ÃoÃ¢ng (chÃ¦nh trang)",
+      "TT",
+      "KHAÃCH HAÃNG",
+      "ÃÃA PHÃÃNG",
+      "I",
+      "KHU COÃNG NGHIEÃP",
+      "1.1",
+      "KCN ÃÃ¶Ã¹c HoÃ¸a 1 (HaÃ¯nh PhuÃ¹c)",
+      "MyÃµ HaÃ¯nh",
+      "1.2",
+      "KCN XuyeÃ¢n AÃ"
+    ],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 399
+    }
+  },
+  {
+    "layerKey": "irrigation::thietke",
+    "layerName": "thietke",
+    "featureCount": 396,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson",
+      "kenh_thuy_loi_02.geojson",
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 396
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 396
+    },
+    "typeCounts": {
+      "irrigation_canal": 386,
+      "irrigation_label": 9,
+      "irrigation_point": 1
+    },
+    "textFeatureCount": 9,
+    "sampleTexts": [
+      "199.7m",
+      "200m",
+      "199.6m",
+      "78m",
+      "XaÃµ HoÃ¸a KhaÃ¹nh ÃoÃ¢ng\nHuyeÃ¤n ÃÃ¶Ã¹c HoÃ¸a\nTÃ¦nh Long An",
+      "MaÃ£u 2a- TÃ-TC\nMaÃµ soÃ¡ lÃ¶u: May Van/Du Lieu a10/Liemnho/ÃH/HKÃ/Bai vat lieu so 4",
+      "KeÃ¢nh N3-8-7-1",
+      "N3-9-2",
+      "N3-9-4"
+    ],
+    "cadSpaceCounts": {
+      "model": 396,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::DT",
+    "layerName": "DT",
+    "featureCount": 334,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 334
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 334
+    },
+    "typeCounts": {
+      "irrigation_label": 334
+    },
+    "textFeatureCount": 334,
+    "sampleTexts": [
+      "5624",
+      "2606",
+      "2054",
+      "113",
+      "951",
+      "960",
+      "225",
+      "13",
+      "3196",
+      "2681",
+      "1894",
+      "344"
+    ],
+    "cadSpaceCounts": {
+      "model": 334,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::LDT",
+    "layerName": "LDT",
+    "featureCount": 322,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 322
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 322
+    },
+    "typeCounts": {
+      "irrigation_label": 322
+    },
+    "textFeatureCount": 322,
+    "sampleTexts": [
+      "L",
+      "LUA",
+      "2L",
+      "DGT",
+      "DM",
+      "ND",
+      "T",
+      "1L",
+      "ONT",
+      "HNK",
+      "C]i",
+      "LM"
+    ],
+    "cadSpaceCounts": {
+      "model": 322,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::STCT",
+    "layerName": "STCT",
+    "featureCount": 295,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 295
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 295
+    },
+    "typeCounts": {
+      "irrigation_label": 295
+    },
+    "textFeatureCount": 295,
+    "sampleTexts": [
+      "144",
+      "93",
+      "94",
+      "282",
+      "281",
+      "280",
+      "269",
+      "228",
+      "227",
+      "218",
+      "217",
+      "216"
+    ],
+    "cadSpaceCounts": {
+      "model": 295,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Pipe _Existing_PHL",
+    "layerName": "Pipe _Existing_PHL",
+    "featureCount": 249,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "pipeline",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 249
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 249
+    },
+    "typeCounts": {
+      "pipeline": 249
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 249,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::DUONG",
+    "layerName": "DUONG",
+    "featureCount": 245,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_02.geojson",
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 245
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 245
+    },
+    "typeCounts": {
+      "irrigation_canal": 166,
+      "irrigation_point": 79
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 245,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Pipe Existing",
+    "layerName": "Pipe Existing",
+    "featureCount": 164,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "pipeline",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 164
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 164
+    },
+    "typeCounts": {
+      "pipeline": 164
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 164,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Pipe Existing",
+    "layerName": "Pipe Existing",
+    "featureCount": 164,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 164
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 164
+    },
+    "typeCounts": {
+      "main_work_candidate": 164
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 164,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::SoThua",
+    "layerName": "SoThua",
+    "featureCount": 131,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 131
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 131
+    },
+    "typeCounts": {
+      "irrigation_label": 131
+    },
+    "textFeatureCount": 131,
+    "sampleTexts": [
+      "226",
+      "225",
+      "186",
+      "375",
+      "374",
+      "371",
+      "145",
+      "144",
+      "107",
+      "57",
+      "54",
+      "53"
+    ],
+    "cadSpaceCounts": {
+      "model": 131,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Level 1",
+    "layerName": "Level 1",
+    "featureCount": 130,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 130
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 130
+    },
+    "typeCounts": {
+      "irrigation_label": 130
+    },
+    "textFeatureCount": 130,
+    "sampleTexts": [
+      "CÂ¬ sÃ« NgÃ¤c Lan",
+      "Cty TNHH TM KD nhÂµ XuÂ©n Lan\nDA: NhÂµ mÂ¸y(5HA)-Khu tÂ¸i Â®Ãnh cÂ­(5HA)\n-VÃ¯ng nguyÂªn liÃu khai thÂ¸c (55HA)-khu khai thÂ¸c(2HA).",
+      "Cty TNHH DÂ­ Â§Ãng\nDA: bÂ·i bÃ¨c xÃp\nDT:3.1ha",
+      "KEÃNH 11",
+      "TL-830",
+      "TL-825",
+      "Cty cp ThuÃn Â§Â«ng\nDA: khu dÂ©n cÂ­ nÂ«ng thÂ«n\nDT:6ha",
+      "Cty CP Â§T XD ViÃt PhÂ¸p\nDA:khu khai thÂ¸c Â®Ãt \nDT:13,7ha",
+      "Cty CP Â§T XD VL Â§Ã¥ng Nai\nDA:khu khai thÂ¸c Â®Ãt \nDT:12,9ha",
+      "Cty TNHH XD-TM HÃ¥ng PhÂ¸t\nDA:khu dÂ©n cÂ­ \nDT:324ha",
+      "Cty TNHH XD-TM HÃ¥ng PhÂ¸t\nDA:TrÂ­Ãªng Â®ua ngÃ¹a\nDT:185ha",
+      "Cty TNHH PhÃ³ MÃ¼ Vinh\nDA: HTKCN\nDT:83ha"
+    ],
+    "cadSpaceCounts": {
+      "model": 130,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::CNTV-TEXT",
+    "layerName": "CNTV-TEXT",
+    "featureCount": 111,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 111
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 111
+    },
+    "typeCounts": {
+      "main_work_candidate": 104,
+      "raw_water_lake": 4,
+      "water_plant": 3
+    },
+    "textFeatureCount": 73,
+    "sampleTexts": [
+      "KDC TÃN Äá»¨C",
+      "Äáº I Há»C TÃN Táº O",
+      "KCN Há»®U THáº NH",
+      "Ä.Äá»¨C HÃA THÆ¯á»¢NG",
+      "Ä.á»C EO",
+      "Ä.Má»¸ Háº NH",
+      "Cáº¦U LÃNG VEN",
+      "Cáº¦U AN Háº",
+      "Cáº¦U XÃNG",
+      "Cáº¦U TL9",
+      "ÄT.824",
+      "ÄT.823B"
+    ],
+    "cadSpaceCounts": {
+      "model": 111,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::CNTV-TEXT",
+    "layerName": "CNTV-TEXT",
+    "featureCount": 107,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "location_label",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 107
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 107
+    },
+    "typeCounts": {
+      "location_label": 107
+    },
+    "textFeatureCount": 69,
+    "sampleTexts": [
+      "KDC TÃN Äá»¨C",
+      "Äáº I Há»C TÃN Táº O",
+      "KCN Há»®U THáº NH",
+      "Ä.Äá»¨C HÃA THÆ¯á»¢NG",
+      "Ä.á»C EO",
+      "Ä.Má»¸ Háº NH",
+      "Cáº¦U LÃNG VEN",
+      "Cáº¦U AN Háº",
+      "Cáº¦U XÃNG",
+      "Cáº¦U TL9",
+      "ÄT.824",
+      "ÄT.823B"
+    ],
+    "cadSpaceCounts": {
+      "model": 107,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Diameter_Text",
+    "layerName": "Diameter_Text",
+    "featureCount": 100,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "pipe_diameter_label",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 100
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 100
+    },
+    "typeCounts": {
+      "pipe_diameter_label": 100
+    },
+    "textFeatureCount": 100,
+    "sampleTexts": [
+      "OD90",
+      "OD160",
+      "OD200",
+      "OD630",
+      "OD315",
+      "OD225",
+      "OD450",
+      "OD400",
+      "OD560",
+      "OD110",
+      "OD250",
+      "OD500"
+    ],
+    "cadSpaceCounts": {
+      "model": 100,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Diameter_Text",
+    "layerName": "Diameter_Text",
+    "featureCount": 100,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 100
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 100
+    },
+    "typeCounts": {
+      "main_work_candidate": 100
+    },
+    "textFeatureCount": 100,
+    "sampleTexts": [
+      "OD90",
+      "OD160",
+      "OD200",
+      "OD630",
+      "OD315",
+      "OD225",
+      "OD450",
+      "OD400",
+      "OD560",
+      "OD110",
+      "OD250",
+      "OD500"
+    ],
+    "cadSpaceCounts": {
+      "model": 100,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::CHINHLY",
+    "layerName": "CHINHLY",
+    "featureCount": 73,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 73
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 73
+    },
+    "typeCounts": {
+      "irrigation_label": 73
+    },
+    "textFeatureCount": 73,
+    "sampleTexts": [
+      "6325",
+      "143",
+      "LUA",
+      "3257",
+      "169",
+      "L",
+      "3915",
+      "177",
+      "220",
+      "178",
+      "3653",
+      "200"
+    ],
+    "cadSpaceCounts": {
+      "model": 73,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Level 63",
+    "layerName": "Level 63",
+    "featureCount": 70,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 70
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 70
+    },
+    "typeCounts": {
+      "irrigation_label": 70
+    },
+    "textFeatureCount": 70,
+    "sampleTexts": [
+      "XÂ· An Ninh Â§Â«ng",
+      "UB",
+      "XÂ· An Ninh TÂ©y",
+      "u b",
+      "XÂ· HiÃp HoÂµ",
+      "U.B",
+      "XÂ· TÂ©n MÃ¼",
+      "t.t.hiÃp hÃa",
+      "XÂ·\nÂ§Â­c LÃp ThÂ­Ã®ng",
+      "XÂ· Â§Ã¸c LÃp HÂ¹",
+      "XÂ· TÂ©n PhÃ³",
+      "TT.hÃu nghÃa"
+    ],
+    "cadSpaceCounts": {
+      "model": 70,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$BON HOA",
+    "layerName": "Xr_Nen GT$0$BON HOA",
+    "featureCount": 69,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 69
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 69
+    },
+    "typeCounts": {
+      "cad_line": 69
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 69,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$BON HOA",
+    "layerName": "Xr_Nen GT$0$BON HOA",
+    "featureCount": 69,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 69
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 69
+    },
+    "typeCounts": {
+      "main_work_candidate": 69
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 69,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Kich thuoc",
+    "layerName": "Kich thuoc",
+    "featureCount": 60,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 60
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 60
+    },
+    "typeCounts": {
+      "irrigation_label": 60
+    },
+    "textFeatureCount": 60,
+    "sampleTexts": [
+      "64.5m",
+      "58.1m",
+      "28m",
+      "46.7m",
+      "13.7m",
+      "165.1m",
+      "189.4m",
+      "86.4m",
+      "18m",
+      "20.6m",
+      "19.7m",
+      "23.3m"
+    ],
+    "cadSpaceCounts": {
+      "model": 60,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::dtk_c3",
+    "layerName": "dtk_c3",
+    "featureCount": 55,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson",
+      "kenh_thuy_loi_02.geojson",
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 55
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 55
+    },
+    "typeCounts": {
+      "irrigation_label": 53,
+      "irrigation_canal": 1,
+      "irrigation_point": 1
+    },
+    "textFeatureCount": 53,
+    "sampleTexts": [
+      "TRÃCH ÃO ÃÃA CHÃNH\n                                                                               TÃ´Ã¸ BÃÃC soÃ¡: 14\n                                            TeÃ¢n toÃ¥ chÃ¶Ã¹c: DÃÃ AÃN THUÃY LÃÃI PHÃÃÃC HOÃA - KHU TÃÃÃI ÃÃÃC HOÃA\n                                                                           HaÃ¯ng muÃ¯c: BAÃI VAÃT LIEÃU SOÃ 6\n                                                                                   ToÃ¥ng dieÃ¤n tÃ­ch: 113688mÂ²",
+      "XaÃµ MyÃµ HaÃ¯nh BaÃ©c\nHuyeÃ¤n ÃÃ¶Ã¹c HoÃ¸a\nTÃ¦nh Long An",
+      "MaÃ£u 2a- TÃ-TC\nMaÃµ soÃ¡ lÃ¶u: MTH-C2012-DUCHOA-MYHANHBAC",
+      "B",
+      "TyÃ» leÃ¤ veÃµ 1:1000",
+      "NgaÃ¸y:.......thaÃ¹ng........naÃªm 2012\nNgÃ¶Ã´Ã¸i Ã±o,veÃµ",
+      "NgaÃ¸y:.......thaÃ¹ng.........naÃªm  2012\nTrung taÃ¢m KyÃµ thuaÃ¤t TaÃ¸i nguyeÃ¢n vaÃ¸ MoÃ¢i trÃ¶Ã´Ã¸ng\nGiaÃ¹m Ã±oÃ¡c",
+      "- GHI CHUÃ:\n\n- Ranh khu Ã±o:                             \n(coÃ¹ danh saÃ¹ch keÃ¸m theo)\n\n- BaÃ»n trÃ­ch Ã±o khoÃ¢ng thay theÃ¡ giaÃ¡y CNQSDÃ.  ChÃ¦ coÃ¹ giaÃ¹ trÃ² phaÃ¹p lyÃ¹ laÃ¤p thuÃ» tuÃ¯c thueÃ¢ Ã±aÃ¡t, giao Ã±aÃ¡t.",
+      "26.9m",
+      "29.1m",
+      "8.8m",
+      "41.9m"
+    ],
+    "cadSpaceCounts": {
+      "model": 55,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::KT2",
+    "layerName": "KT2",
+    "featureCount": 49,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 49
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 49
+    },
+    "typeCounts": {
+      "irrigation_label": 49
+    },
+    "textFeatureCount": 49,
+    "sampleTexts": [
+      "10.0m",
+      "63.9m",
+      "199.0m",
+      "223.0m",
+      "4.4m",
+      "8.5m",
+      "20.6m",
+      "49.2m",
+      "1.9m",
+      "16.2m",
+      "146.2m",
+      "9.1m"
+    ],
+    "cadSpaceCounts": {
+      "model": 49,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Pipe_DHBL",
+    "layerName": "Pipe_DHBL",
+    "featureCount": 48,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 48
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 48
+    },
+    "typeCounts": {
+      "cad_line": 48
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 48,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Pipe_DHBL",
+    "layerName": "Pipe_DHBL",
+    "featureCount": 48,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 48
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 48
+    },
+    "typeCounts": {
+      "main_work_candidate": 48
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 48,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$DUONG DAT",
+    "layerName": "Xr_Nen GT$0$DUONG DAT",
+    "featureCount": 48,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "road_background",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 48
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 48
+    },
+    "typeCounts": {
+      "road_background": 48
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 48,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$DUONG DAT",
+    "layerName": "Xr_Nen GT$0$DUONG DAT",
+    "featureCount": 48,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 48
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 48
+    },
+    "typeCounts": {
+      "main_work_candidate": 48
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 48,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$Madiem",
+    "layerName": "Xr_Nen GT$0$Madiem",
+    "featureCount": 48,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "cad_point",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 48
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 48
+    },
+    "typeCounts": {
+      "cad_point": 43,
+      "road_background": 5
+    },
+    "textFeatureCount": 48,
+    "sampleTexts": [
+      "lenhua dauda3.5",
+      "gcong Langs ven",
+      "g1",
+      "bk",
+      "tda3.5",
+      "gcau Langs ven",
+      "DH55",
+      "clua",
+      "cuoida3",
+      "lecat",
+      "gkin",
+      "fa2"
+    ],
+    "cadSpaceCounts": {
+      "model": 48,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$Madiem",
+    "layerName": "Xr_Nen GT$0$Madiem",
+    "featureCount": 48,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 48
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 48
+    },
+    "typeCounts": {
+      "main_work_candidate": 48
+    },
+    "textFeatureCount": 48,
+    "sampleTexts": [
+      "lenhua dauda3.5",
+      "gcong Langs ven",
+      "g1",
+      "bk",
+      "tda3.5",
+      "gcau Langs ven",
+      "DH55",
+      "clua",
+      "cuoida3",
+      "lecat",
+      "gkin",
+      "fa2"
+    ],
+    "cadSpaceCounts": {
+      "model": 48,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Text",
+    "layerName": "Text",
+    "featureCount": 47,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 47
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 47
+    },
+    "typeCounts": {
+      "layout_artifact": 47
+    },
+    "textFeatureCount": 47,
+    "sampleTexts": [
+      "KEÃNH, RAÃCH",
+      "OÃNG HIEÃN TRAÃNG PHUÃ MYÃ VINH",
+      "OÃNG HIEÃN TRAÃNG ÃOÃ THÃ ÃÃÃC HOÃA",
+      "CAÃU",
+      "MAÃT BAÃNG TOÃNG THEÃ HEÃ THOÃNG CAÃP NÃÃÃC PHUÃ MYÃ VINH",
+      "TÃ LEÃ: 1/20.000",
+      "HIEÃN TRAÃNG TUYEÃN OÃNG CAÃP NÃÃÃC BIWASE TAÃY NINH - XAÃ ÃÃÃC HOÃA",
+      "ÃAÃI DIEÃN",
+      "COÃNG TY COÃ PHAÃN ÃAÃU TÃ",
+      "VAÃ XAÃY DÃÃNG PHUÃ MYÃ VINH",
+      "COÃNG TY COÃ PHAÃN NÃÃÃC",
+      "BIWASE TAÃY NINH"
+    ],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 47
+    }
+  },
+  {
+    "layerKey": "cad_base::PMV_TEXT",
+    "layerName": "PMV_TEXT",
+    "featureCount": 45,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point",
+      "Polygon"
+    ],
+    "inferredType": "cad_polygon",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson",
+      "cad_polygons.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 45
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 45
+    },
+    "typeCounts": {
+      "cad_polygon": 33,
+      "cad_line": 6,
+      "pipe_diameter_label": 6
+    },
+    "textFeatureCount": 6,
+    "sampleTexts": [
+      "D160",
+      "D110"
+    ],
+    "cadSpaceCounts": {
+      "model": 45,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PMV_TEXT",
+    "layerName": "PMV_TEXT",
+    "featureCount": 45,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point",
+      "Polygon"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson",
+      "cong_trinh_chinh_03.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 45
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 45
+    },
+    "typeCounts": {
+      "main_work_candidate": 45
+    },
+    "textFeatureCount": 6,
+    "sampleTexts": [
+      "D160",
+      "D110"
+    ],
+    "cadSpaceCounts": {
+      "model": 45,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Text ten duong",
+    "layerName": "Text ten duong",
+    "featureCount": 38,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "road_background",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 38
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 38
+    },
+    "typeCounts": {
+      "road_background": 37,
+      "canal": 1
+    },
+    "textFeatureCount": 38,
+    "sampleTexts": [
+      "Ã. KEÃNH TAÃY",
+      "Ã. MYÃ HAÃNH",
+      "Ã. GOÃ HÃU",
+      "BV ÃK",
+      "Ã. COÃNG BAÃ BOÃNG",
+      "VOÃNG XOAY HCM",
+      "Ã. GIOÃNG LÃÃN",
+      "HAÃU NGHÃA",
+      "ÃT.824",
+      "ÃT.825",
+      "ÃT.830",
+      "FROM KENH DONG WTP"
+    ],
+    "cadSpaceCounts": {
+      "model": 38,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Text ten duong",
+    "layerName": "Text ten duong",
+    "featureCount": 38,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 38
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 38
+    },
+    "typeCounts": {
+      "main_work_candidate": 34,
+      "raw_water_lake": 4
+    },
+    "textFeatureCount": 38,
+    "sampleTexts": [
+      "Ã. KEÃNH TAÃY",
+      "Ã. MYÃ HAÃNH",
+      "Ã. GOÃ HÃU",
+      "BV ÃK",
+      "Ã. COÃNG BAÃ BOÃNG",
+      "VOÃNG XOAY HCM",
+      "Ã. GIOÃNG LÃÃN",
+      "HAÃU NGHÃA",
+      "ÃT.824",
+      "ÃT.825",
+      "ÃT.830",
+      "FROM KENH DONG WTP"
+    ],
+    "cadSpaceCounts": {
+      "model": 38,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::tencsd",
+    "layerName": "tencsd",
+    "featureCount": 35,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 35
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 35
+    },
+    "typeCounts": {
+      "irrigation_label": 35
+    },
+    "textFeatureCount": 35,
+    "sampleTexts": [
+      "DÃ¶Ã´ng ThÃ² NgoÃ¯c SÃ¶Ã´ng",
+      "HaÃ¸ ThÃ² ThaÃ©ng",
+      "NguyeÃ£n ThÃ² HoÃ  ÃieÃ¤p",
+      "Mai NgoÃ¯c YeÃ¡n",
+      "Mai ThÃ² BaÃ¹ch",
+      "Mai ThÃ² BeÃ¹",
+      "NguyeÃ£n DÃ¶Ã´ng NgoÃ¯c NÃ¶Ãµ",
+      "NguyeÃ£n ThÃ² BÃ¶Ã´Ã¹m",
+      "NguyeÃ£n VaÃªn LÃ´Ã¯i"
+    ],
+    "cadSpaceCounts": {
+      "model": 35,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::nha",
+    "layerName": "nha",
+    "featureCount": 33,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "irrigation_point",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson",
+      "kenh_thuy_loi_02.geojson",
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 33
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 33
+    },
+    "typeCounts": {
+      "irrigation_point": 29,
+      "irrigation_canal": 3,
+      "irrigation_label": 1
+    },
+    "textFeatureCount": 1,
+    "sampleTexts": [
+      "G"
+    ],
+    "cadSpaceCounts": {
+      "model": 33,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::DTthucte",
+    "layerName": "DTthucte",
+    "featureCount": 32,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 32
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 32
+    },
+    "typeCounts": {
+      "irrigation_label": 32
+    },
+    "textFeatureCount": 32,
+    "sampleTexts": [
+      "2044",
+      "1257",
+      "3134",
+      "2933",
+      "2360",
+      "1537",
+      "1919",
+      "932",
+      "767",
+      "957",
+      "1267",
+      "1228"
+    ],
+    "cadSpaceCounts": {
+      "model": 32,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$huong nuoc chay",
+    "layerName": "Xr_Nen GT$0$huong nuoc chay",
+    "featureCount": 25,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 25
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 25
+    },
+    "typeCounts": {
+      "cad_line": 25
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 25,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$huong nuoc chay",
+    "layerName": "Xr_Nen GT$0$huong nuoc chay",
+    "featureCount": 25,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 25
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 25
+    },
+    "typeCounts": {
+      "main_work_candidate": 25
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 25,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$KYHIEU 2000",
+    "layerName": "Xr_Nen GT$0$KYHIEU 2000",
+    "featureCount": 25,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson",
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 25
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 25
+    },
+    "typeCounts": {
+      "main_work_candidate": 25
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 25,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::KHUNG",
+    "layerName": "KHUNG",
+    "featureCount": 23,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 23
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 23
+    },
+    "typeCounts": {
+      "layout_artifact": 23
+    },
+    "textFeatureCount": 23,
+    "sampleTexts": [
+      "NgaÃ¸y:.......thaÃ¹ng........naÃªm 2012\nNgÃ¶Ã´Ã¸i Ã±o,veÃµ",
+      "TyÃ» leÃ¤ veÃµ 1: 500",
+      "NgaÃ¸y:.......thaÃ¹ng.........naÃªm  2012\nTrung taÃ¢m KyÃµ thuaÃ¤t TaÃ¸i nguyeÃ¢n vaÃ¸ MoÃ¢i trÃ¶Ã´Ã¸ng\nGiaÃ¹m Ã±oÃ¡c",
+      "- GHI CHUÃ:\n\n- Ranh khu Ã±o:                             \n\n (coÃ¹ danh saÃ¹ch keÃ¸m theo)\n\n- MoÃ¡c GPMB:\n\n- BaÃ»n trÃ­ch Ã±o khoÃ¢ng thay theÃ¡ giaÃ¡y CNQSDÃ. ChÃ¦ coÃ¹ giaÃ¹ trÃ² phaÃ¹p lyÃ¹ laÃ¤p thuÃ» tuÃ¯c thueÃ¢ Ã±aÃ¡t, giao Ã±aÃ¡t.",
+      "B",
+      "XaÃµ TaÃ¢n MyÃµ\nHuyeÃ¤n ÃÃ¶Ã¹c HoÃ¸a\nTÃ¦nh Long An",
+      "* GHI CHUÃ:\n\n- Ranh Khu Ã±o:                             \n(coÃ¹ danh saÃ¹ch keÃ¸m theo)\n\n- Ranh tÃ´Ã¸ BaÃ»n Ã±oÃ :\n\n- MoÃ¡c GPMB:\n\n- BaÃ»n veÃµ naÃ¸y chÃ¦nh sÃ¶Ã»a vaÃ¸ thay theÃ¡ baÃ»n veÃµ Ã±aÃµ Ã±Ã¶Ã´Ã¯c Trung taÃ¢m KyÃµ thuaÃ¤t TaÃ¸i nguyeÃ¢n vaÃ¸ MoÃ¢i trÃ¶Ã´Ã¸ng laÃ¤p ngaÃ¸y 23 thaÃ¹ng 10 naÃªm 2012\n\n- BaÃ»n trÃ­ch Ã±o khoÃ¢ng thay theÃ¡ giaÃ¡y CNQSDÃ.  ChÃ¦ coÃ¹ giaÃ¹ trÃ² phaÃ¹p lyÃ¹ laÃ¤p thuÃ» tuÃ¯c thueÃ¢ Ã±aÃ¡t, giao Ã±aÃ¡t.",
+      "TRÃCH ÃO ÃÃA CHÃNH\nTÃ´Ã¸ BÃÃC soÃ¡: 15, 23\nTeÃ¢n toÃ¥ chÃ¶Ã¹c: BAN QUAÃN LYÃ DÃÃ AÃN NOÃNG NGHIEÃP LONG AN                 \nTeÃ¢n coÃ¢ng trÃ¬nh: DÃÃ AÃN THUYÃ LÃÃI PHÃÃÃC HOÃA - KHU TÃÃÃI ÃÃÃC HOÃA \nHaÃ¯ng muÃ¯c: BAÃI VAÃT LIEÃU               \nToÃ¥ng dieÃ¤n tÃ­ch:  49683 mÂ²",
+      "MaÃ£u 8b- TÃ.TC\nMaÃµ soÃ¡ lÃ¶u: KD9-XTM-Bai vat lieu so 1",
+      "ÃÃ¶Ã´Ã¸ng giao thoÃ¢ng noÃ¢ng thoÃ¢n (Ã±aÃ¹ Ã±oÃ»)",
+      "Ranh 0-50m caÃ«p ÃÃ¶Ã´Ã¸ng giao thoÃ¢ng noÃ¢ng thoÃ¢n",
+      "BAÃI VAÃT LIEÃU SOÃ 2"
+    ],
+    "cadSpaceCounts": {
+      "model": 23,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Kenh",
+    "layerName": "Kenh",
+    "featureCount": 22,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_02.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 22
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 22
+    },
+    "typeCounts": {
+      "irrigation_canal": 22
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 22,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::KY-HIEU",
+    "layerName": "KY-HIEU",
+    "featureCount": 18,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson",
+      "kenh_thuy_loi_02.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 18
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 18
+    },
+    "typeCounts": {
+      "irrigation_canal": 15,
+      "irrigation_point": 3
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 18,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$TEN DUONG",
+    "layerName": "Xr_Nen GT$0$TEN DUONG",
+    "featureCount": 17,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "road_background",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 17
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 17
+    },
+    "typeCounts": {
+      "road_background": 17
+    },
+    "textFeatureCount": 16,
+    "sampleTexts": [
+      "rÂ¹ch ThiÃn",
+      "rÂ¹ch LÃ¥",
+      "kÂªnh NhÂµ VuÂ«ng",
+      "kÂªnh BÂµ Thi",
+      "kÂªnh NÂ¨m NhuÃ©m",
+      "rÂ¹ch MÂ­Â¬ng Â§Âµo",
+      "kÂªnh TN 2",
+      "kÂªnh TN 3",
+      "Â¤",
+      "kÂªnh TiÂªu CÃu HÃ¨c RÃ¤",
+      "ÄÆ°á»ng Sa BÃ  (Nhá»±a)",
+      "ÄÆ°á»ng BÃª TÃ´ng"
+    ],
+    "cadSpaceCounts": {
+      "model": 17,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$TEN DUONG",
+    "layerName": "Xr_Nen GT$0$TEN DUONG",
+    "featureCount": 17,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 17
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 17
+    },
+    "typeCounts": {
+      "main_work_candidate": 17
+    },
+    "textFeatureCount": 16,
+    "sampleTexts": [
+      "rÂ¹ch ThiÃn",
+      "rÂ¹ch LÃ¥",
+      "kÂªnh NhÂµ VuÂ«ng",
+      "kÂªnh BÂµ Thi",
+      "kÂªnh NÂ¨m NhuÃ©m",
+      "rÂ¹ch MÂ­Â¬ng Â§Âµo",
+      "kÂªnh TN 2",
+      "kÂªnh TN 3",
+      "Â¤",
+      "kÂªnh TiÂªu CÃu HÃ¨c RÃ¤",
+      "ÄÆ°á»ng Sa BÃ  (Nhá»±a)",
+      "ÄÆ°á»ng BÃª TÃ´ng"
+    ],
+    "cadSpaceCounts": {
+      "model": 17,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::$0$1",
+    "layerName": "$0$1",
+    "featureCount": 16,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 16
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 16
+    },
+    "typeCounts": {
+      "irrigation_label": 16
+    },
+    "textFeatureCount": 16,
+    "sampleTexts": [
+      "N2-6-7C",
+      "N2-18-2",
+      "N3-5-2C",
+      "N3-8-7C",
+      "N3-8-7-1C",
+      "N3-8-8A",
+      "N3-10-8B",
+      "N3-11-4A",
+      "N3-11-4B",
+      "N3-11-4C",
+      "N3-15-2C",
+      "N3-8-3-1A"
+    ],
+    "cadSpaceCounts": {
+      "model": 16,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::CNTV- GHI CHU",
+    "layerName": "CNTV- GHI CHU",
+    "featureCount": 14,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "pipe_diameter_label",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 14
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 14
+    },
+    "typeCounts": {
+      "pipe_diameter_label": 10,
+      "cad_line": 4
+    },
+    "textFeatureCount": 10,
+    "sampleTexts": [
+      "D150",
+      "D100"
+    ],
+    "cadSpaceCounts": {
+      "model": 14,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::CNTV- GHI CHU",
+    "layerName": "CNTV- GHI CHU",
+    "featureCount": 14,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 14
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 14
+    },
+    "typeCounts": {
+      "main_work_candidate": 14
+    },
+    "textFeatureCount": 10,
+    "sampleTexts": [
+      "D150",
+      "D100"
+    ],
+    "cadSpaceCounts": {
+      "model": 14,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::ghichu",
+    "layerName": "ghichu",
+    "featureCount": 14,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson",
+      "kenh_thuy_loi_02.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 14
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 14
+    },
+    "typeCounts": {
+      "irrigation_label": 7,
+      "layout_artifact": 5,
+      "irrigation_canal": 2
+    },
+    "textFeatureCount": 7,
+    "sampleTexts": [
+      "Khu CÂ«ng NghiÃp xuyÂªn Â¸",
+      "KHU\nQUY\nHOÂ¹CH\nDÂ¢N CÂ¦",
+      "CÃ´M\nCÂ¤NG NGHIÃP\nMAY THÂ£U\nHOÂµNG GIA",
+      "cÃ´m\nCÂ¤NG NGHIÃP \nmay thÂªu\nHOÂµNG GIA",
+      "Khu\ncÂ«ng nghiÃp\nÂ§Ã¸c HÃa 1",
+      "QUY ÃÃNH MAÃU"
+    ],
+    "cadSpaceCounts": {
+      "model": 14,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PHL_GHI CHU",
+    "layerName": "PHL_GHI CHU",
+    "featureCount": 13,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 13
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 13
+    },
+    "typeCounts": {
+      "cad_line": 12,
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 12,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "irrigation::Ghi chu",
+    "layerName": "Ghi chu",
+    "featureCount": 12,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 12
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 12
+    },
+    "typeCounts": {
+      "irrigation_label": 12
+    },
+    "textFeatureCount": 12,
+    "sampleTexts": [
+      "BÃ´Ã¸ keÃ¢nh",
+      "ÃÃ¶Ã´Ã¸ng BaÃ¸o CaÃ y",
+      "ÃÃ¶Ã´Ã¸ng nÃ¶Ã´Ã¹c coÃ¢ng coÃ¤ng",
+      "Ranh tÃ´Ã¸ baÃ»n Ã±oÃ",
+      "50m",
+      "ÃÃ¶Ã´Ã¸ng Ã±aÃ¡t",
+      "ÃÃ¶Ã´Ã¸ng Ã±aÃ¡t (2.9m)",
+      "2.2m",
+      "ÃÃ¶Ã´Ã¸ng Ã±aÃ¡t (1.7m)",
+      "Ranh 0-50m caÃ«p ÃÃ¶Ã´Ã¸ng BaÃ¸o CaÃ y"
+    ],
+    "cadSpaceCounts": {
+      "model": 12,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Leader",
+    "layerName": "Leader",
+    "featureCount": 12,
+    "geometryTypes": [
+      "MultiLineString",
+      "Polygon"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_polygons.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 12
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 12
+    },
+    "typeCounts": {
+      "cad_line": 11,
+      "cad_polygon": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 12,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Leader",
+    "layerName": "Leader",
+    "featureCount": 12,
+    "geometryTypes": [
+      "MultiLineString",
+      "Polygon"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson",
+      "cong_trinh_chinh_03.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 12
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 12
+    },
+    "typeCounts": {
+      "main_work_candidate": 12
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 12,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PHL_GHI CHU",
+    "layerName": "PHL_GHI CHU",
+    "featureCount": 12,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 12
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 12
+    },
+    "typeCounts": {
+      "main_work_candidate": 12
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 12,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::dttong",
+    "layerName": "dttong",
+    "featureCount": 11,
+    "geometryTypes": [
+      "GeometryCollection",
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson",
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 11
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 11
+    },
+    "typeCounts": {
+      "irrigation_label": 10,
+      "irrigation_point": 1
+    },
+    "textFeatureCount": 10,
+    "sampleTexts": [
+      "XaÃµ HoaÃ¸ KhaÃ¹nh Nam\nHuyeÃ¤n CaÃ n ÃÃ¶Ã´Ã¹c\nTÃ¦nh Long An",
+      "MaÃ£u 2a- TÃ-TC\nMaÃµ soÃ¡ lÃ¶u: May Tuyetdong/D/Dulieua10 /Ln/DHoa/Hoakhanhnambaivatlieu",
+      "B",
+      "TyÃ» leÃ¤ veÃµ 1:500",
+      "NgaÃ¸y:.......thaÃ¹ng........naÃªm 2012\nNgÃ¶Ã´Ã¸i Ã±o,veÃµ",
+      "NgaÃ¸y:.......thaÃ¹ng.........naÃªm  2012\nTrung taÃ¢m KyÃµ thuaÃ¤t TaÃ¸i nguyeÃ¢n vaÃ¸ MoÃ¢i trÃ¶Ã´Ã¸ng\nGiaÃ¹m Ã±oÃ¡c",
+      "SÃ´Ã» TaÃ¸i nguyeÃ¢n vaÃ¸ MoÃ¢i trÃ¶Ã´Ã¸ng\nDuyeÃ¤t, ngaÃ¸y:.......thaÃ¹ng.........naÃªm 2012\nKT . GiaÃ¹m Ã±oÃ¡c\nPhoÃ¹ GiaÃ¹m Ã±oÃ¡c",
+      "VaÃªn phoÃ¸ng ÃaÃªng kyÃ¹ QSDÃ TÃ¦nh (HuyeÃ¤n)\nThaÃ¥m Ã±Ã²nh, ngaÃ¸y:......thaÃ¹ng.........naÃªm  2012\nGiaÃ¹m Ã±oÃ¡c",
+      "TRÃCH ÃO ÃÃA CHÃNH\n                                                  TÃ´Ã¸ BÃÃC soÃ¡: 1\n                   TeÃ¢n coÃ¢ng trÃ¬nh : DÃÃ AÃN THUYÃ LÃÃI PHÃÃÃC HOAÃ -KHU TÃÃÃI ÃÃÃC HOAÃ\n\t\t\tHaÃ¯ng muÃ¯c : BAÃI VAÃT LIEÃU SOÃ 3                                                     \t\t\tToÃ¥ng dieÃ¤n tÃ­ch: mÂ²",
+      "- GHI CHUÃ:\n\n\n- Ranh Khu Ã±o:                             \n(coÃ¹ danh saÃ¹ch keÃ¸m theo)\n\n- BaÃ»n trÃ­ch Ã±o khoÃ¢ng thay theÃ¡ giaÃ¡y CNQSDÃ.  ChÃ¦ coÃ¹ giaÃ¹ trÃ² phaÃ¹p lyÃ¹ laÃ¤p thuÃ» tuÃ¯c thueÃ¢ Ã±aÃ¡t, giao Ã±aÃ¡t."
+    ],
+    "cadSpaceCounts": {
+      "model": 11,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::textsl",
+    "layerName": "textsl",
+    "featureCount": 11,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "cad_point",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 11
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 11
+    },
+    "typeCounts": {
+      "cad_point": 11
+    },
+    "textFeatureCount": 11,
+    "sampleTexts": [
+      "DMA"
+    ],
+    "cadSpaceCounts": {
+      "model": 11,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::textsl",
+    "layerName": "textsl",
+    "featureCount": 11,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 11
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 11
+    },
+    "typeCounts": {
+      "main_work_candidate": 11
+    },
+    "textFeatureCount": 11,
+    "sampleTexts": [
+      "DMA"
+    ],
+    "cadSpaceCounts": {
+      "model": 11,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::van nhua 63",
+    "layerName": "van nhua 63",
+    "featureCount": 11,
+    "geometryTypes": [
+      "GeometryCollection"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 11
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 11
+    },
+    "typeCounts": {
+      "main_work_candidate": 11
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 11,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PHL_TEXT HT",
+    "layerName": "PHL_TEXT HT",
+    "featureCount": 10,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 10
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 10
+    },
+    "typeCounts": {
+      "cad_line": 5,
+      "pipe_diameter_label": 5
+    },
+    "textFeatureCount": 5,
+    "sampleTexts": [
+      "D160",
+      "D110"
+    ],
+    "cadSpaceCounts": {
+      "model": 10,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PHL_TEXT HT",
+    "layerName": "PHL_TEXT HT",
+    "featureCount": 10,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 10
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 10
+    },
+    "typeCounts": {
+      "main_work_candidate": 10
+    },
+    "textFeatureCount": 5,
+    "sampleTexts": [
+      "D160",
+      "D110"
+    ],
+    "cadSpaceCounts": {
+      "model": 10,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Table",
+    "layerName": "Table",
+    "featureCount": 10,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString",
+      "Polygon"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson",
+      "cong_trinh_chinh_03.geojson",
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 10
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 10
+    },
+    "typeCounts": {
+      "main_work_candidate": 10
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 10,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::VUNG DAN CU",
+    "layerName": "VUNG DAN CU",
+    "featureCount": 10,
+    "geometryTypes": [
+      "MultiLineString",
+      "Polygon"
+    ],
+    "inferredType": "supply_zone",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_polygons.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 10
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 10
+    },
+    "typeCounts": {
+      "supply_zone": 9,
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 1,
+    "sampleTexts": [
+      "ANSI31"
+    ],
+    "cadSpaceCounts": {
+      "model": 9,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$CONG XO",
+    "layerName": "Xr_Nen GT$0$CONG XO",
+    "featureCount": 10,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "road_background",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 10
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 10
+    },
+    "typeCounts": {
+      "road_background": 10
+    },
+    "textFeatureCount": 1,
+    "sampleTexts": [
+      "Cá»ng CÃ¡ NgoÃ i"
+    ],
+    "cadSpaceCounts": {
+      "model": 10,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$CONG XO",
+    "layerName": "Xr_Nen GT$0$CONG XO",
+    "featureCount": 10,
+    "geometryTypes": [
+      "MultiLineString",
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson",
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 10
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 10
+    },
+    "typeCounts": {
+      "main_work_candidate": 10
+    },
+    "textFeatureCount": 1,
+    "sampleTexts": [
+      "Cá»ng CÃ¡ NgoÃ i"
+    ],
+    "cadSpaceCounts": {
+      "model": 10,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Kich thuot",
+    "layerName": "Kich thuot",
+    "featureCount": 9,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 9
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 9
+    },
+    "typeCounts": {
+      "irrigation_label": 9
+    },
+    "textFeatureCount": 9,
+    "sampleTexts": [
+      "26.1m",
+      "27.0m",
+      "53.3m",
+      "50.0m",
+      "108.8m",
+      "109.4m",
+      "55.6m",
+      "20.9m"
+    ],
+    "cadSpaceCounts": {
+      "model": 9,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Level 30",
+    "layerName": "Level 30",
+    "featureCount": 9,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_02.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 9
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 9
+    },
+    "typeCounts": {
+      "irrigation_canal": 9
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 9,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::VUNG CONG NGHIEP",
+    "layerName": "VUNG CONG NGHIEP",
+    "featureCount": 9,
+    "geometryTypes": [
+      "MultiLineString",
+      "Polygon"
+    ],
+    "inferredType": "supply_zone",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_polygons.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 9
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 9
+    },
+    "typeCounts": {
+      "supply_zone": 8,
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 1,
+    "sampleTexts": [
+      "ANSI31"
+    ],
+    "cadSpaceCounts": {
+      "model": 8,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "main_works::VUNG DAN CU",
+    "layerName": "VUNG DAN CU",
+    "featureCount": 9,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 9
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 9
+    },
+    "typeCounts": {
+      "main_work_candidate": 9
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 9,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$KYHIEU",
+    "layerName": "Xr_Nen GT$0$KYHIEU",
+    "featureCount": 9,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson",
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 9
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 9
+    },
+    "typeCounts": {
+      "main_work_candidate": 9
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 9,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::D. Dia vat",
+    "layerName": "D. Dia vat",
+    "featureCount": 8,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "cad_point",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 8
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 8
+    },
+    "typeCounts": {
+      "cad_point": 4,
+      "layout_artifact": 4
+    },
+    "textFeatureCount": 8,
+    "sampleTexts": [
+      "T",
+      "Ã",
+      "B",
+      "N"
+    ],
+    "cadSpaceCounts": {
+      "model": 4,
+      "paper": 4
+    }
+  },
+  {
+    "layerKey": "irrigation::DUONGCHINH",
+    "layerName": "DUONGCHINH",
+    "featureCount": 8,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_02.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 8
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 8
+    },
+    "typeCounts": {
+      "irrigation_canal": 6,
+      "layout_artifact": 2
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 8,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Unknown_Line_Type",
+    "layerName": "Unknown_Line_Type",
+    "featureCount": 8,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 8
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 8
+    },
+    "typeCounts": {
+      "cad_line": 8
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 8,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Unknown_Line_Type",
+    "layerName": "Unknown_Line_Type",
+    "featureCount": 8,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 8
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 8
+    },
+    "typeCounts": {
+      "main_work_candidate": 8
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 8,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::VUNG CONG NGHIEP",
+    "layerName": "VUNG CONG NGHIEP",
+    "featureCount": 8,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 8
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 8
+    },
+    "typeCounts": {
+      "main_work_candidate": 8
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 8,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$KYHIEU",
+    "layerName": "Xr_Nen GT$0$KYHIEU",
+    "featureCount": 8,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 8
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 8
+    },
+    "typeCounts": {
+      "cad_line": 8
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 8,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Pipe_Phase 1",
+    "layerName": "Pipe_Phase 1",
+    "featureCount": 7,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 7
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 7
+    },
+    "typeCounts": {
+      "cad_line": 7
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 7,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Pipe_Phase 1",
+    "layerName": "Pipe_Phase 1",
+    "featureCount": 7,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 7
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 7
+    },
+    "typeCounts": {
+      "main_work_candidate": 7
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 7,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Defpoints",
+    "layerName": "Defpoints",
+    "featureCount": 6,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "cad_point",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 6
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 6
+    },
+    "typeCounts": {
+      "cad_point": 6
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 6,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Defpoints",
+    "layerName": "Defpoints",
+    "featureCount": 6,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 6
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 6
+    },
+    "typeCounts": {
+      "main_work_candidate": 6
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 6,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::HOVATEN",
+    "layerName": "HOVATEN",
+    "featureCount": 6,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 6
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 6
+    },
+    "typeCounts": {
+      "irrigation_label": 6
+    },
+    "textFeatureCount": 6,
+    "sampleTexts": [
+      "MÃ¶Ã´ng coÃ¢ng coÃ¤ng",
+      "Ranh theo trÃ­ch luÃ¯c thÃ¶Ã¯c teÃ¡ khoÃ¢ng coÃ¹"
+    ],
+    "cadSpaceCounts": {
+      "model": 6,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Ranh BD",
+    "layerName": "Ranh BD",
+    "featureCount": 6,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 6
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 6
+    },
+    "typeCounts": {
+      "irrigation_label": 6
+    },
+    "textFeatureCount": 6,
+    "sampleTexts": [
+      "Ranh tÃ´Ã¸ BÃ",
+      "TÃ´Ã¸ BÃ soÃ¡ 15",
+      "TÃ´Ã¸ BÃ soÃ¡ 23",
+      "TÃ´Ã¸ BÃ soÃ¡ 12",
+      "TÃ´Ã¸ BÃ soÃ¡ 13"
+    ],
+    "cadSpaceCounts": {
+      "model": 6,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Ranh to BD",
+    "layerName": "Ranh to BD",
+    "featureCount": 5,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 5
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 5
+    },
+    "typeCounts": {
+      "irrigation_label": 5
+    },
+    "textFeatureCount": 5,
+    "sampleTexts": [
+      "TÃ´Ã¸ 9",
+      "TÃ´Ã¸ 15"
+    ],
+    "cadSpaceCounts": {
+      "model": 5,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_GT Ben Luc$0$0-RANHXA",
+    "layerName": "Xr_GT Ben Luc$0$0-RANHXA",
+    "featureCount": 5,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "boundary",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 5
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 5
+    },
+    "typeCounts": {
+      "boundary": 5
+    },
+    "textFeatureCount": 5,
+    "sampleTexts": [
+      "XAÃ LÃÃNG BÃNH",
+      "XAÃ LÃÃNG HOÃA",
+      "XAÃ TAÃN HOÃA",
+      "XAÃ TAÃN BÃÃU",
+      "XAÃ AN THAÃNH"
+    ],
+    "cadSpaceCounts": {
+      "model": 5,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_GT Ben Luc$0$0-RANHXA",
+    "layerName": "Xr_GT Ben Luc$0$0-RANHXA",
+    "featureCount": 5,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 5
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 5
+    },
+    "typeCounts": {
+      "main_work_candidate": 5
+    },
+    "textFeatureCount": 5,
+    "sampleTexts": [
+      "XAÃ LÃÃNG BÃNH",
+      "XAÃ LÃÃNG HOÃA",
+      "XAÃ TAÃN HOÃA",
+      "XAÃ TAÃN BÃÃU",
+      "XAÃ AN THAÃNH"
+    ],
+    "cadSpaceCounts": {
+      "model": 5,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::CN Thuan An",
+    "layerName": "CN Thuan An",
+    "featureCount": 4,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 4
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 4
+    },
+    "typeCounts": {
+      "layout_artifact": 4
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 4
+    }
+  },
+  {
+    "layerKey": "main_works::D. Dia vat",
+    "layerName": "D. Dia vat",
+    "featureCount": 4,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 4
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 4
+    },
+    "typeCounts": {
+      "main_work_candidate": 4
+    },
+    "textFeatureCount": 4,
+    "sampleTexts": [
+      "T",
+      "Ã",
+      "B",
+      "N"
+    ],
+    "cadSpaceCounts": {
+      "model": 4,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Pipe_Phase 2",
+    "layerName": "Pipe_Phase 2",
+    "featureCount": 4,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 4
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 4
+    },
+    "typeCounts": {
+      "cad_line": 4
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 4,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Pipe_Phase 2",
+    "layerName": "Pipe_Phase 2",
+    "featureCount": 4,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 4
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 4
+    },
+    "typeCounts": {
+      "main_work_candidate": 4
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 4,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Level 51",
+    "layerName": "Level 51",
+    "featureCount": 3,
+    "geometryTypes": [
+      "GeometryCollection"
+    ],
+    "inferredType": "irrigation_point",
+    "originalFiles": [
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 3
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 3
+    },
+    "typeCounts": {
+      "irrigation_point": 3
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 3,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Pipe Existing_DTDH",
+    "layerName": "Pipe Existing_DTDH",
+    "featureCount": 3,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "pipeline",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 3
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 3
+    },
+    "typeCounts": {
+      "pipeline": 3
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 3,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Pipe Existing_DTDH",
+    "layerName": "Pipe Existing_DTDH",
+    "featureCount": 3,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson",
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 3
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 3
+    },
+    "typeCounts": {
+      "main_work_candidate": 3
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 3,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_GT Ben Luc$0$0-text-giaothong",
+    "layerName": "Xr_GT Ben Luc$0$0-text-giaothong",
+    "featureCount": 3,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "cad_point",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 3
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 3
+    },
+    "typeCounts": {
+      "cad_point": 3
+    },
+    "textFeatureCount": 3,
+    "sampleTexts": [
+      "SOÃNG VAÃM COÃ ÃOÃNG"
+    ],
+    "cadSpaceCounts": {
+      "model": 3,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_GT Ben Luc$0$0-text-giaothong",
+    "layerName": "Xr_GT Ben Luc$0$0-text-giaothong",
+    "featureCount": 3,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 3
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 3
+    },
+    "typeCounts": {
+      "main_work_candidate": 3
+    },
+    "textFeatureCount": 3,
+    "sampleTexts": [
+      "SOÃNG VAÃM COÃ ÃOÃNG"
+    ],
+    "cadSpaceCounts": {
+      "model": 3,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::1. PMV_GD2",
+    "layerName": "1. PMV_GD2",
+    "featureCount": 2,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2
+    },
+    "typeCounts": {
+      "cad_line": 2
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::1. PMV_GD2",
+    "layerName": "1. PMV_GD2",
+    "featureCount": 2,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 2
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 2
+    },
+    "typeCounts": {
+      "main_work_candidate": 2
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::22",
+    "layerName": "22",
+    "featureCount": 2,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_02.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 2
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 2
+    },
+    "typeCounts": {
+      "irrigation_canal": 2
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::CAU",
+    "layerName": "CAU",
+    "featureCount": 2,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2
+    },
+    "typeCounts": {
+      "layout_artifact": 2
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 2
+    }
+  },
+  {
+    "layerKey": "cad_base::CNTV-HATCH",
+    "layerName": "CNTV-HATCH",
+    "featureCount": 2,
+    "geometryTypes": [
+      "Polygon"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_polygons.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2
+    },
+    "typeCounts": {
+      "layout_artifact": 2
+    },
+    "textFeatureCount": 2,
+    "sampleTexts": [
+      "SOLID"
+    ],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 2
+    }
+  },
+  {
+    "layerKey": "irrigation::Defpoints",
+    "layerName": "Defpoints",
+    "featureCount": 2,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "irrigation_canal",
+    "originalFiles": [
+      "kenh_thuy_loi_02.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 2
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 2
+    },
+    "typeCounts": {
+      "irrigation_canal": 2
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::DUONG GIAO THONG",
+    "layerName": "DUONG GIAO THONG",
+    "featureCount": 2,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "road_background",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2
+    },
+    "typeCounts": {
+      "road_background": 1,
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "main_works::DUONG GIAO THONG",
+    "layerName": "DUONG GIAO THONG",
+    "featureCount": 2,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson",
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 2
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 2
+    },
+    "typeCounts": {
+      "main_work_candidate": 2
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Noi diem",
+    "layerName": "Noi diem",
+    "featureCount": 2,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 2
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 2
+    },
+    "typeCounts": {
+      "irrigation_label": 2
+    },
+    "textFeatureCount": 2,
+    "sampleTexts": [
+      "6.0m"
+    ],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PHL_VUNG CAP NUOC",
+    "layerName": "PHL_VUNG CAP NUOC",
+    "featureCount": 2,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "supply_zone",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2
+    },
+    "typeCounts": {
+      "supply_zone": 1,
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "cad_base::RANH XA",
+    "layerName": "RANH XA",
+    "featureCount": 2,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "boundary",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2
+    },
+    "typeCounts": {
+      "boundary": 1,
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_GT Ben Luc$0$3- VUNG CANH QUAN",
+    "layerName": "Xr_GT Ben Luc$0$3- VUNG CANH QUAN",
+    "featureCount": 2,
+    "geometryTypes": [
+      "MultiLineString",
+      "Polygon"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson",
+      "cad_polygons.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2
+    },
+    "typeCounts": {
+      "layout_artifact": 2
+    },
+    "textFeatureCount": 1,
+    "sampleTexts": [
+      "NET3"
+    ],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 2
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$KH",
+    "layerName": "Xr_Nen GT$0$KH",
+    "featureCount": 2,
+    "geometryTypes": [
+      "GeometryCollection",
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson",
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 2
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 2
+    },
+    "typeCounts": {
+      "main_work_candidate": 2
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$mo ma lang tham",
+    "layerName": "Xr_Nen GT$0$mo ma lang tham",
+    "featureCount": 2,
+    "geometryTypes": [
+      "GeometryCollection"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 2
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 2
+    },
+    "typeCounts": {
+      "main_work_candidate": 2
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$MUONG NUOC BE TONG",
+    "layerName": "Xr_Nen GT$0$MUONG NUOC BE TONG",
+    "featureCount": 2,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "cad_point",
+    "originalFiles": [
+      "cad_points.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 2
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 2
+    },
+    "typeCounts": {
+      "cad_point": 2
+    },
+    "textFeatureCount": 2,
+    "sampleTexts": [
+      "mÆ°Æ¡ng nÆ°á»c bÃª tÃ´ng"
+    ],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$MUONG NUOC BE TONG",
+    "layerName": "Xr_Nen GT$0$MUONG NUOC BE TONG",
+    "featureCount": 2,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_01.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 2
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 2
+    },
+    "typeCounts": {
+      "main_work_candidate": 2
+    },
+    "textFeatureCount": 2,
+    "sampleTexts": [
+      "mÆ°Æ¡ng nÆ°á»c bÃª tÃ´ng"
+    ],
+    "cadSpaceCounts": {
+      "model": 2,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::_div_Tuy__n__ng_c__p_n___c_CCN_",
+    "layerName": "_div_Tuy__n__ng_c__p_n___c_CCN_",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::_div_Tuy__n__ng_c__p_n___c_CCN_",
+    "layerName": "_div_Tuy__n__ng_c__p_n___c_CCN_",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::_div_Tuy__n__ng_c__p_n___c_DT82",
+    "layerName": "_div_Tuy__n__ng_c__p_n___c_DT82",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::_div_Tuy__n__ng_c__p_n___c_DT82",
+    "layerName": "_div_Tuy__n__ng_c__p_n___c_DT82",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::_div_Tuy__n__ng_M__H__nh_BR__di",
+    "layerName": "_div_Tuy__n__ng_M__H__nh_BR__di",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::_div_Tuy__n__ng_M__H__nh_BR__di",
+    "layerName": "_div_Tuy__n__ng_M__H__nh_BR__di",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::0",
+    "layerName": "0",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "irrigation::10",
+    "layerName": "10",
+    "featureCount": 1,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 1
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 1
+    },
+    "typeCounts": {
+      "irrigation_label": 1
+    },
+    "textFeatureCount": 1,
+    "sampleTexts": [
+      "TRÃCH ÃO ÃÃA CHÃNH\n                             TÃ´Ã¸ BÃÃC soÃ¡: 9\n                      TeÃ¢n toÃ¥ chÃ¶Ã¹c: BAN QUAÃN LYÃ DÃÃ AÃN NOÃNG NGHIEÃP LONG AN\n                 5x;        TeÃ¢n coÃ¢ng trÃ¬nh: DÃÃ AÃN THUÃY LÃÃI PHÃÃÃC HOÃA - KHU TÃÃÃI ÃÃÃC HOÃA\n\t                HaÃ¯ng muÃ¯c: BAÃI VAÃT LIEÃU SOÃ 4                                 \n                                  ToÃ¥ng dieÃ¤n tÃ­ch Ã±o Ã±aÃ¯c thÃ¶Ã¯c teÃ¡ : 46371mÂ²\n                                                                                     ToÃ¥ng dieÃ¤n tÃ­ch caÃ¡p GCNQSDÃ : 46410mÂ²"
+    ],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::CNTV- VIEWPORT",
+    "layerName": "CNTV- VIEWPORT",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::CNTV- VIEWPORT",
+    "layerName": "CNTV- VIEWPORT",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::D1",
+    "layerName": "D1",
+    "featureCount": 1,
+    "geometryTypes": [
+      "GeometryCollection"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_04.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Khung 2",
+    "layerName": "Khung 2",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "cad_base::PHL_ONG D110",
+    "layerName": "PHL_ONG D110",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "cad_base::PHL_ONG D160_2027",
+    "layerName": "PHL_ONG D160_2027",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PHL_ONG D160_2027",
+    "layerName": "PHL_ONG D160_2027",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PHL_ONG DAU TU",
+    "layerName": "PHL_ONG DAU TU",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "main_works::PHL_VUNG CAP NUOC",
+    "layerName": "PHL_VUNG CAP NUOC",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PIPE100",
+    "layerName": "PIPE100",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PIPE100",
+    "layerName": "PIPE100",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PIPE141",
+    "layerName": "PIPE141",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PIPE141",
+    "layerName": "PIPE141",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PIPE200",
+    "layerName": "PIPE200",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PIPE200",
+    "layerName": "PIPE200",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PIPE362",
+    "layerName": "PIPE362",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PIPE362",
+    "layerName": "PIPE362",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PIPE440",
+    "layerName": "PIPE440",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PIPE440",
+    "layerName": "PIPE440",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PIPE97",
+    "layerName": "PIPE97",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PIPE97",
+    "layerName": "PIPE97",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::PMV_ONG D630",
+    "layerName": "PMV_ONG D630",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 1
+    }
+  },
+  {
+    "layerKey": "cad_base::PROPOSED PIPE_BWS",
+    "layerName": "PROPOSED PIPE_BWS",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::PROPOSED PIPE_BWS",
+    "layerName": "PROPOSED PIPE_BWS",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Ranh 50",
+    "layerName": "Ranh 50",
+    "featureCount": 1,
+    "geometryTypes": [
+      "Point"
+    ],
+    "inferredType": "irrigation_label",
+    "originalFiles": [
+      "kenh_thuy_loi_01.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 1
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 1
+    },
+    "typeCounts": {
+      "irrigation_label": 1
+    },
+    "textFeatureCount": 1,
+    "sampleTexts": [
+      "Ranh 0-50m caÃ«p BÃ´Ã¸ keÃ¢nh"
+    ],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::RANH XA",
+    "layerName": "RANH XA",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::RANHXA",
+    "layerName": "RANHXA",
+    "featureCount": 1,
+    "geometryTypes": [
+      "GeometryCollection"
+    ],
+    "inferredType": "irrigation_point",
+    "originalFiles": [
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 1
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 1
+    },
+    "typeCounts": {
+      "irrigation_point": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "irrigation::Text",
+    "layerName": "Text",
+    "featureCount": 1,
+    "geometryTypes": [
+      "GeometryCollection"
+    ],
+    "inferredType": "irrigation_point",
+    "originalFiles": [
+      "kenh_thuy_loi_04.geojson"
+    ],
+    "sourceGroup": "irrigation",
+    "sourceName": "Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg",
+    "businessGroup": "Hệ thống kênh thủy lợi",
+    "sourceGroups": [
+      "irrigation"
+    ],
+    "sourceGroupCounts": {
+      "irrigation": 1
+    },
+    "businessGroupCounts": {
+      "Hệ thống kênh thủy lợi": 1
+    },
+    "typeCounts": {
+      "irrigation_point": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$KH",
+    "layerName": "Xr_Nen GT$0$KH",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$KS-RAOKEM",
+    "layerName": "Xr_Nen GT$0$KS-RAOKEM",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "main_works::Xr_Nen GT$0$KS-RAOKEM",
+    "layerName": "Xr_Nen GT$0$KS-RAOKEM",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "main_work_candidate",
+    "originalFiles": [
+      "cong_trinh_chinh_02.geojson"
+    ],
+    "sourceGroup": "main_works",
+    "sourceName": "HTCN PMV.dwg",
+    "businessGroup": "Công trình chính",
+    "sourceGroups": [
+      "main_works"
+    ],
+    "sourceGroupCounts": {
+      "main_works": 1
+    },
+    "businessGroupCounts": {
+      "Công trình chính": 1
+    },
+    "typeCounts": {
+      "main_work_candidate": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$KYHIEU 2000",
+    "layerName": "Xr_Nen GT$0$KYHIEU 2000",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "cad_line",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "cad_line": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 1,
+      "paper": 0
+    }
+  },
+  {
+    "layerKey": "cad_base::Xr_Nen GT$0$SONG_HO",
+    "layerName": "Xr_Nen GT$0$SONG_HO",
+    "featureCount": 1,
+    "geometryTypes": [
+      "MultiLineString"
+    ],
+    "inferredType": "layout_artifact",
+    "originalFiles": [
+      "cad_lines.geojson"
+    ],
+    "sourceGroup": "cad_base",
+    "sourceName": "BIWASE_HIEN TRANG.dwg",
+    "businessGroup": "Nền CAD hiện trạng",
+    "sourceGroups": [
+      "cad_base"
+    ],
+    "sourceGroupCounts": {
+      "cad_base": 1
+    },
+    "businessGroupCounts": {
+      "Nền CAD hiện trạng": 1
+    },
+    "typeCounts": {
+      "layout_artifact": 1
+    },
+    "textFeatureCount": 0,
+    "sampleTexts": [],
+    "cadSpaceCounts": {
+      "model": 0,
+      "paper": 1
+    }
+  }
+]

@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #10263a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Roboto, 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(circle at 8% 4%, rgba(147, 224, 255, 0.45), transparent 34%),
+    radial-gradient(circle at 88% 12%, rgba(32, 112, 151, 0.2), transparent 36%),
+    linear-gradient(170deg, #eef8fd 0%, #deeff8 48%, #e8f4fa 100%);
+  color: #16354b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  font-family: Inter, Roboto, 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.leaflet-control-attribution {
+  font-size: 11px;
+}
+
+.cad-vector-leaflet {
+  background: #fff !important;
+}
+
+.cad-vector-leaflet.cad-visual-clean {
+  background: #fff !important;
+}
+
+.cad-vector-leaflet.cad-visual-classic {
+  background: #ffffff !important;
+}
+
+.cad-vector-leaflet.cad-visual-report {
+  background:
+    linear-gradient(130deg, rgba(241, 245, 249, 0.8), transparent 38%),
+    linear-gradient(30deg, rgba(219, 234, 254, 0.45), transparent 44%),
+    #fbfdff !important;
+}
+
+.cad-vector-leaflet.cad-visual-water {
+  background:
+    radial-gradient(circle at 24% 30%, rgba(219, 234, 254, 0.62), transparent 34%),
+    linear-gradient(145deg, #ffffff 0%, #f8fbff 100%) !important;
+}
+
+.cad-vector-leaflet.cad-visual-irrigation {
+  background:
+    radial-gradient(circle at 28% 34%, rgba(204, 251, 241, 0.62), transparent 34%),
+    repeating-linear-gradient(28deg, rgba(20, 184, 166, 0.04) 0 1px, transparent 1px 42px),
+    #f7fffb !important;
+}
+
+.cad-vector-leaflet.cad-visual-dark {
+  background:
+    radial-gradient(circle at 22% 28%, rgba(20, 83, 45, 0.34), transparent 28%),
+    radial-gradient(circle at 72% 62%, rgba(30, 64, 175, 0.25), transparent 32%),
+    linear-gradient(rgba(56, 189, 248, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.055) 1px, transparent 1px),
+    linear-gradient(135deg, #061a2c 0%, #082f49 100%) !important;
+  background-size: auto, auto, 34px 34px, 34px 34px, auto !important;
+}
+
+.cad-vector-leaflet.cad-visual-dark .leaflet-control-zoom a {
+  border-color: rgba(148, 163, 184, 0.38) !important;
+  background: rgba(15, 23, 42, 0.92) !important;
+  color: #e2e8f0 !important;
+}
+
+.cad-image-overlay {
+  border: 1px solid rgba(226, 232, 240, 0.34);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+}
+
+.cad-vector-label-tooltip {
+  pointer-events: none;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.84);
+  color: #3f3a36;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.1;
+  padding: 2px 5px;
+  border-radius: 5px;
+  text-shadow:
+    0 0 2px #fff,
+    0 0 2px #fff;
+  white-space: nowrap;
+}
+
+.cad-vector-label-tooltip::before {
+  display: none;
+}
+
+.cad-vector-label-tooltip strong {
+  font-weight: 400;
+}
+
+.cad-vector-leaflet.cad-visual-dark .cad-vector-label-tooltip {
+  border-color: rgba(125, 211, 252, 0.26);
+  background: rgba(15, 23, 42, 0.78);
+  color: #e2e8f0;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.34);
+  text-shadow:
+    0 0 3px #020617,
+    0 0 5px #020617;
+}
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body,
+  #root {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    background: #fff !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  .cad-print-root,
+  .cad-print-root * {
+    visibility: visible !important;
+  }
+
+  .cad-print-root {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+    break-after: avoid !important;
+    break-before: avoid !important;
+  }
+
+  .cad-print-root > .cad-print-summary,
+  .cad-print-root > .cad-print-map-frame {
+    display: none !important;
+  }
+
+  .cad-print-sheet {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2mm;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    padding: 7mm !important;
+    color: #0f172a;
+    font-family: 'Segoe UI', 'Arial', 'Noto Sans', 'Roboto', sans-serif;
+  }
+
+  .cad-print-header {
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 6mm;
+    min-height: 13mm;
+    padding: 0 0 2mm !important;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .cad-print-kicker {
+    margin: 0 0 1mm !important;
+    color: #0369a1;
+    font-size: 8.5px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .cad-print-header h1 {
+    margin: 0 !important;
+    color: #0f172a;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .cad-print-meta {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+    max-width: 126mm;
+    color: #334155;
+    font-size: 8.5px;
+    font-weight: 700;
+  }
+
+  .cad-print-meta span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 5.2mm;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    background: #f8fafc;
+    padding: 0.7mm 2mm;
+  }
+
+  .cad-no-print {
+    display: none !important;
+  }
+
+  .cad-print-root .leaflet-container,
+  .cad-print-root .leaflet-pane,
+  .cad-print-root .leaflet-map-pane,
+  .cad-print-root .leaflet-marker-pane,
+  .cad-print-root .leaflet-shadow-pane,
+  .cad-print-root .leaflet-overlay-pane,
+  .cad-print-root .leaflet-tooltip-pane,
+  .cad-print-root .leaflet-popup-pane {
+    display: none !important;
+  }
+
+  .cad-print-sheet .cad-print-map-frame {
+    display: block !important;
+    width: 100% !important;
+    flex: 1 1 auto;
+    height: auto !important;
+    min-height: 0 !important;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    overflow: hidden !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    background: #fff;
+  }
+
+  .cad-print-svg-map {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: #fff;
+  }
+
+  .cad-print-footer {
+    display: grid !important;
+    grid-template-columns: minmax(135mm, 1.7fr) minmax(78mm, 1fr);
+    gap: 3mm;
+    min-height: 13mm;
+    color: #334155;
+  }
+
+  .cad-print-legend {
+    display: flex !important;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px 11px;
+    min-height: 12mm;
+    padding: 1.5mm 2.4mm;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    color: #334155;
+    font-size: 8.5px;
+    font-weight: 700;
+    background: #f8fafc;
+  }
+
+  .cad-print-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .cad-print-legend i {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: 1px solid #fff;
+    border-radius: 999px;
+    box-shadow: 0 0 0 1px #94a3b8;
+  }
+
+  .cad-print-legend b {
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+  }
+
+  .cad-print-sources {
+    display: flex !important;
+    align-items: center;
+    min-height: 12mm;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    background: #ffffff;
+    padding: 1.5mm 2.4mm;
+    color: #475569;
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .cad-print-root .leaflet-control-container {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-water-100/70 bg-white/90 shadow-panel backdrop-blur;
+  }
+
+  .status-chip {
+    @apply inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500;
+  }
+
+  .field-input {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none transition focus:border-water-500 focus:ring-2 focus:ring-water-200;
+  }
+
+  .field-textarea {
+    @apply field-input min-h-20 resize-y;
+  }
+
+  .primary-btn {
+    @apply inline-flex items-center justify-center rounded-lg bg-water-600 px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-water-700 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .ghost-btn {
+    @apply inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:border-water-200 hover:bg-water-50;
+  }
+}

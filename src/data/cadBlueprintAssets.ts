@@ -1,0 +1,131 @@
+import type { CadBlueprintAsset, CadBlueprintConfig } from '../types/gis'
+
+export const CAD_BLUEPRINT_CONFIG: CadBlueprintConfig = {
+  sourceDwg: 'BIWASE_HIEN TRANG.dwg',
+  imageFileName: 'biwase-hien-trang.png',
+  targetImagePath: '/maps/biwase-hien-trang.png',
+}
+
+export const cadBlueprintPoints: CadBlueprintAsset[] = [
+  {
+    id: 'NMN-001',
+    name: 'Nhà máy nước',
+    type: 'water_plant',
+    status: 'active',
+    layerKey: 'waterPlant',
+    geometryType: 'Point',
+    cadPosition: [300, 500],
+    source: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    sourceDwg: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    backgroundImage: CAD_BLUEPRINT_CONFIG.imageFileName,
+    cadLayer: 'NMN_NHA_MAY_NUOC',
+    dataType: 'CAD point',
+    description: 'Vị trí nhà máy nước trên bản vẽ hiện trạng. Có thể chỉnh lại bằng chế độ Chỉnh vị trí.',
+    address: 'Tọa độ ảnh CAD [y, x]',
+    capacity: 'Chờ bổ sung từ hồ sơ BIWASE',
+    lastUpdated: '2026-05-17',
+    notes: ['Click Chỉnh vị trí, chọn đối tượng, sau đó click lên ảnh CAD để cập nhật tọa độ.'],
+  },
+  {
+    id: 'HC-001',
+    name: 'Hồ chứa nước thô 1',
+    type: 'raw_water_lake',
+    status: 'active',
+    layerKey: 'rawWaterLakes',
+    geometryType: 'Point',
+    cadPosition: [350, 620],
+    source: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    sourceDwg: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    backgroundImage: CAD_BLUEPRINT_CONFIG.imageFileName,
+    cadLayer: 'HO_CHUA_NUOC_THO',
+    dataType: 'CAD point',
+    description: 'Hồ chứa nước thô theo bản vẽ CAD. Vị trí hiện tại là điểm neo để tinh chỉnh trên ảnh.',
+    address: 'Tọa độ ảnh CAD [y, x]',
+    area: 'Chờ bổ sung',
+    volume: 'Chờ bổ sung',
+    lastUpdated: '2026-05-17',
+    notes: ['Điểm marker có thể kéo lại bằng thao tác click trong chế độ Chỉnh vị trí.'],
+  },
+  {
+    id: 'NMN-002',
+    name: 'Điểm công trình cấp nước cần xác minh',
+    type: 'water_plant',
+    status: 'pending_data',
+    layerKey: 'waterPlant',
+    geometryType: 'Point',
+    cadPosition: [420, 760],
+    source: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    sourceDwg: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    backgroundImage: CAD_BLUEPRINT_CONFIG.imageFileName,
+    cadLayer: 'CONG_TRINH_CAP_NUOC',
+    dataType: 'CAD point',
+    description: 'Điểm công trình quan trọng trên ảnh CAD, cần xác minh bằng bản vẽ gốc.',
+    address: 'Tọa độ ảnh CAD [y, x]',
+    lastUpdated: '2026-05-17',
+    notes: ['Điểm mẫu phục vụ overlay thủ công trên ảnh CAD thật.'],
+  },
+]
+
+export const cadBlueprintLines: CadBlueprintAsset[] = [
+  {
+    id: 'TO-001',
+    name: 'Tuyến ống tham chiếu',
+    type: 'pipeline',
+    status: 'pending_data',
+    layerKey: 'pipelines',
+    geometryType: 'LineString',
+    cadPath: [
+      [300, 500],
+      [330, 560],
+      [360, 640],
+      [410, 760],
+    ],
+    source: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    sourceDwg: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    backgroundImage: CAD_BLUEPRINT_CONFIG.imageFileName,
+    cadLayer: 'TUYEN_ONG_CAP_NUOC',
+    dataType: 'CAD polyline',
+    description: 'Tuyến ống tham chiếu, mặc định ẩn cho đến khi cần đối chiếu tọa độ trên ảnh thật.',
+    address: 'Polyline anh CAD [y, x]',
+    diameter: 'Chờ bổ sung',
+    material: 'Chờ bổ sung',
+    length: 'Chờ tính lại',
+    lastUpdated: '2026-05-17',
+    notes: ['Line/polygon tạm thời không hiện mặc định để tránh che bản vẽ thật.'],
+  },
+]
+
+export const cadBlueprintPolygons: CadBlueprintAsset[] = [
+  {
+    id: 'KV-001',
+    name: 'Khu vực cấp nước tham chiếu',
+    type: 'supply_zone',
+    status: 'pending_data',
+    layerKey: 'supplyZones',
+    geometryType: 'Polygon',
+    cadPath: [
+      [450, 520],
+      [450, 720],
+      [620, 760],
+      [660, 560],
+    ],
+    source: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    sourceDwg: CAD_BLUEPRINT_CONFIG.sourceDwg,
+    backgroundImage: CAD_BLUEPRINT_CONFIG.imageFileName,
+    cadLayer: 'KHU_VUC_CAP_NUOC',
+    dataType: 'CAD polygon',
+    description: 'Polygon tham chiếu, giữ trong data nhưng chưa hiện mặc định nếu chưa khớp ảnh CAD thật.',
+    address: 'Polygon anh CAD [y, x]',
+    area: 'Chờ tính lại',
+    lastUpdated: '2026-05-17',
+    notes: ['Sẽ tinh chỉnh sau khi lấy được các tọa độ điểm neo trên ảnh CAD.'],
+  },
+]
+
+export const cadBlueprintAssets: CadBlueprintAsset[] = [
+  ...cadBlueprintPoints,
+  ...cadBlueprintLines,
+  ...cadBlueprintPolygons,
+]
+
+export const CAD_BLUEPRINT_ASSETS = cadBlueprintAssets
