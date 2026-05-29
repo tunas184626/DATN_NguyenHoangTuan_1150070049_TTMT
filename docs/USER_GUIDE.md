@@ -40,6 +40,8 @@ Sau khi Vite khoi dong, mo URL hien trong terminal, thuong la:
 http://localhost:5173/
 ```
 
+Project da cau hinh `npm run dev` voi `vite --open`, nen khi chay lenh nay Vite se tu mo URL bang trinh duyet mac dinh cua may.
+
 Neu gap loi `vite is not recognized`, nghia la chua cai dependencies. Chay lai:
 
 ```bash
