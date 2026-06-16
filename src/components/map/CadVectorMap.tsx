@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AlertTriangle, Layers2, LocateFixed, Maximize2, Route } from 'lucide-react'
+import { AlertTriangle, Layers2, Maximize2, Route } from 'lucide-react'
 import type { Feature } from 'geojson'
 import {
   CRS,
@@ -1588,6 +1588,7 @@ function CadVectorController({
   resetVersion,
   printVersion,
   viewPresetKey,
+  visualMode,
 }: {
   bounds: LatLngBoundsExpression
   selectedFeature: CadVectorFeature | null
@@ -1595,9 +1596,19 @@ function CadVectorController({
   resetVersion: number
   printVersion: number
   viewPresetKey: string
+  visualMode: CadVisualMode
 }) {
   const map = useMap()
   const lastFocusVersionRef = useRef(focusVersion)
+
+  useEffect(() => {
+    const container = map.getContainer()
+    const modeClasses = CAD_VISUAL_MODES.map((mode) => `cad-visual-${mode.key}`)
+
+    container.classList.add('cad-vector-leaflet')
+    container.classList.remove(...modeClasses)
+    container.classList.add(`cad-visual-${visualMode}`)
+  }, [map, visualMode])
 
   useEffect(() => {
     const maxZoom =
@@ -1688,7 +1699,6 @@ export function CadVectorMap({
   const tooltipDelayRef = useRef<number | null>(null)
   const lastTooltipMoveRef = useRef<TooltipMousePosition | null>(null)
   const [resetVersion, setResetVersion] = useState(0)
-  const [selectedZoomVersion, setSelectedZoomVersion] = useState(0)
   const [printVersion, setPrintVersion] = useState(0)
   const [showLegend, setShowLegend] = useState(true)
   const [visualMode, setVisualMode] = useState<CadVisualMode>(getInitialCadVisualMode)
@@ -2006,7 +2016,10 @@ export function CadVectorMap({
   }
 
   return (
-    <div ref={containerRef} className="cad-print-root panel relative h-full min-h-[580px] overflow-hidden bg-white">
+    <div
+      ref={containerRef}
+      className={`cad-print-root cad-visual-shell cad-visual-${visualMode} panel relative h-full min-h-[580px] overflow-hidden`}
+    >
       <div className="cad-print-sheet hidden">
         <header className="cad-print-header">
           <div>
@@ -2194,15 +2207,6 @@ export function CadVectorMap({
           <Maximize2 className="mr-2 size-4" />
           Fit bản đồ CAD
         </button>
-        <button
-          type="button"
-          onClick={() => selectedFeature && setSelectedZoomVersion((value) => value + 1)}
-          disabled={!selectedFeature}
-          className="ghost-btn h-9 px-3 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          <LocateFixed className="mr-2 size-4" />
-          Zoom tới đối tượng
-        </button>
         <button type="button" onClick={handlePrintPdf} className="ghost-btn h-9 px-3">
           Xuất PDF
         </button>
@@ -2365,10 +2369,11 @@ export function CadVectorMap({
         <CadVectorController
           bounds={bounds}
           selectedFeature={selectedFeature}
-          focusVersion={focusVersion + selectedZoomVersion}
+          focusVersion={focusVersion}
           resetVersion={resetVersion + fitVersion}
           printVersion={printVersion}
           viewPresetKey={viewPresetKey}
+          visualMode={visualMode}
         />
         <CadVectorClickController
           enabled={Boolean(positionUpdateTargetLabel)}

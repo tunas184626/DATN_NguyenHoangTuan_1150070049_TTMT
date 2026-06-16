@@ -40,6 +40,10 @@ body {
   font-size: 11px;
 }
 
+.cad-visual-shell {
+  background: #fff;
+}
+
 .cad-vector-leaflet {
   background: #fff !important;
 }
@@ -80,6 +84,10 @@ body {
     linear-gradient(90deg, rgba(56, 189, 248, 0.055) 1px, transparent 1px),
     linear-gradient(135deg, #061a2c 0%, #082f49 100%) !important;
   background-size: auto, auto, 34px 34px, 34px 34px, auto !important;
+}
+
+.cad-visual-shell.cad-visual-dark {
+  background: #061a2c;
 }
 
 .cad-vector-leaflet.cad-visual-dark .leaflet-control-zoom a {
