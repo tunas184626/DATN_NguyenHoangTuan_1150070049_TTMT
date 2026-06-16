@@ -336,11 +336,11 @@ function getTypeStyle(type: CadVectorType, selected = false): PathOptions {
     pipe_diameter_label: { color: '#f97316', fillColor: '#f97316', weight: 1.4, fillOpacity: 0.9, opacity: 0.9 },
     location_label: { color: '#facc15', fillColor: '#fde047', weight: 1.4, fillOpacity: 0.86, opacity: 0.9 },
     layout_artifact: { color: '#f59e0b', fillColor: '#fef3c7', weight: 1, fillOpacity: 0.03, opacity: 0.35 },
-    road_background: { color: '#78716c', fillColor: '#78716c', weight: 0.6, fillOpacity: 0.03, opacity: 0.3 },
+    road_background: { color: '#475569', fillColor: '#475569', weight: 1.05, fillOpacity: 0.04, opacity: 0.62 },
     cad_point: { color: '#a855f7', fillColor: '#a855f7', weight: 2, fillOpacity: 0.85, opacity: 0.92 },
-    cad_line: { color: '#94a3b8', fillColor: '#94a3b8', weight: 1.4, fillOpacity: 0.04, opacity: 0.7 },
-    cad_polygon: { color: '#cbd5e1', fillColor: '#94a3b8', weight: 1.5, fillOpacity: 0.08, opacity: 0.62 },
-    unknown: { color: '#64748b', fillColor: '#64748b', weight: 1.5, fillOpacity: 0.08, opacity: 0.58 },
+    cad_line: { color: '#64748b', fillColor: '#64748b', weight: 1.8, fillOpacity: 0.05, opacity: 0.82 },
+    cad_polygon: { color: '#64748b', fillColor: '#94a3b8', weight: 1.7, fillOpacity: 0.08, opacity: 0.72 },
+    unknown: { color: '#475569', fillColor: '#475569', weight: 1.75, fillOpacity: 0.08, opacity: 0.72 },
   }
   const base = styleMap[type]
 
@@ -405,10 +405,10 @@ function adjustStyleForVisualMode(
     if (group === 'background' || group === 'boundary' || group === 'polygon' || group === 'canal') {
       return {
         ...style,
-        color: group === 'canal' ? '#7dd3fc' : '#8b9aa7',
+        color: group === 'canal' ? '#38bdf8' : '#64748b',
         fillColor: '#dbeafe',
-        weight: Math.max(Number(style.weight ?? 0.7), 0.8),
-        opacity: Math.max(Number(style.opacity ?? 0.3), 0.38),
+        weight: Math.max(Number(style.weight ?? 0.7), 1.15),
+        opacity: Math.max(Number(style.opacity ?? 0.3), 0.62),
         fillOpacity: Math.min(Number(style.fillOpacity ?? 0.04), 0.035),
       }
     }
@@ -429,10 +429,10 @@ function adjustStyleForVisualMode(
     if (group === 'background' || group === 'boundary' || group === 'polygon' || group === 'canal') {
       return {
         ...style,
-        color: group === 'canal' ? '#8bb8c5' : '#94a3b8',
+        color: group === 'canal' ? '#38bdf8' : '#64748b',
         fillColor: '#dbeafe',
-        weight: Math.max(Number(style.weight ?? 0.7), 0.78),
-        opacity: group === 'background' ? 0.34 : 0.42,
+        weight: Math.max(Number(style.weight ?? 0.7), 1.1),
+        opacity: group === 'background' ? 0.58 : 0.64,
         fillOpacity: Math.min(Number(style.fillOpacity ?? 0.04), 0.035),
       }
     }
@@ -464,10 +464,10 @@ function adjustStyleForVisualMode(
     if (group === 'background' || group === 'boundary' || group === 'polygon' || group === 'canal') {
       return {
         ...style,
-        color: '#cbd5e1',
+        color: '#94a3b8',
         fillColor: '#e2e8f0',
-        weight: Math.min(Math.max(Number(style.weight ?? 0.7), 0.55), 0.75),
-        opacity: 0.18,
+        weight: Math.min(Math.max(Number(style.weight ?? 0.7), 0.95), 1.25),
+        opacity: 0.38,
         fillOpacity: 0.01,
       }
     }
@@ -500,10 +500,10 @@ function adjustStyleForVisualMode(
     if (group === 'background' || group === 'boundary' || group === 'polygon' || group === 'canal') {
       return {
         ...style,
-        color: '#cbd5e1',
+        color: '#94a3b8',
         fillColor: '#e2e8f0',
-        weight: Math.min(Math.max(Number(style.weight ?? 0.7), 0.55), 0.75),
-        opacity: 0.2,
+        weight: Math.min(Math.max(Number(style.weight ?? 0.7), 0.95), 1.25),
+        opacity: 0.4,
         fillOpacity: 0.01,
       }
     }
@@ -537,8 +537,8 @@ function adjustStyleForVisualMode(
       ...style,
       color: group === 'canal' ? '#38bdf8' : '#67e8f9',
       fillColor: '#083344',
-      weight: Math.max(Number(style.weight ?? 0.7), 0.75),
-      opacity: group === 'background' ? 0.38 : 0.48,
+      weight: Math.max(Number(style.weight ?? 0.7), 1.05),
+      opacity: group === 'background' ? 0.58 : 0.64,
       fillOpacity: 0.02,
     }
   }
