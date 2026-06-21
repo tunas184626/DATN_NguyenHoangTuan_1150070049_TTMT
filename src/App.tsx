@@ -115,7 +115,7 @@ const BASE_MAP_ZOOM = 13
 
 const STORAGE_UI_KEY = 'webgis-ui-v1'
 const CAD_ASSET_STORAGE_KEY = 'webgis-cad-blueprint-assets-v1'
-const CAD_CURATED_WORKS_STORAGE_KEY = 'webgis-curated-main-works-v1'
+const CAD_CURATED_WORKS_STORAGE_KEY = 'webgis-curated-main-works-v2'
 const CAD_BASE_LAYER_KEY = '__baseCadLayer'
 const CAD_HTCN_CONTEXT_LAYER_KEY = '__htcnPmvContext'
 const CAD_CURATED_MAIN_WORKS_LAYER_KEY = '__curatedMainWorks'
