@@ -546,8 +546,8 @@ function adjustStyleForVisualMode(
   if (group === 'pipeline') {
     return {
       ...style,
-      color: '#facc15',
-      fillColor: '#facc15',
+      color: '#fb7185',
+      fillColor: '#fb7185',
       opacity: 0.95,
     }
   }
@@ -2091,7 +2091,7 @@ export function CadVectorMap({
           <div className="cad-print-legend">
             <span><i style={{ backgroundColor: '#f97316' }} /> Nhà máy nước</span>
             <span><i style={{ backgroundColor: '#8b5cf6' }} /> Hồ nước thô</span>
-            <span><b style={{ backgroundColor: '#2563eb' }} /> Tuyến ống cấp nước</span>
+            <span><b style={{ backgroundColor: visualMode === 'dark' ? '#fb7185' : '#2563eb' }} /> Tuyến ống cấp nước</span>
             <span><b style={{ backgroundColor: '#16a34a' }} /> Kênh/thủy lợi</span>
             <span><b style={{ backgroundColor: '#64748b' }} /> Nền CAD gốc</span>
           </div>
@@ -2196,7 +2196,7 @@ export function CadVectorMap({
         <div className="cad-print-legend">
           <span><i style={{ backgroundColor: '#f97316' }} /> Nhà máy nước</span>
           <span><i style={{ backgroundColor: '#8b5cf6' }} /> Hồ nước thô</span>
-          <span><b style={{ backgroundColor: '#2563eb' }} /> Tuyến ống cấp nước</span>
+          <span><b style={{ backgroundColor: visualMode === 'dark' ? '#fb7185' : '#2563eb' }} /> Tuyến ống cấp nước</span>
           <span><b style={{ backgroundColor: '#16a34a' }} /> Kênh/thủy lợi</span>
           <span><b style={{ backgroundColor: '#64748b' }} /> Nền CAD gốc</span>
         </div>

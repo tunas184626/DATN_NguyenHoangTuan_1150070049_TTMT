@@ -1022,11 +1022,19 @@ function loadCuratedMainWorksFromStorage(): CuratedMainWork[] {
     const parsed = JSON.parse(stored) as CuratedMainWork[]
     const storedById = new Map(parsed.map((work) => [work.id, work]))
 
-    return CURATED_MAIN_WORKS.map((work) => ({
-      ...work,
-      ...storedById.get(work.id),
-      notes: storedById.get(work.id)?.notes ?? work.notes,
-    }))
+    return CURATED_MAIN_WORKS.map((work) => {
+      const storedWork = storedById.get(work.id)
+
+      if (!storedWork?.manuallyPositioned) {
+        return work
+      }
+
+      return {
+        ...work,
+        ...storedWork,
+        notes: storedWork.notes ?? work.notes,
+      }
+    })
   } catch {
     return CURATED_MAIN_WORKS
   }
