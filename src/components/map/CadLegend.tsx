@@ -107,7 +107,7 @@ const LEGEND_VISUAL_COLORS: Partial<Record<CadVisualMode, Partial<Record<string,
   dark: {
     waterPlant: '#fb923c',
     rawWaterLake: '#a78bfa',
-    pipeline: '#facc15',
+    pipeline: '#fb7185',
     irrigation: '#86efac',
     baseCad: '#67e8f9',
   },
