@@ -5,6 +5,7 @@ import type {
   AssetStatus,
   AssetType,
   DataSourceState,
+  IncidentCollection,
   LayerDataState,
   LayerKey,
   LayerSourceMeta,
@@ -250,6 +251,24 @@ async function loadApiAssets(type: AssetType): Promise<AssetCollection> {
   return normalizeCollection('waterPlant', await apiGet<unknown>(`/assets?type=${type}&limit=500`))
 }
 
+async function loadApiIncidents(): Promise<IncidentCollection> {
+  const raw = await apiGet<unknown>('/incidents?limit=200')
+  if (!raw || typeof raw !== 'object') throw new Error('Dữ liệu sự cố không hợp lệ')
+  const collection = raw as { type?: string; features?: unknown[] }
+  if (collection.type !== 'FeatureCollection' || !Array.isArray(collection.features)) {
+    throw new Error('Dữ liệu sự cố không hợp lệ')
+  }
+
+  return {
+    type: 'FeatureCollection',
+    features: collection.features.filter((feature) => {
+      if (!feature || typeof feature !== 'object') return false
+      const candidate = feature as { geometry?: { type?: string }; properties?: { type?: string } }
+      return candidate.geometry?.type === 'Point' && candidate.properties?.type === 'incident'
+    }),
+  } as IncidentCollection
+}
+
 async function loadOperationalCadLayers(url: string): Promise<Record<CadLayerKey, AssetCollection>> {
   const response = await fetch(url)
   if (!response.ok) throw new Error(`HTTP ${response.status}`)
@@ -323,9 +342,11 @@ export async function loadLayerDataWithFallback(): Promise<{
 
   let loadedCadFeatureCount = 0
   let loadedApiFeatureCount = 0
+  let apiAvailable = false
 
   try {
     const waterPlants = await loadApiAssets('water_plant')
+    apiAvailable = true
     if (waterPlants.features.length > 0) {
       data.waterPlant = waterPlants
       loadedApiFeatureCount = waterPlants.features.length
@@ -351,6 +372,22 @@ export async function loadLayerDataWithFallback(): Promise<{
     )
   }
 
+  if (apiAvailable) {
+    try {
+      const apiIncidents = await loadApiIncidents()
+      data.incidents = apiIncidents
+      loadedApiFeatureCount += apiIncidents.features.length
+      layers.incidents = createLayerMeta(
+        'incidents',
+        'api',
+        apiIncidents.features.length ? 'api_loaded' : 'api_empty',
+        apiIncidents.features.length,
+      )
+    } catch {
+      layers.incidents = createLayerMeta('incidents', 'api', 'api_error', 0, undefined, 'Đang dùng dữ liệu dự phòng')
+    }
+  }
+
   const operationalUrl = toPublicUrl(CAD_OPERATIONAL_WGS84_URL)
   try {
     const operationalLayers = await loadOperationalCadLayers(operationalUrl)
@@ -374,11 +411,11 @@ export async function loadLayerDataWithFallback(): Promise<{
     // Keep compatibility with the legacy per-layer exports below.
   }
 
-  if (loadedCadFeatureCount > 0 || loadedApiFeatureCount > 0) {
+  if (loadedCadFeatureCount > 0 || apiAvailable) {
     return {
       data,
       dataSource: {
-        mode: loadedApiFeatureCount > 0 ? 'api' : 'cad',
+        mode: apiAvailable ? 'api' : 'cad',
         label: 'Đã đồng bộ dữ liệu bản đồ',
         usingCad: true,
         layers,
@@ -423,12 +460,12 @@ export async function loadLayerDataWithFallback(): Promise<{
     }),
   )
 
-  const usingCad = loadedCadFeatureCount > 0
+  const usingCad = loadedCadFeatureCount > 0 || apiAvailable
 
   return {
     data,
     dataSource: {
-      mode: usingCad ? 'cad' : 'demo',
+      mode: apiAvailable ? 'api' : usingCad ? 'cad' : 'demo',
       label: usingCad ? 'Đang dùng dữ liệu CAD/GeoJSON' : 'Đang dùng dữ liệu demo',
       usingCad,
       layers,

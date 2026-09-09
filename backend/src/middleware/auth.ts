@@ -9,7 +9,7 @@ const jwks = env.SUPABASE_URL
 
 export async function authenticate(request: Request, response: Response, next: NextFunction): Promise<void> {
   if (env.AUTH_MODE === 'disabled') {
-    response.locals.user = { id: 'development-user', role: 'admin' }
+    response.locals.user = { id: 'development-user', email: 'local@webgis.test', role: 'admin' }
     next()
     return
   }
@@ -25,7 +25,11 @@ export async function authenticate(request: Request, response: Response, next: N
       issuer: `${env.SUPABASE_URL}/auth/v1`,
       audience: env.SUPABASE_JWT_AUDIENCE,
     })
-    response.locals.user = { id: payload.sub, role: payload.role ?? 'authenticated' }
+    response.locals.user = {
+      id: payload.sub,
+      email: typeof payload.email === 'string' ? payload.email : undefined,
+      role: payload.role ?? 'authenticated',
+    }
     next()
   } catch {
     next(new AppError(401, 'INVALID_TOKEN', 'Phiên đăng nhập không hợp lệ hoặc đã hết hạn'))

@@ -21,7 +21,7 @@ async function seed(): Promise<void> {
       const name = String(feature.properties.name || 'Nhà máy nước')
       await client.query(
         `insert into assets (asset_code, name, type, status, description, attributes, geom)
-         values ($1,$2,'water_plant','pending_data',$3,$4,ST_SetSRID(ST_GeomFromGeoJSON($5),4326))
+         values ($1,$2,'water_plant','pending_data',$3,$4,ST_SetSRID(ST_GeomFromGeoJSON($5::json),4326))
          on conflict (asset_code) do update set name=excluded.name, attributes=excluded.attributes, geom=excluded.geom, updated_at=now()`,
         [sourceId, name, String(feature.properties.description ?? ''), JSON.stringify({
           source: feature.properties.sourceName ?? feature.properties.source,

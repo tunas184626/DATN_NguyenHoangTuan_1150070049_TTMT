@@ -83,7 +83,7 @@ export async function getAsset(id: string) {
 export async function createAsset(input: CreateAssetInput, actorId: string) {
   const result = await getPool().query<AssetRow>(
     `insert into assets (asset_code, name, type, status, description, address, attributes, geom, created_by, updated_by)
-     values ($1,$2,$3,$4,$5,$6,$7,ST_SetSRID(ST_GeomFromGeoJSON($8),4326),$9,$9)
+     values (coalesce($1, 'TS-' || to_char(current_date, 'YYYYMM') || '-' || lpad(nextval('asset_code_sequence')::text, 6, '0')),$2,$3,$4,$5,$6,$7,ST_SetSRID(ST_GeomFromGeoJSON($8::json),4326),$9,$9)
      returning ${baseColumns}`,
     [input.assetCode, input.name, input.type, input.status, input.description, input.address,
       JSON.stringify(input.attributes), JSON.stringify(input.geometry), actorId],
@@ -96,8 +96,8 @@ export async function updateAsset(id: string, input: UpdateAssetInput, actorId: 
     `update assets set
       name = coalesce($2, name), status = coalesce($3, status),
       description = coalesce($4, description), address = coalesce($5, address),
-      attributes = coalesce($6, attributes),
-      geom = case when $7::jsonb is null then geom else ST_SetSRID(ST_GeomFromGeoJSON($7),4326) end,
+      attributes = case when $6::jsonb is null then attributes else attributes || $6::jsonb end,
+      geom = case when $7::jsonb is null then geom else ST_SetSRID(ST_GeomFromGeoJSON($7::json),4326) end,
       version = version + 1, updated_by = $8, updated_at = now()
      where id = $1 and version = $9 and deleted_at is null returning ${baseColumns}`,
     [id, input.name ?? null, input.status ?? null, input.description ?? null, input.address ?? null,

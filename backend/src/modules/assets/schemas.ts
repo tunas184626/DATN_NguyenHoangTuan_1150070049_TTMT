@@ -36,7 +36,7 @@ const geometrySchema = z.object({
 })
 
 export const createAssetSchema = z.object({
-  assetCode: z.string().trim().min(1).max(80),
+  assetCode: z.string().trim().min(1).max(80).optional(),
   name: z.string().trim().min(1).max(255),
   type: z.enum(assetTypes),
   status: z.enum(assetStatuses).default('pending_data'),

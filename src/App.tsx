@@ -1,6 +1,7 @@
 ﻿import { useEffect, useMemo, useState } from 'react'
 import {
   AlertTriangle,
+  BarChart3,
   CheckCircle2,
   Droplets,
   Factory,
@@ -8,6 +9,7 @@ import {
   Gauge,
   Layers,
   ListChecks,
+  LogOut,
   LocateFixed,
   MapPin,
   Menu,
@@ -21,6 +23,8 @@ import {
   X,
 } from 'lucide-react'
 import { lazy, Suspense, useId } from 'react'
+import { useAuth } from './auth/AuthContext'
+import LoginPage from './components/auth/LoginPage'
 import type {
   AnyMapFeature,
   AssetFeature,
@@ -46,9 +50,6 @@ import type {
   ViewMode,
 } from './types/gis'
 import { useWebGISData } from './hooks/useWebGISData'
-import { CadBlueprintMap } from './components/map/CadBlueprintMap'
-import { CadVectorMap, cadVectorTypeLabelForUi } from './components/map/CadVectorMap'
-import { CadLayoutPreview } from './components/map/CadLayoutPreview'
 import { CAD_LAYOUT_OPTIONS } from './data/cadLayoutOptions'
 import { cadBlueprintAssets, CAD_BLUEPRINT_CONFIG } from './data/cadBlueprintAssets'
 import { CURATED_MAIN_WORKS, type CuratedMainWork } from './data/curatedMainWorks'
@@ -70,6 +71,7 @@ import {
 } from './utils/status'
 import {
   cadVectorTypePriority,
+  cadVectorTypeLabelForUi,
   getCadFeatureText,
   getFeatureDisplayName,
   isCadTextFeature,
@@ -93,6 +95,15 @@ import {
 import type { Layer } from 'leaflet'
 
 const { Overlay } = LayersControl
+const CadBlueprintMap = lazy(() =>
+  import('./components/map/CadBlueprintMap').then((module) => ({ default: module.CadBlueprintMap })),
+)
+const CadVectorMap = lazy(() =>
+  import('./components/map/CadVectorMap').then((module) => ({ default: module.CadVectorMap })),
+)
+const CadLayoutPreview = lazy(() =>
+  import('./components/map/CadLayoutPreview').then((module) => ({ default: module.CadLayoutPreview })),
+)
 const ReportsView = lazy(() => import('./components/reports/ReportsView'))
 
 const BASE_MAP_CENTER: [number, number] = [10.8845, 106.4255]
@@ -356,6 +367,10 @@ interface TopbarProps {
   onSelectResult: (id: string) => void
   cadVectorData: CadVectorData | null
   cadVectorLoading: boolean
+  viewMode: ViewMode
+  onViewModeChange: (mode: ViewMode) => void
+  userEmail?: string
+  onSignOut?: () => void
 }
 
 interface DashboardCardsProps {
@@ -390,7 +405,7 @@ interface AssetFormProps {
   mode: 'create' | 'update'
   feature: AssetFeature | null
   onClose: () => void
-  onSubmit: (payload: NewAssetInput | UpdateAssetInput) => void
+  onSubmit: (payload: NewAssetInput | UpdateAssetInput) => Promise<void>
 }
 
 interface IncidentFormProps {
@@ -1692,6 +1707,10 @@ function Topbar({
   onSearchQueryChange,
   results,
   onSelectResult,
+  viewMode,
+  onViewModeChange,
+  userEmail,
+  onSignOut,
 }: TopbarProps) {
   return (
     <header className="panel relative z-[900] mx-3 mt-3 flex h-[78px] items-center gap-4 px-4 lg:px-6">
@@ -1740,10 +1759,56 @@ function Topbar({
         )}
       </div>
 
-      <div className="hidden items-center gap-2 rounded-xl border border-water-100 bg-white px-3 py-2 text-sm font-semibold text-water-800 md:flex">
-        <MapPin className="size-4" />
-        Bản đồ hệ thống
-      </div>
+      <nav className="hidden items-center rounded-xl border border-water-100 bg-water-50/70 p-1 md:flex" aria-label="Điều hướng chính">
+        {([
+          ['map', 'Bản đồ', MapPin],
+          ['manage', 'Quản lý', ListChecks],
+          ['report', 'Báo cáo', BarChart3],
+        ] as const).map(([mode, label, Icon]) => (
+          <button
+            key={mode}
+            type="button"
+            onClick={() => onViewModeChange(mode)}
+            className={`flex h-8 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold transition ${
+              viewMode === mode ? 'bg-white text-water-800 shadow-sm' : 'text-slate-600 hover:text-water-800'
+            }`}
+          >
+            <Icon className="size-4" />
+            {label}
+          </button>
+        ))}
+      </nav>
+
+      {userEmail && (
+        <div className="hidden items-center gap-2 border-l border-slate-200 pl-3 xl:flex">
+          <div className="max-w-32">
+            <p className="truncate text-xs font-semibold text-slate-700">{userEmail}</p>
+            <p className="text-[11px] text-slate-400">Người dùng</p>
+          </div>
+          {onSignOut && (
+            <button type="button" onClick={onSignOut} className="ghost-btn h-8 w-8 !px-0" title="Đăng xuất" aria-label="Đăng xuất">
+              <LogOut className="size-4" />
+            </button>
+          )}
+        </div>
+      )}
+
+      <nav className="fixed bottom-3 left-1/2 z-[1300] flex -translate-x-1/2 items-center rounded-xl border border-water-100 bg-white/95 p-1 shadow-xl backdrop-blur md:hidden" aria-label="Điều hướng chính">
+        {([
+          ['map', 'Bản đồ', MapPin],
+          ['manage', 'Quản lý', ListChecks],
+          ['report', 'Báo cáo', BarChart3],
+        ] as const).map(([mode, label, Icon]) => (
+          <button key={mode} type="button" onClick={() => onViewModeChange(mode)} className={`flex h-9 items-center gap-1 rounded-lg px-3 text-xs font-semibold ${viewMode === mode ? 'bg-water-600 text-white' : 'text-slate-600'}`}>
+            <Icon className="size-4" /> {label}
+          </button>
+        ))}
+        {onSignOut && (
+          <button type="button" onClick={onSignOut} className="ml-1 flex h-9 w-9 items-center justify-center rounded-lg border-l border-slate-200 text-slate-500" aria-label="Đăng xuất">
+            <LogOut className="size-4" />
+          </button>
+        )}
+      </nav>
     </header>
   )
 }
@@ -2990,11 +3055,12 @@ function AssetFormModal({ mode, feature, onClose, onSubmit }: AssetFormProps) {
   const [geometryType, setGeometryType] = useState<GeometryInputType>('Point')
   const [coordinatesRaw, setCoordinatesRaw] = useState('106.4232,10.8815')
   const [error, setError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
   const submitLabel = mode === 'create' ? 'Thêm mới đối tượng' : 'Lưu cập nhật'
   const title = mode === 'create' ? 'Thêm đối tượng hạ tầng mới' : `Cập nhật: ${feature?.properties.name ?? ''}`
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
     if (!name.trim() || !address.trim() || !description.trim()) {
@@ -3002,8 +3068,9 @@ function AssetFormModal({ mode, feature, onClose, onSubmit }: AssetFormProps) {
       return
     }
 
+    let payload: NewAssetInput | UpdateAssetInput
     if (mode === 'update') {
-      onSubmit({
+      payload = {
         name,
         status,
         description,
@@ -3017,32 +3084,40 @@ function AssetFormModal({ mode, feature, onClose, onSubmit }: AssetFormProps) {
         imageUrl,
         googleMapsUrl,
         notes: parseNotes(notesRaw),
-      } satisfies UpdateAssetInput)
-      return
+      } satisfies UpdateAssetInput
+    } else {
+      try {
+        payload = {
+          name,
+          type,
+          status,
+          description,
+          address,
+          capacity,
+          area,
+          volume,
+          material,
+          diameter,
+          length,
+          imageUrl,
+          googleMapsUrl,
+          notes: parseNotes(notesRaw),
+          geometryType,
+          coordinates: parseCoordinatePairs(coordinatesRaw),
+        } satisfies NewAssetInput
+      } catch {
+        setError('Định dạng tọa độ không hợp lệ. Ví dụ: 106.4232,10.8815;106.425,10.883')
+        return
+      }
     }
 
+    setSubmitting(true)
+    setError('')
     try {
-      const coordinates = parseCoordinatePairs(coordinatesRaw)
-      onSubmit({
-        name,
-        type,
-        status,
-        description,
-        address,
-        capacity,
-        area,
-        volume,
-        material,
-        diameter,
-        length,
-        imageUrl,
-        googleMapsUrl,
-        notes: parseNotes(notesRaw),
-        geometryType,
-        coordinates,
-      } satisfies NewAssetInput)
-    } catch {
-      setError('Định dạng tọa độ không hợp lệ. Ví dụ: 106.4232,10.8815;106.425,10.883')
+      await onSubmit(payload)
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : 'Không thể lưu tài sản. Vui lòng thử lại.')
+      setSubmitting(false)
     }
   }
 
@@ -3191,9 +3266,9 @@ function AssetFormModal({ mode, feature, onClose, onSubmit }: AssetFormProps) {
           <button type="button" onClick={onClose} className="ghost-btn">
             Hủy
           </button>
-          <button type="submit" className="primary-btn">
+          <button type="submit" disabled={submitting} className="primary-btn disabled:cursor-wait disabled:opacity-60">
             <Plus className="mr-1 size-4" />
-            {submitLabel}
+            {submitting ? 'Đang lưu...' : submitLabel}
           </button>
         </div>
       </form>
@@ -3254,8 +3329,8 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
         latitude: lat,
         longitude: lng,
       } satisfies NewIncidentInput)
-    } catch {
-      setError('Không thể lưu sự cố. Vui lòng thử lại.')
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : 'Không thể lưu sự cố. Vui lòng thử lại.')
       setSubmitting(false)
     }
   }
@@ -3422,6 +3497,7 @@ function ManageView({
 }
 
 function WebGISDashboardPage() {
+  const { configured: authConfigured, user, signOut } = useAuth()
   const { data, dataSource, loading, error, incidents, addAsset, addIncident, updateAsset, resetData } =
     useWebGISData()
 
@@ -3742,9 +3818,9 @@ function WebGISDashboardPage() {
     }
   }
 
-  const handleAddAsset = (payload: NewAssetInput | UpdateAssetInput) => {
+  const handleAddAsset = async (payload: NewAssetInput | UpdateAssetInput) => {
     if ('geometryType' in payload) {
-      const created = addAsset(payload)
+      const created = await addAsset(payload)
       if (created) {
         setSelectedFeatureId(created.properties.id)
         setFlyToRequest({ feature: created, zoom: 16 })
@@ -3754,7 +3830,7 @@ function WebGISDashboardPage() {
     }
 
     if (editingFeature) {
-      const updated = updateAsset(editingFeature.properties.id, payload)
+      const updated = await updateAsset(editingFeature.properties.id, payload)
       if (updated) {
         setSelectedFeatureId(updated.properties.id)
       }
@@ -4024,10 +4100,14 @@ function WebGISDashboardPage() {
         onSelectResult={handleSelectSearchResult}
         cadVectorData={cadVectorData}
         cadVectorLoading={cadVectorLoading}
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        userEmail={user?.email}
+        onSignOut={authConfigured ? () => { void signOut() } : undefined}
       />
 
       <section className="flex min-h-0 flex-1 gap-3 p-3 pt-2">
-        <LayerSidebar
+        {viewMode === 'map' && <LayerSidebar
           collapsed={uiState.collapsedSidebar}
           onToggle={() => setUiState((prev) => ({
             ...prev,
@@ -4065,7 +4145,7 @@ function WebGISDashboardPage() {
           onOpenCadVectorMap={() => handleMapModeChange('cadVector')}
           onOpenCadImage={() => handleMapModeChange('cadImage')}
           onOpenOsm={() => handleMapModeChange('osm')}
-        />
+        />}
 
         <div className="flex min-w-0 flex-1 flex-col gap-3">
           {mapMode !== 'cadVector' && (
@@ -4084,51 +4164,57 @@ function WebGISDashboardPage() {
             }`}
           >
             {viewMode === 'map' && mapMode === 'cadVector' && (
-              <CadVectorMap
-                data={cadVectorDisplayData}
-                loading={cadVectorLoading}
-                visibleLayers={cadVectorVisibleLayers}
-                typeFilter={cadVectorTypeFilter}
-                labelOptions={cadVectorLabelOptions}
-                selectedFeature={selectedCadVectorFeature}
-                focusVersion={cadVectorFocusVersion}
-                fitVersion={cadVectorFitVersion}
-                viewPresetKey={cadVectorViewPreset}
-                viewPresetLabel={cadVectorViewPresetLabel}
-                positionUpdateTargetLabel={
-                  positionUpdateTargetId
-                    ? resolvedCuratedMainWorks.find((work) => work.id === positionUpdateTargetId)?.displayName ?? null
-                    : null
-                }
-                onCadCoordinateClick={handleCadVectorCoordinateClick}
-                onSelectFeature={(feature) => {
-                  setSelectedCadVectorFeature(feature)
-                  setCadVectorFocusVersion((value) => value + 1)
-                }}
-              />
+              <Suspense fallback={<div className="panel flex h-full min-h-[580px] items-center justify-center text-sm text-slate-500">Đang mở bản đồ...</div>}>
+                <CadVectorMap
+                  data={cadVectorDisplayData}
+                  loading={cadVectorLoading}
+                  visibleLayers={cadVectorVisibleLayers}
+                  typeFilter={cadVectorTypeFilter}
+                  labelOptions={cadVectorLabelOptions}
+                  selectedFeature={selectedCadVectorFeature}
+                  focusVersion={cadVectorFocusVersion}
+                  fitVersion={cadVectorFitVersion}
+                  viewPresetKey={cadVectorViewPreset}
+                  viewPresetLabel={cadVectorViewPresetLabel}
+                  positionUpdateTargetLabel={
+                    positionUpdateTargetId
+                      ? resolvedCuratedMainWorks.find((work) => work.id === positionUpdateTargetId)?.displayName ?? null
+                      : null
+                  }
+                  onCadCoordinateClick={handleCadVectorCoordinateClick}
+                  onSelectFeature={(feature) => {
+                    setSelectedCadVectorFeature(feature)
+                    setCadVectorFocusVersion((value) => value + 1)
+                  }}
+                />
+              </Suspense>
             )}
 
             {viewMode === 'map' && mapMode === 'cadImage' && (
-              <CadBlueprintMap
-                assets={cadAssets}
-                config={CAD_BLUEPRINT_CONFIG}
-                visibleLayers={uiState.visibleLayers}
-                selectedAssetId={selectedCadAssetId}
-                hoveredAssetId={hoveredCadAssetId}
-                editMode={cadEditMode}
-                onEditModeChange={setCadEditMode}
-                onSelectAsset={handleFocusCadAsset}
-                onHoverAsset={setHoveredCadAssetId}
-                onUpdatePointPosition={handleUpdateCadPointPosition}
-                onImageStatusChange={setCadImageLoaded}
-              />
+              <Suspense fallback={<div className="panel flex h-full min-h-[580px] items-center justify-center text-sm text-slate-500">Đang mở bản đồ...</div>}>
+                <CadBlueprintMap
+                  assets={cadAssets}
+                  config={CAD_BLUEPRINT_CONFIG}
+                  visibleLayers={uiState.visibleLayers}
+                  selectedAssetId={selectedCadAssetId}
+                  hoveredAssetId={hoveredCadAssetId}
+                  editMode={cadEditMode}
+                  onEditModeChange={setCadEditMode}
+                  onSelectAsset={handleFocusCadAsset}
+                  onHoverAsset={setHoveredCadAssetId}
+                  onUpdatePointPosition={handleUpdateCadPointPosition}
+                  onImageStatusChange={setCadImageLoaded}
+                />
+              </Suspense>
             )}
 
             {viewMode === 'map' && mapMode === 'layoutPreview' && (
-              <CadLayoutPreview
-                selectedLayoutId={selectedLayoutId}
-                onSelectedLayoutChange={setSelectedLayoutId}
-              />
+              <Suspense fallback={<div className="panel flex h-full min-h-[580px] items-center justify-center text-sm text-slate-500">Đang mở bản vẽ...</div>}>
+                <CadLayoutPreview
+                  selectedLayoutId={selectedLayoutId}
+                  onSelectedLayoutChange={setSelectedLayoutId}
+                />
+              </Suspense>
             )}
 
             {viewMode === 'map' && mapMode === 'osm' && (
@@ -4205,7 +4291,7 @@ function WebGISDashboardPage() {
           </div>
         </div>
 
-        <DetailPanel
+        {viewMode === 'map' && <DetailPanel
           collapsed={uiState.collapsedDetail}
           onToggle={() => setUiState((prev) => ({
             ...prev,
@@ -4225,7 +4311,7 @@ function WebGISDashboardPage() {
           }
           onOpenUpdate={(feature) => setEditingFeature(feature)}
           onOpenIncident={() => setShowCreateIncident(true)}
-        />
+        />}
       </section>
 
       {(showCreateAsset || editingFeature) && (
@@ -4279,6 +4365,20 @@ function WebGISDashboardPage() {
 }
 
 function App() {
+  const { configured, loading, user } = useAuth()
+
+  if (loading) {
+    return (
+      <main className="flex h-full items-center justify-center bg-slate-950 text-white">
+        <div className="text-center">
+          <Droplets className="mx-auto mb-3 size-8 animate-pulse text-sky-300" />
+          <p className="text-sm font-semibold">Đang kiểm tra phiên đăng nhập...</p>
+        </div>
+      </main>
+    )
+  }
+
+  if (configured && !user) return <LoginPage />
   return <WebGISDashboardPage />
 }
 

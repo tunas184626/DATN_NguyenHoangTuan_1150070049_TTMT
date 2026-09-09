@@ -21,6 +21,7 @@
     "db:seed": "npm --prefix backend run db:seed"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.16.0",
     "react": "^19.2.6",

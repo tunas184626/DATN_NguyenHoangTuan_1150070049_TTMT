@@ -3,6 +3,7 @@ import { ensureLayerDataState, loadLayerDataWithFallback } from '../data/dataSer
 import { loadMockLayerData } from '../data/loaders'
 import type {
   AnyMapFeature,
+  AssetCollection,
   AssetFeature,
   DataSourceState,
   IncidentFeature,
@@ -193,83 +194,102 @@ export function useWebGISData() {
   }, [data, dataSource])
 
   const addAsset = useCallback(
-    (input: NewAssetInput): AssetFeature | null => {
-      if (!data) {
-        return null
+    async (input: NewAssetInput): Promise<AssetFeature | null> => {
+      if (!data) return null
+      const geometry = buildGeometry(input.geometryType, input.coordinates)
+      let createdFeature: AssetFeature
+
+      if (dataSource?.mode === 'api') {
+        createdFeature = await apiRequest<AssetFeature>('/assets', {
+          method: 'POST',
+          body: JSON.stringify({
+            name: input.name,
+            type: input.type,
+            status: input.status,
+            description: input.description,
+            address: input.address,
+            geometry,
+            attributes: {
+              capacity: input.capacity,
+              area: input.area,
+              volume: input.volume,
+              material: input.material,
+              diameter: input.diameter,
+              length: input.length,
+              imageUrl: input.imageUrl,
+              googleMapsUrl: input.googleMapsUrl,
+              notes: input.notes,
+            },
+          }),
+        })
+      } else {
+        createdFeature = createAssetFeature(input)
       }
 
-      const createdFeature = createAssetFeature(input)
-      const nextData = structuredClone(data)
       const layerKey = assetTypeToLayerKey(input.type)
-
-      switch (layerKey) {
-        case 'waterPlant':
-          nextData.waterPlant.features.push(createdFeature as never)
-          break
-        case 'rawWaterLakes':
-          nextData.rawWaterLakes.features.push(createdFeature as never)
-          break
-        case 'pipelines':
-          nextData.pipelines.features.push(createdFeature as never)
-          break
-        case 'canals':
-          nextData.canals.features.push(createdFeature as never)
-          break
-        case 'supplyZones':
-          nextData.supplyZones.features.push(createdFeature as never)
-          break
-        case 'boundaries':
-          nextData.boundaries.features.push(createdFeature as never)
-          break
-        case 'labels':
-          nextData.labels.features.push(createdFeature as never)
-          break
-      }
-
-      setData(nextData)
+      setData((current) => {
+        if (!current) return current
+        const layer = current[layerKey] as AssetCollection
+        return {
+          ...current,
+          [layerKey]: { ...layer, features: [...layer.features, createdFeature] },
+        }
+      })
       return createdFeature
     },
-    [data],
+    [data, dataSource?.mode],
   )
 
   const updateAsset = useCallback(
-    (featureId: string, input: UpdateAssetInput): AssetFeature | null => {
-      if (!data) {
-        return null
+    async (featureId: string, input: UpdateAssetInput): Promise<AssetFeature | null> => {
+      if (!data) return null
+      const original = ASSET_LAYER_KEYS
+        .flatMap((layerKey) => data[layerKey].features)
+        .find((feature) => feature.properties.id === featureId)
+      if (!original) return null
+
+      let updatedFeature: AssetFeature = {
+        ...original,
+        properties: { ...original.properties, ...input, lastUpdated: new Date().toISOString() },
       }
 
-      let updatedFeature: AssetFeature | null = null
-      const nextData = structuredClone(data)
-
-      for (const layerKey of ASSET_LAYER_KEYS) {
-        const targetLayer = nextData[layerKey]
-        targetLayer.features = targetLayer.features.map((feature) => {
-          if (feature.properties.id !== featureId) {
-            return feature
-          }
-
-          const nextFeature = {
-            ...feature,
-            properties: {
-              ...feature.properties,
-              ...input,
-              lastUpdated: new Date().toISOString().slice(0, 10),
+      if (dataSource?.mode === 'api' && typeof original.properties.version === 'number') {
+        updatedFeature = await apiRequest<AssetFeature>(`/assets/${encodeURIComponent(featureId)}`, {
+          method: 'PATCH',
+          body: JSON.stringify({
+            name: input.name,
+            status: input.status,
+            description: input.description,
+            address: input.address,
+            version: original.properties.version,
+            attributes: {
+              capacity: input.capacity,
+              area: input.area,
+              volume: input.volume,
+              material: input.material,
+              diameter: input.diameter,
+              length: input.length,
+              imageUrl: input.imageUrl,
+              googleMapsUrl: input.googleMapsUrl,
+              notes: input.notes,
             },
-          }
-
-          updatedFeature = nextFeature as AssetFeature
-          return nextFeature
-        }) as never
+          }),
+        })
       }
 
-      if (!updatedFeature) {
-        return null
-      }
-
-      setData(nextData)
+      const layerKey = assetTypeToLayerKey(original.properties.type)
+      setData((current) => current ? {
+        ...current,
+        [layerKey]: {
+          ...current[layerKey],
+          features: current[layerKey].features.map((feature) =>
+            feature.properties.id === featureId ? updatedFeature : feature,
+          ),
+        },
+      } : current)
       return updatedFeature
     },
-    [data],
+    [data, dataSource?.mode],
   )
 
   const addIncident = useCallback(
@@ -278,28 +298,24 @@ export function useWebGISData() {
 
       let createdIncident: IncidentFeature
       if (dataSource?.mode === 'api') {
-        try {
-          createdIncident = await apiRequest<IncidentFeature>('/incidents', {
-            method: 'POST',
-            body: JSON.stringify({
-              name: input.name,
-              incidentType: input.incidentType,
-              severity: input.severity,
-              description: input.description,
-              address: input.address,
-              latitude: input.latitude,
-              longitude: input.longitude,
-              reportedAt: `${input.reportedDate}T00:00:00.000Z`,
-              details: {
-                imageUrl: input.imageUrl,
-                googleMapsUrl: input.googleMapsUrl,
-                notes: input.notes,
-              },
-            }),
-          })
-        } catch {
-          createdIncident = createIncidentFeature(input)
-        }
+        createdIncident = await apiRequest<IncidentFeature>('/incidents', {
+          method: 'POST',
+          body: JSON.stringify({
+            name: input.name,
+            incidentType: input.incidentType,
+            severity: input.severity,
+            description: input.description,
+            address: input.address,
+            latitude: input.latitude,
+            longitude: input.longitude,
+            reportedAt: `${input.reportedDate}T00:00:00.000Z`,
+            details: {
+              imageUrl: input.imageUrl,
+              googleMapsUrl: input.googleMapsUrl,
+              notes: input.notes,
+            },
+          }),
+        })
       } else {
         createdIncident = createIncidentFeature(input)
       }

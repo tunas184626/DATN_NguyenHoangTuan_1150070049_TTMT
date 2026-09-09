@@ -51,6 +51,7 @@ export interface BaseFeatureProperties {
   googleMapsUrl?: string
   lastUpdated: string
   notes: string[]
+  version?: number
 }
 
 export interface AssetProperties extends BaseFeatureProperties {

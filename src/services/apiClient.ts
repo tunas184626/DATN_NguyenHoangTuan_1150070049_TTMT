@@ -31,19 +31,23 @@ export async function apiRequest<T>(
   const timeout = window.setTimeout(() => controller.abort(), timeoutMs)
 
   try {
+    const headers = new Headers(options.headers)
+    headers.set('Accept', 'application/json')
+    if (options.body) headers.set('Content-Type', 'application/json')
+    const accessToken = await getAccessToken()
+    if (accessToken) headers.set('Authorization', `Bearer ${accessToken}`)
+
     const response = await fetch(apiUrl(path), {
       ...options,
-      headers: {
-        Accept: 'application/json',
-        ...(options.body ? { 'Content-Type': 'application/json' } : {}),
-        ...options.headers,
-      },
+      headers,
       signal: controller.signal,
     })
 
     if (!response.ok) {
+      const errorBody = await response.json().catch(() => null) as { error?: { message?: string } } | null
       throw new ApiRequestError(
-        response.status === 503 ? 'Dữ liệu trực tuyến chưa sẵn sàng' : `Yêu cầu thất bại (${response.status})`,
+        errorBody?.error?.message ||
+          (response.status === 503 ? 'Dữ liệu trực tuyến chưa sẵn sàng' : `Yêu cầu thất bại (${response.status})`),
         response.status,
       )
     }
@@ -58,3 +62,4 @@ export async function apiRequest<T>(
     window.clearTimeout(timeout)
   }
 }
+import { getAccessToken } from './supabaseClient'

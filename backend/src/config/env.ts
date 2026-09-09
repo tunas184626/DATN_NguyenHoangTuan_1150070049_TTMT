@@ -25,6 +25,13 @@ const schema = z
         message: 'SUPABASE_URL bắt buộc khi AUTH_MODE=supabase',
       })
     }
+    if (value.NODE_ENV === 'production' && value.AUTH_MODE === 'disabled') {
+      context.addIssue({
+        code: 'custom',
+        path: ['AUTH_MODE'],
+        message: 'Production bắt buộc bật AUTH_MODE=supabase',
+      })
+    }
   })
 
 const result = schema.safeParse(process.env)

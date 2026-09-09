@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { authenticate } from '../../middleware/auth.js'
+import { authorizeRoles } from '../../middleware/authorization.js'
 import { asyncHandler } from '../../shared/async-handler.js'
 import { createAsset, getAsset, listAssets, updateAsset } from './repository.js'
 import { createAssetSchema, listAssetsQuerySchema, updateAssetSchema } from './schemas.js'
@@ -14,12 +15,12 @@ assetsRouter.get('/:id', asyncHandler(async (request, response) => {
   response.json(await getAsset(String(request.params.id)))
 }))
 
-assetsRouter.post('/', authenticate, asyncHandler(async (request, response) => {
+assetsRouter.post('/', authenticate, authorizeRoles('admin', 'manager'), asyncHandler(async (request, response) => {
   const actorId = String(response.locals.user.id)
   response.status(201).json(await createAsset(createAssetSchema.parse(request.body), actorId))
 }))
 
-assetsRouter.patch('/:id', authenticate, asyncHandler(async (request, response) => {
+assetsRouter.patch('/:id', authenticate, authorizeRoles('admin', 'manager'), asyncHandler(async (request, response) => {
   const actorId = String(response.locals.user.id)
   response.json(await updateAsset(String(request.params.id), updateAssetSchema.parse(request.body), actorId))
 }))

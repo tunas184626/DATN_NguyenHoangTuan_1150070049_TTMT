@@ -126,70 +126,6 @@ const LAYOUT_ARTIFACT_TERMS = [
   'border',
 ]
 
-function cadVectorTypeLabel(type: CadVectorType): string {
-  switch (type) {
-    case 'water_plant':
-      return 'Nhà máy nước'
-    case 'raw_water_lake':
-      return 'Hồ chứa nước thô'
-    case 'pipeline':
-      return 'Tuyến ống'
-    case 'canal':
-      return 'Kênh/thủy lợi'
-    case 'irrigation_canal':
-      return 'Kênh thủy lợi'
-    case 'irrigation_area':
-      return 'Vùng thủy lợi'
-    case 'irrigation_point':
-      return 'Điểm thủy lợi'
-    case 'irrigation_label':
-      return 'Nhãn kênh/thủy lợi'
-    case 'main_work_candidate':
-      return 'Công trình chính'
-    case 'boundary':
-      return 'Ranh giới'
-    case 'supply_zone':
-      return 'Khu vực cấp nước'
-    case 'pipe_diameter_label':
-      return 'Nhãn đường kính ống'
-    case 'location_label':
-      return 'Nhãn địa danh'
-    case 'road_background':
-      return 'Đường nền CAD'
-    case 'layout_artifact':
-      return 'Khung/layout CAD'
-    case 'cad_point':
-      return 'Điểm CAD'
-    case 'cad_line':
-      return 'Đường CAD'
-    case 'cad_polygon':
-      return 'Vùng CAD'
-    case 'unknown':
-      return 'Chưa phân loại'
-  }
-}
-
-const CAD_VECTOR_TYPE_LABELS_VI: Partial<Record<CadVectorType, string>> = {
-  water_plant: 'Nhà máy nước',
-  raw_water_lake: 'Hồ nước thô',
-  pipeline: 'Tuyến ống',
-  canal: 'Kênh/thủy lợi',
-  irrigation_canal: 'Kênh thủy lợi',
-  irrigation_area: 'Vùng thủy lợi',
-  irrigation_point: 'Điểm thủy lợi',
-  irrigation_label: 'Nhãn kênh/thủy lợi',
-  main_work_candidate: 'Công trình chính',
-  boundary: 'Ranh giới',
-  supply_zone: 'Khu vực cấp nước',
-  pipe_diameter_label: 'Nhãn đường kính ống',
-  location_label: 'Nhãn địa danh',
-  road_background: 'Đường nền CAD',
-  cad_point: 'Điểm CAD',
-  cad_line: 'Đường CAD',
-  cad_polygon: 'Vùng CAD',
-  unknown: 'Chưa phân loại',
-}
-
 type CadRenderGroup =
   | 'pipeline'
   | 'diameterLabel'
@@ -1674,12 +1610,6 @@ function CadVectorClickController({
   })
 
   return null
-}
-
-// Shared by App while the map module still owns the CAD presentation taxonomy.
-// eslint-disable-next-line react-refresh/only-export-components
-export function cadVectorTypeLabelForUi(type: CadVectorType): string {
-  return CAD_VECTOR_TYPE_LABELS_VI[type] ?? cadVectorTypeLabel(type)
 }
 
 export function CadVectorMap({

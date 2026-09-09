@@ -41,6 +41,7 @@ npm run validate:cad-vector
 npm --prefix backend run lint
 npm --prefix backend run build
 npm --prefix backend test
+npm --prefix backend run test:db
 ```
 
 ## CRS và dữ liệu
@@ -53,3 +54,15 @@ npm --prefix backend test
 ## Bảo mật
 
 Không commit `.env`, password database hoặc Supabase secret/service-role key. Backend hỗ trợ `AUTH_MODE=supabase` và xác minh access token bằng JWKS; local development mặc định dùng `AUTH_MODE=disabled`.
+
+Để bật đăng nhập:
+
+1. Tạo `.env` từ `.env.example`, điền `VITE_SUPABASE_URL` và `VITE_SUPABASE_PUBLISHABLE_KEY` lấy từ Supabase **Connect**.
+2. Trong `backend/.env`, đặt cùng `SUPABASE_URL`, chuyển `AUTH_MODE=supabase`, đồng thời điền `DATABASE_URL` và `DATABASE_SSL=true`.
+3. Tạo user tại Supabase Authentication, lấy UUID rồi cấp vai trò:
+
+   ```powershell
+   npm --prefix backend run user:bootstrap -- --user=<UUID> --name="Tên người dùng" --role=admin
+   ```
+
+Không bật public signup. Vai trò hỗ trợ: `admin`, `manager`, `technician`.

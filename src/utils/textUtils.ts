@@ -209,3 +209,29 @@ export function cadVectorTypePriority(type: CadVectorType, text: unknown): numbe
 
   return 5
 }
+
+export function cadVectorTypeLabelForUi(type: CadVectorType): string {
+  const labels: Record<CadVectorType, string> = {
+    water_plant: 'Nhà máy nước',
+    raw_water_lake: 'Hồ chứa nước thô',
+    pipeline: 'Tuyến ống',
+    canal: 'Kênh/thủy lợi',
+    irrigation_canal: 'Kênh thủy lợi',
+    irrigation_area: 'Vùng thủy lợi',
+    irrigation_point: 'Điểm thủy lợi',
+    irrigation_label: 'Nhãn kênh/thủy lợi',
+    main_work_candidate: 'Công trình chính',
+    boundary: 'Ranh giới',
+    supply_zone: 'Khu vực cấp nước',
+    pipe_diameter_label: 'Nhãn đường kính ống',
+    location_label: 'Nhãn địa danh',
+    road_background: 'Đường nền CAD',
+    layout_artifact: 'Khung bản vẽ',
+    cad_point: 'Điểm bản đồ',
+    cad_line: 'Đường bản đồ',
+    cad_polygon: 'Vùng bản đồ',
+    unknown: 'Chưa phân loại',
+  }
+
+  return labels[type]
+}
