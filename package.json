@@ -11,7 +11,9 @@
     "normalize:cad": "node scripts/normalize-cad-geojson.js",
     "validate:geojson": "node scripts/validate-geojson.js",
     "normalize:cad-vector": "node scripts/normalize-cad-vector.js",
-    "validate:cad-vector": "node scripts/validate-cad-vector.js"
+    "validate:cad-vector": "node scripts/validate-cad-vector.js",
+    "verify:crs": "node scripts/verify-cad-crs.js",
+    "export:cad-wgs84": "node scripts/export-cad-wgs84.js"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
@@ -34,6 +36,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
     "postcss": "^8.5.14",
+    "proj4": "^2.22.0",
     "tailwindcss": "^3.4.17",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",

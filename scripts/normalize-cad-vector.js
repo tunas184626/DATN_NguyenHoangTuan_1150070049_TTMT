@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { CAD_CRS_EVIDENCE, CAD_SOURCE_CRS, CAD_TARGET_CRS } from './cad-crs-config.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -1048,6 +1049,13 @@ function main() {
   const businessLayerIndex = buildBusinessLayerIndex(entities.features)
   const unknownFeatures = entities.features.filter((feature) => feature.properties.type === 'unknown').length
   const metadata = {
+    spatialReference: {
+      ...CAD_CRS_EVIDENCE,
+      sourceCrs: CAD_SOURCE_CRS,
+      targetCrs: CAD_TARGET_CRS,
+      currentDisplayCoordinateSystem: 'LOCAL_NORMALIZED',
+      currentDisplayTransform: 'normalizedX = x - minX; normalizedY = y - minY',
+    },
     originalBounds: bounds,
     normalizedBounds: {
       minX: 0,

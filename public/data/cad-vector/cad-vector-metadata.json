@@ -1,4 +1,44 @@
 {
+  "spatialReference": {
+    "status": "identified_by_spatial_crosscheck",
+    "identifiedAt": "2026-09-09",
+    "modelSpaceCrs": "EPSG:9210",
+    "paperSpaceCrs": null,
+    "targetWebCrs": "EPSG:4326",
+    "verificationMethod": "Four independent named CAD anchors transformed and matched to real-world localities",
+    "officialOperationAccuracyMetres": 1,
+    "surveyCertified": false,
+    "warning": "CRS identity is strongly supported for model-space data. Individual asset positions still require survey/control-point QA before field-grade use.",
+    "sourceCrs": {
+      "authority": "EPSG",
+      "code": 9210,
+      "id": "EPSG:9210",
+      "name": "VN-2000 / TM-3 105-45",
+      "unit": "metre",
+      "axisOrder": [
+        "easting",
+        "northing"
+      ],
+      "centralMeridian": 105.75,
+      "scaleFactor": 0.9999,
+      "falseEasting": 500000,
+      "falseNorthing": 0,
+      "proj4": "+proj=tmerc +lat_0=0 +lon_0=105.75 +k=0.9999 +x_0=500000 +y_0=0 +ellps=WGS84 +towgs84=-191.90441429,-39.30318279,-111.45032835,-0.00928836,0.01975479,-0.00427372,0.252906278 +units=m +no_defs +type=crs"
+    },
+    "targetCrs": {
+      "authority": "EPSG",
+      "code": 4326,
+      "id": "EPSG:4326",
+      "name": "WGS 84",
+      "unit": "degree",
+      "axisOrderForGeoJson": [
+        "longitude",
+        "latitude"
+      ]
+    },
+    "currentDisplayCoordinateSystem": "LOCAL_NORMALIZED",
+    "currentDisplayTransform": "normalizedX = x - minX; normalizedY = y - minY"
+  },
   "originalBounds": {
     "minX": -287.0421480195482,
     "minY": -159.9999661853071,
@@ -8765,5 +8805,5 @@
       "featureCount": 4289
     }
   ],
-  "generatedAt": "2026-05-23T15:47:57.076Z"
+  "generatedAt": "2026-09-09T06:21:47.453Z"
 }

@@ -20,6 +20,7 @@ import {
   Waves,
   X,
 } from 'lucide-react'
+import { useId } from 'react'
 import {
   CartesianGrid,
   Legend,
@@ -60,7 +61,8 @@ import type {
 import { useWebGISData } from './hooks/useWebGISData'
 import { CadBlueprintMap } from './components/map/CadBlueprintMap'
 import { CadVectorMap, cadVectorTypeLabelForUi } from './components/map/CadVectorMap'
-import { CAD_LAYOUT_OPTIONS, CadLayoutPreview } from './components/map/CadLayoutPreview'
+import { CadLayoutPreview } from './components/map/CadLayoutPreview'
+import { CAD_LAYOUT_OPTIONS } from './data/cadLayoutOptions'
 import { cadBlueprintAssets, CAD_BLUEPRINT_CONFIG } from './data/cadBlueprintAssets'
 import { CURATED_MAIN_WORKS, type CuratedMainWork } from './data/curatedMainWorks'
 import { loadCadVectorData } from './services/cadVectorDataService'
@@ -222,6 +224,42 @@ interface StoredUiState {
   collapsedSidebar: boolean
   collapsedDetail: boolean
   visibleLayers: LayerVisibilityState
+}
+
+function createDefaultUiState(): StoredUiState {
+  return {
+    collapsedSidebar: false,
+    collapsedDetail: false,
+    visibleLayers: {
+      waterPlant: true,
+      rawWaterLakes: true,
+      pipelines: true,
+      canals: true,
+      supplyZones: true,
+      boundaries: true,
+      labels: true,
+      incidents: true,
+    },
+  }
+}
+
+function loadStoredUiState(): StoredUiState {
+  const fallback = createDefaultUiState()
+  try {
+    const raw = localStorage.getItem(STORAGE_UI_KEY)
+    if (!raw) return fallback
+    const parsed = JSON.parse(raw) as Partial<StoredUiState>
+    return {
+      ...fallback,
+      ...parsed,
+      visibleLayers: {
+        ...fallback.visibleLayers,
+        ...parsed.visibleLayers,
+      },
+    }
+  } catch {
+    return fallback
+  }
 }
 
 interface TopbarSearchResult {
@@ -2617,7 +2655,7 @@ function safeDisplayText(value: unknown, fallback = 'Không có'): string {
     return fallback
   }
 
-  const text = String(value).replace(/\u0000/g, '').trim()
+  const text = String(value).replaceAll(String.fromCharCode(0), '').trim()
   return text || fallback
 }
 
@@ -3388,8 +3426,9 @@ function AssetFormModal({ mode, feature, onClose, onSubmit }: AssetFormProps) {
 
 function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormProps) {
   const center = anchorFeature ? getFeatureCenter(anchorFeature) : BASE_MAP_CENTER
+  const generatedIncidentId = useId().replace(/[^a-zA-Z0-9]/g, '').toUpperCase()
   const [name, setName] = useState('Điểm sự cố mới')
-  const [incidentCode, setIncidentCode] = useState(`SC-${Math.floor(Math.random() * 900 + 100)}`)
+  const [incidentCode, setIncidentCode] = useState(`SC-${generatedIncidentId || 'MOI'}`)
   const [incidentType, setIncidentType] = useState<IncidentType>('leak')
   const [severity, setSeverity] = useState<IncidentSeverity>('medium')
   const [status, setStatus] = useState<IncidentWorkflowStatus>('new')
@@ -3744,41 +3783,7 @@ function WebGISDashboardPage() {
   const [showCreateIncident, setShowCreateIncident] = useState(false)
   const [editingFeature, setEditingFeature] = useState<AssetFeature | null>(null)
 
-  const [uiState, setUiState] = useState<StoredUiState>(() => ({
-    collapsedSidebar: false,
-    collapsedDetail: false,
-    visibleLayers: {
-      waterPlant: true,
-      rawWaterLakes: true,
-      pipelines: true,
-      canals: true,
-      supplyZones: true,
-      boundaries: true,
-      labels: true,
-      incidents: true,
-    },
-  }))
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_UI_KEY)
-      if (!raw) {
-        return
-      }
-
-      const parsed = JSON.parse(raw) as StoredUiState
-      setUiState((prev) => ({
-        ...prev,
-        ...parsed,
-        visibleLayers: {
-          ...prev.visibleLayers,
-          ...parsed.visibleLayers,
-        },
-      }))
-    } catch {
-      // ignore invalid storage state
-    }
-  }, [])
+  const [uiState, setUiState] = useState<StoredUiState>(loadStoredUiState)
 
   useEffect(() => {
     localStorage.setItem(STORAGE_UI_KEY, JSON.stringify(uiState))
@@ -4008,7 +4013,7 @@ function WebGISDashboardPage() {
 
     const firstFeatureId = getFirstFeatureId(data)
     if (firstFeatureId) {
-      setSelectedFeatureId(firstFeatureId)
+      queueMicrotask(() => setSelectedFeatureId(firstFeatureId))
     }
   }, [data, selectedFeatureId])
 

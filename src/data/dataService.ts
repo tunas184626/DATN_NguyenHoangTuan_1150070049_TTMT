@@ -13,6 +13,7 @@ import { LAYER_LABELS } from '../utils/asset'
 import { createEmptyFeatureCollection, loadMockLayerData } from './loaders'
 
 const CAD_SOURCE_NAME = 'BIWASE_HIEN TRANG.dwg'
+const CAD_OPERATIONAL_WGS84_URL = 'data/cad-vector/operational-map-wgs84.geojson'
 
 type CadLayerKey = Exclude<LayerKey, 'incidents'>
 
@@ -75,6 +76,17 @@ const VALID_ASSET_TYPES: AssetType[] = [
   'label',
   'pending_data',
 ]
+
+const CAD_VECTOR_TYPE_TO_LAYER: Record<string, CadLayerKey> = {
+  water_plant: 'waterPlant',
+  raw_water_lake: 'rawWaterLakes',
+  pipeline: 'pipelines',
+  canal: 'canals',
+  irrigation_canal: 'canals',
+  irrigation_area: 'canals',
+  supply_zone: 'supplyZones',
+  boundary: 'boundaries',
+}
 
 function toPublicUrl(path: string): string {
   return `${import.meta.env.BASE_URL}${path}`
@@ -233,6 +245,33 @@ export async function loadGeoJsonLayer(layerKey: CadLayerKey, url: string): Prom
   return normalizeCollection(layerKey, await response.json())
 }
 
+async function loadOperationalCadLayers(url: string): Promise<Record<CadLayerKey, AssetCollection>> {
+  const response = await fetch(url)
+  if (!response.ok) throw new Error(`HTTP ${response.status}`)
+
+  const rawCollection = (await response.json()) as { type?: string; features?: unknown[] }
+  if (rawCollection.type !== 'FeatureCollection' || !Array.isArray(rawCollection.features)) {
+    throw new Error('GeoJSON CAD WGS84 không hợp lệ')
+  }
+
+  const collections = Object.fromEntries(
+    CAD_LAYER_KEYS.map((layerKey) => [layerKey, createEmptyFeatureCollection()]),
+  ) as Record<CadLayerKey, AssetCollection>
+
+  for (const [index, feature] of rawCollection.features.entries()) {
+    const rawType =
+      feature && typeof feature === 'object'
+        ? String((feature as { properties?: Record<string, unknown> }).properties?.type ?? '')
+        : ''
+    const layerKey = CAD_VECTOR_TYPE_TO_LAYER[rawType]
+    if (!layerKey) continue
+    const normalized = normalizeFeature(layerKey, feature, index)
+    if (normalized) collections[layerKey].features.push(normalized)
+  }
+
+  return collections
+}
+
 function createLayerMeta(
   layerKey: LayerKey,
   source: LayerSourceMeta['source'],
@@ -278,6 +317,37 @@ export async function loadLayerDataWithFallback(): Promise<{
   const layers = Object.fromEntries(layerEntries) as Record<LayerKey, LayerSourceMeta>
 
   let loadedCadFeatureCount = 0
+
+  const operationalUrl = toPublicUrl(CAD_OPERATIONAL_WGS84_URL)
+  try {
+    const operationalLayers = await loadOperationalCadLayers(operationalUrl)
+    for (const layerKey of CAD_LAYER_KEYS) {
+      const collection = operationalLayers[layerKey]
+      data[layerKey] = collection as never
+      loadedCadFeatureCount += collection.features.length
+      layers[layerKey] = createLayerMeta(
+        layerKey,
+        'cad',
+        collection.features.length ? 'cad_loaded' : 'cad_empty',
+        collection.features.length,
+        operationalUrl,
+      )
+    }
+  } catch {
+    // Keep compatibility with the legacy per-layer exports below.
+  }
+
+  if (loadedCadFeatureCount > 0) {
+    return {
+      data,
+      dataSource: {
+        mode: 'cad',
+        label: 'Đã đồng bộ dữ liệu bản đồ',
+        usingCad: true,
+        layers,
+      },
+    }
+  }
 
   await Promise.all(
     CAD_LAYER_KEYS.map(async (layerKey) => {

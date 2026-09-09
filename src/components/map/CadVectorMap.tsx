@@ -1676,6 +1676,8 @@ function CadVectorClickController({
   return null
 }
 
+// Shared by App while the map module still owns the CAD presentation taxonomy.
+// eslint-disable-next-line react-refresh/only-export-components
 export function cadVectorTypeLabelForUi(type: CadVectorType): string {
   return CAD_VECTOR_TYPE_LABELS_VI[type] ?? cadVectorTypeLabel(type)
 }

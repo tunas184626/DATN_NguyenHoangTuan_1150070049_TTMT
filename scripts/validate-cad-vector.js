@@ -18,6 +18,8 @@ const OUTPUT_FILES = [
   'layer-index.json',
   'business-layer-index.json',
   'cad-vector-metadata.json',
+  'crs-verification-report.json',
+  'operational-map-wgs84.geojson',
 ]
 
 function readJson(fileName) {
@@ -49,7 +51,42 @@ function main() {
 
   const entities = readJson('entities.geojson')
   const metadata = readJson('cad-vector-metadata.json')
+  const crsVerification = readJson('crs-verification-report.json')
+  const operationalMap = readJson('operational-map-wgs84.geojson')
   const layerIndex = readJson('layer-index.json') ?? []
+
+  const crsValid =
+    metadata?.spatialReference?.status === 'identified_by_spatial_crosscheck' &&
+    metadata.spatialReference?.sourceCrs?.id === 'EPSG:9210' &&
+    metadata.spatialReference?.targetCrs?.id === 'EPSG:4326' &&
+    metadata.spatialReference?.paperSpaceCrs === null &&
+    crsVerification?.result === 'PASS' &&
+    crsVerification?.anchors?.length >= 4 &&
+    crsVerification.anchors.every((anchor) => anchor?.passed === true)
+
+  console.log(`CRS verification: ${crsValid ? 'PASS (EPSG:9210 -> EPSG:4326)' : 'FAIL'}`)
+  if (!crsValid) {
+    console.error('[ERROR] CAD CRS metadata or verification report is missing/invalid')
+    process.exitCode = 1
+  }
+
+  const operationalMapValid =
+    operationalMap?.type === 'FeatureCollection' &&
+    Array.isArray(operationalMap.features) &&
+    operationalMap.features.length > 0 &&
+    operationalMap.metadata?.sourceCrs === 'EPSG:9210' &&
+    operationalMap.metadata?.targetCrs === 'EPSG:4326' &&
+    operationalMap.features.every(
+      (feature) =>
+        feature?.properties?.cadSpace !== 'paper' &&
+        feature?.properties?.layoutArtifact !== true &&
+        feature?.properties?.targetCrs === 'EPSG:4326',
+    )
+  console.log(`WGS84 operational map: ${operationalMapValid ? 'PASS' : 'FAIL'}`)
+  if (!operationalMapValid) {
+    console.error('[ERROR] WGS84 operational CAD map is missing/invalid')
+    process.exitCode = 1
+  }
 
   if (entities?.type !== 'FeatureCollection' || !Array.isArray(entities.features)) {
     console.error('[ERROR] entities.geojson khong phai FeatureCollection')

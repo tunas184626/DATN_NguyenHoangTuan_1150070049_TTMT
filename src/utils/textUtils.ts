@@ -37,7 +37,7 @@ export function safeDisplayText(value: unknown, fallback = ''): string {
     return fallback
   }
 
-  const text = String(value).replace(/\u0000/g, '').trim()
+  const text = String(value).replaceAll(String.fromCharCode(0), '').trim()
   return text || fallback
 }
 

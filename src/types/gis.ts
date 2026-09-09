@@ -337,6 +337,40 @@ export interface CadVectorBounds {
 }
 
 export interface CadVectorMetadata {
+  spatialReference?: {
+    status: 'identified_by_spatial_crosscheck'
+    identifiedAt: string
+    modelSpaceCrs: 'EPSG:9210'
+    paperSpaceCrs: null
+    targetWebCrs: 'EPSG:4326'
+    verificationMethod: string
+    officialOperationAccuracyMetres: number
+    surveyCertified: boolean
+    warning: string
+    sourceCrs: {
+      authority: 'EPSG'
+      code: 9210
+      id: 'EPSG:9210'
+      name: string
+      unit: 'metre'
+      axisOrder: string[]
+      centralMeridian: number
+      scaleFactor: number
+      falseEasting: number
+      falseNorthing: number
+      proj4: string
+    }
+    targetCrs: {
+      authority: 'EPSG'
+      code: 4326
+      id: 'EPSG:4326'
+      name: string
+      unit: 'degree'
+      axisOrderForGeoJson: string[]
+    }
+    currentDisplayCoordinateSystem: 'LOCAL_NORMALIZED'
+    currentDisplayTransform: string
+  }
   originalBounds: CadVectorBounds
   normalizedBounds: CadVectorBounds
   transform: string
