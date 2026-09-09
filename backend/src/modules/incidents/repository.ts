@@ -1,7 +1,13 @@
 import type { PoolClient, QueryResultRow } from 'pg'
 import { getPool } from '../../db/pool.js'
 import { AppError } from '../../shared/errors.js'
-import type { CreateIncidentInput, ListIncidentsQuery, TransitionIncidentInput } from './schemas.js'
+import type {
+  AssignIncidentInput,
+  CommentIncidentInput,
+  CreateIncidentInput,
+  ListIncidentsQuery,
+  TransitionIncidentInput,
+} from './schemas.js'
 
 interface IncidentRow extends QueryResultRow {
   id: string
@@ -18,12 +24,13 @@ interface IncidentRow extends QueryResultRow {
   reported_at: Date
   updated_at: Date
   version: number
+  assigned_to: string | null
   total_count?: string
 }
 
 const columns = `id, incident_code, asset_id, name, incident_type, severity, status,
   description, address, details, ST_AsGeoJSON(geom)::json as geometry,
-  reported_at, updated_at, version`
+  reported_at, updated_at, version, assigned_to`
 
 function rowToFeature(row: IncidentRow) {
   return {
@@ -44,6 +51,7 @@ function rowToFeature(row: IncidentRow) {
       reportedDate: row.reported_at.toISOString().slice(0, 10),
       lastUpdated: row.updated_at.toISOString(),
       version: row.version,
+      assignedTo: row.assigned_to,
       notes: Array.isArray(row.details.notes) ? row.details.notes : [],
     },
   }
@@ -84,8 +92,8 @@ export async function createIncident(input: CreateIncidentInput, actorId: string
     )
     const row = result.rows[0]!
     await client.query(
-      `insert into incident_status_history (incident_id, from_status, to_status, note, changed_by)
-       values ($1,null,'new','Ghi nhận sự cố',$2)`,
+      `insert into incident_status_history (incident_id, from_status, to_status, note, changed_by, event_type)
+       values ($1,null,'new','Ghi nhận sự cố',$2,'created')`,
       [row.id, actorId],
     )
     await client.query('commit')
@@ -122,7 +130,7 @@ export async function transitionIncident(id: string, input: TransitionIncidentIn
        resolved_at=case when $2='resolved' then now() else null end where id=$1 returning ${columns}`,
       [id, input.status, actorId],
     )
-    await insertHistory(client, id, row.status, input.status, input.note, actorId)
+    await insertHistory(client, id, row.status, input.status, input.note, actorId, 'status_changed')
     await client.query('commit')
     return rowToFeature(updated.rows[0]!)
   } catch (error) {
@@ -133,17 +141,78 @@ export async function transitionIncident(id: string, input: TransitionIncidentIn
   }
 }
 
-async function insertHistory(client: PoolClient, id: string, from: string, to: string, note: string, actor: string) {
+async function insertHistory(
+  client: PoolClient,
+  id: string,
+  from: string,
+  to: string,
+  note: string,
+  actor: string,
+  eventType: string,
+  metadata: Record<string, unknown> = {},
+) {
   await client.query(
-    `insert into incident_status_history (incident_id, from_status, to_status, note, changed_by) values ($1,$2,$3,$4,$5)`,
-    [id, from, to, note, actor],
+    `insert into incident_status_history
+     (incident_id, from_status, to_status, note, changed_by, event_type, metadata)
+     values ($1,$2,$3,$4,$5,$6,$7)`,
+    [id, from, to, note, actor, eventType, JSON.stringify(metadata)],
   )
+}
+
+export async function assignIncident(id: string, input: AssignIncidentInput, actorId: string) {
+  const client = await getPool().connect()
+  try {
+    await client.query('begin')
+    const current = await client.query<{ status: string; version: number; assigned_to: string | null }>(
+      'select status, version, assigned_to from incidents where id=$1 and deleted_at is null for update', [id],
+    )
+    const row = current.rows[0]
+    if (!row) throw new AppError(404, 'INCIDENT_NOT_FOUND', 'Không tìm thấy sự cố')
+    if (row.version !== input.version) throw new AppError(409, 'INCIDENT_VERSION_CONFLICT', 'Sự cố đã được cập nhật ở nơi khác')
+    const updated = await client.query<IncidentRow>(
+      `update incidents set assigned_to=$2, assigned_at=now(), version=version+1,
+       updated_by=$3, updated_at=now() where id=$1 returning ${columns}`,
+      [id, input.assignee, actorId],
+    )
+    await insertHistory(
+      client, id, row.status, row.status,
+      input.note || `Phân công cho ${input.assignee}`, actorId, 'assignment_changed',
+      { from: row.assigned_to, to: input.assignee },
+    )
+    await client.query('commit')
+    return rowToFeature(updated.rows[0]!)
+  } catch (error) {
+    await client.query('rollback')
+    throw error
+  } finally {
+    client.release()
+  }
+}
+
+export async function addIncidentComment(id: string, input: CommentIncidentInput, actorId: string) {
+  const client = await getPool().connect()
+  try {
+    await client.query('begin')
+    const current = await client.query<{ status: string }>(
+      'select status from incidents where id=$1 and deleted_at is null for update', [id],
+    )
+    const row = current.rows[0]
+    if (!row) throw new AppError(404, 'INCIDENT_NOT_FOUND', 'Không tìm thấy sự cố')
+    await insertHistory(client, id, row.status, row.status, input.content, actorId, 'comment')
+    await client.query('update incidents set updated_at=now(), updated_by=$2 where id=$1', [id, actorId])
+    await client.query('commit')
+  } catch (error) {
+    await client.query('rollback')
+    throw error
+  } finally {
+    client.release()
+  }
 }
 
 export async function getIncidentHistory(id: string) {
   const result = await getPool().query(
     `select id, from_status as "fromStatus", to_status as "toStatus", note,
-     changed_by as "changedBy", changed_at as "changedAt"
+     changed_by as "changedBy", changed_at as "changedAt", event_type as "eventType", metadata
      from incident_status_history where incident_id=$1 order by changed_at desc`, [id],
   )
   return { items: result.rows }

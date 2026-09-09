@@ -10,11 +10,13 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:db": "tsx src/db/integration-check.ts",
+    "supabase:check": "tsx src/db/supabase-check.ts",
     "db:migrate": "tsx src/db/migrate.ts",
     "db:seed": "tsx src/db/seed.ts",
     "user:bootstrap": "tsx src/db/bootstrap-user.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
     "compression": "^1.8.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
@@ -22,6 +24,7 @@
     "express-rate-limit": "^8.1.0",
     "helmet": "^8.1.0",
     "jose": "^6.1.0",
+    "multer": "^2.3.0",
     "pg": "^8.16.3",
     "zod": "^4.1.12"
   },
@@ -30,6 +33,7 @@
     "@types/compression": "^1.8.1",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
+    "@types/multer": "^2.2.0",
     "@types/node": "^24.10.1",
     "@types/pg": "^8.15.6",
     "@types/supertest": "^6.0.3",

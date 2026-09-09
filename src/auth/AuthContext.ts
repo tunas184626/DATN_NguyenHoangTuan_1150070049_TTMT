@@ -5,6 +5,8 @@ export interface AuthContextValue {
   configured: boolean
   loading: boolean
   user: User | null
+  profile: { displayName: string; role: 'admin' | 'manager' | 'technician' } | null
+  profileError: string | null
   signIn(email: string, password: string): Promise<void>
   signOut(): Promise<void>
 }

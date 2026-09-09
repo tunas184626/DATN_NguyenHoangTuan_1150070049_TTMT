@@ -33,7 +33,7 @@ export async function apiRequest<T>(
   try {
     const headers = new Headers(options.headers)
     headers.set('Accept', 'application/json')
-    if (options.body) headers.set('Content-Type', 'application/json')
+    if (options.body && !(options.body instanceof FormData)) headers.set('Content-Type', 'application/json')
     const accessToken = await getAccessToken()
     if (accessToken) headers.set('Authorization', `Bearer ${accessToken}`)
 
@@ -52,6 +52,7 @@ export async function apiRequest<T>(
       )
     }
 
+    if (response.status === 204) return undefined as T
     return (await response.json()) as T
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') {

@@ -7,6 +7,8 @@ import { createAssetSchema, listAssetsQuerySchema, updateAssetSchema } from './s
 
 export const assetsRouter = Router()
 
+assetsRouter.use(authenticate, authorizeRoles('admin', 'manager', 'technician'))
+
 assetsRouter.get('/', asyncHandler(async (request, response) => {
   response.json(await listAssets(listAssetsQuerySchema.parse(request.query)))
 }))
@@ -15,12 +17,12 @@ assetsRouter.get('/:id', asyncHandler(async (request, response) => {
   response.json(await getAsset(String(request.params.id)))
 }))
 
-assetsRouter.post('/', authenticate, authorizeRoles('admin', 'manager'), asyncHandler(async (request, response) => {
+assetsRouter.post('/', authorizeRoles('admin', 'manager'), asyncHandler(async (request, response) => {
   const actorId = String(response.locals.user.id)
   response.status(201).json(await createAsset(createAssetSchema.parse(request.body), actorId))
 }))
 
-assetsRouter.patch('/:id', authenticate, authorizeRoles('admin', 'manager'), asyncHandler(async (request, response) => {
+assetsRouter.patch('/:id', authorizeRoles('admin', 'manager'), asyncHandler(async (request, response) => {
   const actorId = String(response.locals.user.id)
   response.json(await updateAsset(String(request.params.id), updateAssetSchema.parse(request.body), actorId))
 }))

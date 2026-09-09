@@ -25,6 +25,7 @@ import {
 import { lazy, Suspense, useId } from 'react'
 import { useAuth } from './auth/AuthContext'
 import LoginPage from './components/auth/LoginPage'
+import { IncidentWorkflowPanel } from './components/incidents/IncidentWorkflowPanel'
 import type {
   AnyMapFeature,
   AssetFeature,
@@ -38,6 +39,8 @@ import type {
   DataSourceState,
   GeometryInputType,
   IncidentFeature,
+  IncidentAttachment,
+  IncidentHistoryItem,
   IncidentSeverity,
   IncidentType,
   IncidentWorkflowStatus,
@@ -157,15 +160,6 @@ const INCIDENT_SEVERITY_OPTIONS: Array<{ value: IncidentSeverity; label: string 
   { value: 'low', label: 'Thấp' },
   { value: 'medium', label: 'Trung bình' },
   { value: 'high', label: 'Cao' },
-]
-
-const INCIDENT_WORKFLOW_OPTIONS: Array<{
-  value: IncidentWorkflowStatus
-  label: string
-}> = [
-  { value: 'new', label: 'Mới ghi nhận' },
-  { value: 'in_progress', label: 'Đang xử lý' },
-  { value: 'resolved', label: 'Đã xử lý' },
 ]
 
 const CAD_VECTOR_TYPE_FILTERS: Array<{ value: CadVectorType | 'all'; label: string }> = [
@@ -399,6 +393,13 @@ interface DetailPanelProps {
   onStartCadVectorPositionUpdate: (feature: CadVectorFeature) => void
   onOpenUpdate: (feature: AssetFeature) => void
   onOpenIncident: (feature: AnyMapFeature | null) => void
+  onTransitionIncident: (id: string, status: IncidentWorkflowStatus, note: string) => Promise<void>
+  onAssignIncident: (id: string, assignee: string, note: string) => Promise<void>
+  onAddIncidentComment: (id: string, content: string) => Promise<void>
+  onLoadIncidentHistory: (id: string) => Promise<IncidentHistoryItem[]>
+  onLoadIncidentAttachments: (id: string) => Promise<IncidentAttachment[]>
+  onUploadIncidentAttachment: (id: string, file: File) => Promise<IncidentAttachment>
+  canAssignIncident: boolean
 }
 
 interface AssetFormProps {
@@ -2550,6 +2551,13 @@ function DetailPanel({
   onStartCadVectorPositionUpdate,
   onOpenUpdate,
   onOpenIncident,
+  onTransitionIncident,
+  onAssignIncident,
+  onAddIncidentComment,
+  onLoadIncidentHistory,
+  onLoadIncidentAttachments,
+  onUploadIncidentAttachment,
+  canAssignIncident,
 }: DetailPanelProps) {
   const [copyState, setCopyState] = useState('Copy thông tin')
 
@@ -2980,6 +2988,19 @@ function DetailPanel({
                 Báo sự cố
               </button>
             </div>
+
+            {feature.properties.type === 'incident' && (
+              <IncidentWorkflowPanel
+                incident={feature as IncidentFeature}
+                onTransition={(status, note) => onTransitionIncident(feature.properties.id, status, note)}
+                onAssign={(assignee, note) => onAssignIncident(feature.properties.id, assignee, note)}
+                onComment={(content) => onAddIncidentComment(feature.properties.id, content)}
+                onLoadHistory={onLoadIncidentHistory}
+                onLoadAttachments={onLoadIncidentAttachments}
+                onUpload={onUploadIncidentAttachment}
+                canAssign={canAssignIncident}
+              />
+            )}
           </div>
         )}
       </div>
@@ -3283,12 +3304,11 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
   const [incidentCode, setIncidentCode] = useState(`SC-${generatedIncidentId || 'MOI'}`)
   const [incidentType, setIncidentType] = useState<IncidentType>('leak')
   const [severity, setSeverity] = useState<IncidentSeverity>('medium')
-  const [status, setStatus] = useState<IncidentWorkflowStatus>('new')
   const [description, setDescription] = useState('')
   const [address, setAddress] = useState(anchorFeature?.properties.address ?? '')
   const [reportedDate, setReportedDate] = useState(new Date().toISOString().slice(0, 10))
   const [googleMapsUrl, setGoogleMapsUrl] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
+  const [imageFiles, setImageFiles] = useState<File[]>([])
   const [notesRaw, setNotesRaw] = useState('')
   const [latitude, setLatitude] = useState(String(center[0].toFixed(6)))
   const [longitude, setLongitude] = useState(String(center[1].toFixed(6)))
@@ -3319,12 +3339,13 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
         incidentCode,
         incidentType,
         severity,
-        status,
+        status: 'new',
         description,
         address,
         reportedDate,
         googleMapsUrl,
-        imageUrl,
+        imageUrl: '',
+        imageFiles,
         notes: parseNotes(notesRaw),
         latitude: lat,
         longitude: lng,
@@ -3406,12 +3427,6 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
               <input className="field-input" value={incidentCode} onChange={(event) => setIncidentCode(event.target.value)} />
             </div>
             <div>
-              <label className="field-label">Trạng thái</label>
-              <select className="field-input" value={status} onChange={(event) => setStatus(event.target.value as IncidentWorkflowStatus)}>
-                {INCIDENT_WORKFLOW_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
-              </select>
-            </div>
-            <div>
               <label className="field-label">Ngày ghi nhận</label>
               <input type="date" className="field-input" value={reportedDate} onChange={(event) => setReportedDate(event.target.value)} />
             </div>
@@ -3424,8 +3439,33 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
               <input className="field-input" value={longitude} onChange={(event) => setLongitude(event.target.value)} />
             </div>
             <div>
-              <label className="field-label">Hình ảnh (URL)</label>
-              <input className="field-input" value={imageUrl} onChange={(event) => setImageUrl(event.target.value)} />
+              <label className="field-label">Hình ảnh hiện trường</label>
+              <input
+                type="file"
+                multiple
+                accept="image/jpeg,image/png,image/webp"
+                className="field-input file:mr-3 file:rounded-md file:border-0 file:bg-water-50 file:px-3 file:py-1 file:text-sm file:font-semibold file:text-water-800"
+                onChange={(event) => {
+                  const files = Array.from(event.target.files ?? []).slice(0, 3)
+                  const invalid = files.find((file) => file.size > 8 * 1024 * 1024)
+                  if (invalid) {
+                    setError(`Ảnh ${invalid.name} vượt quá 8 MB`)
+                    event.currentTarget.value = ''
+                    setImageFiles([])
+                    return
+                  }
+                  setError('')
+                  setImageFiles(files)
+                }}
+              />
+              <p className="mt-1 text-xs text-slate-500">
+                Tối đa 3 ảnh JPG, PNG hoặc WebP; mỗi ảnh không quá 8 MB.
+              </p>
+              {imageFiles.length > 0 && (
+                <p className="mt-1 truncate text-xs font-medium text-emerald-700">
+                  Đã chọn: {imageFiles.map((file) => file.name).join(', ')}
+                </p>
+              )}
             </div>
             <div>
               <label className="field-label">Liên kết bản đồ</label>
@@ -3497,9 +3537,24 @@ function ManageView({
 }
 
 function WebGISDashboardPage() {
-  const { configured: authConfigured, user, signOut } = useAuth()
-  const { data, dataSource, loading, error, incidents, addAsset, addIncident, updateAsset, resetData } =
-    useWebGISData()
+  const { configured: authConfigured, user, profile, signOut } = useAuth()
+  const {
+    data,
+    dataSource,
+    loading,
+    error,
+    incidents,
+    addAsset,
+    addIncident,
+    updateAsset,
+    transitionIncident,
+    assignIncident,
+    addIncidentComment,
+    getIncidentHistory,
+    getIncidentAttachments,
+    uploadIncidentAttachment,
+    resetData,
+  } = useWebGISData()
 
   const [viewMode, setViewMode] = useState<ViewMode>('map')
   const [mapMode, setMapMode] = useState<MapMode>('cadVector')
@@ -3531,6 +3586,7 @@ function WebGISDashboardPage() {
   const [showCreateIncident, setShowCreateIncident] = useState(false)
   const [editingFeature, setEditingFeature] = useState<AssetFeature | null>(null)
   const [incidentToast, setIncidentToast] = useState<IncidentFeature | null>(null)
+  const [incidentToastMessage, setIncidentToastMessage] = useState('Đã đồng bộ dữ liệu')
 
   const [uiState, setUiState] = useState<StoredUiState>(loadStoredUiState)
 
@@ -3841,8 +3897,22 @@ function WebGISDashboardPage() {
   const handleAddIncident = async (payload: NewIncidentInput) => {
     const created = await addIncident(payload)
     if (created) {
+      let uploaded = 0
+      for (const file of payload.imageFiles ?? []) {
+        try {
+          await uploadIncidentAttachment(created.properties.id, file)
+          uploaded += 1
+        } catch {
+          // Sự cố đã được lưu; thông báo riêng nếu có ảnh chưa tải thành công.
+        }
+      }
       setSelectedFeatureId(created.properties.id)
       setFlyToRequest({ feature: created, zoom: 16 })
+      setIncidentToastMessage(
+        uploaded === (payload.imageFiles?.length ?? 0)
+          ? uploaded > 0 ? `Đã đồng bộ dữ liệu và ${uploaded} ảnh` : 'Đã đồng bộ dữ liệu'
+          : `Đã lưu sự cố; ${Math.max((payload.imageFiles?.length ?? 0) - uploaded, 0)} ảnh chưa tải được`,
+      )
       setIncidentToast(created)
     }
     setShowCreateIncident(false)
@@ -4311,6 +4381,13 @@ function WebGISDashboardPage() {
           }
           onOpenUpdate={(feature) => setEditingFeature(feature)}
           onOpenIncident={() => setShowCreateIncident(true)}
+          onTransitionIncident={async (id, status, note) => { await transitionIncident(id, status, note) }}
+          onAssignIncident={async (id, assignee, note) => { await assignIncident(id, assignee, note) }}
+          onAddIncidentComment={addIncidentComment}
+          onLoadIncidentHistory={getIncidentHistory}
+          onLoadIncidentAttachments={getIncidentAttachments}
+          onUploadIncidentAttachment={uploadIncidentAttachment}
+          canAssignIncident={!authConfigured || profile?.role === 'admin' || profile?.role === 'manager'}
         />}
       </section>
 
@@ -4340,7 +4417,7 @@ function WebGISDashboardPage() {
           <div className="min-w-0 flex-1">
             <p className="font-semibold text-slate-800">Đã tạo sự cố {incidentToast.properties.incidentCode}</p>
             <p className="mt-0.5 text-xs text-slate-500">
-              {incidentToast.properties.source?.includes('tạm') ? 'Đã lưu tạm trên thiết bị' : 'Đã đồng bộ dữ liệu'}
+              {incidentToast.properties.source?.includes('tạm') ? 'Đã lưu tạm trên thiết bị' : incidentToastMessage}
             </p>
             <button
               type="button"
@@ -4365,7 +4442,7 @@ function WebGISDashboardPage() {
 }
 
 function App() {
-  const { configured, loading, user } = useAuth()
+  const { configured, loading, user, profileError, signOut } = useAuth()
 
   if (loading) {
     return (
@@ -4379,6 +4456,20 @@ function App() {
   }
 
   if (configured && !user) return <LoginPage />
+  if (configured && profileError) {
+    return (
+      <main className="flex h-full items-center justify-center bg-slate-950 p-4 text-white">
+        <section className="w-full max-w-md rounded-2xl border border-white/10 bg-white/10 p-6 text-center">
+          <AlertTriangle className="mx-auto mb-3 size-8 text-amber-300" />
+          <h1 className="text-lg font-bold">Tài khoản chưa được cấp quyền</h1>
+          <p className="mt-2 text-sm text-slate-300">{profileError}</p>
+          <button type="button" className="ghost-btn mt-5 bg-white text-slate-800" onClick={() => { void signOut() }}>
+            Đăng xuất
+          </button>
+        </section>
+      </main>
+    )
+  }
   return <WebGISDashboardPage />
 }
 

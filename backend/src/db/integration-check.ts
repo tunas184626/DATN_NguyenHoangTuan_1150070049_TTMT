@@ -33,6 +33,9 @@ async function main(): Promise<void> {
     const ready = await request<{ status: string }>(baseUrl, '/health/ready')
     assert(ready.status === 'ready', 'database readiness')
 
+    const pipelines = await request<{ features: unknown[]; meta: { total: number } }>(baseUrl, '/assets?type=pipeline&limit=1')
+    assert(pipelines.features.length === 1 && pipelines.meta.total >= 416, 'pipeline import is available through API')
+
     const asset = await request<{ properties: { id: string; version: number } }>(baseUrl, '/assets', {
       method: 'POST',
       body: JSON.stringify({
@@ -70,15 +73,28 @@ async function main(): Promise<void> {
     })
     incidentId = String(incident.properties.id)
 
-    const transitioned = await request<{ properties: { status: string } }>(baseUrl, `/incidents/${incidentId}/status`, {
+    const transitioned = await request<{ properties: { status: string; version: number } }>(baseUrl, `/incidents/${incidentId}/status`, {
       method: 'PATCH',
       body: JSON.stringify({ status: 'in_progress', version: 1, note: 'Integration check' }),
     })
     assert(transitioned.properties.status === 'in_progress', 'incident transition')
 
-    const history = await request<{ items: unknown[] }>(baseUrl, `/incidents/${incidentId}/history`)
-    assert(history.items.length === 2, 'incident history entries')
-    console.log('Database integration check PASS: assets CRUD + incidents workflow + history')
+    const assigned = await request<{ properties: { assignedTo: string; version: number } }>(baseUrl, `/incidents/${incidentId}/assignment`, {
+      method: 'PATCH',
+      body: JSON.stringify({ assignee: 'integration@example.test', version: transitioned.properties.version, note: 'Integration assignment' }),
+    })
+    assert(assigned.properties.assignedTo === 'integration@example.test', 'incident assignment')
+
+    await request(baseUrl, `/incidents/${incidentId}/comments`, {
+      method: 'POST',
+      body: JSON.stringify({ content: 'Integration comment' }),
+    })
+
+    const history = await request<{ items: Array<{ eventType: string }> }>(baseUrl, `/incidents/${incidentId}/history`)
+    assert(history.items.length === 4, 'incident history entries')
+    assert(history.items.some((item) => item.eventType === 'assignment_changed'), 'assignment history')
+    assert(history.items.some((item) => item.eventType === 'comment'), 'comment history')
+    console.log('Database integration check PASS: pipeline import + assets CRUD + complete incident workflow')
   } finally {
     const database = getPool()
     if (incidentId) await database.query('delete from incidents where id=$1', [incidentId])

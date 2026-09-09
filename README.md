@@ -59,10 +59,21 @@ Không commit `.env`, password database hoặc Supabase secret/service-role key.
 
 1. Tạo `.env` từ `.env.example`, điền `VITE_SUPABASE_URL` và `VITE_SUPABASE_PUBLISHABLE_KEY` lấy từ Supabase **Connect**.
 2. Trong `backend/.env`, đặt cùng `SUPABASE_URL`, chuyển `AUTH_MODE=supabase`, đồng thời điền `DATABASE_URL` và `DATABASE_SSL=true`.
-3. Tạo user tại Supabase Authentication, lấy UUID rồi cấp vai trò:
+3. Trong `backend/.env`, thêm `SUPABASE_SECRET_KEY=sb_secret_...` để backend tạo/quản lý bucket ảnh private. Secret key không được đặt trong `.env` frontend.
+4. Chạy migration và import dữ liệu đã chuẩn hóa:
+
+   ```powershell
+   npm run db:migrate
+   npm run db:seed
+   ```
+
+   Seed hiện nhập idempotent 3 nhà máy nước và 416 tuyến ống WGS84. Tuyến ống được đánh dấu `pending_data`/`referenceOnly` cho tới khi nghiệm thu nghiệp vụ.
+5. Tạo user tại Supabase Authentication, lấy UUID rồi cấp vai trò:
 
    ```powershell
    npm --prefix backend run user:bootstrap -- --user=<UUID> --name="Tên người dùng" --role=admin
    ```
+
+Ảnh sự cố được lưu trong bucket private `incident-attachments`, giới hạn 8 MB và chỉ nhận JPG/PNG/WebP. Backend tự tạo bucket ở lần upload đầu tiên và trả URL ký tạm thời, không công khai object URL.
 
 Không bật public signup. Vai trò hỗ trợ: `admin`, `manager`, `technician`.

@@ -30,6 +30,18 @@ export const transitionIncidentSchema = z.object({
   note: z.string().trim().max(2000).default(''),
 })
 
+export const assignIncidentSchema = z.object({
+  assignee: z.string().trim().min(1).max(255),
+  version: z.number().int().positive(),
+  note: z.string().trim().max(2000).default(''),
+})
+
+export const commentIncidentSchema = z.object({
+  content: z.string().trim().min(1).max(2000),
+})
+
 export type ListIncidentsQuery = z.infer<typeof listIncidentsQuerySchema>
 export type CreateIncidentInput = z.infer<typeof createIncidentSchema>
 export type TransitionIncidentInput = z.infer<typeof transitionIncidentSchema>
+export type AssignIncidentInput = z.infer<typeof assignIncidentSchema>
+export type CommentIncidentInput = z.infer<typeof commentIncidentSchema>

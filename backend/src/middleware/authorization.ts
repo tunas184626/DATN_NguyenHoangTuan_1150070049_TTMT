@@ -14,6 +14,15 @@ export function authorizeRoles(...allowedRoles: AppRole[]): RequestHandler {
     }
 
     try {
+      const existing = response.locals.profile as { displayName: string; role: AppRole } | undefined
+      if (existing) {
+        if (!allowedRoles.includes(existing.role)) {
+          next(new AppError(403, 'FORBIDDEN', 'Bạn không có quyền thực hiện thao tác này'))
+          return
+        }
+        next()
+        return
+      }
       const authUserId = String(response.locals.user?.id ?? '')
       const result = await getPool().query<{ display_name: string; role: AppRole }>(
         `select display_name, role from app_users where auth_user_id=$1 and active=true`,

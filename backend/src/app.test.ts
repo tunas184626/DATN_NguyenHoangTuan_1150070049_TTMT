@@ -46,4 +46,18 @@ describe('health API', () => {
     expect(response.body.user.id).toBe('development-user')
     expect(response.body.profile.role).toBe('admin')
   })
+
+  it('rejects an attachment request without an image before accessing storage', async () => {
+    const response = await request(createApp()).post('/api/incidents/missing/attachments')
+    expect(response.status).toBe(400)
+    expect(response.body.error.code).toBe('IMAGE_REQUIRED')
+  })
+
+  it('rejects a spoofed image MIME type before accessing storage', async () => {
+    const response = await request(createApp())
+      .post('/api/incidents/missing/attachments')
+      .attach('file', Buffer.from('not an image'), { filename: 'fake.png', contentType: 'image/png' })
+    expect(response.status).toBe(415)
+    expect(response.body.error.code).toBe('INVALID_IMAGE_CONTENT')
+  })
 })

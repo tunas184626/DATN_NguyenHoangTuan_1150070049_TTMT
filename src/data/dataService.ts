@@ -248,7 +248,16 @@ export async function loadGeoJsonLayer(layerKey: CadLayerKey, url: string): Prom
 }
 
 async function loadApiAssets(type: AssetType): Promise<AssetCollection> {
-  return normalizeCollection('waterPlant', await apiGet<unknown>(`/assets?type=${type}&limit=500`))
+  const layerByType: Partial<Record<AssetType, CadLayerKey>> = {
+    water_plant: 'waterPlant',
+    raw_water_lake: 'rawWaterLakes',
+    pipeline: 'pipelines',
+    canal: 'canals',
+    supply_zone: 'supplyZones',
+    boundary: 'boundaries',
+    label: 'labels',
+  }
+  return normalizeCollection(layerByType[type] ?? 'labels', await apiGet<unknown>(`/assets?type=${type}&limit=500`))
 }
 
 async function loadApiIncidents(): Promise<IncidentCollection> {
@@ -343,13 +352,18 @@ export async function loadLayerDataWithFallback(): Promise<{
   let loadedCadFeatureCount = 0
   let loadedApiFeatureCount = 0
   let apiAvailable = false
+  const apiLoadedLayers = new Set<Exclude<LayerKey, 'incidents'>>()
 
   try {
-    const waterPlants = await loadApiAssets('water_plant')
+    const [waterPlants, pipelines] = await Promise.all([
+      loadApiAssets('water_plant'),
+      loadApiAssets('pipeline'),
+    ])
     apiAvailable = true
     if (waterPlants.features.length > 0) {
       data.waterPlant = waterPlants
-      loadedApiFeatureCount = waterPlants.features.length
+      apiLoadedLayers.add('waterPlant')
+      loadedApiFeatureCount += waterPlants.features.length
       layers.waterPlant = createLayerMeta(
         'waterPlant',
         'api',
@@ -361,6 +375,16 @@ export async function loadLayerDataWithFallback(): Promise<{
     } else {
       layers.waterPlant = createLayerMeta('waterPlant', 'api', 'api_empty', 0)
     }
+    if (pipelines.features.length > 0) {
+      data.pipelines = pipelines
+      apiLoadedLayers.add('pipelines')
+      loadedApiFeatureCount += pipelines.features.length
+      layers.pipelines = createLayerMeta(
+        'pipelines', 'api', 'api_loaded', pipelines.features.length, undefined, 'Dữ liệu đã đồng bộ',
+      )
+    } else {
+      layers.pipelines = createLayerMeta('pipelines', 'api', 'api_empty', 0)
+    }
   } catch {
     layers.waterPlant = createLayerMeta(
       'waterPlant',
@@ -370,6 +394,7 @@ export async function loadLayerDataWithFallback(): Promise<{
       undefined,
       'Đang dùng dữ liệu dự phòng',
     )
+    layers.pipelines = createLayerMeta('pipelines', 'api', 'api_error', 0, undefined, 'Đang dùng dữ liệu dự phòng')
   }
 
   if (apiAvailable) {
@@ -393,11 +418,11 @@ export async function loadLayerDataWithFallback(): Promise<{
     const operationalLayers = await loadOperationalCadLayers(operationalUrl)
     for (const layerKey of CAD_LAYER_KEYS) {
       const collection = operationalLayers[layerKey]
-      if (!(layerKey === 'waterPlant' && loadedApiFeatureCount > 0)) {
+      if (!apiLoadedLayers.has(layerKey)) {
         data[layerKey] = collection as never
       }
       loadedCadFeatureCount += collection.features.length
-      if (!(layerKey === 'waterPlant' && loadedApiFeatureCount > 0)) {
+      if (!apiLoadedLayers.has(layerKey)) {
         layers[layerKey] = createLayerMeta(
           layerKey,
           'cad',

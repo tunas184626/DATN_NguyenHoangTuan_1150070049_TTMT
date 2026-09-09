@@ -16,6 +16,8 @@ const schema = z
     AUTH_MODE: z.enum(['disabled', 'supabase']).default('disabled'),
     SUPABASE_URL: z.string().url().optional(),
     SUPABASE_JWT_AUDIENCE: z.string().default('authenticated'),
+    SUPABASE_SECRET_KEY: z.string().trim().optional(),
+    SUPABASE_STORAGE_BUCKET: z.string().trim().min(3).max(63).default('incident-attachments'),
   })
   .superRefine((value, context) => {
     if (value.AUTH_MODE === 'supabase' && !value.SUPABASE_URL) {

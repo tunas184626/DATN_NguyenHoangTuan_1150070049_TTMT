@@ -1,4 +1,5 @@
 import type { ErrorRequestHandler, RequestHandler } from 'express'
+import multer from 'multer'
 import { ZodError } from 'zod'
 import { AppError } from '../shared/errors.js'
 
@@ -20,6 +21,18 @@ export const errorHandler: ErrorRequestHandler = (error, _request, response, _ne
   if (error instanceof AppError) {
     response.status(error.statusCode).json({
       error: { code: error.code, message: error.message, details: error.details, requestId },
+    })
+    return
+  }
+
+  if (error instanceof multer.MulterError) {
+    const tooLarge = error.code === 'LIMIT_FILE_SIZE'
+    response.status(tooLarge ? 413 : 400).json({
+      error: {
+        code: tooLarge ? 'FILE_TOO_LARGE' : 'UPLOAD_ERROR',
+        message: tooLarge ? 'Ảnh không được vượt quá 8 MB' : 'Không thể đọc tệp tải lên',
+        requestId,
+      },
     })
     return
   }

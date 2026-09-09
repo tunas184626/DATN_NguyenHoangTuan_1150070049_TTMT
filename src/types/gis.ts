@@ -27,6 +27,27 @@ export type IncidentSeverity = 'low' | 'medium' | 'high'
 
 export type IncidentWorkflowStatus = 'new' | 'in_progress' | 'resolved'
 
+export interface IncidentAttachment {
+  id: string
+  incidentId: string
+  name: string
+  mimeType: string
+  sizeBytes: number
+  createdAt: string
+  url: string | null
+}
+
+export interface IncidentHistoryItem {
+  id: number
+  fromStatus: IncidentWorkflowStatus | null
+  toStatus: IncidentWorkflowStatus
+  note: string
+  changedBy: string | null
+  changedAt: string
+  eventType: 'created' | 'status_changed' | 'assignment_changed' | 'attachment_added' | 'comment'
+  metadata: Record<string, unknown>
+}
+
 export type GeometryInputType = 'Point' | 'LineString' | 'Polygon'
 
 export type StatusFilter = 'all' | AssetStatus
@@ -70,6 +91,8 @@ export interface IncidentProperties
   incidentType: IncidentType
   severity: IncidentSeverity
   reportedDate: string
+  assignedTo?: string | null
+  attachments?: IncidentAttachment[]
 }
 
 export interface GISFeature<
@@ -201,6 +224,7 @@ export interface NewIncidentInput {
   notes: string[]
   latitude: number
   longitude: number
+  imageFiles?: File[]
 }
 
 export interface ObjectListItem {

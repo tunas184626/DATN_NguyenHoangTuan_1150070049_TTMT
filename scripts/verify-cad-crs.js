@@ -95,7 +95,23 @@ function main() {
     ],
   }
 
-  fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8')
+  let shouldWriteReport = true
+  if (fs.existsSync(reportPath)) {
+    try {
+      const previous = JSON.parse(fs.readFileSync(reportPath, 'utf8'))
+      const { generatedAt: previousGeneratedAt, ...previousContent } = previous
+      const { generatedAt: _currentGeneratedAt, ...currentContent } = report
+      if (JSON.stringify(previousContent) === JSON.stringify(currentContent)) {
+        report.generatedAt = previousGeneratedAt
+        shouldWriteReport = false
+      }
+    } catch {
+      // Invalid or outdated reports are replaced with the current verification result.
+    }
+  }
+  if (shouldWriteReport) {
+    fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8')
+  }
 
   for (const anchor of anchors) {
     console.log(

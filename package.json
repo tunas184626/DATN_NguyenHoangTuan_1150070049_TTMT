@@ -18,7 +18,8 @@
     "build:backend": "npm --prefix backend run build",
     "lint:backend": "npm --prefix backend run lint",
     "db:migrate": "npm --prefix backend run db:migrate",
-    "db:seed": "npm --prefix backend run db:seed"
+    "db:seed": "npm --prefix backend run db:seed",
+    "supabase:check": "npm --prefix backend run supabase:check"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0",
