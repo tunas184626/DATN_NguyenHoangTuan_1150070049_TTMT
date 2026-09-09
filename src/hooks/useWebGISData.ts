@@ -15,6 +15,7 @@ import type {
 import { assetTypeToLayerKey, LAYER_LABELS } from '../utils/asset'
 import { buildGeometry } from '../utils/geo'
 import { flattenAllFeatures, flattenAssets, flattenIncidents } from '../utils/metrics'
+import { apiRequest } from '../services/apiClient'
 
 const STORAGE_KEY = 'webgis-water-assets-v1'
 
@@ -75,7 +76,7 @@ function createAssetFeature(input: NewAssetInput): AssetFeature {
       material: input.material?.trim() ?? '',
       diameter: input.diameter?.trim() ?? '',
       length: input.length?.trim() ?? '',
-      source: 'Dữ liệu nhập từ giao diện thử nghiệm',
+      source: 'Dữ liệu lưu tạm trên thiết bị',
       cadLayer: '',
       imageUrl: input.imageUrl?.trim() ?? '',
       googleMapsUrl: input.googleMapsUrl?.trim() ?? '',
@@ -107,6 +108,7 @@ function createIncidentFeature(input: NewIncidentInput): IncidentFeature {
       googleMapsUrl: input.googleMapsUrl?.trim() ?? '',
       lastUpdated: new Date().toISOString().slice(0, 10),
       notes: input.notes.filter(Boolean),
+      source: 'Dữ liệu lưu tạm trên thiết bị',
     },
   }
 }
@@ -271,19 +273,48 @@ export function useWebGISData() {
   )
 
   const addIncident = useCallback(
-    (input: NewIncidentInput): IncidentFeature | null => {
-      if (!data) {
-        return null
+    async (input: NewIncidentInput): Promise<IncidentFeature | null> => {
+      if (!data) return null
+
+      let createdIncident: IncidentFeature
+      if (dataSource?.mode === 'api') {
+        try {
+          createdIncident = await apiRequest<IncidentFeature>('/incidents', {
+            method: 'POST',
+            body: JSON.stringify({
+              name: input.name,
+              incidentType: input.incidentType,
+              severity: input.severity,
+              description: input.description,
+              address: input.address,
+              latitude: input.latitude,
+              longitude: input.longitude,
+              reportedAt: `${input.reportedDate}T00:00:00.000Z`,
+              details: {
+                imageUrl: input.imageUrl,
+                googleMapsUrl: input.googleMapsUrl,
+                notes: input.notes,
+              },
+            }),
+          })
+        } catch {
+          createdIncident = createIncidentFeature(input)
+        }
+      } else {
+        createdIncident = createIncidentFeature(input)
       }
 
-      const createdIncident = createIncidentFeature(input)
-      const nextData = structuredClone(data)
-      nextData.incidents.features.push(createdIncident)
-
-      setData(nextData)
+      // Chỉ sao chép nhánh incidents; tránh structuredClone toàn bộ hàng nghìn geometry.
+      setData((current) => current ? {
+        ...current,
+        incidents: {
+          ...current.incidents,
+          features: [...current.incidents.features, createdIncident],
+        },
+      } : current)
       return createdIncident
     },
-    [data],
+    [data, dataSource?.mode],
   )
 
   const resetData = useCallback(async () => {

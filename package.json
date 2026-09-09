@@ -13,7 +13,12 @@
     "normalize:cad-vector": "node scripts/normalize-cad-vector.js",
     "validate:cad-vector": "node scripts/validate-cad-vector.js",
     "verify:crs": "node scripts/verify-cad-crs.js",
-    "export:cad-wgs84": "node scripts/export-cad-wgs84.js"
+    "export:cad-wgs84": "node scripts/export-cad-wgs84.js",
+    "dev:backend": "npm --prefix backend run dev",
+    "build:backend": "npm --prefix backend run build",
+    "lint:backend": "npm --prefix backend run lint",
+    "db:migrate": "npm --prefix backend run db:migrate",
+    "db:seed": "npm --prefix backend run db:seed"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

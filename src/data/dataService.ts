@@ -11,6 +11,7 @@ import type {
 } from '../types/gis'
 import { LAYER_LABELS } from '../utils/asset'
 import { createEmptyFeatureCollection, loadMockLayerData } from './loaders'
+import { apiGet } from '../services/apiClient'
 
 const CAD_SOURCE_NAME = 'BIWASE_HIEN TRANG.dwg'
 const CAD_OPERATIONAL_WGS84_URL = 'data/cad-vector/operational-map-wgs84.geojson'
@@ -245,6 +246,10 @@ export async function loadGeoJsonLayer(layerKey: CadLayerKey, url: string): Prom
   return normalizeCollection(layerKey, await response.json())
 }
 
+async function loadApiAssets(type: AssetType): Promise<AssetCollection> {
+  return normalizeCollection('waterPlant', await apiGet<unknown>(`/assets?type=${type}&limit=500`))
+}
+
 async function loadOperationalCadLayers(url: string): Promise<Record<CadLayerKey, AssetCollection>> {
   const response = await fetch(url)
   if (!response.ok) throw new Error(`HTTP ${response.status}`)
@@ -317,31 +322,63 @@ export async function loadLayerDataWithFallback(): Promise<{
   const layers = Object.fromEntries(layerEntries) as Record<LayerKey, LayerSourceMeta>
 
   let loadedCadFeatureCount = 0
+  let loadedApiFeatureCount = 0
+
+  try {
+    const waterPlants = await loadApiAssets('water_plant')
+    if (waterPlants.features.length > 0) {
+      data.waterPlant = waterPlants
+      loadedApiFeatureCount = waterPlants.features.length
+      layers.waterPlant = createLayerMeta(
+        'waterPlant',
+        'api',
+        'api_loaded',
+        loadedApiFeatureCount,
+        undefined,
+        'Dữ liệu đã đồng bộ',
+      )
+    } else {
+      layers.waterPlant = createLayerMeta('waterPlant', 'api', 'api_empty', 0)
+    }
+  } catch {
+    layers.waterPlant = createLayerMeta(
+      'waterPlant',
+      'api',
+      'api_error',
+      0,
+      undefined,
+      'Đang dùng dữ liệu dự phòng',
+    )
+  }
 
   const operationalUrl = toPublicUrl(CAD_OPERATIONAL_WGS84_URL)
   try {
     const operationalLayers = await loadOperationalCadLayers(operationalUrl)
     for (const layerKey of CAD_LAYER_KEYS) {
       const collection = operationalLayers[layerKey]
-      data[layerKey] = collection as never
+      if (!(layerKey === 'waterPlant' && loadedApiFeatureCount > 0)) {
+        data[layerKey] = collection as never
+      }
       loadedCadFeatureCount += collection.features.length
-      layers[layerKey] = createLayerMeta(
-        layerKey,
-        'cad',
-        collection.features.length ? 'cad_loaded' : 'cad_empty',
-        collection.features.length,
-        operationalUrl,
-      )
+      if (!(layerKey === 'waterPlant' && loadedApiFeatureCount > 0)) {
+        layers[layerKey] = createLayerMeta(
+          layerKey,
+          'cad',
+          collection.features.length ? 'cad_loaded' : 'cad_empty',
+          collection.features.length,
+          operationalUrl,
+        )
+      }
     }
   } catch {
     // Keep compatibility with the legacy per-layer exports below.
   }
 
-  if (loadedCadFeatureCount > 0) {
+  if (loadedCadFeatureCount > 0 || loadedApiFeatureCount > 0) {
     return {
       data,
       dataSource: {
-        mode: 'cad',
+        mode: loadedApiFeatureCount > 0 ? 'api' : 'cad',
         label: 'Đã đồng bộ dữ liệu bản đồ',
         usingCad: true,
         layers,

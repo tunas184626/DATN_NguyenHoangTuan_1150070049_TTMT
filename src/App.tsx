@@ -1,7 +1,7 @@
 ﻿import { useEffect, useMemo, useState } from 'react'
 import {
   AlertTriangle,
-  Database,
+  CheckCircle2,
   Droplets,
   Factory,
   Filter,
@@ -20,19 +20,7 @@ import {
   Waves,
   X,
 } from 'lucide-react'
-import { useId } from 'react'
-import {
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts'
+import { lazy, Suspense, useId } from 'react'
 import type {
   AnyMapFeature,
   AssetFeature,
@@ -54,7 +42,6 @@ import type {
   MapMode,
   NewAssetInput,
   NewIncidentInput,
-  ObjectListItem,
   UpdateAssetInput,
   ViewMode,
 } from './types/gis'
@@ -68,11 +55,7 @@ import { CURATED_MAIN_WORKS, type CuratedMainWork } from './data/curatedMainWork
 import { loadCadVectorData } from './services/cadVectorDataService'
 import { LAYER_COLORS, LAYER_LABELS, mapFeatureTypeLabel } from './utils/asset'
 import { buildSearchItems, flattenLayerData, getFeatureById } from './utils/features'
-import {
-  buildAssetStatusChart,
-  buildIncidentSeverityChart,
-  computeDashboardStats,
-} from './utils/metrics'
+import { computeDashboardStats } from './utils/metrics'
 import {
   calculateFeatureLineLengthKm,
   getFeatureBounds,
@@ -84,7 +67,6 @@ import {
   getAssetStatusMeta,
   getIncidentSeverityMeta,
   getIncidentStatusMeta,
-  workflowStatusToAssetStatus,
 } from './utils/status'
 import {
   cadVectorTypePriority,
@@ -111,6 +93,7 @@ import {
 import type { Layer } from 'leaflet'
 
 const { Overlay } = LayersControl
+const ReportsView = lazy(() => import('./components/reports/ReportsView'))
 
 const BASE_MAP_CENTER: [number, number] = [10.8845, 106.4255]
 const BASE_MAP_ZOOM = 13
@@ -227,9 +210,10 @@ interface StoredUiState {
 }
 
 function createDefaultUiState(): StoredUiState {
+  const compactLayout = typeof window !== 'undefined' && window.innerWidth < 1024
   return {
-    collapsedSidebar: false,
-    collapsedDetail: false,
+    collapsedSidebar: compactLayout,
+    collapsedDetail: compactLayout,
     visibleLayers: {
       waterPlant: true,
       rawWaterLakes: true,
@@ -249,7 +233,7 @@ function loadStoredUiState(): StoredUiState {
     const raw = localStorage.getItem(STORAGE_UI_KEY)
     if (!raw) return fallback
     const parsed = JSON.parse(raw) as Partial<StoredUiState>
-    return {
+    const state = {
       ...fallback,
       ...parsed,
       visibleLayers: {
@@ -257,6 +241,11 @@ function loadStoredUiState(): StoredUiState {
         ...parsed.visibleLayers,
       },
     }
+    if (window.innerWidth < 1024) {
+      state.collapsedSidebar = true
+      state.collapsedDetail = true
+    }
+    return state
   } catch {
     return fallback
   }
@@ -330,9 +319,6 @@ interface SidebarProps {
   onToggleLayer: (key: LayerKey) => void
   statusFilter: 'all' | AssetStatus
   onStatusFilterChange: (value: 'all' | AssetStatus) => void
-  objectItems: ObjectListItem[]
-  selectedId: string | null
-  onSelectObject: (id: string) => void
   dataSource: DataSourceState | null
   mapMode: MapMode
   cadImageLoaded: boolean
@@ -410,7 +396,7 @@ interface AssetFormProps {
 interface IncidentFormProps {
   anchorFeature: AnyMapFeature | null
   onClose: () => void
-  onSubmit: (payload: NewIncidentInput) => void
+  onSubmit: (payload: NewIncidentInput) => Promise<void>
 }
 
 interface MapPanelProps {
@@ -469,7 +455,7 @@ function getCadLayerStatusText(
   }
 
   if (meta?.status === 'cad_error') {
-    return 'Lỗi GeoJSON - đang dùng dữ liệu dự phòng'
+    return 'Đang dùng dữ liệu dự phòng'
   }
 
   return 'Chưa có dữ liệu / chờ convert từ DWG'
@@ -763,37 +749,6 @@ function buildCadVectorLayerGroups(layerIndex: CadVectorLayerIndexItem[]): CadVe
   })
 }
 
-function cadVectorTypeToLayerKey(type: CadVectorType): LayerKey {
-  switch (type) {
-    case 'water_plant':
-      return 'waterPlant'
-    case 'raw_water_lake':
-      return 'rawWaterLakes'
-    case 'pipeline':
-      return 'pipelines'
-    case 'canal':
-    case 'irrigation_canal':
-    case 'irrigation_area':
-    case 'irrigation_point':
-    case 'irrigation_label':
-      return 'canals'
-    case 'supply_zone':
-      return 'supplyZones'
-    case 'boundary':
-      return 'boundaries'
-    case 'pipe_diameter_label':
-    case 'location_label':
-    case 'main_work_candidate':
-    case 'layout_artifact':
-    case 'road_background':
-    case 'cad_point':
-    case 'cad_line':
-    case 'cad_polygon':
-    case 'unknown':
-      return 'labels'
-  }
-}
-
 function getCadVectorLayerCount(layerIndex: CadVectorLayerIndexItem[]): number {
   return layerIndex.filter((layer) => layer.featureCount > 0).length
 }
@@ -925,34 +880,6 @@ function isCadVectorObjectVisible(
   }
 
   return true
-}
-
-function createCadVectorObjectList(
-  cadVectorData: CadVectorData | null,
-  visibleLayers: Record<string, boolean>,
-  typeFilter: CadVectorType | 'all',
-  labelOptions: CadLabelVisibilityOptions,
-): ObjectListItem[] {
-  const features = cadVectorData?.entities?.features ?? []
-
-  return features
-    .filter((feature) => isCadVectorObjectVisible(feature, visibleLayers, typeFilter, labelOptions))
-    .sort(
-      (a, b) =>
-        cadVectorTypePriority(a.properties.type, getCadFeatureText(a)) -
-          cadVectorTypePriority(b.properties.type, getCadFeatureText(b)) ||
-        a.properties.id.localeCompare(b.properties.id),
-    )
-    .slice(0, 600)
-    .map((feature) => ({
-      id: feature.properties.id,
-      name: getFeatureDisplayName(feature),
-      typeLabel: cadVectorTypeLabelForUi(feature.properties.type),
-      statusLabel: feature.properties.businessGroup || feature.properties.cadLayer,
-      status: feature.properties.status,
-      layerKey: cadVectorTypeToLayerKey(feature.properties.type),
-      meta: `${feature.properties.cadLayer} | ${feature.properties.geometryType}`,
-    }))
 }
 
 function calculateCadVectorLineLength(feature: CadVectorFeature): number {
@@ -1471,66 +1398,6 @@ function getPreferredCadFeatureForView(
   return features.find((feature) => feature.properties.curatedMainWork === true) ?? features[0] ?? null
 }
 
-function createCadObjectList(
-  assets: CadBlueprintAsset[],
-  visibleLayers: LayerVisibilityState,
-  statusFilter: 'all' | AssetStatus,
-): ObjectListItem[] {
-  return assets
-    .filter((asset) => visibleLayers[asset.layerKey])
-    .filter((asset) => statusFilter === 'all' || asset.status === statusFilter)
-    .map((asset) => ({
-      id: asset.id,
-      name: asset.name,
-      typeLabel: mapFeatureTypeLabel(asset.type),
-      statusLabel: getAssetStatusMeta(asset.status).label,
-      status: asset.status,
-      layerKey: asset.layerKey,
-    }))
-}
-
-function createObjectList(
-  data: LayerDataState,
-  visibleLayers: LayerVisibilityState,
-  statusFilter: 'all' | AssetStatus,
-): ObjectListItem[] {
-  return flattenLayerData(data)
-    .filter(({ layerKey, feature }) => {
-      if (!visibleLayers[layerKey]) {
-        return false
-      }
-
-      if (feature.properties.type === 'incident') {
-        if (statusFilter === 'all') {
-          return true
-        }
-
-        return workflowStatusToAssetStatus(feature.properties.status) === statusFilter
-      }
-
-      if (statusFilter === 'all') {
-        return true
-      }
-
-      return feature.properties.status === statusFilter
-    })
-    .map(({ feature, layerKey }) => {
-      const statusLabel =
-        feature.properties.type === 'incident'
-          ? getIncidentStatusMeta(feature.properties.status).label
-          : getAssetStatusMeta(feature.properties.status).label
-
-      return {
-        id: feature.properties.id,
-        name: feature.properties.name,
-        typeLabel: mapFeatureTypeLabel(feature.properties.type),
-        statusLabel,
-        status: feature.properties.status,
-        layerKey,
-      }
-    })
-}
-
 function applyFeatureStyle(
   layerKey: LayerKey,
   selected: boolean,
@@ -1821,23 +1688,11 @@ function WebGISMapPanel({
 }
 
 function Topbar({
-  mapMode,
   searchQuery,
   onSearchQueryChange,
   results,
   onSelectResult,
-  cadVectorData,
-  cadVectorLoading,
 }: TopbarProps) {
-  const usingCadVector = mapMode === 'cadVector' && cadVectorData?.hasCadVectorData
-  const sourceBadgeLabel = usingCadVector
-    ? `Đang dùng dữ liệu CAD Vector từ QGIS (${cadVectorData.metadata?.totalFeatures ?? 0} feature)`
-    : mapMode === 'layoutPreview'
-      ? 'Bản vẽ gốc tham chiếu'
-    : cadVectorLoading && mapMode === 'cadVector'
-      ? 'Đang kiểm tra dữ liệu CAD Vector'
-      : 'Chưa có CAD Vector, đang dùng dữ liệu dự phòng'
-
   return (
     <header className="panel relative z-[900] mx-3 mt-3 flex h-[78px] items-center gap-4 px-4 lg:px-6">
       <div>
@@ -1850,17 +1705,6 @@ function Topbar({
       <div className="hidden items-center gap-2 rounded-xl border border-water-100 bg-water-50 px-3 py-2 text-sm font-semibold text-water-800 md:flex">
         <Route className="size-4" />
         Bản đồ CAD Vector
-      </div>
-
-      <div
-        className={`hidden items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold lg:flex ${
-          usingCadVector
-            ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
-            : 'border-slate-200 bg-slate-50 text-slate-600'
-        }`}
-      >
-        <Database className="size-3.5" />
-        <span>{sourceBadgeLabel}</span>
       </div>
 
       <div className="relative ml-auto w-full max-w-[440px]">
@@ -1911,9 +1755,6 @@ function LayerSidebar({
   onToggleLayer,
   statusFilter,
   onStatusFilterChange,
-  objectItems,
-  selectedId,
-  onSelectObject,
   dataSource,
   mapMode,
   cadImageLoaded,
@@ -1943,7 +1784,6 @@ function LayerSidebar({
   onOpenOsm,
 }: SidebarProps) {
   const hasCadVectorData = Boolean(cadVectorData?.hasCadVectorData)
-  const [quickGuideOpen, setQuickGuideOpen] = useState(true)
   const getCadVectorGroupLayerNames = (groupKey: CadVectorGroupKey) =>
     cadVectorLayerGroups
       .find((group) => group.key === groupKey)
@@ -1955,7 +1795,9 @@ function LayerSidebar({
 
   return (
     <aside
-      className={`relative h-full transition-all duration-300 ${collapsed ? 'w-[68px]' : 'w-[320px]'}`}
+      className={`fixed bottom-3 left-3 top-[98px] z-[1200] max-w-[calc(100vw-1.5rem)] transition-all duration-300 lg:relative lg:inset-auto lg:z-auto lg:max-w-none ${
+        collapsed ? 'w-[52px] lg:w-[68px]' : 'w-[320px]'
+      }`}
     >
       <div className="panel flex h-full flex-col overflow-hidden">
         <div className="flex items-center justify-between border-b border-water-100 px-3 py-3">
@@ -2013,18 +1855,14 @@ function LayerSidebar({
                       : 'bg-slate-100 text-slate-600'
                   }`}
                 >
-                  {hasCadVectorData ? 'CAD Vector' : cadImageLoaded ? 'Ảnh CAD' : dataSource?.usingCad ? 'CAD/GeoJSON' : 'Dự phòng'}
+                  {hasCadVectorData || dataSource?.usingCad ? 'Đã đồng bộ' : cadImageLoaded ? 'Ảnh tham chiếu' : 'Dự phòng'}
                 </span>
               </div>
               {mapMode === 'cadVector' ? (
                 <>
                   {hasCadVectorData ? (
                     <div className="mb-3 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs text-emerald-800">
-                      <p className="font-semibold">Đã tải CAD Vector từ QGIS</p>
-                      <p>
-                        {cadVectorData?.metadata?.totalFeatures ?? 0} feature |{' '}
-                        {getCadVectorLayerCount(cadVectorData?.layerIndex ?? [])} CAD layer
-                      </p>
+                      <p className="font-semibold">Dữ liệu bản đồ đã sẵn sàng</p>
                     </div>
                   ) : (
                     <div className="mb-3 rounded-lg border border-dashed border-slate-200 px-3 py-2 text-xs text-slate-500">
@@ -2211,25 +2049,6 @@ function LayerSidebar({
                     </div>
                   </div>
 
-                  <div className="mb-3 rounded-lg border border-slate-100 p-3">
-                    <button
-                      type="button"
-                      onClick={() => setQuickGuideOpen((value) => !value)}
-                      className="flex w-full items-center justify-between text-left text-xs font-semibold uppercase tracking-wide text-slate-500"
-                    >
-                      Hướng dẫn nhanh
-                      <span>{quickGuideOpen ? 'Thu gọn' : 'Mở'}</span>
-                    </button>
-                    {quickGuideOpen && (
-                      <ol className="mt-2 list-decimal space-y-1 pl-4 text-xs text-slate-600">
-                        <li>Chọn 1 trong 4 view: Tổng quan, Nhà máy nước, Hồ nước thô, Kênh thủy lợi.</li>
-                        <li>Bật/tắt nền CAD, tuyến ống, kênh và công trình chính khi cần.</li>
-                        <li>Click đối tượng để xem chi tiết CAD.</li>
-                        <li>Dùng Fit bản đồ CAD để quay về khu vực đang xem.</li>
-                      </ol>
-                    )}
-                  </div>
-
                   <details className="mb-3 rounded-lg border border-slate-100 p-3">
                     <summary className="cursor-pointer text-xs font-semibold uppercase tracking-wide text-slate-500">
                       Dữ liệu CAD thô / nâng cao
@@ -2275,7 +2094,7 @@ function LayerSidebar({
                               >
                                 <span className="block text-sm font-semibold text-slate-700">{group.label}</span>
                                 <span className="block text-xs text-slate-500">
-                                  {group.featureCount.toLocaleString('vi-VN')} feature | {group.layers.length} layer
+                                  {group.layers.length} lớp dữ liệu
                                 </span>
                               </button>
                               <input
@@ -2324,8 +2143,8 @@ function LayerSidebar({
                       <p className="font-semibold">Đã tải ảnh CAD</p>
                       <p>
                         {dataSource?.usingCad
-                          ? 'GeoJSON CAD đã sẵn sàng; vẫn có thể dùng overlay thủ công trên ảnh.'
-                          : 'Chưa có GeoJSON, đang dùng overlay thủ công trên ảnh CAD.'}
+                          ? 'Dữ liệu bản đồ đã sẵn sàng.'
+                          : 'Đang dùng dữ liệu dự phòng.'}
                       </p>
                     </div>
                   )}
@@ -2374,7 +2193,7 @@ function LayerSidebar({
                   }`}
                 >
                   <span className="block text-sm font-semibold">Bản đồ CAD Vector</span>
-                  <span className="text-xs text-slate-500">Dữ liệu GIS chính từ QGIS</span>
+                  <span className="text-xs text-slate-500">Dữ liệu bản đồ chính</span>
                 </button>
                 {CAD_LAYOUT_OPTIONS.map((layout) => (
                   <button
@@ -2443,48 +2262,6 @@ function LayerSidebar({
               </div>
             )}
 
-            <div className="min-h-0 flex-1 px-4 py-4">
-              <div className="mb-3 flex items-center justify-between gap-2">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  Danh sách đối tượng ({objectItems.length})
-                </p>
-                <span className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-semibold text-slate-600">
-                  {mapMode === 'cadVector'
-                    ? 'CAD Vector'
-                    : mapMode === 'layoutPreview'
-                      ? 'Bản vẽ gốc'
-                      : mapMode === 'cadImage'
-                        ? 'Ảnh CAD'
-                        : 'OSM'}
-                </span>
-              </div>
-              {objectItems.length === 0 ? (
-                <div className="rounded-lg border border-dashed border-slate-200 p-4 text-sm text-slate-500">
-                  Không có đối tượng phù hợp với bộ lọc hiện tại.
-                </div>
-              ) : (
-                <ul className="max-h-full space-y-2 overflow-auto pr-1">
-                  {objectItems.map((item, index) => (
-                    <li key={`${item.id}-${index}`}>
-                      <button
-                        type="button"
-                        onClick={() => onSelectObject(item.id)}
-                        className={`w-full rounded-lg border px-3 py-2 text-left transition ${
-                          selectedId === item.id
-                            ? 'border-water-300 bg-water-50'
-                            : 'border-slate-100 hover:bg-slate-50'
-                        }`}
-                      >
-                        <p className="text-sm font-semibold text-slate-700">{item.name}</p>
-                        <p className="text-xs text-slate-500">{item.typeLabel}</p>
-                        <p className="mt-1 text-xs font-medium text-slate-500">{item.statusLabel}</p>
-                        {item.meta && <p className="text-xs text-slate-400">{item.meta}</p>}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
           </div>
         )}
       </div>
@@ -2516,7 +2293,7 @@ function DashboardCards({ data, mapMode, cadVectorData, curatedMainWorks, cadVec
             accent: 'text-sky-700',
           },
           {
-            label: 'Tổng layer CAD',
+            label: 'Nhóm dữ liệu',
             value: getCadVectorLayerCount(cadVectorData.layerIndex),
             icon: Layers,
             accent: 'text-indigo-700',
@@ -2738,7 +2515,7 @@ function DetailPanel({
 
   if (collapsed) {
     return (
-      <aside className="w-[56px]">
+      <aside className="fixed bottom-3 right-3 top-[98px] z-[1200] w-[52px] lg:relative lg:inset-auto lg:z-auto lg:w-[56px]">
         <div className="panel flex h-full items-start justify-center py-3">
           <button type="button" onClick={onToggle} className="ghost-btn h-8 w-8 !px-0">
             <Menu className="size-4" />
@@ -2749,7 +2526,7 @@ function DetailPanel({
   }
 
   return (
-    <aside className="w-[360px]">
+    <aside className="fixed bottom-3 right-3 top-[98px] z-[1200] w-[min(360px,calc(100vw-1.5rem))] lg:relative lg:inset-auto lg:z-auto lg:w-[360px]">
       <div className="panel flex h-full flex-col overflow-hidden">
         <div className="flex items-center justify-between border-b border-water-100 px-4 py-3">
           <p className="text-sm font-semibold text-water-900">Thông tin chi tiết</p>
@@ -3441,8 +3218,9 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
   const [latitude, setLatitude] = useState(String(center[0].toFixed(6)))
   const [longitude, setLongitude] = useState(String(center[1].toFixed(6)))
   const [error, setError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
     if (!name.trim() || !incidentCode.trim() || !description.trim() || !address.trim()) {
@@ -3458,26 +3236,33 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
       return
     }
 
-    onSubmit({
-      name,
-      incidentCode,
-      incidentType,
-      severity,
-      status,
-      description,
-      address,
-      reportedDate,
-      googleMapsUrl,
-      imageUrl,
-      notes: parseNotes(notesRaw),
-      latitude: lat,
-      longitude: lng,
-    } satisfies NewIncidentInput)
+    setSubmitting(true)
+    setError('')
+    try {
+      await onSubmit({
+        name,
+        incidentCode,
+        incidentType,
+        severity,
+        status,
+        description,
+        address,
+        reportedDate,
+        googleMapsUrl,
+        imageUrl,
+        notes: parseNotes(notesRaw),
+        latitude: lat,
+        longitude: lng,
+      } satisfies NewIncidentInput)
+    } catch {
+      setError('Không thể lưu sự cố. Vui lòng thử lại.')
+      setSubmitting(false)
+    }
   }
 
   return (
     <div className="fixed inset-0 z-[1400] flex items-center justify-center bg-slate-900/45 p-4">
-      <form onSubmit={handleSubmit} className="panel w-full max-w-2xl space-y-3 p-5">
+      <form onSubmit={handleSubmit} className="panel max-h-[calc(100vh-2rem)] w-full max-w-xl space-y-4 overflow-y-auto p-5">
         <div className="flex items-center justify-between">
           <p className="text-base font-bold text-slate-800">Tạo điểm sự cố mới</p>
           <button type="button" onClick={onClose} className="ghost-btn h-8 w-8 !px-0">
@@ -3487,19 +3272,7 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
 
         {error && <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>}
 
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <div>
-            <label className="field-label">Tên sự cố</label>
-            <input className="field-input" value={name} onChange={(event) => setName(event.target.value)} />
-          </div>
-          <div>
-            <label className="field-label">Mã sự cố</label>
-            <input
-              className="field-input"
-              value={incidentCode}
-              onChange={(event) => setIncidentCode(event.target.value)}
-            />
-          </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div>
             <label className="field-label">Loại sự cố</label>
             <select
@@ -3528,29 +3301,6 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
               ))}
             </select>
           </div>
-          <div>
-            <label className="field-label">Trạng thái xử lý</label>
-            <select
-              className="field-input"
-              value={status}
-              onChange={(event) => setStatus(event.target.value as IncidentWorkflowStatus)}
-            >
-              {INCIDENT_WORKFLOW_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="field-label">Ngày ghi nhận</label>
-            <input
-              type="date"
-              className="field-input"
-              value={reportedDate}
-              onChange={(event) => setReportedDate(event.target.value)}
-            />
-          </div>
         </div>
 
         <div>
@@ -3567,140 +3317,62 @@ function IncidentFormModal({ anchorFeature, onClose, onSubmit }: IncidentFormPro
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <div>
-            <label className="field-label">Latitude</label>
-            <input className="field-input" value={latitude} onChange={(event) => setLatitude(event.target.value)} />
+        <details className="rounded-xl border border-slate-200 bg-slate-50/70 p-3">
+          <summary className="cursor-pointer select-none text-sm font-semibold text-slate-700">
+            Thông tin nâng cao
+          </summary>
+          <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div>
+              <label className="field-label">Tên sự cố</label>
+              <input className="field-input" value={name} onChange={(event) => setName(event.target.value)} />
+            </div>
+            <div>
+              <label className="field-label">Mã tạm</label>
+              <input className="field-input" value={incidentCode} onChange={(event) => setIncidentCode(event.target.value)} />
+            </div>
+            <div>
+              <label className="field-label">Trạng thái</label>
+              <select className="field-input" value={status} onChange={(event) => setStatus(event.target.value as IncidentWorkflowStatus)}>
+                {INCIDENT_WORKFLOW_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="field-label">Ngày ghi nhận</label>
+              <input type="date" className="field-input" value={reportedDate} onChange={(event) => setReportedDate(event.target.value)} />
+            </div>
+            <div>
+              <label className="field-label">Vĩ độ</label>
+              <input className="field-input" value={latitude} onChange={(event) => setLatitude(event.target.value)} />
+            </div>
+            <div>
+              <label className="field-label">Kinh độ</label>
+              <input className="field-input" value={longitude} onChange={(event) => setLongitude(event.target.value)} />
+            </div>
+            <div>
+              <label className="field-label">Hình ảnh (URL)</label>
+              <input className="field-input" value={imageUrl} onChange={(event) => setImageUrl(event.target.value)} />
+            </div>
+            <div>
+              <label className="field-label">Liên kết bản đồ</label>
+              <input className="field-input" value={googleMapsUrl} onChange={(event) => setGoogleMapsUrl(event.target.value)} />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="field-label">Ghi chú</label>
+              <textarea className="field-textarea" value={notesRaw} onChange={(event) => setNotesRaw(event.target.value)} />
+            </div>
           </div>
-          <div>
-            <label className="field-label">Longitude</label>
-            <input className="field-input" value={longitude} onChange={(event) => setLongitude(event.target.value)} />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <div>
-            <label className="field-label">Hình ảnh (URL)</label>
-            <input className="field-input" value={imageUrl} onChange={(event) => setImageUrl(event.target.value)} />
-          </div>
-          <div>
-            <label className="field-label">Google Maps URL</label>
-            <input
-              className="field-input"
-              value={googleMapsUrl}
-              onChange={(event) => setGoogleMapsUrl(event.target.value)}
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="field-label">Ghi chú</label>
-          <textarea className="field-textarea" value={notesRaw} onChange={(event) => setNotesRaw(event.target.value)} />
-        </div>
+        </details>
 
         <div className="flex justify-end gap-2">
           <button type="button" onClick={onClose} className="ghost-btn">
             Hủy
           </button>
-          <button type="submit" className="primary-btn">
+          <button type="submit" disabled={submitting} className="primary-btn disabled:cursor-wait disabled:opacity-60">
             <Plus className="mr-1 size-4" />
-            Tạo điểm sự cố
+            {submitting ? 'Đang lưu...' : 'Ghi nhận sự cố'}
           </button>
         </div>
       </form>
-    </div>
-  )
-}
-
-function ReportsView({ data }: { data: LayerDataState }) {
-  const assetChart = useMemo(() => buildAssetStatusChart(data), [data])
-  const incidentChart = useMemo(() => buildIncidentSeverityChart(data), [data])
-  const trendData = useMemo(
-    () => [
-      { month: 'T1', incidents: 5, maintenance: 2 },
-      { month: 'T2', incidents: 4, maintenance: 3 },
-      { month: 'T3', incidents: 6, maintenance: 3 },
-      { month: 'T4', incidents: 3, maintenance: 2 },
-      { month: 'T5', incidents: 4, maintenance: 4 },
-      { month: 'T6', incidents: 2, maintenance: 3 },
-    ],
-    [],
-  )
-
-  return (
-    <div className="grid h-full grid-cols-1 gap-3 lg:grid-cols-2">
-      <section className="panel p-4">
-        <p className="mb-3 text-sm font-semibold text-slate-800">Phan bo trang thai tai san</p>
-        <div className="h-[280px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={assetChart}
-                dataKey="value"
-                nameKey="label"
-                cx="50%"
-                cy="50%"
-                outerRadius={88}
-                fill="#0ea5e9"
-                label
-              />
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-      </section>
-
-      <section className="panel p-4">
-        <p className="mb-3 text-sm font-semibold text-slate-800">Mức độ nghiêm trọng sự cố</p>
-        <div className="h-[280px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={incidentChart}
-                dataKey="value"
-                nameKey="label"
-                cx="50%"
-                cy="50%"
-                outerRadius={88}
-                fill="#ef4444"
-                label
-              />
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-      </section>
-
-      <section className="panel p-4 lg:col-span-2">
-        <p className="mb-3 text-sm font-semibold text-slate-800">Xu hướng sự cố và bảo trì (mô phỏng)</p>
-        <div className="h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={trendData}>
-              <CartesianGrid strokeDasharray="4 4" stroke="#dbeafe" />
-              <XAxis dataKey="month" />
-              <YAxis allowDecimals={false} />
-              <Tooltip />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="incidents"
-                name="Su co"
-                stroke="#dc2626"
-                strokeWidth={3}
-              />
-              <Line
-                type="monotone"
-                dataKey="maintenance"
-                name="Bảo trì"
-                stroke="#0284c7"
-                strokeWidth={3}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-      </section>
     </div>
   )
 }
@@ -3718,7 +3390,7 @@ function ManageView({
     <section className="panel h-full p-5">
       <p className="mb-3 text-base font-bold text-slate-800">Quản lý dữ liệu hạ tầng cấp nước</p>
       <p className="mb-5 text-sm text-slate-600">
-        Thêm/sửa đối tượng, tạo sự cố mới và reset dữ liệu dự phòng trong localStorage.
+        Thêm, cập nhật tài sản và ghi nhận sự cố vận hành.
       </p>
 
       <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -3738,11 +3410,11 @@ function ManageView({
 
       <div className="mt-6 grid grid-cols-1 gap-3 lg:grid-cols-2">
         <div className="rounded-xl border border-water-100 bg-water-50/60 p-4">
-          <p className="mb-1 text-sm font-semibold text-water-900">Quy trình dữ liệu từ AutoCAD</p>
-          <p className="text-sm text-water-900/80">DWG/DXF -&gt; QGIS -&gt; GeoJSON -&gt; Normalize schema -&gt; WebGIS Leaflet</p>
+          <p className="mb-1 text-sm font-semibold text-water-900">Trạng thái dữ liệu</p>
+          <p className="text-sm text-water-900/80">Dữ liệu đã được chuẩn hóa và sẵn sàng hiển thị trên bản đồ.</p>
         </div>
         <div className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
-          Mọi thao tác thêm/sửa hiện lưu tạm vào localStorage để phục vụ bản thử nghiệm.
+          Khi mất kết nối, hệ thống tiếp tục hoạt động với dữ liệu dự phòng trên thiết bị.
         </div>
       </div>
     </section>
@@ -3782,6 +3454,7 @@ function WebGISDashboardPage() {
   const [showCreateAsset, setShowCreateAsset] = useState(false)
   const [showCreateIncident, setShowCreateIncident] = useState(false)
   const [editingFeature, setEditingFeature] = useState<AssetFeature | null>(null)
+  const [incidentToast, setIncidentToast] = useState<IncidentFeature | null>(null)
 
   const [uiState, setUiState] = useState<StoredUiState>(loadStoredUiState)
 
@@ -3796,6 +3469,12 @@ function WebGISDashboardPage() {
   useEffect(() => {
     localStorage.setItem(CAD_CURATED_WORKS_STORAGE_KEY, JSON.stringify(curatedMainWorks))
   }, [curatedMainWorks])
+
+  useEffect(() => {
+    if (!incidentToast) return
+    const timeout = window.setTimeout(() => setIncidentToast(null), 6000)
+    return () => window.clearTimeout(timeout)
+  }, [incidentToast])
 
   useEffect(() => {
     let active = true
@@ -3971,41 +3650,6 @@ function WebGISDashboardPage() {
       }))
   }, [cadAssets, cadVectorDisplayData, data, mapMode, searchQuery])
 
-  const objectItems = useMemo(() => {
-    if (mapMode === 'cadVector') {
-      return createCadVectorObjectList(
-        cadVectorDisplayData,
-        cadVectorVisibleLayers,
-        cadVectorTypeFilter,
-        cadVectorLabelOptions,
-      )
-    }
-
-    if (mapMode === 'cadImage') {
-      return createCadObjectList(cadAssets, uiState.visibleLayers, statusFilter)
-    }
-
-    if (mapMode === 'layoutPreview') {
-      return []
-    }
-
-    if (!data) {
-      return []
-    }
-
-    return createObjectList(data, uiState.visibleLayers, statusFilter)
-  }, [
-    cadAssets,
-    cadVectorDisplayData,
-    cadVectorLabelOptions,
-    cadVectorTypeFilter,
-    cadVectorVisibleLayers,
-    data,
-    mapMode,
-    statusFilter,
-    uiState.visibleLayers,
-  ])
-
   useEffect(() => {
     if (!data || selectedFeatureId) {
       return
@@ -4118,11 +3762,12 @@ function WebGISDashboardPage() {
     }
   }
 
-  const handleAddIncident = (payload: NewIncidentInput) => {
-    const created = addIncident(payload)
+  const handleAddIncident = async (payload: NewIncidentInput) => {
+    const created = await addIncident(payload)
     if (created) {
       setSelectedFeatureId(created.properties.id)
       setFlyToRequest({ feature: created, zoom: 16 })
+      setIncidentToast(created)
     }
     setShowCreateIncident(false)
   }
@@ -4248,20 +3893,6 @@ function WebGISDashboardPage() {
       ...prev,
       [groupKey]: !(prev[groupKey] ?? CAD_VECTOR_GROUP_META[groupKey].defaultExpanded),
     }))
-  }
-
-  const handleSelectObject = (id: string) => {
-    if (mapMode === 'cadVector') {
-      handleFocusCadVectorFeature(id)
-      return
-    }
-
-    if (mapMode === 'cadImage') {
-      handleFocusCadAsset(id)
-      return
-    }
-
-    handleFocusFeature(id)
   }
 
   const handleSelectCuratedMainWork = (id: string) => {
@@ -4398,22 +4029,15 @@ function WebGISDashboardPage() {
       <section className="flex min-h-0 flex-1 gap-3 p-3 pt-2">
         <LayerSidebar
           collapsed={uiState.collapsedSidebar}
-          onToggle={() => setUiState((prev) => ({ ...prev, collapsedSidebar: !prev.collapsedSidebar }))}
+          onToggle={() => setUiState((prev) => ({
+            ...prev,
+            collapsedSidebar: !prev.collapsedSidebar,
+            collapsedDetail: prev.collapsedSidebar ? true : prev.collapsedDetail,
+          }))}
           visibleLayers={uiState.visibleLayers}
           onToggleLayer={uiLayerToggle}
           statusFilter={statusFilter}
           onStatusFilterChange={setStatusFilter}
-          objectItems={objectItems}
-          selectedId={
-            mapMode === 'cadVector'
-              ? selectedCadVectorFeature?.properties.id ?? null
-              : mapMode === 'cadImage'
-                ? selectedCadAssetId
-                : mapMode === 'layoutPreview'
-                  ? null
-                  : selectedFeatureId
-          }
-          onSelectObject={handleSelectObject}
           dataSource={dataSource}
           mapMode={mapMode}
           cadImageLoaded={cadImageLoaded}
@@ -4529,7 +4153,11 @@ function WebGISDashboardPage() {
               />
             )}
 
-            {viewMode === 'report' && <ReportsView data={data} />}
+            {viewMode === 'report' && (
+              <Suspense fallback={<div className="panel flex h-full items-center justify-center text-sm text-slate-500">Đang tải báo cáo...</div>}>
+                <ReportsView data={data} />
+              </Suspense>
+            )}
 
             {showIncidentCompanionPanel && (
               <IncidentList
@@ -4546,11 +4174,11 @@ function WebGISDashboardPage() {
                 <p>
                   Tổng chiều dài tuyến/line:{' '}
                   <span className="font-semibold text-slate-800">
-                    {cadVectorLineLengthSummary.toLocaleString('vi-VN', { maximumFractionDigits: 0 })} đơn vị CAD
+                    {cadVectorLineLengthSummary.toLocaleString('vi-VN', { maximumFractionDigits: 0 })} m
                   </span>
                 </p>
                 <p>
-                  {cadVectorData.metadata?.totalFeatures ?? 0} feature | {cadVectorData.layerIndex.length} CAD layer
+                  Dữ liệu bản đồ đã sẵn sàng
                 </p>
               </>
             ) : mapMode === 'layoutPreview' ? (
@@ -4560,7 +4188,7 @@ function WebGISDashboardPage() {
                     {CAD_LAYOUT_OPTIONS.find((layout) => layout.id === selectedLayoutId)?.label ?? 'Layout'}
                   </span>
                 </p>
-                <p>Layout chỉ để tham khảo, không dùng làm dữ liệu GIS chính</p>
+                <p>Bản vẽ này chỉ dùng để tham khảo</p>
               </>
             ) : (
               <>
@@ -4579,7 +4207,11 @@ function WebGISDashboardPage() {
 
         <DetailPanel
           collapsed={uiState.collapsedDetail}
-          onToggle={() => setUiState((prev) => ({ ...prev, collapsedDetail: !prev.collapsedDetail }))}
+          onToggle={() => setUiState((prev) => ({
+            ...prev,
+            collapsedDetail: !prev.collapsedDetail,
+            collapsedSidebar: prev.collapsedDetail ? true : prev.collapsedSidebar,
+          }))}
           feature={mapMode === 'osm' ? selectedFeature : null}
           cadVectorFeature={mapMode === 'cadVector' ? selectedCadVectorFeature : null}
           cadAsset={mapMode === 'cadImage' ? selectedCadAsset : null}
@@ -4614,6 +4246,33 @@ function WebGISDashboardPage() {
           onClose={() => setShowCreateIncident(false)}
           onSubmit={handleAddIncident}
         />
+      )}
+
+      {incidentToast && (
+        <div className="fixed bottom-5 right-5 z-[1600] flex max-w-sm items-start gap-3 rounded-xl border border-emerald-200 bg-white p-4 shadow-2xl">
+          <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-emerald-600" />
+          <div className="min-w-0 flex-1">
+            <p className="font-semibold text-slate-800">Đã tạo sự cố {incidentToast.properties.incidentCode}</p>
+            <p className="mt-0.5 text-xs text-slate-500">
+              {incidentToast.properties.source?.includes('tạm') ? 'Đã lưu tạm trên thiết bị' : 'Đã đồng bộ dữ liệu'}
+            </p>
+            <button
+              type="button"
+              className="mt-2 text-sm font-semibold text-water-700 hover:text-water-900"
+              onClick={() => {
+                setIncidentToast(null)
+                setMapMode('osm')
+                setViewMode('map')
+                handleFocusFeature(incidentToast.properties.id)
+              }}
+            >
+              Xem chi tiết
+            </button>
+          </div>
+          <button type="button" onClick={() => setIncidentToast(null)} className="text-slate-400 hover:text-slate-700" aria-label="Đóng thông báo">
+            <X className="size-4" />
+          </button>
+        </div>
       )}
     </main>
   )

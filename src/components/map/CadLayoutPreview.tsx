@@ -140,7 +140,7 @@ export function CadLayoutPreview({
       </div>
 
       <div className="absolute bottom-4 left-4 z-[800] max-w-[520px] rounded-lg border border-slate-700 bg-slate-900/90 px-3 py-2 text-xs text-slate-100 shadow-sm">
-        Layout chỉ dùng để tham khảo khung in, title block và chú giải. Dữ liệu GIS chính vẫn là CAD Vector từ Model.
+        Bản vẽ này chỉ dùng để tham khảo khung in và chú giải. Dữ liệu vận hành nằm trên bản đồ chính.
       </div>
 
       {image.status === 'loading' && (

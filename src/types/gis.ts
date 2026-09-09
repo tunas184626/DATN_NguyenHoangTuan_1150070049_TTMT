@@ -122,19 +122,22 @@ export interface LayerConfig {
   visible: boolean
 }
 
-export type DataSourceMode = 'cad' | 'demo'
+export type DataSourceMode = 'api' | 'cad' | 'demo'
 
 export type LayerLoadStatus =
   | 'cad_loaded'
   | 'cad_empty'
   | 'cad_missing'
   | 'cad_error'
+  | 'api_loaded'
+  | 'api_empty'
+  | 'api_error'
   | 'mock'
 
 export interface LayerSourceMeta {
   layerKey: LayerKey
   label: string
-  source: 'cad' | 'mock'
+  source: 'api' | 'cad' | 'mock'
   status: LayerLoadStatus
   featureCount: number
   url?: string

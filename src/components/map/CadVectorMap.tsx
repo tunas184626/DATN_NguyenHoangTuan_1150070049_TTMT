@@ -1996,8 +1996,8 @@ export function CadVectorMap({
       <div className="panel flex h-full min-h-[580px] items-center justify-center bg-[#0f172a] p-6 text-center text-white">
         <div>
           <Route className="mx-auto mb-3 size-8 animate-pulse text-sky-300" />
-          <p className="text-base font-semibold">Đang tải CAD Vector...</p>
-          <p className="mt-1 text-sm text-slate-300">Đọc GeoJSON thật từ QGIS trong public/data/cad-vector</p>
+          <p className="text-base font-semibold">Đang tải dữ liệu bản đồ...</p>
+          <p className="mt-1 text-sm text-slate-300">Quá trình này có thể mất vài giây</p>
         </div>
       </div>
     )
@@ -2008,10 +2008,8 @@ export function CadVectorMap({
       <div className="panel flex h-full min-h-[580px] items-center justify-center bg-[#0f172a] p-6 text-center text-white">
         <div className="max-w-md rounded-xl border border-slate-700 bg-slate-900/80 p-5">
           <AlertTriangle className="mx-auto mb-3 size-8 text-amber-300" />
-          <p className="text-base font-semibold">Chưa có dữ liệu CAD Vector</p>
-          <p className="mt-2 text-sm text-slate-300">
-            Hãy đặt GeoJSON vào source-data/converted/geojson và chạy npm run normalize:cad-vector.
-          </p>
+          <p className="text-base font-semibold">Chưa có dữ liệu bản đồ</p>
+          <p className="mt-2 text-sm text-slate-300">Vui lòng thử tải lại hoặc liên hệ quản trị viên.</p>
         </div>
       </div>
     )
@@ -2239,12 +2237,8 @@ export function CadVectorMap({
         </div>
       )}
 
-      <div className="cad-no-print absolute right-4 top-4 z-[800] rounded-lg border border-slate-200 bg-white/95 px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm">
-        CAD Vector: dữ liệu thật từ QGIS | {data.metadata?.totalFeatures ?? 0} feature | {data.layerIndex.length} layer
-      </div>
-
       <div className="cad-no-print absolute bottom-4 left-4 z-[800] rounded-lg border border-slate-200 bg-white/95 px-3 py-2 text-xs text-slate-700 shadow-sm">
-        Đang hiển thị {renderedCount.toLocaleString('vi-VN')} feature
+        Đang hiển thị {renderedCount.toLocaleString('vi-VN')} đối tượng
         {!labelOptions.showAllLabels && !labelOptions.showDiameterLabels && !labelOptions.showLocationLabels && (
           <span className="ml-2 text-slate-400">Nhãn CAD đang tắt</span>
         )}
