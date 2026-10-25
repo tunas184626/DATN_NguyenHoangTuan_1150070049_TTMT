@@ -1,3 +1,5 @@
+import { loadAllFeaturePages } from '../services/featurePagination'
+import type { FeaturePage } from '../types/operations'
 import type { Geometry } from 'geojson'
 import type {
   AssetCollection,
@@ -6,6 +8,7 @@ import type {
   AssetType,
   DataSourceState,
   IncidentCollection,
+  IncidentFeature,
   LayerDataState,
   LayerKey,
   LayerSourceMeta,
@@ -30,6 +33,24 @@ const CAD_LAYER_KEYS: CadLayerKey[] = [
 ]
 
 const ALL_LAYER_KEYS: LayerKey[] = [...CAD_LAYER_KEYS, 'incidents']
+
+const LAYER_BY_ASSET_TYPE: Partial<Record<AssetType, CadLayerKey>> = {
+  water_plant: 'waterPlant',
+  raw_water_lake: 'rawWaterLakes',
+  pipeline: 'pipelines',
+  canal: 'canals',
+  supply_zone: 'supplyZones',
+  boundary: 'boundaries',
+  label: 'labels',
+  pending_data: 'labels',
+}
+
+export interface ViewportAssetsResult {
+  layers: Record<CadLayerKey, AssetCollection>
+  total: number
+  truncated: boolean
+  simplified: boolean
+}
 
 const CAD_LAYER_URLS: Record<CadLayerKey, string> = {
   waterPlant: 'data/biwase/water-plants.geojson',
@@ -190,6 +211,8 @@ function normalizeFeature(
     geometry: rawFeature.geometry,
     properties: {
       id,
+      assetCode: typeof rawProperties.assetCode === 'string' ? rawProperties.assetCode : undefined,
+      version: typeof rawProperties.version === 'number' ? rawProperties.version : undefined,
       name,
       type,
       status: normalizeAssetStatus(rawProperties.status),
@@ -248,37 +271,64 @@ export async function loadGeoJsonLayer(layerKey: CadLayerKey, url: string): Prom
 }
 
 async function loadApiAssets(type: AssetType): Promise<AssetCollection> {
-  const layerByType: Partial<Record<AssetType, CadLayerKey>> = {
-    water_plant: 'waterPlant',
-    raw_water_lake: 'rawWaterLakes',
-    pipeline: 'pipelines',
-    canal: 'canals',
-    supply_zone: 'supplyZones',
-    boundary: 'boundaries',
-    label: 'labels',
-  }
-  return normalizeCollection(layerByType[type] ?? 'labels', await apiGet<unknown>(`/assets?type=${type}&limit=500`))
+  return normalizeCollection(LAYER_BY_ASSET_TYPE[type] ?? 'labels', await apiGet<unknown>(`/assets?type=${type}&limit=500`))
 }
 
-async function loadApiIncidents(): Promise<IncidentCollection> {
-  const raw = await apiGet<unknown>('/incidents?limit=200')
-  if (!raw || typeof raw !== 'object') throw new Error('Dữ liệu sự cố không hợp lệ')
-  const collection = raw as { type?: string; features?: unknown[] }
-  if (collection.type !== 'FeatureCollection' || !Array.isArray(collection.features)) {
-    throw new Error('Dữ liệu sự cố không hợp lệ')
+export async function loadApiAssetsForViewport(
+  bbox: [number, number, number, number],
+  zoom: number,
+  signal?: AbortSignal,
+): Promise<ViewportAssetsResult> {
+  const params = new URLSearchParams({
+    bbox: bbox.map((value) => value.toFixed(6)).join(','),
+    zoom: String(Math.round(zoom)),
+    limit: '1000',
+  })
+  const raw = await apiGet<unknown>(`/assets?${params.toString()}`, 8000, signal)
+  if (!raw || typeof raw !== 'object') throw new Error('Dữ liệu bản đồ không hợp lệ')
+
+  const response = raw as {
+    type?: string
+    features?: unknown[]
+    meta?: { total?: number; simplified?: boolean }
+  }
+  if (response.type !== 'FeatureCollection' || !Array.isArray(response.features)) {
+    throw new Error('Dữ liệu bản đồ không hợp lệ')
   }
 
+  const layers = Object.fromEntries(
+    CAD_LAYER_KEYS.map((layerKey) => [layerKey, createEmptyFeatureCollection()]),
+  ) as Record<CadLayerKey, AssetCollection>
+
+  for (const [index, feature] of response.features.entries()) {
+    if (!feature || typeof feature !== 'object') continue
+    const rawType = String((feature as { properties?: { type?: string } }).properties?.type ?? '') as AssetType
+    const layerKey = LAYER_BY_ASSET_TYPE[rawType]
+    if (!layerKey) continue
+    const normalized = normalizeFeature(layerKey, feature, index)
+    if (normalized) layers[layerKey].features.push(normalized)
+  }
+
+  const total = Number(response.meta?.total ?? response.features.length)
+  return {
+    layers,
+    total,
+    truncated: total > response.features.length,
+    simplified: response.meta?.simplified === true,
+  }
+}
+
+export async function loadApiIncidents(signal?: AbortSignal): Promise<IncidentCollection> {
+  const features = await loadAllFeaturePages<IncidentFeature>((offset) =>
+    apiGet<FeaturePage<IncidentFeature>>(`/incidents?limit=200&offset=${offset}`, 8000, signal),
+  )
   return {
     type: 'FeatureCollection',
-    features: collection.features.filter((feature) => {
-      if (!feature || typeof feature !== 'object') return false
-      const candidate = feature as { geometry?: { type?: string }; properties?: { type?: string } }
-      return candidate.geometry?.type === 'Point' && candidate.properties?.type === 'incident'
-    }),
-  } as IncidentCollection
+    features: features.filter((feature) => feature?.geometry?.type === 'Point' && feature.properties?.type === 'incident'),
+  }
 }
 
-async function loadOperationalCadLayers(url: string): Promise<Record<CadLayerKey, AssetCollection>> {
+export async function loadOperationalCadLayers(url = toPublicUrl(CAD_OPERATIONAL_WGS84_URL)): Promise<Record<CadLayerKey, AssetCollection>> {
   const response = await fetch(url)
   if (!response.ok) throw new Error(`HTTP ${response.status}`)
 
@@ -337,163 +387,78 @@ export function ensureLayerDataState(data: Partial<LayerDataState>): LayerDataSt
   } as LayerDataState
 }
 
-export async function loadLayerDataWithFallback(): Promise<{
-  data: LayerDataState
-  dataSource: DataSourceState
-}> {
-  const mockData = await loadMockLayerData()
-  const data = ensureLayerDataState(mockData)
-  const layerEntries: Array<[LayerKey, LayerSourceMeta]> = ALL_LAYER_KEYS.map((layerKey) => [
-    layerKey,
-    createLayerMeta(layerKey, 'mock', 'mock', data[layerKey].features.length),
-  ])
-  const layers = Object.fromEntries(layerEntries) as Record<LayerKey, LayerSourceMeta>
+type InitialData = { data: LayerDataState; dataSource: DataSourceState }
+let initialDataRequest: Promise<InitialData> | null = null
+
+// React StrictMode may mount twice; share only the active request, never mutable data forever.
+export function loadLayerDataWithFallback(): Promise<InitialData> {
+  initialDataRequest ??= initializeLayerData().finally(() => { initialDataRequest = null })
+  return initialDataRequest
+}
+
+async function initializeLayerData(): Promise<InitialData> {
+  const data = ensureLayerDataState({})
+  const layers = Object.fromEntries(ALL_LAYER_KEYS.map((key) => [
+    key, createLayerMeta(key, 'api', 'api_error', 0, undefined, 'Chưa kết nối được máy chủ'),
+  ])) as Record<LayerKey, LayerSourceMeta>
+
+  // Incidents and all asset types start together. Offline fallback never waits for demo files.
+  const incidentRequest = loadApiIncidents().then(
+    (collection) => ({ collection }),
+    () => ({ collection: null }),
+  )
+  try {
+    const collections = await Promise.all((Object.keys(LAYER_BY_ASSET_TYPE) as AssetType[]).map(async (type) => ({
+      layerKey: LAYER_BY_ASSET_TYPE[type]!,
+      collection: await loadApiAssets(type),
+    })))
+    for (const layerKey of CAD_LAYER_KEYS) {
+      const features = collections.filter((entry) => entry.layerKey === layerKey).flatMap((entry) => entry.collection.features)
+      data[layerKey] = { type: 'FeatureCollection', features }
+      layers[layerKey] = createLayerMeta(layerKey, 'api', features.length ? 'api_loaded' : 'api_empty', features.length, undefined, 'Dữ liệu máy chủ')
+    }
+    const { collection } = await incidentRequest
+    if (collection) {
+      data.incidents = collection
+      layers.incidents = createLayerMeta('incidents', 'api', collection.features.length ? 'api_loaded' : 'api_empty', collection.features.length)
+    }
+    return { data, dataSource: { mode: 'api', label: 'Đã kết nối máy chủ', usingCad: false, layers } }
+  } catch {
+    // Only download fallback data when the API cannot supply the asset collections.
+  }
 
   let loadedCadFeatureCount = 0
-  let loadedApiFeatureCount = 0
-  let apiAvailable = false
-  const apiLoadedLayers = new Set<Exclude<LayerKey, 'incidents'>>()
-
-  try {
-    const [waterPlants, pipelines] = await Promise.all([
-      loadApiAssets('water_plant'),
-      loadApiAssets('pipeline'),
-    ])
-    apiAvailable = true
-    if (waterPlants.features.length > 0) {
-      data.waterPlant = waterPlants
-      apiLoadedLayers.add('waterPlant')
-      loadedApiFeatureCount += waterPlants.features.length
-      layers.waterPlant = createLayerMeta(
-        'waterPlant',
-        'api',
-        'api_loaded',
-        loadedApiFeatureCount,
-        undefined,
-        'Dữ liệu đã đồng bộ',
-      )
-    } else {
-      layers.waterPlant = createLayerMeta('waterPlant', 'api', 'api_empty', 0)
-    }
-    if (pipelines.features.length > 0) {
-      data.pipelines = pipelines
-      apiLoadedLayers.add('pipelines')
-      loadedApiFeatureCount += pipelines.features.length
-      layers.pipelines = createLayerMeta(
-        'pipelines', 'api', 'api_loaded', pipelines.features.length, undefined, 'Dữ liệu đã đồng bộ',
-      )
-    } else {
-      layers.pipelines = createLayerMeta('pipelines', 'api', 'api_empty', 0)
-    }
-  } catch {
-    layers.waterPlant = createLayerMeta(
-      'waterPlant',
-      'api',
-      'api_error',
-      0,
-      undefined,
-      'Đang dùng dữ liệu dự phòng',
-    )
-    layers.pipelines = createLayerMeta('pipelines', 'api', 'api_error', 0, undefined, 'Đang dùng dữ liệu dự phòng')
-  }
-
-  if (apiAvailable) {
-    try {
-      const apiIncidents = await loadApiIncidents()
-      data.incidents = apiIncidents
-      loadedApiFeatureCount += apiIncidents.features.length
-      layers.incidents = createLayerMeta(
-        'incidents',
-        'api',
-        apiIncidents.features.length ? 'api_loaded' : 'api_empty',
-        apiIncidents.features.length,
-      )
-    } catch {
-      layers.incidents = createLayerMeta('incidents', 'api', 'api_error', 0, undefined, 'Đang dùng dữ liệu dự phòng')
-    }
-  }
-
   const operationalUrl = toPublicUrl(CAD_OPERATIONAL_WGS84_URL)
   try {
     const operationalLayers = await loadOperationalCadLayers(operationalUrl)
     for (const layerKey of CAD_LAYER_KEYS) {
       const collection = operationalLayers[layerKey]
-      if (!apiLoadedLayers.has(layerKey)) {
-        data[layerKey] = collection as never
-      }
+      data[layerKey] = collection
       loadedCadFeatureCount += collection.features.length
-      if (!apiLoadedLayers.has(layerKey)) {
-        layers[layerKey] = createLayerMeta(
-          layerKey,
-          'cad',
-          collection.features.length ? 'cad_loaded' : 'cad_empty',
-          collection.features.length,
-          operationalUrl,
-        )
-      }
+      layers[layerKey] = createLayerMeta(layerKey, 'cad', collection.features.length ? 'cad_loaded' : 'cad_empty', collection.features.length, operationalUrl)
     }
   } catch {
-    // Keep compatibility with the legacy per-layer exports below.
+    // Keep compatibility with older per-layer exports.
   }
 
-  if (loadedCadFeatureCount > 0 || apiAvailable) {
-    return {
-      data,
-      dataSource: {
-        mode: apiAvailable ? 'api' : 'cad',
-        label: 'Đã đồng bộ dữ liệu bản đồ',
-        usingCad: true,
-        layers,
-      },
-    }
-  }
-
-  await Promise.all(
-    CAD_LAYER_KEYS.map(async (layerKey) => {
+  if (!loadedCadFeatureCount) {
+    await Promise.all(CAD_LAYER_KEYS.map(async (layerKey) => {
       const url = toPublicUrl(CAD_LAYER_URLS[layerKey])
-
       try {
-        const cadCollection = await loadGeoJsonLayer(layerKey, url)
-        const featureCount = cadCollection.features.length
-        const hasRenderableCadData = featureCount > 0
-
-        if (hasRenderableCadData || layerKey === 'boundaries' || layerKey === 'labels') {
-          data[layerKey] = cadCollection as never
-        }
-
-        if (hasRenderableCadData) {
-          loadedCadFeatureCount += featureCount
-        }
-
-        layers[layerKey] = createLayerMeta(
-          layerKey,
-          'cad',
-          hasRenderableCadData ? 'cad_loaded' : 'cad_empty',
-          featureCount,
-          url,
-        )
+        const collection = await loadGeoJsonLayer(layerKey, url)
+        data[layerKey] = collection
+        loadedCadFeatureCount += collection.features.length
+        layers[layerKey] = createLayerMeta(layerKey, 'cad', collection.features.length ? 'cad_loaded' : 'cad_empty', collection.features.length, url)
       } catch (error) {
-        layers[layerKey] = createLayerMeta(
-          layerKey,
-          'cad',
-          error instanceof Error && error.message.includes('HTTP 404') ? 'cad_missing' : 'cad_error',
-          0,
-          url,
-          error instanceof Error ? error.message : 'Không thể tải GeoJSON CAD',
-        )
+        layers[layerKey] = createLayerMeta(layerKey, 'cad', 'cad_error', 0, url, error instanceof Error ? error.message : 'Không thể tải GeoJSON CAD')
       }
-    }),
-  )
-
-  const usingCad = loadedCadFeatureCount > 0 || apiAvailable
-
-  return {
-    data,
-    dataSource: {
-      mode: apiAvailable ? 'api' : usingCad ? 'cad' : 'demo',
-      label: usingCad ? 'Đang dùng dữ liệu CAD/GeoJSON' : 'Đang dùng dữ liệu demo',
-      usingCad,
-      layers,
-    },
+    }))
   }
+  if (loadedCadFeatureCount) {
+    return { data, dataSource: { mode: 'cad', label: 'Đang dùng dữ liệu CAD/GeoJSON', usingCad: true, layers } }
+  }
+
+  const mockData = ensureLayerDataState(await loadMockLayerData())
+  const mockLayers = Object.fromEntries(ALL_LAYER_KEYS.map((key) => [key, createLayerMeta(key, 'mock', 'mock', mockData[key].features.length)])) as Record<LayerKey, LayerSourceMeta>
+  return { data: mockData, dataSource: { mode: 'demo', label: 'Đang dùng dữ liệu demo', usingCad: false, layers: mockLayers } }
 }

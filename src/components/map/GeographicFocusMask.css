@@ -1,0 +1,13 @@
+.leaflet-pane.geographic-focus-pane {
+  z-index: 250;
+  pointer-events: none;
+}
+
+.geographic-focus-mask {
+  position: absolute;
+  inset: 0 auto auto 0;
+  pointer-events: none;
+  background: rgb(242 245 247 / 24%);
+  -webkit-backdrop-filter: blur(3.5px) saturate(40%);
+  backdrop-filter: blur(3.5px) saturate(40%);
+}

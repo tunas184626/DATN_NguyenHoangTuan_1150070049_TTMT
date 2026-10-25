@@ -34,11 +34,10 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-950 p-4">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.28),_transparent_42%),radial-gradient(circle_at_bottom_right,_rgba(16,185,129,0.2),_transparent_40%)]" />
-      <section className="relative w-full max-w-md rounded-3xl border border-white/10 bg-white/95 p-7 shadow-2xl backdrop-blur md:p-9">
+    <main className="flex min-h-screen items-center justify-center bg-slate-100 p-4">
+      <section className="panel w-full max-w-md p-7 md:p-9">
         <div className="mb-7 flex items-center gap-3">
-          <div className="rounded-2xl bg-water-600 p-3 text-white shadow-lg shadow-water-600/25">
+          <div className="rounded-xl bg-slate-100 p-3 text-slate-600">
             <Droplets className="size-7" />
           </div>
           <div>

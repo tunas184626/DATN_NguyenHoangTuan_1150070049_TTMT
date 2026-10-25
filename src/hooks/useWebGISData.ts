@@ -1,5 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { ensureLayerDataState, loadLayerDataWithFallback } from '../data/dataService'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  ensureLayerDataState,
+  loadApiAssetsForViewport,
+  loadApiIncidents,
+  loadLayerDataWithFallback,
+} from '../data/dataService'
 import { loadMockLayerData } from '../data/loaders'
 import type {
   AnyMapFeature,
@@ -7,8 +12,11 @@ import type {
   AssetFeature,
   DataSourceState,
   IncidentAttachment,
+  IncidentAssignee,
   IncidentFeature,
   IncidentHistoryItem,
+  IncidentLinkedAsset,
+  IncidentRealtimeEvent,
   IncidentWorkflowStatus,
   LayerDataState,
   LayerKey,
@@ -18,8 +26,15 @@ import type {
 } from '../types/gis'
 import { assetTypeToLayerKey, LAYER_LABELS } from '../utils/asset'
 import { buildGeometry } from '../utils/geo'
+import { parseIncidentPosition } from '../utils/coordinates'
 import { flattenAllFeatures, flattenAssets, flattenIncidents } from '../utils/metrics'
 import { apiRequest } from '../services/apiClient'
+import { clearLocalDrafts, isLocalDraft, isServerFeature, loadLocalDrafts, mergeLocalDrafts, saveLocalDraft } from '../services/localDraftStore'
+import {
+  loadIncidentAssignees,
+  loadIncidentLinkedAssets,
+  subscribeToIncidentChanges,
+} from '../services/incidentWorkflowService'
 
 const STORAGE_KEY = 'webgis-water-assets-v1'
 
@@ -56,11 +71,11 @@ function createDemoDataSource(data: LayerDataState): DataSourceState {
 }
 
 function generateAssetId(): string {
-  return `AST-${Date.now()}`
+  return `AST-${crypto.randomUUID()}`
 }
 
 function generateIncidentId(): string {
-  return `INC-${Date.now()}`
+  return `INC-${crypto.randomUUID()}`
 }
 
 function createAssetFeature(input: NewAssetInput): AssetFeature {
@@ -91,6 +106,7 @@ function createAssetFeature(input: NewAssetInput): AssetFeature {
 }
 
 function createIncidentFeature(input: NewIncidentInput): IncidentFeature {
+  const reportedAt = input.reportedAt ?? new Date().toISOString()
   return {
     type: 'Feature',
     geometry: {
@@ -106,6 +122,12 @@ function createIncidentFeature(input: NewIncidentInput): IncidentFeature {
       incidentType: input.incidentType,
       severity: input.severity,
       reportedDate: input.reportedDate,
+      reportedAt,
+      escalationLevel: 0,
+      assetIds: input.assetIds,
+      assetId: input.assetIds[0] ?? null,
+      origin: input.origin,
+      intake: input.intake,
       description: input.description.trim(),
       address: input.address.trim(),
       imageUrl: input.imageUrl?.trim() ?? '',
@@ -136,6 +158,9 @@ export function useWebGISData() {
   const [dataSource, setDataSource] = useState<DataSourceState | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [reloadVersion, setReloadVersion] = useState(0)
+  const [incidentRealtimeEvent, setIncidentRealtimeEvent] = useState<IncidentRealtimeEvent | null>(null)
+  const viewportAbortController = useRef<AbortController | null>(null)
 
   useEffect(() => {
     let mounted = true
@@ -147,10 +172,11 @@ export function useWebGISData() {
       try {
         const loaded = await loadLayerDataWithFallback()
         const localData = loadFromStorage()
-        const initialData =
-          loaded.dataSource.usingCad || !localData
+        const baseData =
+          loaded.dataSource.mode !== 'demo' || !localData
             ? loaded.data
             : ensureLayerDataState(localData)
+        const initialData = mergeLocalDrafts(baseData, loadLocalDrafts())
 
         if (mounted) {
           setData(initialData)
@@ -163,7 +189,7 @@ export function useWebGISData() {
           const mockData = await loadMockLayerData()
 
           if (mounted) {
-            const fallbackData = ensureLayerDataState(mockData)
+            const fallbackData = mergeLocalDrafts(ensureLayerDataState(mockData), loadLocalDrafts())
             setData(fallbackData)
             setDataSource(createDemoDataSource(fallbackData))
           }
@@ -186,15 +212,7 @@ export function useWebGISData() {
     return () => {
       mounted = false
     }
-  }, [])
-
-  useEffect(() => {
-    if (!data || dataSource?.usingCad) {
-      return
-    }
-
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
-  }, [data, dataSource])
+  }, [reloadVersion])
 
   const addAsset = useCallback(
     async (input: NewAssetInput): Promise<AssetFeature | null> => {
@@ -226,7 +244,7 @@ export function useWebGISData() {
           }),
         })
       } else {
-        createdFeature = createAssetFeature(input)
+        createdFeature = saveLocalDraft(createAssetFeature(input))
       }
 
       const layerKey = assetTypeToLayerKey(input.type)
@@ -256,7 +274,7 @@ export function useWebGISData() {
         properties: { ...original.properties, ...input, lastUpdated: new Date().toISOString() },
       }
 
-      if (dataSource?.mode === 'api' && typeof original.properties.version === 'number') {
+      if (dataSource?.mode === 'api' && isServerFeature(original)) {
         updatedFeature = await apiRequest<AssetFeature>(`/assets/${encodeURIComponent(featureId)}`, {
           method: 'PATCH',
           body: JSON.stringify({
@@ -278,6 +296,8 @@ export function useWebGISData() {
             },
           }),
         })
+      } else {
+        updatedFeature = saveLocalDraft(updatedFeature)
       }
 
       const layerKey = assetTypeToLayerKey(original.properties.type)
@@ -298,6 +318,9 @@ export function useWebGISData() {
   const addIncident = useCallback(
     async (input: NewIncidentInput): Promise<IncidentFeature | null> => {
       if (!data) return null
+      if (!parseIncidentPosition(String(input.latitude), String(input.longitude))) {
+        throw new Error('Cần chọn vị trí WGS84 hợp lệ trước khi lưu sự cố')
+      }
 
       let createdIncident: IncidentFeature
       if (dataSource?.mode === 'api') {
@@ -311,16 +334,19 @@ export function useWebGISData() {
             address: input.address,
             latitude: input.latitude,
             longitude: input.longitude,
-            reportedAt: `${input.reportedDate}T00:00:00.000Z`,
+            reportedAt: input.reportedAt ?? new Date().toISOString(),
             details: {
               imageUrl: input.imageUrl,
               googleMapsUrl: input.googleMapsUrl,
               notes: input.notes,
+              origin: input.origin,
+              intake: input.intake,
             },
+            assetIds: input.assetIds,
           }),
         })
       } else {
-        createdIncident = createIncidentFeature(input)
+        createdIncident = saveLocalDraft(createIncidentFeature(input))
       }
 
       // Chỉ sao chép nhánh incidents; tránh structuredClone toàn bộ hàng nghìn geometry.
@@ -328,7 +354,9 @@ export function useWebGISData() {
         ...current,
         incidents: {
           ...current.incidents,
-          features: [...current.incidents.features, createdIncident],
+          features: current.incidents.features.some((incident) => incident.properties.id === createdIncident.properties.id)
+            ? current.incidents.features.map((incident) => incident.properties.id === createdIncident.properties.id ? createdIncident : incident)
+            : [createdIncident, ...current.incidents.features],
         },
       } : current)
       return createdIncident
@@ -337,15 +365,39 @@ export function useWebGISData() {
   )
 
   const replaceIncident = useCallback((updated: IncidentFeature) => {
+    // Ghi vào bộ nhớ trình duyệt trước khi báo lưu thành công hoặc thay đổi UI.
+    const next = isLocalDraft(updated) ? saveLocalDraft(updated) : updated
     setData((current) => current ? {
       ...current,
       incidents: {
         ...current.incidents,
-        features: current.incidents.features.map((incident) =>
-          incident.properties.id === updated.properties.id ? updated : incident,
-        ),
+        features: current.incidents.features.some((incident) => incident.properties.id === updated.properties.id)
+          ? current.incidents.features.map((incident) => incident.properties.id === next.properties.id
+            ? isLocalDraft(incident) && !isLocalDraft(next) ? incident : next
+            : incident)
+          : [next, ...current.incidents.features],
       },
     } : current)
+    return next
+  }, [])
+
+  const cacheFeature = useCallback((feature: AnyMapFeature) => {
+    const key = feature.properties.type === 'incident' ? 'incidents' : assetTypeToLayerKey(feature.properties.type)
+    setData((current) => {
+      if (!current) return current
+      const existing = current[key].features.find((item) => item.properties.id === feature.properties.id)
+      if (existing && isLocalDraft(existing) && !isLocalDraft(feature)) return current
+      if (existing && !isLocalDraft(feature) && typeof existing.properties.version === 'number'
+        && (typeof feature.properties.version !== 'number' || feature.properties.version < existing.properties.version)) return current
+      const features: AnyMapFeature[] = existing
+        ? current[key].features.map((item) => item.properties.id === feature.properties.id ? feature : item)
+        : [...current[key].features, feature]
+      return { ...current, [key]: { ...current[key], features } } as LayerDataState
+    })
+  }, [])
+
+  const retry = useCallback(() => {
+    setReloadVersion((version) => version + 1)
   }, [])
 
   const transitionIncident = useCallback(async (
@@ -353,10 +405,11 @@ export function useWebGISData() {
     status: IncidentWorkflowStatus,
     note: string,
   ): Promise<IncidentFeature> => {
+    if (status === 'resolved' && !note.trim()) throw new Error('Ghi kết quả khắc phục trước khi hoàn tất sự cố')
     const current = data?.incidents.features.find((incident) => incident.properties.id === incidentId)
     if (!current) throw new Error('Không tìm thấy sự cố')
     let updated: IncidentFeature
-    if (dataSource?.mode === 'api') {
+    if (dataSource?.mode === 'api' && isServerFeature(current)) {
       if (typeof current.properties.version !== 'number') throw new Error('Sự cố chưa được đồng bộ')
       updated = await apiRequest<IncidentFeature>(`/incidents/${encodeURIComponent(incidentId)}/status`, {
         method: 'PATCH',
@@ -367,83 +420,171 @@ export function useWebGISData() {
         ...current,
         properties: {
           ...current.properties,
+          localOnly: true,
           status,
+          resolvedAt: status === 'resolved' ? new Date().toISOString() : undefined,
           version: (current.properties.version ?? 0) + 1,
           lastUpdated: new Date().toISOString(),
           notes: note ? [...current.properties.notes, note] : current.properties.notes,
         },
       }
     }
-    replaceIncident(updated)
-    return updated
+    return replaceIncident(updated)
   }, [data?.incidents.features, dataSource?.mode, replaceIncident])
 
   const assignIncident = useCallback(async (
     incidentId: string,
-    assignee: string,
+    assigneeId: string,
     note: string,
   ): Promise<IncidentFeature> => {
     const current = data?.incidents.features.find((incident) => incident.properties.id === incidentId)
     if (!current) throw new Error('Không tìm thấy sự cố')
     let updated: IncidentFeature
-    if (dataSource?.mode === 'api') {
+    if (dataSource?.mode === 'api' && isServerFeature(current)) {
       if (typeof current.properties.version !== 'number') throw new Error('Sự cố chưa được đồng bộ')
       updated = await apiRequest<IncidentFeature>(`/incidents/${encodeURIComponent(incidentId)}/assignment`, {
         method: 'PATCH',
-        body: JSON.stringify({ assignee, version: current.properties.version, note }),
+        body: JSON.stringify({ assigneeId, version: current.properties.version, note }),
       })
     } else {
       updated = {
         ...current,
         properties: {
           ...current.properties,
-          assignedTo: assignee,
+          localOnly: true,
+          notes: note ? [...current.properties.notes, note] : current.properties.notes,
+          assignedUserId: assigneeId,
+          assignedTo: assigneeId,
           version: (current.properties.version ?? 0) + 1,
           lastUpdated: new Date().toISOString(),
         },
       }
     }
-    replaceIncident(updated)
-    return updated
+    return replaceIncident(updated)
+  }, [data?.incidents.features, dataSource?.mode, replaceIncident])
+
+  const getIncidentAssignees = useCallback(async (): Promise<IncidentAssignee[]> => {
+    if (dataSource?.mode !== 'api') return []
+    return loadIncidentAssignees()
+  }, [dataSource?.mode])
+
+  const getIncidentLinkedAssets = useCallback(async (incidentId: string): Promise<IncidentLinkedAsset[]> => {
+    const incident = data?.incidents.features.find((item) => item.properties.id === incidentId)
+    if (dataSource?.mode === 'api' && incident && isServerFeature(incident)) return loadIncidentLinkedAssets(incidentId)
+    const assetIds = data?.incidents.features.find((item) => item.properties.id === incidentId)?.properties.assetIds ?? []
+    return ASSET_LAYER_KEYS.flatMap((key) => data?.[key].features ?? [])
+      .filter((asset) => assetIds.includes(asset.properties.id))
+      .map((asset) => ({
+        id: asset.properties.id,
+        assetCode: asset.properties.id,
+        name: asset.properties.name,
+        type: asset.properties.type,
+        status: asset.properties.status,
+      }))
+  }, [data, dataSource?.mode])
+
+  const updateIncidentAssets = useCallback(async (
+    incidentId: string,
+    assetIds: string[],
+    note: string,
+  ): Promise<IncidentFeature> => {
+    const current = data?.incidents.features.find((item) => item.properties.id === incidentId)
+    if (!current) throw new Error('Không tìm thấy sự cố')
+    let updated: IncidentFeature
+    if (dataSource?.mode === 'api' && isServerFeature(current)) {
+      if (typeof current.properties.version !== 'number') throw new Error('Sự cố chưa được đồng bộ')
+      updated = await apiRequest<IncidentFeature>(`/incidents/${encodeURIComponent(incidentId)}/assets`, {
+        method: 'PUT',
+        body: JSON.stringify({ assetIds, version: current.properties.version, note }),
+      })
+    } else {
+      updated = {
+        ...current,
+        properties: {
+          ...current.properties,
+          localOnly: true,
+          notes: note ? [...current.properties.notes, note] : current.properties.notes,
+          assetIds,
+          assetId: assetIds[0] ?? null,
+          version: (current.properties.version ?? 0) + 1,
+          lastUpdated: new Date().toISOString(),
+        },
+      }
+    }
+    return replaceIncident(updated)
+  }, [data?.incidents.features, dataSource?.mode, replaceIncident])
+
+  const escalateIncident = useCallback(async (incidentId: string, note: string): Promise<IncidentFeature> => {
+    const current = data?.incidents.features.find((item) => item.properties.id === incidentId)
+    if (!current) throw new Error('Không tìm thấy sự cố')
+    let updated: IncidentFeature
+    if (dataSource?.mode === 'api' && isServerFeature(current)) {
+      if (typeof current.properties.version !== 'number') throw new Error('Sự cố chưa được đồng bộ')
+      updated = await apiRequest<IncidentFeature>(`/incidents/${encodeURIComponent(incidentId)}/escalate`, {
+        method: 'POST',
+        body: JSON.stringify({ version: current.properties.version, note }),
+      })
+    } else {
+      updated = {
+        ...current,
+        properties: {
+          ...current.properties,
+          localOnly: true,
+          notes: note ? [...current.properties.notes, note] : current.properties.notes,
+          escalationLevel: Math.min((current.properties.escalationLevel ?? 0) + 1, 3),
+          version: (current.properties.version ?? 0) + 1,
+          lastUpdated: new Date().toISOString(),
+        },
+      }
+    }
+    return replaceIncident(updated)
   }, [data?.incidents.features, dataSource?.mode, replaceIncident])
 
   const addIncidentComment = useCallback(async (incidentId: string, content: string): Promise<void> => {
-    if (dataSource?.mode === 'api') {
+    const current = data?.incidents.features.find((incident) => incident.properties.id === incidentId)
+    if (!current) throw new Error('Không tìm thấy sự cố')
+    if (dataSource?.mode === 'api' && isServerFeature(current)) {
       await apiRequest(`/incidents/${encodeURIComponent(incidentId)}/comments`, {
         method: 'POST',
         body: JSON.stringify({ content }),
       })
       return
     }
-    const current = data?.incidents.features.find((incident) => incident.properties.id === incidentId)
-    if (!current) throw new Error('Không tìm thấy sự cố')
     replaceIncident({
       ...current,
-      properties: { ...current.properties, notes: [...current.properties.notes, content] },
+      properties: { ...current.properties, localOnly: true, lastUpdated: new Date().toISOString(), notes: [...current.properties.notes, content] },
     })
   }, [data?.incidents.features, dataSource?.mode, replaceIncident])
 
   const getIncidentHistory = useCallback(async (incidentId: string): Promise<IncidentHistoryItem[]> => {
-    if (dataSource?.mode !== 'api') return []
+    const incident = data?.incidents.features.find((item) => item.properties.id === incidentId)
+    if (dataSource?.mode !== 'api' || !incident || !isServerFeature(incident)) return []
     const response = await apiRequest<{ items: IncidentHistoryItem[] }>(
       `/incidents/${encodeURIComponent(incidentId)}/history`, { method: 'GET' },
     )
     return response.items
-  }, [dataSource?.mode])
+  }, [data?.incidents.features, dataSource?.mode])
 
   const getIncidentAttachments = useCallback(async (incidentId: string): Promise<IncidentAttachment[]> => {
-    if (dataSource?.mode !== 'api') return []
+    const incident = data?.incidents.features.find((item) => item.properties.id === incidentId)
+    if (dataSource?.mode !== 'api' || !incident || !isServerFeature(incident)) return incident?.properties.attachments ?? []
     const response = await apiRequest<{ items: IncidentAttachment[] }>(
       `/incidents/${encodeURIComponent(incidentId)}/attachments`, { method: 'GET' },
     )
     return response.items
-  }, [dataSource?.mode])
+  }, [data?.incidents.features, dataSource?.mode])
 
   const uploadIncidentAttachment = useCallback(async (
     incidentId: string,
     file: File,
+    newlyCreated?: IncidentFeature,
   ): Promise<IncidentAttachment> => {
-    if (dataSource?.mode !== 'api') throw new Error('Cần đồng bộ dữ liệu trước khi tải ảnh')
+    // The create-and-upload handler still owns its pre-create render closure.
+    const incident = newlyCreated?.properties.id === incidentId ? newlyCreated
+      : data?.incidents.features.find((item) => item.properties.id === incidentId)
+    if (dataSource?.mode !== 'api' || !incident || !isServerFeature(incident)) {
+      throw new Error('Ảnh chỉ tải được khi sự cố đã được lưu trên máy chủ. Thông tin sự cố lưu tạm vẫn được giữ trên thiết bị.')
+    }
     const body = new FormData()
     body.append('file', file)
     const attachment = await apiRequest<IncidentAttachment>(
@@ -461,14 +602,76 @@ export function useWebGISData() {
       },
     } : current)
     return attachment
+  }, [data?.incidents.features, dataSource?.mode])
+
+  const loadAssetsForViewport = useCallback(async (
+    bbox: [number, number, number, number],
+    zoom: number,
+  ) => {
+    if (dataSource?.mode !== 'api') return null
+    viewportAbortController.current?.abort()
+    const controller = new AbortController()
+    viewportAbortController.current = controller
+    return loadApiAssetsForViewport(bbox, zoom, controller.signal)
   }, [dataSource?.mode])
+
+  useEffect(() => {
+    if (dataSource?.mode !== 'api') return
+    let active = true
+    let unsubscribe: (() => void) | undefined
+    const refresh = () => {
+      void loadApiIncidents()
+        .then((collection) => {
+          if (!active) return
+          setData((current) => current ? {
+            ...current,
+            incidents: { ...current.incidents, features: mergeLocalDrafts({ ...current, incidents: { ...current.incidents, features: collection.features } }, loadLocalDrafts()).incidents.features },
+          } : current)
+        })
+        .catch(() => undefined)
+    }
+    const refreshInterval = window.setInterval(refresh, 60_000)
+
+    void subscribeToIncidentChanges((event) => {
+      if (!active) return
+      if (event.eventType === 'DELETE') {
+        setData((current) => current ? {
+          ...current,
+          incidents: {
+            ...current.incidents,
+            features: current.incidents.features.filter((incident) => incident.properties.id !== event.id),
+          },
+        } : current)
+        setIncidentRealtimeEvent(event)
+        return
+      }
+      void apiRequest<IncidentFeature>(`/incidents/${encodeURIComponent(event.id)}`, { method: 'GET' })
+        .then((incident) => {
+          if (!active) return
+          replaceIncident(incident)
+          setIncidentRealtimeEvent(event)
+        })
+        .catch(() => undefined)
+    }).then((cleanup) => {
+      if (!active) cleanup()
+      else unsubscribe = cleanup
+    })
+
+    return () => {
+      active = false
+      window.clearInterval(refreshInterval)
+      unsubscribe?.()
+    }
+  }, [dataSource?.mode, replaceIncident])
+
+  useEffect(() => () => viewportAbortController.current?.abort(), [])
 
   const resetData = useCallback(async () => {
     const mockData = await loadMockLayerData()
     const fallbackData = ensureLayerDataState(mockData)
+    clearLocalDrafts()
     setData(fallbackData)
     setDataSource(createDemoDataSource(fallbackData))
-    localStorage.removeItem(STORAGE_KEY)
   }, [])
 
   const assets = useMemo(() => {
@@ -515,6 +718,7 @@ export function useWebGISData() {
     dataSource,
     loading,
     error,
+    retry,
     assets,
     incidents,
     allFeatures,
@@ -527,6 +731,13 @@ export function useWebGISData() {
     getIncidentHistory,
     getIncidentAttachments,
     uploadIncidentAttachment,
+    getIncidentAssignees,
+    getIncidentLinkedAssets,
+    updateIncidentAssets,
+    escalateIncident,
+    incidentRealtimeEvent,
+    loadAssetsForViewport,
+    cacheFeature,
     resetData,
     getFeatureById,
   }

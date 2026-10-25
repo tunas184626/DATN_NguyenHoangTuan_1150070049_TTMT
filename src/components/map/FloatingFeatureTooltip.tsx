@@ -120,7 +120,7 @@ export function FloatingFeatureTooltip({
   return (
     <div
       ref={tooltipRef}
-      className="absolute z-[1000] max-w-[240px] rounded-lg border border-slate-200 bg-white/95 px-3 py-2 text-xs text-slate-800 shadow-lg backdrop-blur"
+      className="absolute z-[1000] max-w-[240px] rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-slate-800 shadow-sm"
       style={{
         left: position.left,
         top: position.top,

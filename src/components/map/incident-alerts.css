@@ -1,0 +1,92 @@
+.incident-alert {
+  --incident-alert-rgb: 220, 38, 38;
+  --incident-core-size: 12px;
+  --incident-ring-size: 18px;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.incident-alert--low {
+  --incident-core-size: 10px;
+  --incident-ring-size: 16px;
+}
+
+.incident-alert--high {
+  --incident-core-size: 14px;
+  --incident-ring-size: 20px;
+}
+
+.incident-alert__core,
+.incident-alert__ring,
+.incident-alert__selection {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.incident-alert__core {
+  width: var(--incident-core-size);
+  height: var(--incident-core-size);
+  background: rgb(var(--incident-alert-rgb));
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px rgba(var(--incident-alert-rgb), 0.55);
+}
+
+.incident-alert__ring {
+  width: var(--incident-ring-size);
+  height: var(--incident-ring-size);
+  background: rgba(var(--incident-alert-rgb), 0.18);
+  border: 1px solid rgba(var(--incident-alert-rgb), 0.5);
+  opacity: 0;
+}
+
+.incident-alert--active .incident-alert__ring {
+  animation: incident-alert-spread 2.6s ease-out infinite;
+}
+
+.incident-alert--active .incident-alert__ring--second {
+  animation-delay: -1.3s;
+}
+
+.incident-alert__selection {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(var(--incident-alert-rgb), 0.8);
+  opacity: 0;
+}
+
+.incident-alert--selected .incident-alert__selection {
+  opacity: 1;
+}
+
+.incident-alert--resolved {
+  --incident-alert-rgb: 100, 116, 139;
+  --incident-core-size: 10px;
+}
+
+.incident-alert:focus-visible {
+  outline: 3px solid #0284c7;
+  outline-offset: 2px;
+}
+
+@keyframes incident-alert-spread {
+  0% { transform: translate(-50%, -50%) scale(0.65); opacity: 0.75; }
+  85%, 100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  .incident-alert--active .incident-alert__ring {
+    animation: none;
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  .incident-alert--active .incident-alert__ring--second {
+    display: none;
+  }
+}

@@ -18,8 +18,8 @@ export class ApiRequestError extends Error {
   }
 }
 
-export async function apiGet<T>(path: string, timeoutMs = DEFAULT_TIMEOUT_MS): Promise<T> {
-  return apiRequest<T>(path, { method: 'GET' }, timeoutMs)
+export async function apiGet<T>(path: string, timeoutMs = DEFAULT_TIMEOUT_MS, signal?: AbortSignal): Promise<T> {
+  return apiRequest<T>(path, { method: 'GET', signal }, timeoutMs)
 }
 
 export async function apiRequest<T>(
@@ -28,6 +28,10 @@ export async function apiRequest<T>(
   timeoutMs = 5000,
 ): Promise<T> {
   const controller = new AbortController()
+  const externalSignal = options.signal
+  const abortFromCaller = () => controller.abort()
+  if (externalSignal?.aborted) controller.abort()
+  else externalSignal?.addEventListener('abort', abortFromCaller, { once: true })
   const timeout = window.setTimeout(() => controller.abort(), timeoutMs)
 
   try {
@@ -61,6 +65,7 @@ export async function apiRequest<T>(
     throw error
   } finally {
     window.clearTimeout(timeout)
+    externalSignal?.removeEventListener('abort', abortFromCaller)
   }
 }
 import { getAccessToken } from './supabaseClient'

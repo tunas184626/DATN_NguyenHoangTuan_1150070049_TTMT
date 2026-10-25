@@ -18,7 +18,7 @@ export default {
         },
       },
       boxShadow: {
-        panel: '0 15px 35px rgba(12, 44, 64, 0.16)',
+        panel: '0 1px 3px rgba(15, 23, 42, 0.06)',
       },
       fontFamily: {
         sans: ['Manrope', 'sans-serif'],

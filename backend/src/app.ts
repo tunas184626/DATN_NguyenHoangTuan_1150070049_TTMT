@@ -11,6 +11,9 @@ import { authorizeRoles } from './middleware/authorization.js'
 import { assetsRouter } from './modules/assets/routes.js'
 import { healthRouter } from './modules/health/routes.js'
 import { incidentsRouter } from './modules/incidents/routes.js'
+import { reportsRouter } from './modules/reports/routes.js'
+import { usersRouter } from './modules/users/routes.js'
+import { operationsRouter } from './modules/operations/routes.js'
 
 export function createApp() {
   const app = express()
@@ -33,6 +36,9 @@ export function createApp() {
   })
   app.use('/api/assets', assetsRouter)
   app.use('/api/incidents', incidentsRouter)
+  app.use('/api/reports', reportsRouter)
+  app.use('/api/users', usersRouter)
+  app.use('/api/operations', operationsRouter)
 
   app.use(notFoundHandler)
   app.use(errorHandler)

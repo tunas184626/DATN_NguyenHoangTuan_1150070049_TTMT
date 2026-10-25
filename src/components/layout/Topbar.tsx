@@ -56,7 +56,7 @@ export function Topbar({
         />
 
         {searchQuery.trim().length > 0 && (
-          <div className="absolute left-0 right-0 top-12 max-h-64 overflow-auto rounded-xl border border-slate-200 bg-white p-1 shadow-lg">
+          <div className="absolute left-0 right-0 top-12 max-h-64 overflow-auto rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
             {searchResults.length === 0 ? (
               <p className="px-3 py-4 text-sm text-slate-500">Không tìm thấy đối tượng phù hợp.</p>
             ) : (

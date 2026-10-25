@@ -6,7 +6,7 @@ import type {
   CadVectorMetadata,
 } from '../types/gis'
 
-const CAD_VECTOR_BASE_URL = '/data/cad-vector'
+const CAD_VECTOR_BASE_URL = `${import.meta.env.BASE_URL}data/cad-vector`
 
 async function fetchJson<T>(path: string): Promise<T | null> {
   try {
@@ -35,7 +35,20 @@ export async function loadFullCadVectorEntities(): Promise<CadVectorFeatureColle
   return isFeatureCollection(entities) ? entities : null
 }
 
-export async function loadCadVectorData(): Promise<CadVectorData> {
+let cadDataRequest: Promise<CadVectorData> | null = null
+
+export function loadCadVectorData(): Promise<CadVectorData> {
+  cadDataRequest ??= fetchCadVectorData().then((data) => {
+    if (!data.hasCadVectorData) cadDataRequest = null
+    return data
+  }, (error: unknown) => {
+    cadDataRequest = null
+    throw error
+  })
+  return cadDataRequest
+}
+
+async function fetchCadVectorData(): Promise<CadVectorData> {
   const [webMapEntities, layerIndex, businessLayerIndex, metadata] = await Promise.all([
     fetchJson<CadVectorFeatureCollection>('web-map.geojson'),
     fetchJson<CadVectorLayerIndexItem[]>('layer-index.json'),
@@ -44,9 +57,8 @@ export async function loadCadVectorData(): Promise<CadVectorData> {
   ])
 
   const validWebMapEntities = isFeatureCollection(webMapEntities) ? webMapEntities : null
-  const fullEntitiesFallback = validWebMapEntities ? null : await fetchJson<CadVectorFeatureCollection>('entities.geojson')
-  const validFullEntitiesFallback = isFeatureCollection(fullEntitiesFallback) ? fullEntitiesFallback : null
-  const entities = validWebMapEntities ?? validFullEntitiesFallback
+  // The 119 MB raw export is for explicit advanced use, never an automatic fallback.
+  const entities = validWebMapEntities
   const irrigation: CadVectorFeatureCollection | null = entities
     ? {
         type: 'FeatureCollection',

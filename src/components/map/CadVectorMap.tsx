@@ -1,5 +1,7 @@
+import { MapResizeController } from './MapResizeController'
+import { flushSync } from 'react-dom'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AlertTriangle, Layers2, Maximize2, Route } from 'lucide-react'
+import { AlertTriangle, FileDown, Layers2, Maximize2, Route, MapPin } from 'lucide-react'
 import type { Feature } from 'geojson'
 import {
   CRS,
@@ -45,8 +47,9 @@ interface CadVectorMapProps {
   viewPresetKey: string
   viewPresetLabel: string
   positionUpdateTargetLabel?: string | null
+  onShowSurroundings: () => void
   onCadCoordinateClick?: (cadPosition: [number, number]) => void
-  onSelectFeature: (feature: CadVectorFeature) => void
+  onSelectFeature: (feature: CadVectorFeature, cadPosition: [number, number]) => void
 }
 
 interface TooltipState {
@@ -1615,6 +1618,7 @@ function CadVectorClickController({
 export function CadVectorMap({
   data,
   loading,
+  onShowSurroundings,
   visibleLayers,
   typeFilter,
   labelOptions,
@@ -1632,6 +1636,7 @@ export function CadVectorMap({
   const lastTooltipMoveRef = useRef<TooltipMousePosition | null>(null)
   const [resetVersion, setResetVersion] = useState(0)
   const [printVersion, setPrintVersion] = useState(0)
+  const [printPrepared, setPrintPrepared] = useState(false)
   const [showLegend, setShowLegend] = useState(true)
   const [visualMode, setVisualMode] = useState<CadVisualMode>(getInitialCadVisualMode)
   const [tooltipState, setTooltipState] = useState<TooltipState>({
@@ -1676,12 +1681,12 @@ export function CadVectorMap({
   )
   const printSvgBounds = useMemo(() => getSvgBounds(fitEntities), [fitEntities])
   const printSvgShapes = useMemo(
-    () => buildPrintSvgShapes(visibleEntities, printSvgBounds, selectedFeatureId, viewPresetKey, visualMode),
-    [printSvgBounds, selectedFeatureId, viewPresetKey, visibleEntities, visualMode],
+    () => printPrepared ? buildPrintSvgShapes(visibleEntities, printSvgBounds, selectedFeatureId, viewPresetKey, visualMode) : [],
+    [printPrepared, printSvgBounds, selectedFeatureId, viewPresetKey, visibleEntities, visualMode],
   )
   const printSvgLabels = useMemo(
-    () => buildPrintSvgLabels(visibleEntities, printSvgBounds),
-    [printSvgBounds, visibleEntities],
+    () => printPrepared ? buildPrintSvgLabels(visibleEntities, printSvgBounds) : [],
+    [printPrepared, printSvgBounds, visibleEntities],
   )
   const cadBaseBackground = useMemo(
     () => collectionFromFeatures(visibleEntities.features.filter(isCadBaseBackgroundFeature)),
@@ -1801,7 +1806,7 @@ export function CadVectorMap({
           onCadCoordinateClick([event.latlng.lng, event.latlng.lat])
           return
         }
-        onSelectFeature(feature)
+        onSelectFeature(feature, [event.latlng.lng, event.latlng.lat])
       },
       mouseover: (event: LeafletMouseEvent) => {
         clearTooltipDelay()
@@ -1904,7 +1909,19 @@ export function CadVectorMap({
     })
   }
 
+  useEffect(() => {
+    const prepare = () => flushSync(() => setPrintPrepared(true))
+    const release = () => setPrintPrepared(false)
+    window.addEventListener('beforeprint', prepare)
+    window.addEventListener('afterprint', release)
+    return () => {
+      window.removeEventListener('beforeprint', prepare)
+      window.removeEventListener('afterprint', release)
+    }
+  }, [])
+
   const handlePrintPdf = () => {
+    setPrintPrepared(true)
     setShowLegend(true)
     setPrintVersion((value) => value + 1)
     const previousTitle = document.title
@@ -1923,7 +1940,7 @@ export function CadVectorMap({
 
   if (loading) {
     return (
-      <div className="panel flex h-full min-h-[580px] items-center justify-center bg-[#0f172a] p-6 text-center text-white">
+      <div className="panel flex h-full min-h-[280px] sm:min-h-0 items-center justify-center bg-[#0f172a] p-6 text-center text-white">
         <div>
           <Route className="mx-auto mb-3 size-8 animate-pulse text-sky-300" />
           <p className="text-base font-semibold">Đang tải dữ liệu bản đồ...</p>
@@ -1935,7 +1952,7 @@ export function CadVectorMap({
 
   if (!data?.hasCadVectorData || !bounds) {
     return (
-      <div className="panel flex h-full min-h-[580px] items-center justify-center bg-[#0f172a] p-6 text-center text-white">
+      <div className="panel flex h-full min-h-[280px] sm:min-h-0 items-center justify-center bg-[#0f172a] p-6 text-center text-white">
         <div className="max-w-md rounded-xl border border-slate-700 bg-slate-900/80 p-5">
           <AlertTriangle className="mx-auto mb-3 size-8 text-amber-300" />
           <p className="text-base font-semibold">Chưa có dữ liệu bản đồ</p>
@@ -1948,7 +1965,7 @@ export function CadVectorMap({
   return (
     <div
       ref={containerRef}
-      className={`cad-print-root cad-visual-shell cad-visual-${visualMode} panel relative h-full min-h-[580px] overflow-hidden`}
+      className={`cad-print-root cad-visual-shell cad-visual-${visualMode} panel relative h-full min-h-[280px] sm:min-h-0 overflow-hidden`}
     >
       <div className="cad-print-sheet hidden">
         <header className="cad-print-header">
@@ -1959,7 +1976,7 @@ export function CadVectorMap({
           <div className="cad-print-meta">
             <span>Chế độ: {viewPresetLabel}</span>
             <span>{new Date().toLocaleString('vi-VN')}</span>
-            <span>{renderedCount.toLocaleString('vi-VN')} feature hiển thị</span>
+            <span>{renderedCount.toLocaleString('vi-VN')} đối tượng hiển thị</span>
           </div>
         </header>
 
@@ -2032,142 +2049,43 @@ export function CadVectorMap({
         </footer>
       </div>
 
-      <div className="cad-print-summary hidden p-4">
-        <h1 className="text-xl font-bold text-slate-900">Bản đồ WebGIS hệ thống cấp nước</h1>
-        <p className="mt-1 text-sm text-slate-700">Chế độ xem hiện tại: {viewPresetLabel}</p>
-        <p className="text-sm text-slate-700">Thời gian xuất: {new Date().toLocaleString('vi-VN')}</p>
-        <p className="mt-2 text-sm font-semibold text-slate-800">Nguồn dữ liệu</p>
-        <ul className="list-disc pl-5 text-sm text-slate-700">
-          <li>BIWASE_HIEN TRANG.dwg</li>
-          <li>HTCN PMV.dwg</li>
-          <li>Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg</li>
-          <li>Quy trình: DWG → ODA DXF → QGIS → GeoJSON → CAD Vector WebGIS</li>
-        </ul>
-      </div>
-
-      <div className="hidden">
-        <h1 className="text-xl font-bold text-slate-900">Bản đồ WebGIS hệ thống cấp nước</h1>
-        <p className="mt-1 text-sm text-slate-700">Chế độ xem hiện tại: {viewPresetLabel}</p>
-        <p className="text-sm text-slate-700">Thời gian xuất: {new Date().toLocaleString('vi-VN')}</p>
-        <p className="mt-2 text-sm font-semibold text-slate-800">Nguồn dữ liệu</p>
-        <ul className="list-disc pl-5 text-sm text-slate-700">
-          <li>BIWASE_HIEN TRANG.dwg</li>
-          <li>HTCN PMV.dwg</li>
-          <li>Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg</li>
-          <li>Quy trình: DWG → ODA DXF → QGIS → GeoJSON → CAD Vector WebGIS</li>
-        </ul>
-      </div>
-
-      <div className="hidden">
-        <h1 className="text-xl font-bold text-slate-900">Bản đồ WebGIS hệ thống cấp nước</h1>
-        <p className="mt-1 text-sm text-slate-700">Chế độ xem hiện tại: {viewPresetLabel}</p>
-        <p className="text-sm text-slate-700">Thời gian xuất: {new Date().toLocaleString('vi-VN')}</p>
-        <p className="mt-2 text-sm font-semibold text-slate-800">Nguồn dữ liệu</p>
-        <ul className="list-disc pl-5 text-sm text-slate-700">
-          <li>BIWASE_HIEN TRANG.dwg</li>
-          <li>HTCN PMV.dwg</li>
-          <li>Ban do khu tuoi duc hoa cap nhat moi 19 7 2014.dwg</li>
-          <li>Quy trình: DWG → ODA DXF → QGIS → GeoJSON → CAD Vector WebGIS</li>
-        </ul>
-      </div>
-
-      <div className="cad-print-map-frame hidden">
-        <svg
-          className="cad-print-svg-map"
-          viewBox={`0 0 ${PRINT_SVG_WIDTH} ${PRINT_SVG_HEIGHT}`}
-          role="img"
-          aria-label="Bản đồ WebGIS hệ thống cấp nước"
-        >
-          <rect width={PRINT_SVG_WIDTH} height={PRINT_SVG_HEIGHT} fill={getPrintBackgroundFill(visualMode)} />
-          {printSvgShapes.map((shape) =>
-            shape.kind === 'circle' ? (
-              <circle
-                key={shape.key}
-                cx={shape.cx}
-                cy={shape.cy}
-                r={shape.r}
-                stroke={shape.stroke}
-                strokeWidth={shape.strokeWidth}
-                fill={shape.fill}
-                opacity={shape.opacity}
-                fillOpacity={shape.fillOpacity}
-              />
-            ) : (
-              <path
-                key={shape.key}
-                d={shape.d}
-                stroke={shape.stroke}
-                strokeWidth={shape.strokeWidth}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeDasharray={shape.dashArray}
-                fill={shape.fill}
-                opacity={shape.opacity}
-                fillOpacity={shape.fillOpacity}
-              />
-            ),
-          )}
-          {printSvgLabels.map((label) => (
-            <text
-              key={label.key}
-              x={label.x}
-              y={label.y}
-              fontSize="18"
-              fontWeight="700"
-              fill="#334155"
-              stroke="#ffffff"
-              strokeWidth="4"
-              paintOrder="stroke"
-            >
-              {label.text}
-            </text>
-          ))}
-        </svg>
-        <div className="cad-print-legend">
-          <span><i style={{ backgroundColor: '#f97316' }} /> Nhà máy nước</span>
-          <span><i style={{ backgroundColor: '#8b5cf6' }} /> Hồ nước thô</span>
-          <span><b style={{ backgroundColor: visualMode === 'dark' ? '#fb7185' : '#2563eb' }} /> Tuyến ống cấp nước</span>
-          <span><b style={{ backgroundColor: '#16a34a' }} /> Kênh/thủy lợi</span>
-          <span><b style={{ backgroundColor: '#64748b' }} /> Nền CAD gốc</span>
-        </div>
-      </div>
-
-      <div className="cad-no-print absolute left-4 top-4 z-[1100] flex flex-wrap gap-2">
-        <button type="button" onClick={() => setResetVersion((value) => value + 1)} className="ghost-btn h-9 px-3">
+      <div className="cad-no-print absolute left-3 right-3 top-3 z-[1100] flex flex-nowrap items-center gap-2 overflow-x-auto pb-1 sm:left-4 sm:right-auto sm:top-4 sm:max-w-[calc(100%-2rem)]">
+        <button type="button" onClick={() => setResetVersion((value) => value + 1)} className="ghost-btn h-10 shrink-0 px-3">
           <Maximize2 className="mr-2 size-4" />
-          Fit bản đồ CAD
+          Vừa màn hình
         </button>
-        <button type="button" onClick={handlePrintPdf} className="ghost-btn h-9 px-3">
+        <label className="flex h-10 shrink-0 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 shadow-sm">
+          <Layers2 className="size-4 text-water-700" />
+          <span className="sr-only">Kiểu nền</span>
+          <select
+            value={visualMode}
+            onChange={(event) => setVisualMode(event.target.value as CadVisualMode)}
+            className="max-w-36 bg-transparent font-semibold text-slate-700 outline-none sm:max-w-none"
+            aria-label="Chọn kiểu nền bản đồ"
+          >
+            {CAD_VISUAL_MODES.map((mode) => <option key={mode.key} value={mode.key}>Nền: {mode.label}</option>)}
+          </select>
+        </label>
+        <button type="button" onClick={() => setShowLegend((value) => !value)} className="ghost-btn h-10 shrink-0 px-3">
+          <Layers2 className="mr-2 size-4" />
+          {showLegend ? 'Ẩn chú giải' : 'Chú giải'}
+        </button>
+        <button type="button" onClick={onShowSurroundings} className="ghost-btn h-10 shrink-0 px-3">
+          <MapPin className="mr-2 size-4" />Xem khu vực xung quanh
+        </button>
+        <button type="button" onClick={handlePrintPdf} className="ghost-btn h-10 shrink-0 px-3">
+          <FileDown className="mr-2 size-4" />
           Xuất PDF
         </button>
-        <div className="flex h-9 items-center gap-1 rounded-lg border border-slate-200 bg-white/95 px-2 text-xs font-semibold text-slate-700 shadow-sm">
-          <Layers2 className="size-4 text-water-700" />
-          <span className="hidden sm:inline">Nền</span>
-          {CAD_VISUAL_MODES.map((mode) => (
-            <button
-              key={mode.key}
-              type="button"
-              title={mode.description}
-              onClick={() => setVisualMode(mode.key)}
-              className={`rounded-md px-2 py-1 transition ${
-                visualMode === mode.key
-                  ? 'bg-water-600 text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-water-50 hover:text-water-800'
-              }`}
-            >
-              {mode.label}
-            </button>
-          ))}
-        </div>
       </div>
 
       {positionUpdateTargetLabel && (
-        <div className="cad-no-print absolute left-1/2 top-16 z-[1100] max-w-md -translate-x-1/2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800 shadow-lg">
+        <div className="cad-no-print absolute left-1/2 top-16 z-[1100] max-w-md -translate-x-1/2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800 shadow-sm">
           Đang cập nhật vị trí: {positionUpdateTargetLabel}. Click lên bản đồ CAD để lưu tọa độ.
         </div>
       )}
 
-      <div className="cad-no-print absolute bottom-4 left-4 z-[800] rounded-lg border border-slate-200 bg-white/95 px-3 py-2 text-xs text-slate-700 shadow-sm">
+      <div className="cad-no-print absolute bottom-4 left-4 z-[800] rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700 shadow-sm">
         Đang hiển thị {renderedCount.toLocaleString('vi-VN')} đối tượng
         {!labelOptions.showAllLabels && !labelOptions.showDiameterLabels && !labelOptions.showLocationLabels && (
           <span className="ml-2 text-slate-400">Nhãn CAD đang tắt</span>
@@ -2175,7 +2093,7 @@ export function CadVectorMap({
       </div>
 
       {renderedCount === 0 && (
-        <div className="cad-no-print pointer-events-none absolute left-1/2 top-1/2 z-[900] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-center text-sm text-amber-900 shadow-lg">
+        <div className="cad-no-print pointer-events-none absolute left-1/2 top-1/2 z-[900] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-center text-sm text-amber-900 shadow-sm">
           Chế độ xem hiện tại chưa có dữ liệu hiển thị. Hãy bật thêm nền CAD hoặc đổi chế độ xem.
         </div>
       )}
@@ -2185,7 +2103,6 @@ export function CadVectorMap({
         visibleLayers={visibleLayers}
         labelOptions={labelOptions}
         visualMode={visualMode}
-        onToggle={() => setShowLegend((value) => !value)}
       />
 
       <MapContainer
@@ -2305,6 +2222,7 @@ export function CadVectorMap({
           enabled={Boolean(positionUpdateTargetLabel)}
           onCadCoordinateClick={onCadCoordinateClick}
         />
+        <MapResizeController />
       </MapContainer>
 
       <FloatingFeatureTooltip

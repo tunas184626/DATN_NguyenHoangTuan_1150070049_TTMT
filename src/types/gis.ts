@@ -44,8 +44,29 @@ export interface IncidentHistoryItem {
   note: string
   changedBy: string | null
   changedAt: string
-  eventType: 'created' | 'status_changed' | 'assignment_changed' | 'attachment_added' | 'comment'
+  eventType: 'created' | 'status_changed' | 'assignment_changed' | 'attachment_added' | 'comment' | 'escalated' | 'assets_linked'
   metadata: Record<string, unknown>
+}
+
+export interface IncidentAssignee {
+  id: string
+  displayName: string
+  role: 'admin' | 'manager' | 'technician'
+}
+
+export interface IncidentLinkedAsset {
+  id: string
+  assetCode: string
+  name: string
+  type: AssetType
+  status: AssetStatus
+}
+
+export interface IncidentRealtimeEvent {
+  id: string
+  eventType: 'INSERT' | 'UPDATE' | 'DELETE'
+  actorId: string | null
+  occurredAt: number
 }
 
 export type GeometryInputType = 'Point' | 'LineString' | 'Polygon'
@@ -73,6 +94,8 @@ export interface BaseFeatureProperties {
   lastUpdated: string
   notes: string[]
   version?: number
+  localOnly?: boolean
+  assetCode?: string
 }
 
 export interface AssetProperties extends BaseFeatureProperties {
@@ -91,8 +114,49 @@ export interface IncidentProperties
   incidentType: IncidentType
   severity: IncidentSeverity
   reportedDate: string
+  reportedAt?: string
+  resolvedAt?: string
   assignedTo?: string | null
+  assignedUserId?: string | null
+  dueAt?: string
+  overdue?: boolean
+  escalationLevel?: number
+  slaMinutes?: number
+  assetId?: string | null
+  assetIds?: string[]
   attachments?: IncidentAttachment[]
+  origin?: IncidentOrigin
+  intake?: IncidentIntake
+}
+
+export interface IncidentIntake {
+  detectionChannel: 'site_inspection' | 'phone' | 'field_report'
+  serviceImpact: 'none' | 'reduced' | 'interrupted' | 'unknown'
+  initialResponse: string
+  detectedAt: string
+  locationConfirmed: true
+}
+
+export interface IncidentOrigin {
+  kind: 'asset' | 'cadVector' | 'cadImage'
+  featureId: string
+  featureName: string
+  coordinateMethod: 'wgs84' | 'cad_reprojected' | 'manual'
+  sourceCrs?: string
+  cadPosition?: [number, number]
+}
+
+export type IncidentReportTarget =
+  | { kind: 'asset'; feature: AnyMapFeature }
+  | { kind: 'cadVector'; feature: CadVectorFeature }
+  | { kind: 'cadImage'; asset: CadBlueprintAsset }
+
+export interface IncidentAnchor {
+  origin: IncidentOrigin
+  address: string
+  position: [number, number] | null // [latitude, longitude]
+  assetId: string | null
+  locationMessage: string
 }
 
 export interface GISFeature<
@@ -219,12 +283,16 @@ export interface NewIncidentInput {
   description: string
   address: string
   reportedDate: string
+  reportedAt?: string
   googleMapsUrl?: string
   imageUrl?: string
   notes: string[]
   latitude: number
   longitude: number
   imageFiles?: File[]
+  assetIds: string[]
+  origin?: IncidentOrigin
+  intake?: IncidentIntake
 }
 
 export interface ObjectListItem {

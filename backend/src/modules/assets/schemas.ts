@@ -24,8 +24,11 @@ const bboxSchema = z.string().transform((value, context) => {
 export const listAssetsQuerySchema = z.object({
   type: z.enum(assetTypes).optional(),
   status: z.enum(assetStatuses).optional(),
+  quality: z.enum(['technical', 'address', 'inspection', 'maintenance']).optional(),
   bbox: bboxSchema.optional(),
   search: z.string().trim().max(100).optional(),
+  zoom: z.coerce.number().int().min(0).max(22).optional(),
+  sort: z.enum(['updated', 'name']).default('updated'),
   limit: z.coerce.number().int().min(1).max(1000).default(500),
   offset: z.coerce.number().int().min(0).default(0),
 })

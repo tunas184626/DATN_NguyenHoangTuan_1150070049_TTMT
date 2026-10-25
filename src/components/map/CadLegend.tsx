@@ -1,4 +1,3 @@
-import { Eye, EyeOff } from 'lucide-react'
 import type { CadLabelVisibilityOptions } from '../../utils/textUtils'
 
 type CadVisualMode = 'classic' | 'clean' | 'report' | 'water' | 'irrigation' | 'dark'
@@ -9,7 +8,6 @@ interface CadLegendProps {
   visibleLayers: Record<string, boolean>
   labelOptions: CadLabelVisibilityOptions
   visualMode?: CadVisualMode
-  onToggle: () => void
 }
 
 const CAD_BASE_LAYER_KEY = '__baseCadLayer'
@@ -55,7 +53,7 @@ const LEGEND_ITEMS: Array<{
   },
   {
     key: 'baseCad',
-    label: 'Nền CAD gốc',
+    label: 'Bản đồ nền',
     color: '#64748b',
     shape: 'line-muted',
     visible: (layers) => layers[CAD_BASE_LAYER_KEY] !== false,
@@ -69,14 +67,14 @@ const LEGEND_ITEMS: Array<{
   },
   {
     key: 'htcnRaw',
-    label: 'Dữ liệu HTCN gốc',
+    label: 'Dữ liệu tham chiếu',
     color: '#9a6b4f',
     shape: 'line-muted',
     visible: (layers) => layers[CAD_HTCN_CONTEXT_LAYER_KEY] !== false,
   },
   {
     key: 'layoutArtifact',
-    label: 'Khung/layout CAD',
+    label: 'Khung bản vẽ',
     color: '#f59e0b',
     shape: 'dash',
     visible: (layers) => layers[CAD_LAYOUT_ARTIFACT_LAYER_KEY] !== false,
@@ -117,19 +115,14 @@ function getLegendColor(itemKey: string, fallback: string, visualMode: CadVisual
   return LEGEND_VISUAL_COLORS[visualMode]?.[itemKey] ?? fallback
 }
 
-export function CadLegend({ visible, visibleLayers, labelOptions, visualMode = 'clean', onToggle }: CadLegendProps) {
+export function CadLegend({ visible, visibleLayers, labelOptions, visualMode = 'clean' }: CadLegendProps) {
   const visibleItems = LEGEND_ITEMS.filter((item) => item.visible(visibleLayers, labelOptions))
 
   return (
     <div className="cad-no-print absolute bottom-4 right-4 z-[800]">
-      <button type="button" onClick={onToggle} className="cad-no-print ghost-btn mb-2 h-9 px-3">
-        {visible ? <EyeOff className="mr-2 size-4" /> : <Eye className="mr-2 size-4" />}
-        Chú giải
-      </button>
-
       {visible && (
-        <div className="w-[230px] rounded-lg border border-slate-200 bg-white/95 p-3 text-xs text-slate-700 shadow-lg">
-          <p className="mb-2 font-bold">Chú giải CAD Vector</p>
+        <div className="w-[230px] rounded-lg border border-slate-200 bg-white p-3 text-xs text-slate-700 shadow-sm">
+          <p className="mb-2 font-bold">Chú giải bản đồ</p>
           <div className="space-y-2">
             {visibleItems.map((item) => {
               const color = getLegendColor(item.key, item.color, visualMode)

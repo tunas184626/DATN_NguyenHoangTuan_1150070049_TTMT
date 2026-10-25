@@ -1,3 +1,4 @@
+import { MapResizeController } from './MapResizeController'
 import { useEffect, useMemo, useState } from 'react'
 import {
   Clipboard,
@@ -333,7 +334,7 @@ export function CadBlueprintMap({
 
   if (image.status === 'loading') {
     return (
-      <div className="panel flex h-full min-h-[580px] items-center justify-center overflow-hidden bg-[#111827] p-6 text-center text-white">
+      <div className="panel flex h-full min-h-[280px] sm:min-h-0 items-center justify-center overflow-hidden bg-[#111827] p-6 text-center text-white">
         <div>
           <MapPinned className="mx-auto mb-3 size-8 text-sky-300" />
           <p className="text-base font-semibold">Đang tải ảnh CAD...</p>
@@ -345,7 +346,7 @@ export function CadBlueprintMap({
 
   if (image.status === 'error' || !bounds) {
     return (
-      <div className="panel flex h-full min-h-[580px] items-center justify-center overflow-hidden bg-[#111827] p-6 text-center text-white">
+      <div className="panel flex h-full min-h-[280px] sm:min-h-0 items-center justify-center overflow-hidden bg-[#111827] p-6 text-center text-white">
         <div className="max-w-md rounded-xl border border-slate-700 bg-slate-900/80 p-5">
           <MapPinned className="mx-auto mb-3 size-8 text-amber-300" />
           <p className="text-base font-semibold">Chưa tìm thấy ảnh CAD</p>
@@ -358,7 +359,7 @@ export function CadBlueprintMap({
   }
 
   return (
-    <div className="panel relative h-full min-h-[580px] overflow-hidden bg-[#111827]">
+    <div className="panel relative h-full min-h-[280px] sm:min-h-0 overflow-hidden bg-[#111827]">
       <div className="absolute left-4 top-4 z-[800] flex max-w-[calc(100%-2rem)] flex-wrap gap-2">
         <button type="button" onClick={() => setResetVersion((value) => value + 1)} className="ghost-btn h-9 px-3">
           <Maximize2 className="mr-2 size-4" />
@@ -451,6 +452,7 @@ export function CadBlueprintMap({
           resetVersion={resetVersion}
           selectedFocusVersion={selectedFocusVersion}
         />
+        <MapResizeController />
       </MapContainer>
 
       <div className="absolute bottom-4 left-4 z-[800] max-w-[360px] rounded-lg border border-slate-700 bg-slate-900/90 px-3 py-2 text-xs text-slate-100 shadow-sm">

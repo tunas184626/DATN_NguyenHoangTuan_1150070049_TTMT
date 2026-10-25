@@ -12,16 +12,23 @@ import {
   addIncidentComment,
   assignIncident,
   createIncident,
+  escalateIncident,
+  getIncident,
+  getIncidentAssets,
   getIncidentHistory,
   listIncidents,
+  refreshIncidentEscalations,
   transitionIncident,
+  updateIncidentAssets,
 } from './repository.js'
 import {
   assignIncidentSchema,
   commentIncidentSchema,
   createIncidentSchema,
+  escalateIncidentSchema,
   listIncidentsQuerySchema,
   transitionIncidentSchema,
+  updateIncidentAssetsSchema,
 } from './schemas.js'
 
 export const incidentsRouter = Router()
@@ -36,8 +43,26 @@ incidentsRouter.post('/', asyncHandler(async (request, response) => {
   response.status(201).json(await createIncident(createIncidentSchema.parse(request.body), String(response.locals.user.id)))
 }))
 
+incidentsRouter.post('/escalations/run', authorizeRoles('admin', 'manager'), asyncHandler(async (_request, response) => {
+  response.json({ updated: await refreshIncidentEscalations() })
+}))
+
+incidentsRouter.get('/:id', asyncHandler(async (request, response) => {
+  response.json(await getIncident(String(request.params.id)))
+}))
+
 incidentsRouter.get('/:id/history', asyncHandler(async (request, response) => {
   response.json(await getIncidentHistory(String(request.params.id)))
+}))
+
+incidentsRouter.get('/:id/assets', asyncHandler(async (request, response) => {
+  response.json(await getIncidentAssets(String(request.params.id)))
+}))
+
+incidentsRouter.put('/:id/assets', asyncHandler(async (request, response) => {
+  response.json(await updateIncidentAssets(
+    String(request.params.id), updateIncidentAssetsSchema.parse(request.body), String(response.locals.user.id),
+  ))
 }))
 
 incidentsRouter.get('/:id/attachments', asyncHandler(async (request, response) => {
@@ -64,6 +89,12 @@ incidentsRouter.patch('/:id/status', asyncHandler(async (request, response) => {
 incidentsRouter.patch('/:id/assignment', authorizeRoles('admin', 'manager'), asyncHandler(async (request, response) => {
   response.json(await assignIncident(
     String(request.params.id), assignIncidentSchema.parse(request.body), String(response.locals.user.id),
+  ))
+}))
+
+incidentsRouter.post('/:id/escalate', authorizeRoles('admin', 'manager'), asyncHandler(async (request, response) => {
+  response.json(await escalateIncident(
+    String(request.params.id), escalateIncidentSchema.parse(request.body), String(response.locals.user.id),
   ))
 }))
 

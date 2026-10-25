@@ -1,3 +1,4 @@
+import { MapResizeController } from './MapResizeController'
 import { useEffect, useMemo, useState } from 'react'
 import { AlertTriangle, FileImage, Maximize2 } from 'lucide-react'
 import { CRS, type LatLngBoundsExpression } from 'leaflet'
@@ -95,7 +96,7 @@ export function CadLayoutPreview({
   const bounds = useMemo(() => (image.status === 'loaded' ? getImageBounds(image) : null), [image])
 
   return (
-    <div className="panel relative h-full min-h-[580px] overflow-hidden bg-[#111827]">
+    <div className="panel relative h-full min-h-[280px] sm:min-h-0 overflow-hidden bg-[#111827]">
       <div className="absolute left-4 top-4 z-[800] flex max-w-[calc(100%-2rem)] flex-wrap gap-2">
         <div className="rounded-lg border border-slate-700 bg-slate-900/90 p-1 shadow-sm">
           {CAD_LAYOUT_OPTIONS.map((layout) => (
@@ -181,7 +182,8 @@ export function CadLayoutPreview({
         >
           <ImageOverlay url={selectedLayout.url} bounds={bounds} opacity={1} />
           <LayoutMapController bounds={bounds} resetVersion={resetVersion} />
-        </MapContainer>
+          <MapResizeController />
+      </MapContainer>
       )}
     </div>
   )

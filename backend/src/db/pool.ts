@@ -7,18 +7,20 @@ let pool: pg.Pool | undefined
 export function getPool(): pg.Pool {
   if (!env.DATABASE_URL) throw new DatabaseNotConfiguredError()
 
-  pool ??= new pg.Pool({
-    connectionString: env.DATABASE_URL,
-    max: 10,
-    idleTimeoutMillis: 30_000,
-    connectionTimeoutMillis: 5_000,
-    statement_timeout: 10_000,
-    ssl: env.DATABASE_SSL ? { rejectUnauthorized: false } : undefined,
-  })
+  if (!pool) {
+    pool = new pg.Pool({
+      connectionString: env.DATABASE_URL,
+      max: 10,
+      idleTimeoutMillis: 30_000,
+      connectionTimeoutMillis: 5_000,
+      statement_timeout: 10_000,
+      ssl: env.DATABASE_SSL ? { rejectUnauthorized: false } : undefined,
+    })
 
-  pool.on('error', (error) => {
-    console.error('PostgreSQL pool error', error)
-  })
+    pool.on('error', (error) => {
+      console.error('PostgreSQL pool error', error)
+    })
+  }
 
   return pool
 }

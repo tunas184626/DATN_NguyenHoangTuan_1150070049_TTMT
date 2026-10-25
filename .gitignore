@@ -16,6 +16,8 @@ dist-ssr
 !.env.example
 backend/.env
 backend/coverage
+.codex-tmp/
+output/
 
 # Editor directories and files
 .vscode/*
