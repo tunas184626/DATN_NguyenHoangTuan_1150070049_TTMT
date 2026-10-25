@@ -2,6 +2,8 @@
 
 Hệ thống React + TypeScript + Leaflet, kèm REST API Node.js/Express và PostgreSQL/PostGIS. Dữ liệu CAD model-space đã được kiểm tra theo `EPSG:9210` và xuất bản đồ vận hành ở `EPSG:4326`.
 
+Báo cáo tiến độ đến **25/10/2026**: [Word/PDF, nội dung báo cáo tuần và minh chứng](docs/progress/2026-10-25/README.md). Đây là mốc tiến độ; các phần chưa nghiệm thu thực tế được ghi rõ trong báo cáo.
+
 ## Chạy frontend
 
 ```powershell

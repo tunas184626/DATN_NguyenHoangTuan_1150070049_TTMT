@@ -1,0 +1,74 @@
+{
+  "asOf": "2026-10-25",
+  "sourceCommit": "2abe34e2ef0653e302de5cb88e3d5762dc47cb8f",
+  "datasets": [
+    {
+      "path": "public/data/cad-vector/entities.geojson",
+      "bytes": 119075134,
+      "sha256": "06a8eb0724ec950cb3adcacd6ae92330b775dcca7a7e8e37edaa071e8f6dda84",
+      "features": 21272,
+      "types": {
+        "cad_line": 1126,
+        "pipeline": 416,
+        "supply_zone": 18,
+        "road_background": 6268,
+        "boundary": 8,
+        "layout_artifact": 504,
+        "location_label": 128,
+        "pipe_diameter_label": 121,
+        "canal": 1,
+        "cad_point": 231,
+        "cad_polygon": 34,
+        "main_work_candidate": 8147,
+        "raw_water_lake": 8,
+        "water_plant": 3,
+        "irrigation_label": 2177,
+        "irrigation_point": 690,
+        "irrigation_canal": 1347,
+        "irrigation_area": 45
+      }
+    },
+    {
+      "path": "public/data/cad-vector/web-map.geojson",
+      "bytes": 21019077,
+      "sha256": "fb278fd15be939c13b8743da305aab125b5fac94b8a6a4f5e91f2f7398bf97ba",
+      "features": 9395,
+      "types": {
+        "cad_line": 1126,
+        "pipeline": 416,
+        "supply_zone": 18,
+        "road_background": 6268,
+        "boundary": 8,
+        "pipe_diameter_label": 121,
+        "canal": 1,
+        "cad_polygon": 34,
+        "raw_water_lake": 8,
+        "water_plant": 3,
+        "irrigation_canal": 1347,
+        "irrigation_area": 45
+      }
+    },
+    {
+      "path": "public/data/cad-vector/operational-map-wgs84.geojson",
+      "bytes": 3965435,
+      "sha256": "e48bfa1829543ae67282bf947142e13cfa94edd6e6b599f78d0c73259b4379a3",
+      "features": 1846,
+      "types": {
+        "pipeline": 416,
+        "supply_zone": 18,
+        "boundary": 8,
+        "canal": 1,
+        "raw_water_lake": 8,
+        "water_plant": 3,
+        "irrigation_canal": 1347,
+        "irrigation_area": 45
+      }
+    },
+    {
+      "path": "public/data/cad-vector/layer-index.json",
+      "bytes": 143948,
+      "sha256": "cacda5aa65377091af334a614ff371f06f1777c920b5b75da7aff8bf9b41c610",
+      "entries": 162
+    }
+  ]
+}

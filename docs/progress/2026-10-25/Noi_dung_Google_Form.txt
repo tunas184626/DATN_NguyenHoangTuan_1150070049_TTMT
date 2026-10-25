@@ -1,0 +1,41 @@
+BÁO CÁO TUẦN ĐẾN NGÀY 25/10/2026
+Nội dung chuẩn bị để sinh viên kiểm tra và dán vào Google Form. Chưa gửi Form.
+
+Link Form:
+https://docs.google.com/forms/d/e/1FAIpQLScCcvVNKa2jBXLGik2FFxOdMK5DsIEQSC3de19zX3FSiTGn5w/viewform
+
+MSSV
+1150070049
+
+Họ và tên
+Nguyễn Hoàng Tuấn
+
+Lớp
+11_TTMT
+
+Tuần báo cáo
+19/10–25/10/2026
+
+Công việc đã hoàn thành
+Đã tích hợp và rà soát phiên bản WebGIS quản lý hạ tầng, theo dõi sự cố. Giao diện gồm Bản đồ, Quản lý và Báo cáo; form sự cố chia hai bước, xác nhận vị trí WGS84, ghi kênh tiếp nhận, ảnh hưởng cấp nước và biện pháp ban đầu. Có hàng đợi phân công/xử lý, nhật ký, SLA, kiểm soát phiên bản và checklist chất lượng hồ sơ tài sản. Màn quản lý phân trang/lọc phía server, lấy số tổng từ API; báo cáo bổ sung chỉ số SLA, sổ chi tiết và CSV. Đã tối ưu tải CAD theo nhu cầu, lưu bản nháp local và thêm chế độ làm mờ nền xung quanh vùng dữ liệu. Dữ liệu chuẩn hóa có 21.272 feature/162 layer; bản xuất WGS84 tham chiếu có 1.846 feature. Ngày 25/10 chạy 100/100 test trên 11 tệp; lint/build frontend/backend, kiểm tra CAD và CRS bằng script đều đạt. Test API dùng mock, chưa coi là nghiệm thu CSDL/Supabase thực. Source đã push lên main, commit 2abe34e; báo cáo và log minh chứng có trong thư mục tiến độ.
+
+Kế hoạch tuần tới
+Trong tuần 26/10–01/11: chạy lại migration/seed, CRUD, workflow/history và QA dữ liệu trên PostGIS thật; đối soát phương pháp CRS và provenance theo góp ý GVHD; bổ sung GPS trình duyệt one-shot kèm accuracy/thời điểm và truy vấn bán kính WGS84 với tập mẫu kiểm chứng; viết Chương 1 và phần thiết kế Chương 2 song song. Sau đó nghiệm thu RBAC/Storage, đo hiệu năng, kiểm tra mobile và hoàn thiện thuyết minh để chốt bộ file trước 23h ngày 22/11/2026.
+
+Khó khăn / vướng mắc
+Chưa có đủ hồ sơ hoặc mốc kiểm soát để nghiệm thu CRS/độ chính xác vị trí tài sản. Nhánh tham chiếu EPSG:9210 trong code khác nguyên tắc CAD SRID 0 của đề cương, cần GVHD xem xét cách trình bày và tiêu chí xác minh. GPS thực địa, truy vấn bán kính và kiểm thử token/Storage/CSDL thật còn thiếu minh chứng hiện thời. Chưa có bộ lịch sử sự cố thực tế được xác minh. Lịch viết báo cáo trong đề cương cần đẩy sớm so với hạn nộp file 22/11.
+
+Cần GVHD hỗ trợ?
+Có (chủ động liên hệ GVHD)
+Nội dung đề nghị: góp ý điều chỉnh CRS/provenance, phạm vi dữ liệu được phép dùng và thứ tự ưu tiên nghiệm thu GPS, spatial query, RBAC và báo cáo.
+
+Tự đánh giá tiến độ
+Nguy cơ chậm
+
+Link minh chứng
+https://github.com/tunas184626/DATN_NguyenHoangTuan_1150070049_TTMT
+https://github.com/tunas184626/DATN_NguyenHoangTuan_1150070049_TTMT/commit/2abe34e
+https://github.com/tunas184626/DATN_NguyenHoangTuan_1150070049_TTMT/tree/main/docs/progress/2026-10-25
+
+Lưu ý khi nộp
+Đối chiếu lại nội dung và tự chọn các mục đánh giá trước khi bấm Gửi. Không đưa mật khẩu/token vào Form. Đây là báo cáo tiến độ đến 25/10, không khai là bản hoàn tất đồ án.
