@@ -1,7 +1,16 @@
 import { isLocalDraft, isServerFeature, mergeLocalDrafts } from './services/localDraftStore'
 import { MapResizeController } from './components/map/MapResizeController'
 import { IncidentAlertMarkers } from './components/map/IncidentAlertMarkers'
+import { CadBlueprintDetailPanel } from './components/map/CadBlueprintDetailPanel'
+import { CadVectorDetailPanel } from './components/map/CadVectorDetailPanel'
 import { WorkspaceSettings } from './components/layout/WorkspaceSettings'
+import {
+  LayerSidebar,
+  type CadVectorGroupKey,
+  type CadVectorLayerGroup,
+  type CadVectorViewPresetKey,
+  type LayerVisibilityState,
+} from './components/layout/LayerSidebar'
 import { readMapExperience, MAP_EXPERIENCE_KEY, type MapExperience } from './utils/mapPreferences'
 import { GeographicFocusMask } from './components/map/GeographicFocusMask'
 import { GeographicBaseMap } from './components/map/GeographicBaseMap'
@@ -18,30 +27,25 @@ import {
   LogOut,
   LocateFixed,
   MapPin,
-  Move,
-  Plus,
   Route,
   Search,
   Waves,
   X,
 } from 'lucide-react'
-import { lazy, Suspense, useCallback, useId, useRef } from 'react'
+import { lazy, Suspense, useCallback, useRef } from 'react'
 import { useAuth } from './auth/AuthContext'
 import LoginPage from './components/auth/LoginPage'
+import { AssetFormModal } from './components/assets/AssetFormModal'
 import { LoadingPanel, RegionError, Toast, type ToastTone } from './components/ui/Feedback'
-import { useUnsavedChangesGuard } from './hooks/useUnsavedChangesGuard'
 import type {
   AnyMapFeature,
   AssetFeature,
   AssetStatus,
-  AssetType,
   CadBlueprintAsset,
   CadVectorData,
   CadVectorFeature,
   CadVectorLayerIndexItem,
   CadVectorType,
-  DataSourceState,
-  GeometryInputType,
   IncidentFeature,
   IncidentSeverity,
   IncidentAnchor,
@@ -71,11 +75,9 @@ import {
   calculateFeatureLineLengthKm,
   getFeatureBounds,
   getFeatureCenter,
-  parseCoordinatePairs,
 } from './utils/geo'
 import {
   formatIncidentType,
-  getAssetStatusMeta,
   getIncidentSeverityMeta,
   getIncidentStatusMeta,
 } from './utils/status'
@@ -85,7 +87,6 @@ import {
   getCadFeatureText,
   getFeatureDisplayName,
   isCadTextFeature,
-  isLikelyMojibake,
   isPipeDiameterText,
   normalizeSearchText,
   type CadLabelVisibilityOptions,
@@ -144,24 +145,6 @@ const ASSET_LAYER_KEYS: LayerKey[] = [
   'labels',
 ]
 
-const CAD_LAYER_KEYS: Array<Exclude<LayerKey, 'incidents'>> = [
-  'waterPlant',
-  'rawWaterLakes',
-  'pipelines',
-  'canals',
-  'supplyZones',
-  'boundaries',
-  'labels',
-]
-
-const STATUS_FILTERS: Array<{ value: 'all' | AssetStatus; label: string }> = [
-  { value: 'all', label: 'Tất cả trạng thái' },
-  { value: 'active', label: 'Đang hoạt động' },
-  { value: 'maintenance', label: 'Bảo trì' },
-  { value: 'need_inspection', label: 'Cần kiểm tra' },
-  { value: 'pending_data', label: 'Chờ bổ sung dữ liệu' },
-]
-
 const CAD_VECTOR_TYPE_FILTERS: Array<{ value: CadVectorType | 'all'; label: string }> = [
   { value: 'all', label: 'Tất cả' },
   { value: 'pipeline', label: 'Tuyến ống' },
@@ -180,33 +163,6 @@ const CAD_VECTOR_TYPE_FILTERS: Array<{ value: CadVectorType | 'all'; label: stri
   { value: 'cad_polygon', label: 'Vùng CAD' },
   { value: 'unknown', label: 'Chưa phân loại' },
 ]
-
-const GEOMETRY_OPTIONS: Array<{ value: GeometryInputType; label: string }> = [
-  { value: 'Point', label: 'Điểm (Point)' },
-  { value: 'LineString', label: 'Tuyến (LineString)' },
-  { value: 'Polygon', label: 'Vùng (Polygon)' },
-]
-
-const ASSET_TYPE_OPTIONS: Array<{ value: AssetType; label: string }> = [
-  { value: 'water_plant', label: 'Nhà máy nước' },
-  { value: 'raw_water_lake', label: 'Hồ chứa nước thô' },
-  { value: 'pipeline', label: 'Tuyến ống cấp nước' },
-  { value: 'canal', label: 'Kênh/thủy lợi' },
-  { value: 'supply_zone', label: 'Khu vực cấp nước' },
-  { value: 'boundary', label: 'Ranh giới khu vực' },
-  { value: 'label', label: 'Điểm/nhãn CAD' },
-]
-
-interface LayerVisibilityState {
-  waterPlant: boolean
-  rawWaterLakes: boolean
-  pipelines: boolean
-  canals: boolean
-  supplyZones: boolean
-  boundaries: boolean
-  labels: boolean
-  incidents: boolean
-}
 
 interface StoredUiState {
   collapsedSidebar: boolean
@@ -267,21 +223,6 @@ interface FlyToRequest {
   zoom?: number
 }
 
-type CadVectorGroupKey =
-  | 'htcnContext'
-  | 'curatedMainWorks'
-  | 'layoutArtifact'
-  | 'waterPlants'
-  | 'rawWaterLakes'
-  | 'irrigation'
-  | 'pipeline'
-  | 'diameterLabels'
-  | 'boundary'
-  | 'background'
-  | 'unclassified'
-
-type CadVectorViewPresetKey = 'overview' | 'water_plants' | 'raw_water_lakes' | 'irrigation_system'
-
 type CadVectorViewCategory = 'all' | 'water_plants' | 'raw_water_lakes' | 'irrigation_system'
 
 type CadVectorPresetBusinessLayerKey =
@@ -306,51 +247,6 @@ interface CadVectorViewPresetConfig {
   showDiameterLabels: boolean
   showUnknown: boolean
   fitStrategy: CadVectorViewPresetKey
-}
-
-interface CadVectorLayerGroup {
-  key: CadVectorGroupKey
-  label: string
-  description: string
-  featureCount: number
-  layers: CadVectorLayerIndexItem[]
-  defaultExpanded: boolean
-}
-
-interface SidebarProps {
-  collapsed: boolean
-  onToggle: () => void
-  visibleLayers: LayerVisibilityState
-  onToggleLayer: (key: LayerKey) => void
-  statusFilter: 'all' | AssetStatus
-  onStatusFilterChange: (value: 'all' | AssetStatus) => void
-  dataSource: DataSourceState | null
-  mapMode: MapMode
-  cadImageLoaded: boolean
-  cadVectorData: CadVectorData | null
-  cadVectorVisibleLayers: Record<string, boolean>
-  onToggleCadVectorLayer: (layerName: string) => void
-  cadVectorTypeFilter: CadVectorType | 'all'
-  onCadVectorTypeFilterChange: (value: CadVectorType | 'all') => void
-  cadVectorViewPreset: CadVectorViewPresetKey
-  onCadVectorViewPresetChange: (preset: CadVectorViewPresetKey) => void
-  cadVectorLabelOptions: CadLabelVisibilityOptions
-  onCadVectorLabelOptionChange: (key: keyof CadLabelVisibilityOptions, value: boolean) => void
-  curatedMainWorks: CuratedMainWork[]
-  positionUpdateTargetId: string | null
-  onSelectCuratedMainWork: (id: string) => void
-  onStartCuratedMainWorkPositionUpdate: (id: string) => void
-  onCancelCuratedMainWorkPositionUpdate: () => void
-  onExportCuratedMainWorks: () => void
-  cadVectorLayerGroups: CadVectorLayerGroup[]
-  expandedCadVectorGroups: Record<string, boolean>
-  onToggleCadVectorGroupExpanded: (groupKey: CadVectorGroupKey) => void
-  onSetCadVectorLayers: (layerNames: string[], visible: boolean) => void
-  selectedLayoutId: string
-  onSelectLayoutPreview: (layoutId: string) => void
-  onOpenCadVectorMap: () => void
-  onOpenCadImage: () => void
-  onOpenOsm: () => void
 }
 
 interface TopbarProps {
@@ -388,6 +284,7 @@ interface DetailPanelProps {
   onToggleCadEdit: () => void
   positionUpdateTargetId: string | null
   onStartCadVectorPositionUpdate: (feature: CadVectorFeature) => void
+  onCancelCadVectorPositionUpdate?: () => void
   onOpenUpdate: (feature: AssetFeature) => void
   onOpenIncident: (target: IncidentReportTarget) => void
   onTransitionIncident: (id: string, status: IncidentWorkflowStatus, note: string) => Promise<void>
@@ -402,13 +299,6 @@ interface DetailPanelProps {
   onUploadIncidentAttachment: (id: string, file: File) => Promise<IncidentAttachment>
   canAssignIncident: boolean
   availableAssets: AssetFeature[]
-}
-
-interface AssetFormProps {
-  mode: 'create' | 'update'
-  feature: AssetFeature | null
-  onClose: () => void
-  onSubmit: (payload: NewAssetInput | UpdateAssetInput) => Promise<void>
 }
 
 interface MapPanelProps {
@@ -441,54 +331,12 @@ interface ToastState {
   featureId?: string
 }
 
-function statusBadgeClass(status: AssetStatus): string {
-  return `status-chip ${getAssetStatusMeta(status).className}`
-}
-
 function incidentStatusBadgeClass(status: IncidentWorkflowStatus): string {
   return `status-chip ${getIncidentStatusMeta(status).className}`
 }
 
 function severityBadgeClass(severity: IncidentSeverity): string {
   return `status-chip ${getIncidentSeverityMeta(severity).className}`
-}
-
-function parseNotes(input: string): string[] {
-  return input
-    .split('\n')
-    .map((item) => item.trim())
-    .filter(Boolean)
-}
-
-function formatDate(dateIso: string): string {
-  const date = new Date(dateIso)
-  if (Number.isNaN(date.getTime())) {
-    return dateIso
-  }
-
-  return date.toLocaleDateString('vi-VN')
-}
-
-function getCadLayerStatusText(
-  dataSource: DataSourceState | null,
-  layerKey: Exclude<LayerKey, 'incidents'>,
-  cadImageLoaded: boolean,
-): string {
-  const meta = dataSource?.layers[layerKey]
-
-  if (meta?.status === 'cad_loaded') {
-    return `${meta.featureCount} đối tượng đã nạp`
-  }
-
-  if (cadImageLoaded) {
-    return 'Overlay thủ công trên ảnh CAD'
-  }
-
-  if (meta?.status === 'cad_error') {
-    return 'Đang dùng dữ liệu dự phòng'
-  }
-
-  return 'Chưa có dữ liệu / chờ convert từ DWG'
 }
 
 const CAD_VECTOR_GROUP_META: Record<
@@ -914,24 +762,6 @@ function getFirstFeatureId(data: LayerDataState): string | null {
   }
 
   return null
-}
-
-function getCadAssetCenter(asset: CadBlueprintAsset): [number, number] {
-  const coordinates = asset.geometryType === 'Point' ? (asset.cadPosition ? [asset.cadPosition] : []) : asset.cadPath ?? []
-
-  if (!coordinates.length) {
-    return [0, 0]
-  }
-
-  const sum = coordinates.reduce(
-    (total, [y, x]) => ({
-      y: total.y + y,
-      x: total.x + x,
-    }),
-    { y: 0, x: 0 },
-  )
-
-  return [Math.round(sum.y / coordinates.length), Math.round(sum.x / coordinates.length)]
 }
 
 function loadCadAssetsFromStorage(): CadBlueprintAsset[] {
@@ -1430,7 +1260,7 @@ function MapDataBoundsController({ data }: { data: LayerDataState }) {
         [minLat, minLng],
         [maxLat, maxLng],
       ],
-      { padding: [36, 36], maxZoom: 15 },
+      { padding: [36, 36], maxZoom: 15, animate: false },
     )
     fitted.current = true
   }, [data, map])
@@ -1752,356 +1582,6 @@ function Topbar({
   )
 }
 
-function LayerSidebar({
-  collapsed,
-  onToggle,
-  visibleLayers,
-  onToggleLayer,
-  statusFilter,
-  onStatusFilterChange,
-  dataSource,
-  mapMode,
-  cadImageLoaded,
-  cadVectorData,
-  cadVectorVisibleLayers,
-  onToggleCadVectorLayer,
-  cadVectorTypeFilter,
-  onCadVectorTypeFilterChange,
-  cadVectorViewPreset,
-  onCadVectorViewPresetChange,
-  cadVectorLabelOptions,
-  onCadVectorLabelOptionChange,
-  curatedMainWorks,
-  positionUpdateTargetId,
-  onSelectCuratedMainWork,
-  onStartCuratedMainWorkPositionUpdate,
-  onCancelCuratedMainWorkPositionUpdate,
-  onExportCuratedMainWorks,
-  cadVectorLayerGroups,
-  expandedCadVectorGroups,
-  onToggleCadVectorGroupExpanded,
-  onSetCadVectorLayers,
-  selectedLayoutId,
-  onSelectLayoutPreview,
-  onOpenCadVectorMap,
-  onOpenCadImage,
-  onOpenOsm,
-}: SidebarProps) {
-  const hasCadVectorData = Boolean(cadVectorData?.hasCadVectorData)
-  const getCadVectorGroupLayerNames = (groupKey: CadVectorGroupKey) =>
-    cadVectorLayerGroups
-      .find((group) => group.key === groupKey)
-      ?.layers.map((layer) => layer.layerKey ?? layer.layerName) ?? []
-  const isCadVectorGroupVisible = (groupKey: CadVectorGroupKey) => {
-    const layerNames = getCadVectorGroupLayerNames(groupKey)
-    return layerNames.length > 0 && layerNames.some((layerName) => cadVectorVisibleLayers[layerName] !== false)
-  }
-
-  const primaryLayerKeys: LayerKey[] = ['waterPlant', 'rawWaterLakes', 'pipelines', 'canals', 'supplyZones', 'incidents']
-  const renderLayer = (key: LayerKey) => (
-    <label key={key} className="flex cursor-pointer items-center justify-between gap-2 rounded-lg px-2 py-2 text-sm hover:bg-water-50">
-      <span className="flex items-center gap-2 text-slate-700">
-        <span className="size-2.5 shrink-0 rounded-full" style={{ backgroundColor: LAYER_COLORS[key] }} />
-        {LAYER_LABELS[key]}
-      </span>
-      <input type="checkbox" checked={visibleLayers[key]} onChange={() => onToggleLayer(key)} className="size-4 accent-water-600" />
-    </label>
-  )
-
-  return (
-    <aside aria-label="Lớp bản đồ" className={`fixed bottom-[68px] left-3 top-[92px] z-[1200] max-w-[calc(100vw-1.5rem)] shrink-0 md:bottom-3 lg:relative lg:inset-auto lg:z-auto lg:max-w-none ${collapsed ? 'w-[52px]' : 'w-[280px]'}`}>
-      <div className="panel flex h-full flex-col overflow-hidden">
-        <div className="flex items-center justify-between gap-2 border-b border-water-100 px-3 py-3">
-          {!collapsed && <p className="flex items-center gap-2 text-sm font-semibold text-water-900"><Layers className="size-4" />Lớp bản đồ</p>}
-          <button type="button" onClick={onToggle} aria-label={collapsed ? 'Mở lớp bản đồ' : 'Thu gọn lớp bản đồ'} aria-expanded={!collapsed} className="ghost-btn h-8 w-8 !px-0">
-            {collapsed ? <Layers className="size-4" /> : <X className="size-4" />}
-          </button>
-        </div>
-        {!collapsed && <div className="min-h-0 flex-1 overflow-y-auto">
-          <div className="space-y-4 p-4">
-            <label className="block">
-              <span className="field-label">Chế độ xem</span>
-              <select aria-label="Chế độ xem bản đồ" className="field-input" value={mapMode === 'cadVector' ? cadVectorViewPreset : mapMode}
-                onChange={(event) => {
-                  const value = event.target.value
-                  if (value === 'osm') onOpenOsm()
-                  else if (value === 'cadImage') onOpenCadImage()
-                  else if (value === 'layoutPreview') onSelectLayoutPreview(selectedLayoutId)
-                  else {
-                    onOpenCadVectorMap()
-                    onCadVectorViewPresetChange(value as CadVectorViewPresetKey)
-                  }
-                }}>
-                {CAD_VECTOR_VIEW_PRESETS.map((preset) => <option key={preset.key} value={preset.key}>{preset.label}</option>)}
-                <option value="osm">Đường phố / Vệ tinh</option>
-                {mapMode === 'cadImage' && <option value="cadImage">Ảnh CAD tham chiếu</option>}
-                {mapMode === 'layoutPreview' && <option value="layoutPreview">Bản vẽ tham chiếu</option>}
-              </select>
-            </label>
-            {mapMode === 'cadVector' ? <div>
-              <p className="field-label">Lớp nghiệp vụ chính</p>
-              {!hasCadVectorData && <p className="mb-2 text-xs text-slate-500">Chưa có dữ liệu CAD Vector.</p>}
-              {[
-                [CAD_BASE_LAYER_KEY, 'Nền CAD'],
-                [CAD_CURATED_MAIN_WORKS_LAYER_KEY, 'Công trình chính'],
-              ].map(([key, label]) => <label key={key} className="flex cursor-pointer items-center justify-between rounded-lg px-2 py-2 text-sm text-slate-700 hover:bg-water-50">
-                {label}<input type="checkbox" checked={cadVectorVisibleLayers[key] !== false} onChange={() => onToggleCadVectorLayer(key)} className="size-4 accent-water-600" />
-              </label>)}
-              {([
-                ['pipeline', 'Tuyến ống cấp nước'],
-                ['irrigation', 'Kênh/thủy lợi'],
-              ] as const).map(([key, label]) => {
-                const layerNames = getCadVectorGroupLayerNames(key)
-                return <label key={key} className="flex cursor-pointer items-center justify-between rounded-lg px-2 py-2 text-sm text-slate-700 hover:bg-water-50">
-                  {label}<input type="checkbox" checked={isCadVectorGroupVisible(key)} disabled={layerNames.length === 0} onChange={(event) => onSetCadVectorLayers(layerNames, event.target.checked)} className="size-4 accent-water-600 disabled:opacity-40" />
-                </label>
-              })}
-            </div> : mapMode !== 'layoutPreview' && <div><p className="field-label">Lớp nghiệp vụ chính</p>{primaryLayerKeys.map(renderLayer)}</div>}
-          </div>
-          <details className="border-t border-slate-100 p-4">
-            <summary className="cursor-pointer text-sm font-semibold text-slate-600">Nâng cao</summary>
-            <div className="mt-4 space-y-4">
-              {mapMode === 'cadVector' && <>
-                  <div className="mb-3 space-y-2 rounded-lg border border-slate-100 p-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Lớp hiển thị</p>
-                    {[
-                      ['showMainWorkLabels', 'Hiện nhãn công trình chính'],
-                      ['showDiameterLabels', 'Hiện nhãn đường kính'],
-                      ['hideCorruptedText', 'Ẩn text lỗi font'],
-                    ].map(([key, label]) => (
-                      <label key={key} className="flex cursor-pointer items-center justify-between gap-3 text-sm">
-                        <span className="text-slate-700">{label}</span>
-                        <input
-                          type="checkbox"
-                          checked={cadVectorLabelOptions[key as keyof CadLabelVisibilityOptions]}
-                          onChange={(event) =>
-                            onCadVectorLabelOptionChange(
-                              key as keyof CadLabelVisibilityOptions,
-                              event.target.checked,
-                            )
-                          }
-                          className="size-4 rounded border-slate-300 text-water-600 focus:ring-water-500"
-                        />
-                      </label>
-                    ))}
-                  </div>
-
-                  <div className="mb-3 rounded-lg border border-emerald-100 bg-emerald-50/70 p-3">
-                    <div className="mb-2 flex items-center justify-between gap-2">
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-emerald-700">
-                        Công trình chính chuẩn hóa
-                      </p>
-                      <button type="button" onClick={onExportCuratedMainWorks} className="ghost-btn h-7 px-2 text-[11px]">
-                        Xuất JSON
-                      </button>
-                    </div>
-                    <div className="space-y-1.5">
-                      {curatedMainWorks.map((work) => {
-                        const isUpdating = positionUpdateTargetId === work.id
-
-                        return (
-                          <div
-                            key={work.id}
-                            className="rounded-lg border border-emerald-100 bg-white p-2 shadow-sm transition hover:border-water-200 hover:bg-water-50/50"
-                          >
-                            <div className="flex items-start gap-2">
-                              <span
-                                className={`mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-white shadow-sm ${
-                                  work.type === 'water_plant'
-                                    ? 'bg-orange-500 text-white'
-                                    : 'bg-violet-500 text-white'
-                                }`}
-                              >
-                                {work.type === 'water_plant' ? (
-                                  <Factory className="size-4" />
-                                ) : (
-                                  <Waves className="size-4" />
-                                )}
-                              </span>
-                              <div className="min-w-0 flex-1">
-                                <p className="truncate text-xs font-semibold text-slate-800">{work.displayName}</p>
-                                <p className="text-[11px] font-medium text-slate-500">
-                                  {work.type === 'water_plant' ? 'Nhà máy nước' : 'Hồ nước thô'}
-                                </p>
-                                <p className="mt-0.5 text-[11px] text-slate-500">
-                                  {work.cadPosition
-                                    ? `Vị trí CAD [${work.cadPosition[0].toFixed(1)}, ${work.cadPosition[1].toFixed(1)}]`
-                                    : 'Chưa có vị trí, có thể cập nhật thủ công'}
-                                </p>
-                              </div>
-                            </div>
-                            <div className="mt-2 flex flex-wrap gap-1.5">
-                              <button
-                                type="button"
-                                onClick={() => onSelectCuratedMainWork(work.id)}
-                                className="h-7 rounded-md border border-water-200 bg-water-50 px-2 text-[11px] font-semibold text-water-800 hover:bg-water-100"
-                              >
-                                Xem trên bản đồ
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => onStartCuratedMainWorkPositionUpdate(work.id)}
-                                className={`h-7 rounded-md border px-2 text-[11px] font-semibold ${
-                                  isUpdating
-                                    ? 'border-emerald-300 bg-emerald-100 text-emerald-800'
-                                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
-                                }`}
-                              >
-                                {isUpdating ? 'Đang chờ click' : 'Cập nhật vị trí'}
-                              </button>
-                              {isUpdating && (
-                                <button
-                                  type="button"
-                                  onClick={onCancelCuratedMainWorkPositionUpdate}
-                                  className="h-7 rounded-md border border-slate-200 bg-white px-2 text-[11px] font-semibold text-slate-600"
-                                >
-                                  Hủy
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
-
-                <details className="rounded-lg border border-slate-100 p-3">
-                  <summary className="cursor-pointer text-xs font-semibold text-slate-600">Layer CAD thô</summary>
-                    <div className="mt-3">
-                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                        Lọc nhanh theo loại
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {CAD_VECTOR_TYPE_FILTERS.map((filter) => (
-                          <button
-                            key={filter.value}
-                            type="button"
-                            onClick={() => onCadVectorTypeFilterChange(filter.value)}
-                            className={`rounded-full border px-2 py-1 text-[11px] font-semibold transition ${
-                              cadVectorTypeFilter === filter.value
-                                ? 'border-water-300 bg-water-50 text-water-800'
-                                : 'border-slate-200 text-slate-600 hover:bg-slate-50'
-                            }`}
-                          >
-                            {filter.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mt-3 max-h-80 space-y-2 overflow-auto pr-1">
-                      {cadVectorLayerGroups.map((group) => {
-                        const groupLayerNames = group.layers.map((layer) => layer.layerKey ?? layer.layerName)
-                        const visibleCount = group.layers.filter(
-                          (layer) => cadVectorVisibleLayers[layer.layerKey ?? layer.layerName] !== false,
-                        ).length
-                        const allVisible = group.layers.length > 0 && visibleCount === group.layers.length
-                        const expanded = expandedCadVectorGroups[group.key] ?? group.defaultExpanded
-
-                        return (
-                          <div key={group.key} className="rounded-lg border border-slate-100">
-                            <div className="flex items-start justify-between gap-2 px-3 py-2">
-                              <button
-                                type="button"
-                                onClick={() => onToggleCadVectorGroupExpanded(group.key)}
-                                className="min-w-0 flex-1 text-left"
-                              >
-                                <span className="block text-sm font-semibold text-slate-700">{group.label}</span>
-                                <span className="block text-xs text-slate-500">
-                                  {group.layers.length} lớp dữ liệu
-                                </span>
-                              </button>
-                              <input
-                                type="checkbox"
-                                checked={allVisible}
-                                disabled={group.layers.length === 0}
-                                onChange={(event) => onSetCadVectorLayers(groupLayerNames, event.target.checked)}
-                                className="mt-1 size-4 rounded border-slate-300 text-water-600 focus:ring-water-500 disabled:opacity-40"
-                              />
-                            </div>
-                            {expanded && group.layers.length > 0 && (
-                              <div className="space-y-1 border-t border-slate-100 px-3 py-2">
-                                {group.layers.map((layer) => (
-                                  <label
-                                    key={layer.layerKey ?? `${group.key}-${layer.layerName}`}
-                                    className="flex cursor-pointer items-start justify-between gap-2 rounded-md px-2 py-1.5 hover:bg-water-50"
-                                  >
-                                    <span className="min-w-0">
-                                      <span className="block truncate text-xs font-medium text-slate-700">
-                                        {layer.layerName}
-                                      </span>
-                                      <span className="text-[11px] text-slate-500">
-                                        {cadVectorTypeLabelForUi(layer.inferredType)} | {layer.featureCount}
-                                      </span>
-                                    </span>
-                                    <input
-                                      type="checkbox"
-                                      checked={cadVectorVisibleLayers[layer.layerKey ?? layer.layerName] !== false}
-                                      onChange={() => onToggleCadVectorLayer(layer.layerKey ?? layer.layerName)}
-                                      className="mt-0.5 size-3.5 rounded border-slate-300 text-water-600 focus:ring-water-500"
-                                    />
-                                  </label>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        )
-                      })}
-                    </div>
-
-                </details>
-              </>}
-              {mapMode !== 'cadVector' && mapMode !== 'layoutPreview' && <>
-                <div>{(['boundaries', 'labels'] as const).map(renderLayer)}</div>
-                <label className="block"><span className="field-label">Lọc trạng thái</span>
-                  <select className="field-input" value={statusFilter} onChange={(event) => onStatusFilterChange(event.target.value as 'all' | AssetStatus)}>
-                    {STATUS_FILTERS.map((filter) => <option key={filter.value} value={filter.value}>{filter.label}</option>)}
-                  </select>
-                </label>
-                <details className="rounded-lg border border-slate-100 p-3">
-                  <summary className="cursor-pointer text-xs font-semibold text-slate-600">Nguồn dữ liệu</summary>
-                  <div className="mt-2 space-y-2">{CAD_LAYER_KEYS.map((key) => <p key={key} className="text-xs text-slate-500"><span className="font-semibold">{LAYER_LABELS[key]}:</span> {getCadLayerStatusText(dataSource, key, cadImageLoaded)}</p>)}</div>
-                </details>
-              </>}
-              <div className="space-y-2">
-                <p className="field-label">Bản vẽ tham chiếu</p>
-                {CAD_LAYOUT_OPTIONS.map((layout) => (
-                  <button
-                    key={layout.id}
-                    type="button"
-                    onClick={() => onSelectLayoutPreview(layout.id)}
-                    className={`w-full rounded-lg border px-3 py-2 text-left transition ${
-                      mapMode === 'layoutPreview' && selectedLayoutId === layout.id
-                        ? 'border-water-300 bg-water-50 text-water-800'
-                        : 'border-slate-100 text-slate-600 hover:bg-slate-50'
-                    }`}
-                  >
-                    <span className="block text-sm font-semibold">{layout.label}</span>
-                    <span className="text-xs text-slate-500">{layout.fileName}</span>
-                  </button>
-                ))}
-                <button
-                  type="button"
-                  onClick={onOpenCadImage}
-                  className={`w-full rounded-lg border px-3 py-2 text-left transition ${
-                    mapMode === 'cadImage'
-                      ? 'border-water-300 bg-water-50 text-water-800'
-                      : 'border-slate-100 text-slate-600 hover:bg-slate-50'
-                  }`}
-                >
-                  <span className="block text-sm font-semibold">Ảnh CAD tham chiếu</span>
-                  <span className="text-xs text-slate-500">PNG bản vẽ, không phải dữ liệu chính</span>
-                </button>
-
-              </div>
-            </div>
-          </details>
-        </div>}
-      </div>
-    </aside>
-  )
-}
-
 function DashboardCards({ data, mapMode, cadVectorData, curatedMainWorks, cadVectorViewPreset }: DashboardCardsProps) {
   const stats = useMemo(() => computeDashboardStats(data), [data])
 
@@ -2260,43 +1740,6 @@ function DashboardCards({ data, mapMode, cadVectorData, curatedMainWorks, cadVec
   )
 }
 
-function formatCadRawValue(value: unknown): string {
-  if (value === null || value === undefined) {
-    return 'NULL'
-  }
-
-  if (typeof value === 'object') {
-    try {
-      return JSON.stringify(value)
-    } catch {
-      return String(value)
-    }
-  }
-
-  return String(value)
-}
-
-function cadVectorBusinessTypeLabel(feature: CadVectorFeature): string {
-  switch (feature.properties.type) {
-    case 'water_plant':
-      return 'Nhà máy nước'
-    case 'raw_water_lake':
-      return 'Hồ nước thô'
-    case 'irrigation_canal':
-      return 'Kênh thủy lợi'
-    case 'irrigation_area':
-      return 'Vùng thủy lợi'
-    case 'irrigation_point':
-      return 'Điểm thủy lợi'
-    case 'irrigation_label':
-      return 'Nhãn kênh/thủy lợi'
-    case 'main_work_candidate':
-      return 'Công trình chính'
-    default:
-      return cadVectorTypeLabelForUi(feature.properties.type)
-  }
-}
-
 function DetailPanel({
   collapsed,
   onToggle,
@@ -2307,6 +1750,7 @@ function DetailPanel({
   onToggleCadEdit,
   positionUpdateTargetId,
   onStartCadVectorPositionUpdate,
+  onCancelCadVectorPositionUpdate,
   onOpenUpdate,
   onOpenIncident,
   onTransitionIncident,
@@ -2322,32 +1766,6 @@ function DetailPanel({
   canAssignIncident,
   availableAssets,
 }: DetailPanelProps) {
-  const [copyState, setCopyState] = useState('Copy thông tin')
-
-  const handleCopyCadVectorProperties = async () => {
-    if (!cadVectorFeature) {
-      return
-    }
-
-    try {
-      await navigator.clipboard.writeText(JSON.stringify(cadVectorFeature.properties, null, 2))
-      setCopyState('Đã copy')
-      window.setTimeout(() => setCopyState('Copy thông tin'), 1200)
-    } catch {
-      setCopyState('Không copy được')
-    }
-  }
-  const cadVectorRawText = cadVectorFeature ? getCadFeatureText(cadVectorFeature) : ''
-  const cadVectorTextCorrupted = cadVectorFeature
-    ? Boolean(cadVectorFeature.properties.corruptedText) || isLikelyMojibake(cadVectorRawText)
-    : false
-  const cadVectorDiameterText =
-    cadVectorFeature?.properties.diameterText ||
-    (isPipeDiameterText(cadVectorRawText) ? cadVectorRawText : '')
-  const cadVectorIsMainWork = cadVectorFeature?.properties.sourceGroup === 'main_works'
-  const cadVectorIsIrrigation = cadVectorFeature?.properties.sourceGroup === 'irrigation'
-  const cadVectorIsCurated = cadVectorFeature?.properties.curatedMainWork === true
-
   if (collapsed || (!feature && !cadVectorFeature && !cadAsset)) return null
 
   return (
@@ -2358,201 +1776,38 @@ function DetailPanel({
         onClick={onToggle}
         aria-label="Đóng bảng thông tin"
       />
-      <aside className="fixed bottom-[68px] left-3 right-3 z-[1200] h-[min(72vh,680px)] w-auto md:bottom-3 md:left-auto md:right-3 md:top-[92px] md:h-auto md:w-[min(360px,calc(100vw-1.5rem))] lg:relative lg:inset-auto lg:z-auto lg:w-[340px] lg:shrink-0">
+      <aside className={`${cadVectorFeature ? 'cad-selection-panel ' : ''}fixed bottom-[68px] left-3 right-3 z-[1200] h-[min(72vh,680px)] w-auto md:bottom-3 md:left-auto md:right-3 md:top-[92px] md:h-auto md:w-[min(380px,calc(100vw-1.5rem))] lg:relative lg:inset-auto lg:z-auto lg:w-[372px] xl:w-[388px] lg:shrink-0`}>
       <div className="panel flex h-full flex-col overflow-hidden rounded-b-none md:rounded-2xl">
         <div className="flex justify-center pb-1 pt-2 md:hidden" aria-hidden="true">
           <span className="h-1 w-10 rounded-full bg-slate-300" />
         </div>
-        <div className="flex items-center justify-between border-b border-water-100 px-4 pb-3 pt-2 md:py-3">
-          <p className="text-sm font-semibold text-water-900">Thông tin chi tiết</p>
+        <div className="flex items-center justify-between border-b border-water-100/80 bg-gradient-to-r from-water-50/75 via-white to-white px-4 pb-3 pt-2 md:py-3">
+          <div className="flex items-center gap-2">
+            <span className="h-4 w-1 rounded-full bg-water-600" aria-hidden="true" />
+            <p className="text-sm font-bold text-water-900">Thông tin chi tiết</p>
+          </div>
           <button type="button" onClick={onToggle} aria-label="Đóng thông tin chi tiết" className="ghost-btn h-8 w-8 !px-0">
             <X className="size-4" />
           </button>
         </div>
 
         {cadVectorFeature ? (
-          <div className="min-h-0 flex-1 space-y-4 overflow-auto p-4">
-            <div>
-              <p className="text-lg font-bold text-slate-800">{getFeatureDisplayName(cadVectorFeature)}</p>
-              <p className="text-sm text-slate-500">{cadVectorBusinessTypeLabel(cadVectorFeature)}</p>
-            </div>
-
-            <span className="status-chip bg-emerald-50 text-emerald-700">
-              {cadVectorFeature.properties.businessGroup || cadVectorFeature.properties.status}
-            </span>
-
-            <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Thông tin chính</p>
-              <div className="space-y-2 text-sm text-slate-700">
-              <p>
-                <span className="font-semibold">Loại đối tượng:</span> {cadVectorTypeLabelForUi(cadVectorFeature.properties.type)}
-              </p>
-              {(cadVectorIsMainWork || cadVectorIsIrrigation) && (
-                <p>
-                  <span className="font-semibold">Nhóm nghiệp vụ:</span>{' '}
-                  {cadVectorFeature.properties.businessGroup}
-                </p>
-              )}
-              {cadVectorFeature.properties.description && <p>
-                <span className="font-semibold">Mô tả:</span> {cadVectorFeature.properties.description}
-              </p>}
-              {cadVectorTextCorrupted && (
-                <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
-                  Tên đối tượng này chưa đọc được đầy đủ. Dữ liệu gốc vẫn được hệ thống lưu giữ.
-                </div>
-              )}
-              {cadVectorDiameterText && (
-                <p>
-                  <span className="font-semibold">Đường kính:</span> {cadVectorDiameterText}
-                </p>
-              )}
-              </div>
-            </div>
-
-            <details className="rounded-xl border border-slate-200 bg-slate-50/70 p-3">
-              <summary className="cursor-pointer text-sm font-bold text-slate-600">Nâng cao</summary>
-            {cadVectorIsCurated && (
-              <button
-                type="button"
-                onClick={() => onStartCadVectorPositionUpdate(cadVectorFeature)}
-                className="primary-btn"
-              >
-                <Move className="mr-1 size-4" />
-                {positionUpdateTargetId === (cadVectorFeature.properties.curatedMainWorkId ?? cadVectorFeature.properties.id)
-                  ? 'Click lên bản đồ để lưu vị trí'
-                  : 'Cập nhật vị trí'}
-              </button>
-            )}
-
-              <div className="mt-3 flex items-center justify-end">
-                <button type="button" onClick={handleCopyCadVectorProperties} className="ghost-btn h-7 px-2 text-[11px]">
-                  {copyState}
-                </button>
-              </div>
-              <div className="mt-2 max-h-64 overflow-auto rounded-lg border border-slate-200 bg-white p-2">
-                <dl className="space-y-1 text-xs">
-                  {Object.entries(cadVectorFeature.properties).map(([key, value]) => (
-                    <div key={key} className="grid grid-cols-[110px_1fr] gap-2 border-b border-slate-100 py-1 last:border-b-0">
-                      <dt className="truncate font-semibold text-slate-500">{key}</dt>
-                      <dd className="break-words text-slate-700">{formatCadRawValue(value)}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            </details>
-
-            <button type="button" onClick={() => onOpenIncident({ kind: 'cadVector', feature: cadVectorFeature })} className="ghost-btn">
-              <AlertTriangle className="mr-1 size-4" />
-              Báo sự cố
-            </button>
-          </div>
+          <CadVectorDetailPanel
+            key={cadVectorFeature.properties.id}
+            feature={cadVectorFeature}
+            positionUpdateTargetId={positionUpdateTargetId}
+            onStartPositionUpdate={onStartCadVectorPositionUpdate}
+            onCancelPositionUpdate={onCancelCadVectorPositionUpdate}
+            onReportIncident={(selectedFeature) => onOpenIncident({ kind: 'cadVector', feature: selectedFeature })}
+          />
         ) : cadAsset ? (
-          <div className="min-h-0 flex-1 space-y-4 overflow-auto p-4">
-            <div>
-              <p className="text-lg font-bold text-slate-800">{cadAsset.name}</p>
-              <p className="text-sm text-slate-500">{mapFeatureTypeLabel(cadAsset.type)}</p>
-            </div>
-
-            <span className={statusBadgeClass(cadAsset.status)}>{getAssetStatusMeta(cadAsset.status).label}</span>
-
-            <div className="space-y-2 text-sm text-slate-700">
-              <p>
-                <span className="font-semibold">ID:</span> {cadAsset.id}
-              </p>
-              <p>
-                <span className="font-semibold">Tọa độ ảnh CAD [y, x]:</span>{' '}
-                {cadAsset.geometryType === 'Point' && cadAsset.cadPosition
-                  ? `[${cadAsset.cadPosition[0]}, ${cadAsset.cadPosition[1]}]`
-                  : `[${getCadAssetCenter(cadAsset).join(', ')}]`}
-              </p>
-              <p>
-                <span className="font-semibold">Nguồn:</span> {cadAsset.source}
-              </p>
-              <p>
-                <span className="font-semibold">Dữ liệu nền:</span>{' '}
-                {cadAsset.backgroundImage ?? CAD_BLUEPRINT_CONFIG.imageFileName}
-              </p>
-              <p>
-                <span className="font-semibold">CAD Layer:</span> {cadAsset.cadLayer}
-              </p>
-              <p>
-                <span className="font-semibold">Kiểu dữ liệu:</span> {cadAsset.dataType}
-              </p>
-              <p>
-                <span className="font-semibold">Loại geometry:</span> {cadAsset.geometryType}
-              </p>
-              <p>
-                <span className="font-semibold">Vị trí:</span> {cadAsset.address}
-              </p>
-              <p>
-                <span className="font-semibold">Mô tả:</span> {cadAsset.description}
-              </p>
-              <p>
-                <span className="font-semibold">Ngày cập nhật:</span> {formatDate(cadAsset.lastUpdated)}
-              </p>
-              {cadAsset.type === 'water_plant' && cadAsset.capacity && (
-                <p>
-                  <span className="font-semibold">Công suất:</span> {cadAsset.capacity}
-                </p>
-              )}
-              {cadAsset.type === 'raw_water_lake' && cadAsset.area && (
-                <p>
-                  <span className="font-semibold">Diện tích:</span> {cadAsset.area}
-                </p>
-              )}
-              {cadAsset.type === 'raw_water_lake' && cadAsset.volume && (
-                <p>
-                  <span className="font-semibold">Dung tích:</span> {cadAsset.volume}
-                </p>
-              )}
-              {cadAsset.type === 'pipeline' && cadAsset.diameter && (
-                <p>
-                  <span className="font-semibold">Đường kính:</span> {cadAsset.diameter}
-                </p>
-              )}
-              {cadAsset.type === 'pipeline' && cadAsset.material && (
-                <p>
-                  <span className="font-semibold">Vật liệu:</span> {cadAsset.material}
-                </p>
-              )}
-              {cadAsset.type === 'pipeline' && cadAsset.length && (
-                <p>
-                  <span className="font-semibold">Chiều dài:</span> {cadAsset.length}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Ghi chú CAD</p>
-              <ul className="space-y-2">
-                {cadAsset.notes.map((note, index) => (
-                  <li key={`${cadAsset.id}-${index}`} className="rounded-lg bg-slate-50 p-2 text-sm text-slate-700">
-                    {note}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              <details className="w-full rounded-lg border border-slate-200 p-3">
-                <summary className="cursor-pointer text-sm font-semibold text-slate-600">Nâng cao</summary>
-                <div className="mt-3">
-              <button
-                type="button"
-                onClick={onToggleCadEdit}
-                className="primary-btn" aria-pressed={cadEditMode}
-              >
-                <Move className="mr-1 size-4" />
-                {cadEditMode ? 'Dừng chỉnh vị trí' : 'Cập nhật vị trí'}
-              </button>
-                </div>
-              </details>
-              <button type="button" onClick={() => onOpenIncident({ kind: 'cadImage', asset: cadAsset })} className="ghost-btn">
-                <AlertTriangle className="mr-1 size-4" />
-                Báo sự cố
-              </button>
-            </div>
-          </div>
+          <CadBlueprintDetailPanel
+            key={cadAsset.id}
+            asset={cadAsset}
+            cadEditMode={cadEditMode}
+            onToggleCadEdit={onToggleCadEdit}
+            onReportIncident={(selectedAsset) => onOpenIncident({ kind: 'cadImage', asset: selectedAsset })}
+          />
         ) : !feature ? (
           <div className="p-4 text-sm text-slate-500">Chọn đối tượng trên bản đồ hoặc sidebar để xem chi tiết.</div>
         ) : feature.properties.type === 'incident' ? (
@@ -2640,258 +1895,6 @@ function IncidentList({ incidents, selectedId, onSelectIncident }: IncidentListP
         </div>
       )}
     </section>
-  )
-}
-
-function AssetFormModal({ mode, feature, onClose, onSubmit }: AssetFormProps) {
-  const [name, setName] = useState(feature?.properties.name ?? '')
-  const [type, setType] = useState<AssetType>(feature?.properties.type ?? 'water_plant')
-  const [status, setStatus] = useState<AssetStatus>(feature?.properties.status ?? 'active')
-  const [description, setDescription] = useState(feature?.properties.description ?? '')
-  const [address, setAddress] = useState(feature?.properties.address ?? '')
-  const [capacity, setCapacity] = useState(feature?.properties.capacity ?? '')
-  const [area, setArea] = useState(feature?.properties.area ?? '')
-  const [volume, setVolume] = useState(feature?.properties.volume ?? '')
-  const [material, setMaterial] = useState(feature?.properties.material ?? '')
-  const [diameter, setDiameter] = useState(feature?.properties.diameter ?? '')
-  const [length, setLength] = useState(feature?.properties.length ?? '')
-  const [imageUrl, setImageUrl] = useState(feature?.properties.imageUrl ?? '')
-  const [googleMapsUrl, setGoogleMapsUrl] = useState(feature?.properties.googleMapsUrl ?? '')
-  const [notesRaw, setNotesRaw] = useState((feature?.properties.notes ?? []).join('\n'))
-  const [geometryType, setGeometryType] = useState<GeometryInputType>('Point')
-  const [coordinatesRaw, setCoordinatesRaw] = useState('106.4232,10.8815')
-  const [error, setError] = useState('')
-  const [submitting, setSubmitting] = useState(false)
-  const [dirty, setDirty] = useState(false)
-  const titleId = useId()
-  const requestClose = useUnsavedChangesGuard(dirty, onClose)
-
-  const submitLabel = mode === 'create' ? 'Thêm mới đối tượng' : 'Lưu cập nhật'
-  const title = mode === 'create' ? 'Thêm đối tượng hạ tầng mới' : `Cập nhật: ${feature?.properties.name ?? ''}`
-  const technicalFields = type === 'pipeline'
-    ? [
-        { key: 'diameter', label: 'Đường kính', value: diameter, onChange: setDiameter },
-        { key: 'material', label: 'Vật liệu', value: material, onChange: setMaterial },
-        { key: 'length', label: 'Chiều dài', value: length, onChange: setLength },
-      ]
-    : type === 'water_plant'
-      ? [{ key: 'capacity', label: 'Công suất', value: capacity, onChange: setCapacity }]
-      : type === 'raw_water_lake'
-        ? [
-            { key: 'area', label: 'Diện tích', value: area, onChange: setArea },
-            { key: 'volume', label: 'Dung tích', value: volume, onChange: setVolume },
-          ]
-        : type === 'canal'
-          ? [{ key: 'length', label: 'Chiều dài', value: length, onChange: setLength }]
-          : type === 'supply_zone'
-            ? [{ key: 'area', label: 'Diện tích', value: area, onChange: setArea }]
-            : []
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault()
-
-    if (!name.trim() || !address.trim() || !description.trim()) {
-      setError('Vui lòng nhập đầy đủ tên, địa chỉ và mô tả')
-      return
-    }
-
-    // Giữ các thuộc tính cũ khi sửa, kể cả thuộc tính hiện không có trong form.
-    const technicalAttributes = mode === 'update'
-      ? { capacity, area, volume, material, diameter, length }
-      : Object.fromEntries(technicalFields.map((field) => [field.key, field.value]))
-    let payload: NewAssetInput | UpdateAssetInput
-    if (mode === 'update') {
-      payload = {
-        name,
-        status,
-        description,
-        address,
-        ...technicalAttributes,
-        imageUrl,
-        googleMapsUrl,
-        notes: parseNotes(notesRaw),
-      } satisfies UpdateAssetInput
-    } else {
-      try {
-        payload = {
-          name,
-          type,
-          status,
-          description,
-          address,
-          ...technicalAttributes,
-          imageUrl,
-          googleMapsUrl,
-          notes: parseNotes(notesRaw),
-          geometryType,
-          coordinates: parseCoordinatePairs(coordinatesRaw),
-        } satisfies NewAssetInput
-      } catch {
-        setError('Định dạng tọa độ không hợp lệ. Ví dụ: 106.4232,10.8815;106.425,10.883')
-        return
-      }
-    }
-
-    setSubmitting(true)
-    setError('')
-    try {
-      await onSubmit(payload)
-    } catch (reason) {
-      setError(reason instanceof Error ? reason.message : 'Không thể lưu tài sản. Vui lòng thử lại.')
-      setSubmitting(false)
-    }
-  }
-
-  return (
-    <div
-      className="fixed inset-0 z-[1400] flex items-center justify-center bg-slate-900/45 p-4"
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) requestClose()
-      }}
-    >
-      <form
-        onSubmit={handleSubmit}
-        onChangeCapture={() => setDirty(true)}
-        className="panel max-h-[calc(100vh-2rem)] w-full max-w-2xl space-y-3 overflow-y-auto p-5"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={titleId}
-      >
-        <div className="flex items-center justify-between">
-          <p id={titleId} className="text-base font-bold text-slate-800">{title}</p>
-          <button type="button" onClick={requestClose} className="ghost-btn h-8 w-8 !px-0" aria-label="Đóng form">
-            <X className="size-4" />
-          </button>
-        </div>
-
-        {error && <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>}
-
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <div>
-            <label className="field-label">Tên đối tượng</label>
-            <input className="field-input" value={name} onChange={(event) => setName(event.target.value)} />
-          </div>
-          <div>
-            <label className="field-label">Loại đối tượng</label>
-            <select
-              className="field-input"
-              disabled={mode === 'update'}
-              value={type}
-              onChange={(event) => setType(event.target.value as AssetType)}
-            >
-              {ASSET_TYPE_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="field-label">Trạng thái</label>
-            <select
-              className="field-input"
-              value={status}
-              onChange={(event) => setStatus(event.target.value as AssetStatus)}
-            >
-              {STATUS_FILTERS.filter((entry) => entry.value !== 'all').map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="field-label">Địa chỉ</label>
-            <input className="field-input" value={address} onChange={(event) => setAddress(event.target.value)} />
-          </div>
-        </div>
-
-        <div>
-          <label className="field-label">Mô tả</label>
-          <textarea
-            className="field-textarea"
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-          />
-        </div>
-
-        {technicalFields.length > 0 && (
-          <fieldset className="rounded-lg border border-slate-200 p-3">
-            <legend className="px-1 text-sm font-semibold text-slate-700">Thông số tài sản</legend>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {technicalFields.map((field) => (
-                <label key={field.key}>
-                  <span className="field-label">{field.label}</span>
-                  <input className="field-input" value={field.value} onChange={(event) => field.onChange(event.target.value)} />
-                </label>
-              ))}
-            </div>
-          </fieldset>
-        )}
-
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <label>
-            <span className="field-label">Link Google Maps</span>
-            <input
-              className="field-input"
-              value={googleMapsUrl}
-              onChange={(event) => setGoogleMapsUrl(event.target.value)}
-            />
-          </label>
-          <label>
-            <span className="field-label">Hình ảnh (URL)</span>
-            <input className="field-input" value={imageUrl} onChange={(event) => setImageUrl(event.target.value)} />
-          </label>
-        </div>
-
-        <div>
-          <label className="field-label">Ghi chú (mỗi dòng 1 mục)</label>
-          <textarea className="field-textarea" value={notesRaw} onChange={(event) => setNotesRaw(event.target.value)} />
-        </div>
-
-        {mode === 'create' && (
-          <div className="space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-              <div>
-                <label className="field-label">Kiểu hình học</label>
-                <select
-                  className="field-input"
-                  value={geometryType}
-                  onChange={(event) => setGeometryType(event.target.value as GeometryInputType)}
-                >
-                  {GEOMETRY_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="field-label">Tọa độ (lng,lat;lng,lat)</label>
-                <input
-                  className="field-input"
-                  value={coordinatesRaw}
-                  onChange={(event) => setCoordinatesRaw(event.target.value)}
-                />
-              </div>
-            </div>
-            <p className="text-xs text-slate-500">
-              Ví dụ Point: 106.4232,10.8815 | LineString: 106.4232,10.8815;106.4258,10.8828
-            </p>
-          </div>
-        )}
-
-        <div className="flex justify-end gap-2">
-          <button type="button" onClick={requestClose} className="ghost-btn">
-            Hủy
-          </button>
-          <button type="submit" disabled={submitting} className="primary-btn disabled:cursor-wait disabled:opacity-60">
-            <Plus className="mr-1 size-4" />
-            {submitting ? 'Đang lưu...' : submitLabel}
-          </button>
-        </div>
-      </form>
-    </div>
   )
 }
 
@@ -3604,7 +2607,7 @@ function WebGISDashboardPage() {
   }
 
   return (
-    <main className="workspace flex h-full flex-col">
+    <main className={`workspace flex h-full flex-col${viewMode === 'map' && mapMode === 'cadVector' ? ' cad-workspace' : ''}`}>
       <Topbar
         searchQuery={searchQuery}
         onSearchQueryChange={setSearchQuery}
@@ -3626,6 +2629,18 @@ function WebGISDashboardPage() {
           }))}
           visibleLayers={uiState.visibleLayers}
           onToggleLayer={uiLayerToggle}
+          onSetAllLayers={(visible) => setUiState((prev) => ({
+            ...prev,
+            visibleLayers: {
+              ...prev.visibleLayers,
+              waterPlant: visible,
+              rawWaterLakes: visible,
+              pipelines: visible,
+              canals: visible,
+              supplyZones: visible,
+              incidents: visible,
+            },
+          }))}
           statusFilter={statusFilter}
           onStatusFilterChange={setStatusFilter}
           dataSource={dataSource}
@@ -3637,6 +2652,7 @@ function WebGISDashboardPage() {
           cadVectorTypeFilter={cadVectorTypeFilter}
           onCadVectorTypeFilterChange={setCadVectorTypeFilter}
           cadVectorViewPreset={cadVectorViewPreset}
+          cadVectorViewPresets={CAD_VECTOR_VIEW_PRESETS}
           onCadVectorViewPresetChange={applyViewPreset}
           cadVectorLabelOptions={cadVectorLabelOptions}
           onCadVectorLabelOptionChange={handleCadVectorLabelOptionChange}
@@ -3655,6 +2671,9 @@ function WebGISDashboardPage() {
           onOpenCadVectorMap={() => handleMapModeChange('cadVector')}
           onOpenCadImage={() => handleMapModeChange('cadImage')}
           onOpenOsm={() => handleMapModeChange('osm')}
+          cadBaseLayerKey={CAD_BASE_LAYER_KEY}
+          cadCuratedMainWorksLayerKey={CAD_CURATED_MAIN_WORKS_LAYER_KEY}
+          cadTypeFilters={CAD_VECTOR_TYPE_FILTERS}
         />}
 
         <div className="flex min-w-0 flex-1 flex-col gap-3">
@@ -3693,6 +2712,7 @@ function WebGISDashboardPage() {
                   fitVersion={cadVectorFitVersion}
                   viewPresetKey={cadVectorViewPreset}
                   viewPresetLabel={cadVectorViewPresetLabel}
+                  lineLengthMeters={cadVectorLineLengthSummary}
                   positionUpdateTargetLabel={
                     positionUpdateTargetId
                       ? resolvedCuratedMainWorks.find((work) => work.id === positionUpdateTargetId)?.displayName ?? null
@@ -3807,20 +2827,8 @@ function WebGISDashboardPage() {
             )}
           </div>
 
-          {viewMode === 'map' && <div className="panel flex items-center justify-between px-4 py-2 text-sm text-slate-600">
-            {mapMode === 'cadVector' && cadVectorData?.hasCadVectorData ? (
-              <>
-                <p>
-                  Tổng chiều dài tuyến:{' '}
-                  <span className="font-semibold text-slate-800">
-                    {cadVectorLineLengthSummary.toLocaleString('vi-VN', { maximumFractionDigits: 0 })} m
-                  </span>
-                </p>
-                <p>
-                  Dữ liệu bản đồ đã sẵn sàng
-                </p>
-              </>
-            ) : mapMode === 'layoutPreview' ? (
+          {viewMode === 'map' && mapMode !== 'cadVector' && <div className="panel flex items-center justify-between px-4 py-2 text-sm text-slate-600">
+            {mapMode === 'layoutPreview' ? (
               <>
                 <p>
                   Bản vẽ gốc: <span className="font-semibold text-slate-800">
@@ -3866,6 +2874,7 @@ function WebGISDashboardPage() {
               String(feature.properties.curatedMainWorkId ?? feature.properties.id),
             )
           }
+          onCancelCadVectorPositionUpdate={() => setPositionUpdateTargetId(null)}
           onOpenUpdate={(feature) => setEditingFeature(feature)}
           onOpenIncident={openIncidentForm}
           onTransitionIncident={async (id, status, note) => {
@@ -3897,6 +2906,7 @@ function WebGISDashboardPage() {
 
       {(showCreateAsset || editingFeature) && (
         <AssetFormModal
+          key={showCreateAsset ? 'create' : (editingFeature?.properties.id ?? 'update')}
           mode={showCreateAsset ? 'create' : 'update'}
           feature={editingFeature}
           onClose={() => {

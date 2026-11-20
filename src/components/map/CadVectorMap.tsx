@@ -1,10 +1,13 @@
 import { MapResizeController } from './MapResizeController'
 import { flushSync } from 'react-dom'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AlertTriangle, FileDown, Layers2, Maximize2, Route, MapPin } from 'lucide-react'
+import { AlertTriangle, Layers2, LoaderCircle, Maximize2, Minus, Plus, Ruler } from 'lucide-react'
+import { CadMapToolbar, type CadVisualMode } from './CadMapToolbar'
+import './cad-workspace.css'
 import type { Feature } from 'geojson'
 import {
   CRS,
+  DomEvent,
   CircleMarker as LeafletCircleMarker,
   type LatLngBoundsExpression,
   type LatLngExpression,
@@ -46,6 +49,7 @@ interface CadVectorMapProps {
   fitVersion: number
   viewPresetKey: string
   viewPresetLabel: string
+  lineLengthMeters?: number
   positionUpdateTargetLabel?: string | null
   onShowSurroundings: () => void
   onCadCoordinateClick?: (cadPosition: [number, number]) => void
@@ -92,8 +96,6 @@ interface PrintSvgLabel {
   y: number
   text: string
 }
-
-type CadVisualMode = 'classic' | 'clean' | 'report' | 'water' | 'irrigation' | 'dark'
 
 const EMPTY_COLLECTION: CadVectorFeatureCollection = {
   type: 'FeatureCollection',
@@ -1520,6 +1522,26 @@ function getPointRadiusForFeature(feature: CadVectorFeature, selectedFeatureId: 
   return 2.4
 }
 
+function CadNavigation({ onFit }: { onFit: () => void }) {
+  const map = useMap()
+  const controlsRef = useRef<HTMLDivElement>(null)
+  const [zoom, setZoom] = useState(map.getZoom())
+  useMapEvents({ zoomend: () => setZoom(map.getZoom()) })
+
+  useEffect(() => {
+    if (!controlsRef.current) return
+    DomEvent.disableClickPropagation(controlsRef.current)
+    DomEvent.disableScrollPropagation(controlsRef.current)
+  }, [])
+
+  return <div ref={controlsRef} className="cad-navigation cad-no-print" role="group" aria-label="Điều hướng bản đồ">
+    <button type="button" aria-label="Phóng to" title="Phóng to" disabled={zoom >= map.getMaxZoom()} onClick={() => map.zoomIn()}><Plus size={19} aria-hidden="true" /></button>
+    <button type="button" aria-label="Thu nhỏ" title="Thu nhỏ" disabled={zoom <= map.getMinZoom()} onClick={() => map.zoomOut()}><Minus size={19} aria-hidden="true" /></button>
+    <span aria-hidden="true" />
+    <button type="button" aria-label="Vừa màn hình" title="Vừa màn hình" onClick={onFit}><Maximize2 size={17} aria-hidden="true" /></button>
+  </div>
+}
+
 function CadVectorController({
   bounds,
   selectedFeature,
@@ -1554,9 +1576,10 @@ function CadVectorController({
       viewPresetKey === 'water_plants' || viewPresetKey === 'raw_water_lakes' ? 0 : undefined
 
     map.flyToBounds(bounds, {
-      padding: [72, 72],
+      padding: [40, 40],
       maxZoom,
       duration: 0.85,
+      animate: !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     })
   }, [bounds, map, resetVersion, viewPresetKey])
 
@@ -1588,7 +1611,7 @@ function CadVectorController({
 
     const featureBounds = getFeatureBounds(selectedFeature)
     if (featureBounds) {
-      map.flyToBounds(featureBounds, { padding: [72, 72], maxZoom: 0, duration: 0.85 })
+      map.flyToBounds(featureBounds, { padding: [72, 72], maxZoom: 0, duration: 0.85, animate: !window.matchMedia('(prefers-reduced-motion: reduce)').matches })
     }
   }, [focusVersion, map, selectedFeature])
 
@@ -1627,6 +1650,7 @@ export function CadVectorMap({
   fitVersion,
   viewPresetKey,
   viewPresetLabel,
+  lineLengthMeters,
   positionUpdateTargetLabel,
   onCadCoordinateClick,
   onSelectFeature,
@@ -1637,7 +1661,12 @@ export function CadVectorMap({
   const [resetVersion, setResetVersion] = useState(0)
   const [printVersion, setPrintVersion] = useState(0)
   const [printPrepared, setPrintPrepared] = useState(false)
-  const [showLegend, setShowLegend] = useState(true)
+  const [printing, setPrinting] = useState(false)
+  const [showLegend, setShowLegend] = useState(false)
+  const [showGrid, setShowGrid] = useState(true)
+  const [effects, setEffects] = useState(true)
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const [fullscreenError, setFullscreenError] = useState('')
   const [visualMode, setVisualMode] = useState<CadVisualMode>(getInitialCadVisualMode)
   const [tooltipState, setTooltipState] = useState<TooltipState>({
     feature: null,
@@ -1911,7 +1940,7 @@ export function CadVectorMap({
 
   useEffect(() => {
     const prepare = () => flushSync(() => setPrintPrepared(true))
-    const release = () => setPrintPrepared(false)
+    const release = () => { setPrintPrepared(false); setPrinting(false) }
     window.addEventListener('beforeprint', prepare)
     window.addEventListener('afterprint', release)
     return () => {
@@ -1920,9 +1949,26 @@ export function CadVectorMap({
     }
   }, [])
 
+  useEffect(() => {
+    const update = () => setIsFullscreen(document.fullscreenElement === containerRef.current)
+    document.addEventListener('fullscreenchange', update)
+    return () => { document.removeEventListener('fullscreenchange', update) }
+  }, [])
+
+  const toggleFullscreen = async () => {
+    setFullscreenError('')
+    try {
+      if (document.fullscreenElement === containerRef.current) await document.exitFullscreen()
+      else await containerRef.current?.requestFullscreen()
+    } catch {
+      setFullscreenError('Trình duyệt chưa hỗ trợ toàn màn hình.')
+    }
+  }
+
   const handlePrintPdf = () => {
+    if (printing) return
+    setPrinting(true)
     setPrintPrepared(true)
-    setShowLegend(true)
     setPrintVersion((value) => value + 1)
     const previousTitle = document.title
     const restoreTitle = () => {
@@ -1933,31 +1979,31 @@ export function CadVectorMap({
     document.title = 'WebGIS Cap Nuoc'
     window.addEventListener('afterprint', restoreTitle)
     window.setTimeout(() => {
-      window.print()
-      window.setTimeout(restoreTitle, 1200)
+      try {
+        window.print()
+      } finally {
+        setPrinting(false)
+        window.setTimeout(restoreTitle, 1200)
+      }
     }, 360)
   }
 
   if (loading) {
     return (
-      <div className="panel flex h-full min-h-[280px] sm:min-h-0 items-center justify-center bg-[#0f172a] p-6 text-center text-white">
-        <div>
-          <Route className="mx-auto mb-3 size-8 animate-pulse text-sky-300" />
-          <p className="text-base font-semibold">Đang tải dữ liệu bản đồ...</p>
-          <p className="mt-1 text-sm text-slate-300">Quá trình này có thể mất vài giây</p>
-        </div>
+      <div className="cad-loading" role="status">
+        <span className="cad-loading-orbit" aria-hidden="true"><Layers2 size={27} strokeWidth={1.5} /></span>
+        <p>Đang tải bản đồ…</p>
+        <span className="cad-loading-track" aria-hidden="true" />
       </div>
     )
   }
 
   if (!data?.hasCadVectorData || !bounds) {
     return (
-      <div className="panel flex h-full min-h-[280px] sm:min-h-0 items-center justify-center bg-[#0f172a] p-6 text-center text-white">
-        <div className="max-w-md rounded-xl border border-slate-700 bg-slate-900/80 p-5">
-          <AlertTriangle className="mx-auto mb-3 size-8 text-amber-300" />
-          <p className="text-base font-semibold">Chưa có dữ liệu bản đồ</p>
-          <p className="mt-2 text-sm text-slate-300">Vui lòng thử tải lại hoặc liên hệ quản trị viên.</p>
-        </div>
+      <div className="cad-loading cad-empty" role="status">
+        <AlertTriangle size={30} strokeWidth={1.5} aria-hidden="true" />
+        <p>Chưa có dữ liệu CAD</p>
+        <button type="button" className="cad-tool" onClick={onShowSurroundings}>Bản đồ địa lý</button>
       </div>
     )
   }
@@ -1965,7 +2011,7 @@ export function CadVectorMap({
   return (
     <div
       ref={containerRef}
-      className={`cad-print-root cad-visual-shell cad-visual-${visualMode} panel relative h-full min-h-[280px] sm:min-h-0 overflow-hidden`}
+      className={`cad-workbench cad-print-root cad-visual-shell cad-visual-${visualMode}${showGrid ? ' cad-grid-on' : ''}${effects ? ' cad-effects' : ''} panel relative h-full min-h-[280px] sm:min-h-0 overflow-hidden`}
     >
       <div className="cad-print-sheet hidden">
         <header className="cad-print-header">
@@ -2049,70 +2095,56 @@ export function CadVectorMap({
         </footer>
       </div>
 
-      <div className="cad-no-print absolute left-3 right-3 top-3 z-[1100] flex flex-nowrap items-center gap-2 overflow-x-auto pb-1 sm:left-4 sm:right-auto sm:top-4 sm:max-w-[calc(100%-2rem)]">
-        <button type="button" onClick={() => setResetVersion((value) => value + 1)} className="ghost-btn h-10 shrink-0 px-3">
-          <Maximize2 className="mr-2 size-4" />
-          Vừa màn hình
-        </button>
-        <label className="flex h-10 shrink-0 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 shadow-sm">
-          <Layers2 className="size-4 text-water-700" />
-          <span className="sr-only">Kiểu nền</span>
-          <select
-            value={visualMode}
-            onChange={(event) => setVisualMode(event.target.value as CadVisualMode)}
-            className="max-w-36 bg-transparent font-semibold text-slate-700 outline-none sm:max-w-none"
-            aria-label="Chọn kiểu nền bản đồ"
-          >
-            {CAD_VISUAL_MODES.map((mode) => <option key={mode.key} value={mode.key}>Nền: {mode.label}</option>)}
-          </select>
-        </label>
-        <button type="button" onClick={() => setShowLegend((value) => !value)} className="ghost-btn h-10 shrink-0 px-3">
-          <Layers2 className="mr-2 size-4" />
-          {showLegend ? 'Ẩn chú giải' : 'Chú giải'}
-        </button>
-        <button type="button" onClick={onShowSurroundings} className="ghost-btn h-10 shrink-0 px-3">
-          <MapPin className="mr-2 size-4" />Xem khu vực xung quanh
-        </button>
-        <button type="button" onClick={handlePrintPdf} className="ghost-btn h-10 shrink-0 px-3">
-          <FileDown className="mr-2 size-4" />
-          Xuất PDF
-        </button>
-      </div>
-
-      {positionUpdateTargetLabel && (
-        <div className="cad-no-print absolute left-1/2 top-16 z-[1100] max-w-md -translate-x-1/2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800 shadow-sm">
-          Đang cập nhật vị trí: {positionUpdateTargetLabel}. Click lên bản đồ CAD để lưu tọa độ.
-        </div>
-      )}
-
-      <div className="cad-no-print absolute bottom-4 left-4 z-[800] rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700 shadow-sm">
-        Đang hiển thị {renderedCount.toLocaleString('vi-VN')} đối tượng
-        {!labelOptions.showAllLabels && !labelOptions.showDiameterLabels && !labelOptions.showLocationLabels && (
-          <span className="ml-2 text-slate-400">Nhãn CAD đang tắt</span>
-        )}
-      </div>
-
-      {renderedCount === 0 && (
-        <div className="cad-no-print pointer-events-none absolute left-1/2 top-1/2 z-[900] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-center text-sm text-amber-900 shadow-sm">
-          Chế độ xem hiện tại chưa có dữ liệu hiển thị. Hãy bật thêm nền CAD hoặc đổi chế độ xem.
-        </div>
-      )}
-
-      <CadLegend
-        visible={showLegend}
-        visibleLayers={visibleLayers}
-        labelOptions={labelOptions}
+      <CadMapToolbar
+        presetLabel={viewPresetLabel}
         visualMode={visualMode}
+        onVisualModeChange={setVisualMode}
+        showGrid={showGrid}
+        onGridChange={setShowGrid}
+        effects={effects}
+        onEffectsChange={setEffects}
+        showLegend={showLegend}
+        onToggleLegend={() => setShowLegend((value) => !value)}
+        isFullscreen={isFullscreen}
+        onToggleFullscreen={() => { void toggleFullscreen() }}
+        onShowSurroundings={onShowSurroundings}
+        onPrint={handlePrintPdf}
+        printing={printing}
       />
+
+      <div className="cad-map-stage">
+        {positionUpdateTargetLabel && (
+          <div className="cad-position-notice cad-no-print" role="status">
+            <span className="cad-position-dot" aria-hidden="true" />
+            <span>Chọn vị trí cho <strong>{positionUpdateTargetLabel}</strong></span>
+          </div>
+        )}
+        {renderedCount === 0 && (
+          <div className="cad-map-empty cad-no-print" role="status">
+            <Layers2 size={26} strokeWidth={1.5} aria-hidden="true" />
+            <strong>Không có đối tượng</strong>
+            <span>Bật lớp dữ liệu hoặc đổi chế độ xem.</span>
+          </div>
+        )}
+        <CadLegend
+          visible={showLegend}
+          visibleLayers={visibleLayers}
+          labelOptions={labelOptions}
+          visualMode={visualMode}
+          onClose={() => setShowLegend(false)}
+        />
 
       <MapContainer
         crs={CRS.Simple}
         center={[0, 0]}
         zoom={-4}
+        zoomSnap={0.25}
+        zoomDelta={0.5}
         minZoom={-8}
         maxZoom={5}
         scrollWheelZoom
         preferCanvas
+        zoomControl={false}
         attributionControl={false}
         className={`cad-vector-leaflet cad-visual-${visualMode} h-full w-full`}
       >
@@ -2223,7 +2255,15 @@ export function CadVectorMap({
           onCadCoordinateClick={onCadCoordinateClick}
         />
         <MapResizeController />
+        <CadNavigation onFit={() => setResetVersion((value) => value + 1)} />
       </MapContainer>
+      </div>
+
+      <footer className="cad-map-status cad-no-print">
+        <span><span className="cad-ready-dot" aria-hidden="true" /><strong>{renderedCount.toLocaleString('vi-VN')}</strong> đối tượng</span>
+        {fullscreenError ? <span role="status">{fullscreenError}</span> : lineLengthMeters !== undefined && <span className="cad-length" title="Tổng chiều dài tuyến CAD"><Ruler size={13} aria-hidden="true" />{lineLengthMeters.toLocaleString('vi-VN', { maximumFractionDigits: 0 })} m</span>}
+        {printing && <span role="status"><LoaderCircle className="cad-spin" size={13} aria-hidden="true" /> Chuẩn bị bản in…</span>}
+      </footer>
 
       <FloatingFeatureTooltip
         feature={tooltipState.feature}

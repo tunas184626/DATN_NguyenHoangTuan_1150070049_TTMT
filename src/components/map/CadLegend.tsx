@@ -1,4 +1,5 @@
 import type { CadLabelVisibilityOptions } from '../../utils/textUtils'
+import { X } from 'lucide-react'
 
 type CadVisualMode = 'classic' | 'clean' | 'report' | 'water' | 'irrigation' | 'dark'
 type LegendShape = 'point-strong' | 'point-water' | 'line-strong' | 'line-canal' | 'line-muted' | 'badge' | 'dash'
@@ -8,6 +9,7 @@ interface CadLegendProps {
   visibleLayers: Record<string, boolean>
   labelOptions: CadLabelVisibilityOptions
   visualMode?: CadVisualMode
+  onClose?: () => void
 }
 
 const CAD_BASE_LAYER_KEY = '__baseCadLayer'
@@ -115,20 +117,20 @@ function getLegendColor(itemKey: string, fallback: string, visualMode: CadVisual
   return LEGEND_VISUAL_COLORS[visualMode]?.[itemKey] ?? fallback
 }
 
-export function CadLegend({ visible, visibleLayers, labelOptions, visualMode = 'clean' }: CadLegendProps) {
+export function CadLegend({ visible, visibleLayers, labelOptions, visualMode = 'clean', onClose }: CadLegendProps) {
   const visibleItems = LEGEND_ITEMS.filter((item) => item.visible(visibleLayers, labelOptions))
+  if (!visible) return null
 
   return (
-    <div className="cad-no-print absolute bottom-4 right-4 z-[800]">
-      {visible && (
-        <div className="w-[230px] rounded-lg border border-slate-200 bg-white p-3 text-xs text-slate-700 shadow-sm">
-          <p className="mb-2 font-bold">Chú giải bản đồ</p>
-          <div className="space-y-2">
+    <section id="cad-map-legend" className="cad-legend cad-no-print" aria-label="Chú giải bản đồ">
+          <div className="cad-popover-heading"><h3>Chú giải</h3>{onClose && <button type="button" className="cad-icon-button" aria-label="Đóng chú giải" onClick={onClose}><X size={16} aria-hidden="true" /></button>}</div>
+          <div className="cad-legend-items">
             {visibleItems.map((item) => {
               const color = getLegendColor(item.key, item.color, visualMode)
 
               return (
-                <div key={item.key} className="flex items-center gap-2">
+                <div key={item.key} className="cad-legend-item">
+                  <span className="cad-legend-symbol" aria-hidden="true">
                   {item.shape === 'point-strong' && (
                     <span
                       className="inline-block size-3 rounded-full border-2 border-white shadow"
@@ -145,13 +147,11 @@ export function CadLegend({ visible, visibleLayers, labelOptions, visualMode = '
                   {item.shape === 'dash' && (
                     <span className="inline-block h-0 w-8 border-t" style={{ borderColor: color, borderStyle: 'dashed' }} />
                   )}
-                  <span>{item.label}</span>
+                  </span><span>{item.label}</span>
                 </div>
               )
             })}
           </div>
-        </div>
-      )}
-    </div>
+    </section>
   )
 }

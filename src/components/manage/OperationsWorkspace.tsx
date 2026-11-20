@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useMemo, useState } from 'react'
+import { useCallback, useDeferredValue, useEffect, useMemo, useState } from 'react'
 import {
   AlertTriangle,
   ChevronLeft,
@@ -27,6 +27,7 @@ import type { FeaturePage, IncidentWorkQueue, OperationsSummary } from '../../ty
 import { WorkRecordPanel, type WorkRecordActions } from './WorkRecordPanel'
 import { AssetQualityWorkspace } from './AssetQualityWorkspace'
 import { matchesWorkQueue, WORK_QUEUES } from './workQueues'
+import { WorkQueueView } from './WorkQueueView'
 import { isLocalDraft } from '../../services/localDraftStore'
 import { flattenAssets, flattenIncidents } from '../../utils/metrics'
 import {
@@ -266,7 +267,34 @@ export function OperationsWorkspace({
     setSelectedRecord(null)
   }
 
-  return (
+  const closeRecord = useCallback(() => setSelectedRecord(null), [])
+  const recordPanel = activeRecord && <WorkRecordPanel key={activeRecord.properties.id} feature={activeRecord} isSynchronized={isSynchronized} onOpenFeature={onOpenFeature} onClose={closeRecord} onReloadFeature={async () => { const updated = await loadOperationsFeature(activeRecord); setSelectedRecord(updated); onSelectFeature?.(updated); setRefreshVersion((value) => value + 1) }} onUpdated={(updated) => { setSelectedRecord(updated); onSelectFeature?.(updated); setRefreshVersion((value) => value + 1) }} {...recordActions} />
+  const queueView = tab === 'work' ? <WorkQueueView
+    queue={queue}
+    onQueueChange={(next) => { setQueue(next); setPage(1); setSelectedRecord(null) }}
+    summary={totals}
+    isSynchronized={isSynchronized}
+    onTabChange={changeTab}
+    query={query}
+    onQueryChange={(next) => { setQuery(next); setPage(1) }}
+    features={pageFeatures}
+    drafts={draftFeatures}
+    loading={loadingPage}
+    error={isSynchronized ? remoteError : ''}
+    total={loadingPage || (isSynchronized && !matchesRequest) ? null : totalResults}
+    page={activePage}
+    pageCount={pageCount}
+    pageSize={PAGE_SIZE}
+    onPageChange={setPage}
+    onRefresh={() => setRefreshVersion((value) => value + 1)}
+    onAddIncident={onAddIncident}
+    selectedId={activeRecord?.properties.id}
+    onSelect={selectRecord}
+    onCloseRecord={closeRecord}
+    recordPanel={recordPanel}
+  /> : null
+
+  return queueView ?? (
     <section className="flex min-h-0 flex-1 flex-col gap-4 overflow-auto pb-1" aria-labelledby="operations-title">
       <div className="panel overflow-hidden">
         <div className="flex flex-col gap-4 border-b border-slate-100 bg-white p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
@@ -444,7 +472,7 @@ export function OperationsWorkspace({
         </div>
         </>}
       </div>
-      {activeRecord && <WorkRecordPanel key={activeRecord.properties.id} feature={activeRecord} isSynchronized={isSynchronized} onOpenFeature={onOpenFeature} onClose={() => setSelectedRecord(null)} onReloadFeature={async () => { const updated = await loadOperationsFeature(activeRecord); setSelectedRecord(updated); onSelectFeature?.(updated); setRefreshVersion((value) => value + 1) }} onUpdated={(updated) => { setSelectedRecord(updated); onSelectFeature?.(updated); setRefreshVersion((value) => value + 1) }} {...recordActions} />}
+      {recordPanel}
       </div>
     </section>
   )
